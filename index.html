@@ -208,25 +208,17 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/15/Gulp入门教程/">hello-world   //在此处添加你的标题。</a>
-    </h1>
-  
-
-      </header>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="为什么使用Gulp"><a href="#为什么使用Gulp" class="headerlink" title="为什么使用Gulp"></a>为什么使用Gulp</h2><hr>
-<p>Gulp基于Node.js的前端构建工具，通过Gulp的插件可以实现前端代码的编译（sass、less）、压缩、测试；图片的压缩；浏览器自动刷新，还有许多强大的插件可以在这里查找。比起Grunt不仅配置简单而且更容易阅读和维护</p>
-<h2 id="建立Web项目"><a href="#建立Web项目" class="headerlink" title="建立Web项目"></a>建立Web项目</h2><hr>
-<p>使用一下命令建立项目，会自动生成一个package.json文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$mkdir</span> projectName</div><div class="line"><span class="variable">$cd</span> projectName</div><div class="line"><span class="variable">$npm</span> init</div></pre></td></tr></table></figure></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
-<ul>
+        <hr>
+<pre><code>title:Gulp教程
+date:2016-08-15
+categories:Web 前端
+toc:true 
+</code></pre><hr>
+<h2 id="为什么使用Gulp"><a href="#为什么使用Gulp" class="headerlink" title="为什么使用Gulp"></a>为什么使用Gulp</h2><p>Gulp基于Node.js的前端构建工具，通过Gulp的插件可以实现前端代码的编译（sass、less）、压缩、测试；图片的压缩；浏览器自动刷新，还有许多强大的插件可以在这里查找。比起Grunt不仅配置简单而且更容易阅读和维护</p>
+<h2 id="建立Web项目"><a href="#建立Web项目" class="headerlink" title="建立Web项目"></a>建立Web项目</h2><p>使用一下命令建立项目，会自动生成一个package.json文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$mkdir</span> projectName</div><div class="line"><span class="variable">$cd</span> projectName</div><div class="line"><span class="variable">$npm</span> init</div></pre></td></tr></table></figure></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
 <li><p>首先我们要全局安装一遍：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp -g</div></pre></td></tr></table></figure>
 </li>
@@ -235,8 +227,7 @@
 </li>
 </ul>
 <p>—save-dev这个属性会将条目保存到你package.json的devDependencies里面</p>
-<h2 id="安装gulp插件"><a href="#安装gulp插件" class="headerlink" title="安装gulp插件"></a>安装gulp插件</h2><hr>
-<p>我们将要使用Gulp插件来完成我们以下任务：</p>
+<h2 id="安装gulp插件"><a href="#安装gulp插件" class="headerlink" title="安装gulp插件"></a>安装gulp插件</h2><p>我们将要使用Gulp插件来完成我们以下任务：</p>
 <ul>
 <li>sass的编译(<a href="https://github.com/sindresorhus/gulp-ruby-sass" target="_blank" rel="external">gulp-ruby-sass</a>)</li>
 <li>自动添加CSS前缀(<a href="http://github.com/Metrime/gulp-autoprefixer" target="_blank" rel="external">gulp-autoprefixer</a>)</li>
@@ -251,10 +242,8 @@
 <li>清除文件(<a href="http://www.npmjs.org/package/del" target="_blank" rel="external">del</a>)</li>
 </ul>
 <p>安装这些插件需要运行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev</div></pre></td></tr></table></figure></p>
-<h2 id="加载插件"><a href="#加载插件" class="headerlink" title="加载插件"></a>加载插件</h2><hr>
-<p>我们要在项目的根目录创建一个gulpfile.js文件，然后再里面加载插件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="建立任务"><a href="#建立任务" class="headerlink" title="建立任务"></a>建立任务</h2><hr>
-<ul>
+<h2 id="加载插件"><a href="#加载插件" class="headerlink" title="加载插件"></a>加载插件</h2><p>我们要在项目的根目录创建一个gulpfile.js文件，然后再里面加载插件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="建立任务"><a href="#建立任务" class="headerlink" title="建立任务"></a>建立任务</h2><ul>
 <li><p>编译sass、自动添加css前缀和压缩<br>首先我们编译sass，添加前缀，保存到我们指定的目录下面，还没结束，我们还要压缩，给文件添加<code>.min</code>后缀再输出压缩文件到指定目录，最后提醒任务完成了：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">     .pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div><div class="line">     .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(minifycss())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
@@ -305,71 +294,6 @@
 <ul>
 <li>所有任务放在一起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*!</span></div><div class="line">*gulp</div><div class="line">*$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify         gulp-rename gulp-livereload gulp-cache del --save-dev</div><div class="line">*/</div><div class="line"><span class="comment">// Load plugins</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div><div class="line"><span class="comment">// Styles</span></div><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">    .pipe(sass(&#123; style: <span class="string">'expanded'</span>, &#125;))</div><div class="line">    .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(minifycss())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Scripts</span></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">    .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">    .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">    .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(uglify())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Images</span></div><div class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">    .pipe(cache(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;)))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/images'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Clean</span></div><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">    del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb())</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Default task</span></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Watch</span></div><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Watch .scss files</span></div><div class="line">  gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</div><div class="line">  <span class="comment">// Watch .js files</span></div><div class="line">  gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</div><div class="line">  <span class="comment">// Watch image files</span></div><div class="line">  gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</div><div class="line">  <span class="comment">// Create LiveReload server</span></div><div class="line">  livereload.listen();</div><div class="line">  <span class="comment">// Watch any files in dist/, reload on change</span></div><div class="line">  gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
 </ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Exercise-在此处输入这篇文章的分类。/">Exercise   //在此处输入这篇文章的分类。</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/05/hello-world/" class="article-date">
-  	<time datetime="2016-08-05T08:28:22.586Z" itemprop="datePublished">2016-08-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
       
     </div>
