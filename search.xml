@@ -16,8 +16,7 @@
 <h2 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h2><hr>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">hexo init myB<span class="built_in">log</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span>  myB<span class="built_in">log</span></div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">hexo g <span class="comment"># 或者hexo generate</span></div><div class="line"></div><div class="line">hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
 <p>这里有必要提下Hexo常用的几个命令：</p>
-<p><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹</p>
-<p><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览<br><code>hexo deploy (hexo d)</code>部署播客到远端（比如github, heroku等平台）<br><code>hexo new &quot;postName&quot;</code>#新建文章<br>现在我们打开<code>http://localhost:4000/</code> 已经可以看到一篇内置的blog了。</p>
+<p><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹<br><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览<br><code>hexo deploy (hexo d)</code>部署播客到远端（比如github, heroku等平台）<br><code>hexo new &quot;postName&quot;</code>#新建文章<br>现在我们打开<code>http://localhost:4000/</code> 已经可以看到一篇内置的blog了。</p>
 <h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><hr>
 <p>这里以主题yilia为例进行说明(以下命令在博客目录执行)。</p>
 <ul>
@@ -26,8 +25,7 @@
 </li>
 <li><p>启用主题<br>修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为yilia。</p>
 </li>
-<li><p>更新主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd themes/yilia</div><div class="line">$ git pull</div><div class="line">$ hexo g # 生成</div><div class="line">$ hexo s # 启动本地web服务器</div></pre></td></tr></table></figure>
+<li>更新主题<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd themes/yilia</div><div class="line">$ git pull</div><div class="line">$ hexo g # 生成</div><div class="line">$ hexo s # 启动本地web服务器</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>现在打开<code>http://localhost:4000/</code> ，会看到我们已经应用了一个新的主题。</p>
@@ -120,28 +118,22 @@
 <li><p>设置侧栏<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
 <p>  1、设置侧栏的位置，修改 <code>sidebar.position</code>的值，支持的选项有：</p>
 <ul>
-<li><p>left：靠左放置</p>
-</li>
-<li><p>right：靠右放置</p>
-</li>
+<li>left：靠左放</li>
+<li>right：靠右放置<br>2、设置侧栏显示时机，修改 <code>sidebar.display</code>的值</li>
 </ul>
 </li>
-</ul>
-<pre><code>2、设置侧栏显示时机，修改 `sidebar.display`的值
-</code></pre><ul>
-<li>设置头像<br>编辑 站点配置文件， 新增字段<code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</li>
+<li><p>设置头像<br>编辑 站点配置文件， 新增字段<code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
+</li>
 </ul>
 <h3 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h3><hr>
 <ul>
 <li><p>多说评论<br>  使用多说前需要先在 多说 创建一个站点。具体步骤如下：</p>
-<p>  1、登录后在首页选择 “我要安装”。</p>
-<p>  2、创建站点，填写站点相关信息。 多说域名 这一栏填写的即是你的 <code>duoshuo_shortname</code><br>  3、创建站点完成后在 站点配置文件 中新增 <code>duoshuo_shortname</code> 字段，值设置成上一步中的值。</p>
+<p>  1、登录后在首页选择 “我要安装”。<br>  2、创建站点，填写站点相关信息。 多说域名 这一栏填写的即是你的 <code>duoshuo_shortname</code><br>  3、创建站点完成后在 站点配置文件 中新增 <code>duoshuo_shortname</code> 字段，值设置成上一步中的值。</p>
 </li>
 </ul>
 <ul>
 <li><p>百度统计</p>
-<p>  1、登录 <a href="http://tongji.baidu.com/  百度统计" target="_blank" rel="external">百度统计</a>， 定位到站点的代码获取页面</p>
-<p>  2、复制 <code>hm.js?</code> 后面那串统计脚本 id<br>  3、编辑 站点配置文件， 新增字段 <code>baidu_analytics</code> 字段，值设置成你的百度统计脚本 id</p>
+<p>  1、登录 <a href="http://tongji.baidu.com/  百度统计" target="_blank" rel="external">百度统计</a>， 定位到站点的代码获取页面<br>  2、复制 <code>hm.js?</code> 后面那串统计脚本 id<br>  3、编辑 站点配置文件， 新增字段 <code>baidu_analytics</code> 字段，值设置成你的百度统计脚本 id</p>
 </li>
 </ul>
 <ul>
