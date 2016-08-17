@@ -14,9 +14,8 @@
 </li>
 </ul>
 <h2 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h2><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">hexo init myB<span class="built_in">log</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span>  myB<span class="built_in">log</span></div><div class="line"></div><div class="line">npm install</div><div class="line"></div><div class="line">hexo g <span class="comment"># 或者hexo generate</span></div><div class="line"></div><div class="line">hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
-<p>这里有必要提下Hexo常用的几个命令：</p>
-<p><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹<br><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览<br><code>hexo deploy (hexo d)</code>部署播客到远端（比如github, heroku等平台）<br><code>hexo new &quot;postName&quot;</code>#新建文章<br>现在我们打开<code>http://localhost:4000/</code> 已经可以看到一篇内置的blog了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init myB<span class="built_in">log</span></div><div class="line"><span class="built_in">cd</span>  myB<span class="built_in">log</span></div><div class="line">npm install</div><div class="line">hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
+<p>这里有必要提下Hexo常用的几个命令：<br><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹<br><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览<br><code>hexo deploy (hexo d)</code>部署播客到远端（比如github, heroku等平台）<br><code>hexo new &quot;postName&quot;</code>#新建文章<br>现在我们打开<code>http://localhost:4000/</code> 已经可以看到一篇内置的blog了。</p>
 <h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><hr>
 <p>这里以主题yilia为例进行说明(以下命令在博客目录执行)。</p>
 <ul>
@@ -30,30 +29,26 @@
 </ul>
 <p>现在打开<code>http://localhost:4000/</code> ，会看到我们已经应用了一个新的主题。</p>
 <h2 id="部署博客到Github-Pages"><a href="#部署博客到Github-Pages" class="headerlink" title="部署博客到Github Pages"></a>部署博客到Github Pages</h2><hr>
-<p><a href="https://pages.github.com/" title="Github Pages" target="_blank" rel="external">Github Pages</a>本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。</p>
-<p>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<code>http://username.github.io</code> 来访问你的个人主页。</p>
-<p><strong>注意：个人主页的网站内容是在master分支下的。</strong></p>
+<p><a href="https://pages.github.com/" title="Github Pages" target="_blank" rel="external">Github Pages</a>本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。<br>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<code>http://username.github.io</code> 来访问你的个人主页。<br><strong>注意：个人主页的网站内容是在master分支下的。</strong></p>
 <h4 id="创建自己的Github-Pages"><a href="#创建自己的Github-Pages" class="headerlink" title="创建自己的Github Pages"></a>创建自己的Github Pages</h4><ul>
 <li>创建github仓库，注意命名</li>
 <li>在settings开启github pages</li>
 <li>现在可以通过<code>http://username.github.io</code>访问github主页</li>
 </ul>
-<h4 id="部署Hexo到Github-Pages"><a href="#部署Hexo到Github-Pages" class="headerlink" title="部署Hexo到Github Pages"></a>部署Hexo到Github Pages</h4><p>这一步恐怕是最关键的一步了，让我们把在本地web环境下预览到的博客部署到github上，然后就可以直接通过<code>http://heji1993.github.io/</code>访问了。不过很多教程文章对这个步骤语焉不详，这里着重说下。<br>首先需要明白所谓部署到github的原理。</p>
-<p>1、之前步骤中在Github上创建的那个特别的repo（heji1993.github.io）一个最大的特点就是其master中的html静态文件，可以通过链接<code>http://heji1993.github.io</code>来直接访问。<br>2、Hexo -g 会生成一个静态网站（第一次会生成一个public目录），这个静态文件可以直接访问。<br>3、需要将hexo生成的静态网站，提交(git commit)到github上。<br><strong>注意：部署到github需要配置SSH key，请参考github学习笔记</strong></p>
+<h4 id="部署Hexo到Github-Pages"><a href="#部署Hexo到Github-Pages" class="headerlink" title="部署Hexo到Github Pages"></a>部署Hexo到Github Pages</h4><p>这一步恐怕是最关键的一步了，让我们把在本地web环境下预览到的博客部署到github上，然后就可以直接通过<code>http://heji1993.github.io/</code>访问了。不过很多教程文章对这个步骤语焉不详，这里着重说下。<br>首先需要明白所谓部署到github的原理。<br>1、之前步骤中在Github上创建的那个特别的repo（heji1993.github.io）一个最大的特点就是其master中的html静态文件，可以通过链接<code>http://heji1993.github.io</code>来直接访问。<br>2、Hexo -g 会生成一个静态网站（第一次会生成一个public目录），这个静态文件可以直接访问。<br>3、需要将hexo生成的静态网站，提交(git commit)到github上。<br><strong>注意：部署到github需要配置SSH key，请参考github学习笔记</strong></p>
 <ul>
-<li><p><strong>使用hexo deploy部署</strong><br>   hexo deploy可以部署到很多平台，具体可以参考<a href="https://hexo.io/docs/deployment.html" title="部署指南" target="_blank" rel="external"> 这个链接 </a>. 如果部署到github，需要在配置文件_config.xml中作如下修改：</p>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">   type: git</div><div class="line">   repo: git@github.com:heji1993/heji1993.github.io.git</div><div class="line">   branch: master</div></pre></td></tr></table></figure>
-<p>   然后在命令行中执行</p>
+<li><p><strong>使用hexo deploy部署</strong><br>  hexo deploy可以部署到很多平台，具体可以参考<a href="https://hexo.io/docs/deployment.html" title="部署指南" target="_blank" rel="external"> 这个链接 </a>. 如果部署到github，需要在配置文件_config.xml中作如下修改：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">   type: git</div><div class="line">   repo: git@github.com:heji1993/heji1993.github.io.git</div><div class="line">   branch: master</div></pre></td></tr></table></figure>
+<p>  然后在命令行中执行</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>   即可完成部署。</p>
-<p>   注意需要提前安装一个扩展：</p>
+<p>  即可完成部署。<br>  注意需要提前安装一个扩展：</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
 </li>
-<li><p><strong>使用git命令行部署</strong><br>   克隆github仓库</p>
+<li><p><strong>使用git命令行部署</strong><br>  克隆github仓库</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> e:/myB<span class="built_in">log</span></div><div class="line">$ git <span class="built_in">clone</span> https://github.com/heji1993/heji1993.github.io.git .deploy/heji1993.github.io</div></pre></td></tr></table></figure>
-<p>   创建一个deploy脚本文件</p>
+<p>  创建一个deploy脚本文件</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">cp -R public/* .deploy/heji1993.github.io</div><div class="line"><span class="built_in">cd</span> .deploy/heji1993.github.io</div><div class="line">git add .</div><div class="line">git commit -m “update”</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
-<p>   需要部署的时候，执行这段脚本就可以了（比如可以将其保存为deploy.sh）。执行过程中可能需要让你输入Github账户的用户名及密码，按照提示操作即可。</p>
+<p>  需要部署的时候，执行这段脚本就可以了（比如可以将其保存为deploy.sh）。执行过程中可能需要让你输入Github账户的用户名及密码，按照提示操作即可。</p>
 </li>
 </ul>
 <h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><hr>
@@ -64,11 +59,11 @@
 <li><p>下载主题</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> $ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
 </li>
-<li><p>启用主题、验证主题<br>   与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开<code>_config.xml</code>， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>。</p>
+<li><p>启用主题、验证主题<br>  与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开<code>_config.xml</code>， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>。</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure>
-<p>   运行以下命令：</p>
+<p>  运行以下命令：</p>
   <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean </div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>   打开博客首页查看效果</p>
+<p>  打开博客首页查看效果</p>
 </li>
 </ul>
 <h4 id="自定义设置-修改主题配置文件"><a href="#自定义设置-修改主题配置文件" class="headerlink" title="自定义设置(修改主题配置文件)"></a>自定义设置(修改主题配置文件)</h4><ul>
@@ -85,13 +80,10 @@
 </li>
 </ul>
 <ul>
-<li><p>设置RSS<br>  NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 <code>主题配置文件</code>，设定 rss 字段的值：</p>
-<ul>
+<li>设置RSS<br>  NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 <code>主题配置文件</code>，设定 rss 字段的值：<ul>
 <li><code>false</code>：禁用RSS，不在页面上显示RSS连接</li>
-<li><p>留空：使用hexo生成的Feed标签。你需要先安装<a href="https://github.com/hexojs/hexo-generator-feed" title="hexo-generator-feed " target="_blank" rel="external">hexo-generator-feed </a>插件</p>
-</li>
-<li><p>具体的链接地址：适用于已经烧制过 Feed 的情形。</p>
-</li>
+<li>留空：使用hexo生成的Feed标签。你需要先安装<a href="https://github.com/hexojs/hexo-generator-feed" title="hexo-generator-feed " target="_blank" rel="external">hexo-generator-feed </a>插件</li>
+<li>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
 </ul>
 </li>
 </ul>
