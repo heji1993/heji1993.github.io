@@ -95,7 +95,7 @@
 
 新建博客
 12345hexo init myBlogcd  myBlognpm installhexo g # 或者hexo generatehexo s # 或者hexo server，可以在http://localhost:4000/ 查看
-这里有必要提下Hexo常用的几个命令：hexo">
+这里有必要提下Hexo常用的几个命令：hex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Hexo搭建博客">
 <meta property="og:url" content="http://xiachengwei5.coding.me/2016/08/17/使用Hexo搭建自己的博客/index.html">
@@ -109,8 +109,8 @@
 
 新建博客
 12345hexo init myBlogcd  myBlognpm installhexo g # 或者hexo generatehexo s # 或者hexo server，可以在http://localhost:4000/ 查看
-这里有必要提下Hexo常用的几个命令：hexo">
-<meta property="og:updated_time" content="2016-08-17T11:57:15.206Z">
+这里有必要提下Hexo常用的几个命令：hex">
+<meta property="og:updated_time" content="2016-08-18T00:33:28.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo搭建博客">
 <meta name="twitter:description" content="安装
@@ -122,7 +122,7 @@
 
 新建博客
 12345hexo init myBlogcd  myBlognpm installhexo g # 或者hexo generatehexo s # 或者hexo server，可以在http://localhost:4000/ 查看
-这里有必要提下Hexo常用的几个命令：hexo">
+这里有必要提下Hexo常用的几个命令：hex">
 
 
 
@@ -384,7 +384,8 @@
       
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
+        <a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
 <ul>
 <li>安装<a href="http://nodejs.org/" title="NodeJS" target="_blank" rel="external">NodeJS</a></li>
 <li>安装<a href="https://git-scm.com/" title="Git" target="_blank" rel="external">Git</a></li>
@@ -467,50 +468,41 @@
 </ul>
 <ul>
 <li><p>添加<code>标签</code>页面<br>  1、在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
 <p>  2、编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">---</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">---</div></pre></td></tr></table></figure>
 <p>  3、在菜单中添加链接。编辑 <code>主题配置文件</code> ， 添加 tags 到 menu 中，如下:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   tags: /tags</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   tags: /tags</div></pre></td></tr></table></figure>
 </li>
 <li><p>添加<code>分类</code>页面<br>  1、在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
 <p>  2、编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></div><div class="line">---</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></div><div class="line">---</div></pre></td></tr></table></figure>
 <p>  3、在菜单中添加链接。编辑 <code>主题配置文件</code> ， 添加 categories 到 menu 中，如下:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   categories : /categories</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   categories : /categories</div></pre></td></tr></table></figure>
 </li>
 <li><p>设置代码高亮</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># Code Highlight theme</div><div class="line"># Available value: normal | night | night eighties | night blue | night bright</div><div class="line"># https://github.com/chriskempson/tomorrow-theme</div><div class="line">highlight_theme: normal</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
-<li><p>设置侧栏<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
-<p>  1、设置侧栏的位置，修改 <code>sidebar.position</code>的值，支持的选项有：</p>
-<ul>
+<li>设置侧栏<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。<br>  1、设置侧栏的位置，修改 <code>sidebar.position</code>的值，支持的选项有：<ul>
 <li>left：靠左放</li>
 <li>right：靠右放置<br>2、设置侧栏显示时机，修改 <code>sidebar.display</code>的值</li>
 </ul>
 </li>
-<li><p>设置头像<br>编辑 站点配置文件， 新增字段<code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
-</li>
+<li>设置头像<br>编辑 站点配置文件， 新增字段<code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</li>
 </ul>
 <h3 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h3><hr>
 <ul>
-<li><p>多说评论<br>  使用多说前需要先在 多说 创建一个站点。具体步骤如下：</p>
-<p>  1、登录后在首页选择 “我要安装”。<br>  2、创建站点，填写站点相关信息。 多说域名 这一栏填写的即是你的 <code>duoshuo_shortname</code><br>  3、创建站点完成后在 站点配置文件 中新增 <code>duoshuo_shortname</code> 字段，值设置成上一步中的值。</p>
+<li><p>多说评论<br>  使用多说前需要先在 多说 创建一个站点。具体步骤如下：<br>  1、登录后在首页选择 “我要安装”。<br>  2、创建站点，填写站点相关信息。 多说域名 这一栏填写的即是你的 <code>duoshuo_shortname</code><br>  3、创建站点完成后在 站点配置文件 中新增 <code>duoshuo_shortname</code> 字段，值设置成上一步中的值。</p>
 </li>
-</ul>
-<ul>
-<li><p>百度统计</p>
-<p>  1、登录 <a href="http://tongji.baidu.com/  百度统计" target="_blank" rel="external">百度统计</a>， 定位到站点的代码获取页面<br>  2、复制 <code>hm.js?</code> 后面那串统计脚本 id<br>  3、编辑 站点配置文件， 新增字段 <code>baidu_analytics</code> 字段，值设置成你的百度统计脚本 id</p>
+<li><p>百度统计<br>  1、登录 <a href="http://tongji.baidu.com/  百度统计" target="_blank" rel="external">百度统计</a>， 定位到站点的代码获取页面<br>  2、复制 <code>hm.js?</code> 后面那串统计脚本 id<br>  3、编辑 站点配置文件， 新增字段 <code>baidu_analytics</code> 字段，值设置成你的百度统计脚本 id</p>
 </li>
-</ul>
-<ul>
 <li><p>Local Search<br>  1、安装 <code>hexo-generator-search</code>，在站点的根目录下执行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
 <p>  2、编辑 站点配置文件，新增以下内容到任意位置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">search:</div><div class="line">   path: search.xml</div><div class="line">   field: post</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">   path: search.xml</div><div class="line">   field: post</div></pre></td></tr></table></figure>
 </li>
 <li><p>打赏功能<br>   Next主题最新版默认集成打赏功能，在站点配置文件开启即可</p>
    <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Donate 文章末尾显示打赏按钮</div><div class="line">reward_comment: 生活不止眼前的苟且，还有远方的诗和田野</div><div class="line">wechatpay: /images/weixin.png</div><div class="line">alipay: /images/zhifubao.jpg</div></pre></td></tr></table></figure>
