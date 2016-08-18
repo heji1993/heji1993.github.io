@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiachengwei5.coding.me/"/>
-  <updated>2016-08-18T00:38:49.713Z</updated>
+  <updated>2016-08-18T00:41:20.541Z</updated>
   <id>http://xiachengwei5.coding.me/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://xiachengwei5.coding.me/2016/08/17/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     <id>http://xiachengwei5.coding.me/2016/08/17/使用Hexo搭建自己的博客/</id>
     <published>2016-08-17T11:33:22.174Z</published>
-    <updated>2016-08-18T00:38:49.713Z</updated>
+    <updated>2016-08-18T00:41:20.541Z</updated>
     
-    <content type="html"><![CDATA[<p>这里是描述信息</p>
+    <content type="html"><![CDATA[<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 <a id="more"></a>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
 <ul>
@@ -151,7 +151,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这里是描述信息&lt;/p&gt;
+      &lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
     
     </summary>
     
@@ -171,9 +171,9 @@
     <link href="http://xiachengwei5.coding.me/2016/08/15/Gulp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://xiachengwei5.coding.me/2016/08/15/Gulp入门教程/</id>
     <published>2016-08-15T08:57:36.616Z</published>
-    <updated>2016-08-18T00:39:00.016Z</updated>
+    <updated>2016-08-18T00:43:41.743Z</updated>
     
-    <content type="html"><![CDATA[<p>这里是描述信息</p>
+    <content type="html"><![CDATA[<p>基于文件流的构建系统。</p>
 <a id="more"></a>
 <h2 id="为什么使用Gulp"><a href="#为什么使用Gulp" class="headerlink" title="为什么使用Gulp"></a>为什么使用Gulp</h2><hr>
 <p>Gulp基于Node.js的前端构建工具，通过Gulp的插件可以实现前端代码的编译（sass、less）、压缩、测试；图片的压缩；浏览器自动刷新，还有许多强大的插件可以在这里查找。比起Grunt不仅配置简单而且更容易阅读和维护</p>
@@ -268,7 +268,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;这里是描述信息&lt;/p&gt;
+      &lt;p&gt;基于文件流的构建系统。&lt;/p&gt;
     
     </summary>
     
