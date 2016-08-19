@@ -1,0 +1,910 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="oracle,数据库,SQL," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="何机的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="oracle常用易忘知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle常用知识点">
+<meta property="og:url" content="http://xiachengwei5.coding.me/2016/08/19/Oracle知识点/index.html">
+<meta property="og:site_name" content="何机的博客">
+<meta property="og:description" content="oracle常用易忘知识点">
+<meta property="og:updated_time" content="2016-08-19T10:30:20.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oracle常用知识点">
+<meta name="twitter:description" content="oracle常用易忘知识点">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xiachengwei5.coding.me/2016/08/19/Oracle知识点/"/>
+
+  <title> Oracle常用知识点 | 何机的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c4f0bc63a26f34d7c499517ed1ba1ee7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">何机的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">No pains,no gains</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Oracle常用知识点
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-19T18:29:17+08:00" content="2016-08-19">
+              2016-08-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/19/Oracle知识点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/19/Oracle知识点/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>oracle常用易忘知识点<br><a id="more"></a></p>
+<h2 id="使用sqlplus连接远程数据库"><a href="#使用sqlplus连接远程数据库" class="headerlink" title="使用sqlplus连接远程数据库"></a>使用sqlplus连接远程数据库</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlplus U_HJYJ_ZJ/U_HJYJ_ZJ@192.168.40.40:1521/hjyj</div></pre></td></tr></table></figure>
+<h2 id="使用PL-SQL-Developer连接数据库"><a href="#使用PL-SQL-Developer连接数据库" class="headerlink" title="使用PL/SQL Developer连接数据库"></a>使用PL/SQL Developer连接数据库</h2><hr>
+<p>1、安装Oracle<br>2、解压PL/SQL Developer中文绿化版</p>
+<p>3、解压32位Oracle客户端(即instantclient_11_2)，覆盖PL/SQL Developer中的同名文件夹。然后在instantclient_11_2下创建NETWORK/ADMIN/。拷贝tnsnames.ora到该路径下<br>4、启动plsqlDev 。首选项–&gt;选择OCI库为PL/SQL Developer中客户端的OCI库–&gt;重启plsqlDev<br><strong> tnsnames.ora </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">LocalName =</div><div class="line">  (DESCRIPTION =</div><div class="line">    (ADDRESS_LIST =</div><div class="line">      (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))</div><div class="line">    )</div><div class="line">    (CONNECT_DATA =</div><div class="line">      (SERVICE_NAME = orcl)</div><div class="line">    )</div><div class="line">  )</div><div class="line">#LOCALNAME: 本地名称</div><div class="line">#ADDRESS: 服务器地址</div><div class="line">#PROTOCOL: 使用协议</div><div class="line">#HOST: IP地址</div><div class="line">#PORT: 监听端口</div><div class="line">#SERVICE_NAME: 数据库服务名称</div></pre></td></tr></table></figure></p>
+<p><b style="color:red;"> PL/SQL Developer乱码问题：设置一个名为 NLS_LANG的系统环境变量， 设置其值为 “SIMPLIFIED CHINESE_CHINA.ZHS16GBK” ，然后重新启动  pl/sql developer </b></p>
+<h2 id="为字段添加注释"><a href="#为字段添加注释" class="headerlink" title="为字段添加注释"></a>为字段添加注释</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_HJYJ_YJCZ_JJXX  <span class="keyword">ADD</span> (SSZYRS <span class="built_in">NUMBER</span>(<span class="number">16</span>),JJSS <span class="built_in">NUMBER</span>(<span class="number">16</span>),STGN <span class="keyword">NVARCHAR2</span>(<span class="number">200</span>),GJZDBHWZ <span class="keyword">NVARCHAR2</span>(<span class="number">200</span>));</div><div class="line">//添加注释</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.SSZYRS IS  '疏散转移人数';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.JJSS IS  '经济损失';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.STGN IS  '生态功能';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.GJZDBHWZ IS  '国家重点保护物种';</div></pre></td></tr></table></figure>
+<h2 id="从dmp导入数据库"><a href="#从dmp导入数据库" class="headerlink" title="从dmp导入数据库"></a>从dmp导入数据库</h2><hr>
+<p>1、删除原有用户及其下所有表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">drop</span> <span class="keyword">user</span> user_name <span class="keyword">cascade</span>;</div></pre></td></tr></table></figure>
+<p>2、按照要导入的数据库创建用户及表空间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLESPACE</span> TBS_HJYJ_ZJ <span class="keyword">DATAFILE</span> <span class="string">'U_HJYJ_ZJ'</span> <span class="keyword">SIZE</span> <span class="number">500</span>m <span class="keyword">AUTOEXTEND</span> <span class="keyword">ON</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> U_HJYJ_ZJ <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> U_HJYJ_ZJ <span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span> TBS_HJYJ_ZJ;</div><div class="line"><span class="keyword">GRANT</span> DBA <span class="keyword">TO</span> U_HJYJ_ZJ</div></pre></td></tr></table></figure></p>
+<p>3、在命令提示符输入<br>imp 用户名/密码<br>@ip:端口号/orcl<br>  full=y file=F:\U_HJYJ_ZJ.dmp ignore=y</p>
+<h2 id="导出数据库到dmp文件"><a href="#导出数据库到dmp文件" class="headerlink" title="导出数据库到dmp文件"></a>导出数据库到dmp文件</h2><hr>
+<p>exp 用户名/密码@192.168.40.40:1521/hjyj<br>[owner=用户名]<br> file=f:\U_HJYJ_ZJ.dmp [full=y]</p>
+<p><strong>注意:如果想要连空表也导出,需要执行sql:<code>SELECT &#39;alter table &#39; || TABLE_NAME || &#39; allocate extent;&#39; FROM USER_TABLES WHERE NUM_ROWS = 0</code></strong></p>
+<h2 id="union和union-all"><a href="#union和union-all" class="headerlink" title="union和union all"></a>union和union all</h2><hr>
+<p>UNION 指令的目的是将两个 SQL 语句的结果合并起来,可以查看你要的查询结果，例如<br>union和union all的区别</p>
+<p>union all效率更高，但是不会自动去除重复数据。union效率相对较低，但是能去除重复数据</p>
+<h2 id="oracle创建视图"><a href="#oracle创建视图" class="headerlink" title="oracle创建视图"></a>oracle创建视图</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">view</span> dept_sum_vw <span class="keyword">as</span> <span class="keyword">select</span> d.dname <span class="keyword">name</span>,<span class="keyword">min</span>(e.sal) minsal,<span class="keyword">max</span>(e.sal) maxsal,<span class="keyword">avg</span>(e.sal) avgsal <span class="keyword">from</span> emp e,dept d <span class="keyword">where</span> e.deptno = d.deptno <span class="keyword">group</span> <span class="keyword">by</span> d.dname</div></pre></td></tr></table></figure>
+<h2 id="添加、删除、修改字段"><a href="#添加、删除、修改字段" class="headerlink" title="添加、删除、修改字段"></a>添加、删除、修改字段</h2><hr>
+<p>添加字段的语法：alter table tablename add (column datatype [default value][null/not null],….);<br>修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);<br>删除字段的语法：alter table tablename drop (column);<br>添加、修改、删除多列的话，用逗号隔开。</p>
+<h2 id="从Excel导入数据到oracle"><a href="#从Excel导入数据到oracle" class="headerlink" title="从Excel导入数据到oracle"></a>从Excel导入数据到oracle</h2><hr>
+<h4 id="CSV格式文件导入"><a href="#CSV格式文件导入" class="headerlink" title="CSV格式文件导入"></a>CSV格式文件导入</h4><p>1、创建sql*loader控制文件**.ctl<br>2、在命令行输入命令<br>system/manager改为对应的用户名/密码</p>
+<h4 id="Excel格式导入"><a href="#Excel格式导入" class="headerlink" title="Excel格式导入"></a>Excel格式导入</h4><p>1、工具–&gt;ODBC导入器<br>2、选择Excel文件<br>3、选择要导入的表<br>4、导入</p>
+<h2 id="oracle函数"><a href="#oracle函数" class="headerlink" title="oracle函数"></a>oracle函数</h2><hr>
+<ul>
+<li>decode<br>(条件,值1,返回值1,值2,返回值2,…值n,返回值n,缺省值) 例如：<br>select decode(SEX,’女’,1,’男’,0） sex  from T_PERSON</li>
+</ul>
+<ul>
+<li><p>CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span>   grade, <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">1</span> <span class="keyword">THEN</span> <span class="number">1</span> </div><div class="line"><span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 男生数,  </div><div class="line"><span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">2</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 女生数   </div><div class="line"><span class="keyword">FROM</span> students GROUPBY grade;</div></pre></td></tr></table></figure>
+</li>
+<li><p>replace函数</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">UPDATE</span>  T_ADMIN_RMS_CD t <span class="keyword">SET</span> BZ = <span class="keyword">REPLACE</span>((<span class="keyword">SELECT</span> BZ <span class="keyword">FROM</span> T_ADMIN_RMS_CD <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span>),<span class="string">'10.33.106.51:8010'</span>,<span class="string">'服务器ip:端口号'</span>) <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>substring函数:substring(string,pos,len)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">UPDATE</span> T_HJYJ_FXY_JBXX a <span class="keyword">SET</span> a.SHENG = (<span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>(SHENG,<span class="number">0</span>,<span class="number">2</span>) <span class="keyword">FROM</span> T_HJYJ_FXY_JBXX b <span class="keyword">WHERE</span> b.XH = a.XH)</div></pre></td></tr></table></figure>
+<ul>
+<li>截取字符串</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">UPDATE</span> T_HJYJ_JC_WRYJBXX JBXX <span class="keyword">SET</span> JBXX.LATITUDE = (</div><div class="line"></div><div class="line">       <span class="keyword">SELECT</span> JDD+JDF/<span class="number">60</span>+JDM/<span class="number">3600</span> <span class="keyword">FROM</span> (</div><div class="line"></div><div class="line">              <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> (</div><div class="line"></div><div class="line">                <span class="keyword">SELECT</span> INNER_ENT_ID, </div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE, <span class="number">0</span>, <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) - <span class="number">1</span>) <span class="keyword">AS</span> JDD,</div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) + <span class="number">1</span>,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">2</span>) - <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) - <span class="number">1</span>) <span class="keyword">AS</span> JDF,</div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">2</span>) + <span class="number">1</span>,</div><div class="line"></div><div class="line">                               <span class="keyword">LENGTH</span>(LATITUDE) - <span class="number">1</span>)  <span class="keyword">AS</span> JDM,</div><div class="line"></div><div class="line">                       LATITUDE</div><div class="line"></div><div class="line">                  <span class="keyword">FROM</span> T_HJYJ_JC_WRYJBXX </div><div class="line"></div><div class="line">                  ) TMP  <span class="keyword">WHERE</span> TMP.JDD <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">AND</span> TMP.JDF <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">AND</span> TMP.JDM <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line"></div><div class="line">       ) <span class="keyword">WHERE</span> INNER_ENT_ID = JBXX.INNER_ENT_ID</div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
+<p>## </p>
+<h2 id="进行查询并更新操作"><a href="#进行查询并更新操作" class="headerlink" title="进行查询并更新操作"></a>进行查询并更新操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> T_ADMIN_RMS_YH <span class="keyword">WHERE</span> YHID = <span class="string">'nbsshy'</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span></div></pre></td></tr></table></figure>
+<h2 id="查询用户表空间"><a href="#查询用户表空间" class="headerlink" title="查询用户表空间"></a>查询用户表空间</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> username,default_tablespace <span class="keyword">from</span> user_users;</div></pre></td></tr></table></figure>
+<h2 id="向一张表导入另一张表的部分数据"><a href="#向一张表导入另一张表的部分数据" class="headerlink" title="向一张表导入另一张表的部分数据"></a>向一张表导入另一张表的部分数据</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> T_HJYJ_FXY_FXYML_BAK</div><div class="line">(XH,FXYXH,FXYMC,NF,CZBM,FLAG,SFYX,ITEM1,ITEM2,ITEM3,ITEM4,ITEM5,BZ,ORGID,CJR,CJSJ,XGR,XGSJ,JDJCSJ,SHENG,SHI,QX,CZR,CZSJ,CZ) </div><div class="line"><span class="keyword">select</span> t.*,<span class="string">'hj'</span> <span class="keyword">AS</span> CZR,<span class="keyword">SYSDATE</span> <span class="keyword">AS</span> CZSJ,<span class="string">'sz'</span> <span class="keyword">AS</span> CZ <span class="keyword">from</span> T_HJYJ_FXY_FXYML t <span class="keyword">WHERE</span> XH = <span class="string">'1'</span></div></pre></td></tr></table></figure>
+<h2 id="查询数据表中重复的数据-以DMNR字段判断是否重复"><a href="#查询数据表中重复的数据-以DMNR字段判断是否重复" class="headerlink" title="查询数据表中重复的数据(以DMNR字段判断是否重复)"></a>查询数据表中重复的数据(以DMNR字段判断是否重复)</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> GGDMZ.DMNR,<span class="keyword">COUNT</span>(<span class="number">1</span>) <span class="keyword">FROM</span> T_COMN_GGDMZ GGDMZ <span class="keyword">WHERE</span> GGDMZ.DMJBH = <span class="string">'HJKQHFQ'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> GGDMZ.DMNR <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="number">1</span>)&gt;<span class="number">1</span></div></pre></td></tr></table></figure>
+<h2 id="oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段"><a href="#oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段" class="headerlink" title="oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段"></a>oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_COMN_VIEW <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> STNR;</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_COMN_VIEW <span class="keyword">ADD</span>  STNR <span class="keyword">CLOB</span>;</div><div class="line">COMMENT ON COLUMN  T_COMN_VIEW.STNR IS '视图内容'</div></pre></td></tr></table></figure>
+<h2 id="如果使用sqlplus连接oracle数据库-那么执行sql语句之后需要执行commit命令才能提交事务。"><a href="#如果使用sqlplus连接oracle数据库-那么执行sql语句之后需要执行commit命令才能提交事务。" class="headerlink" title="如果使用sqlplus连接oracle数据库,那么执行sql语句之后需要执行commit命令才能提交事务。"></a>如果使用sqlplus连接oracle数据库,那么执行sql语句之后需要执行commit命令才能提交事务。</h2><hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> T_COMN_XZQHDM;</div><div class="line"></div><div class="line"><span class="keyword">commit</span>;</div></pre></td></tr></table></figure>
+<h2 id="ORACLE导出空表需要先执行的语句"><a href="#ORACLE导出空表需要先执行的语句" class="headerlink" title="ORACLE导出空表需要先执行的语句"></a>ORACLE导出空表需要先执行的语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="string">'alter table '</span> || TABLE_NAME || <span class="string">' allocate extent;'</span> <span class="keyword">FROM</span> USER_TABLES <span class="keyword">WHERE</span> NUM_ROWS = <span class="number">0</span></div></pre></td></tr></table></figure>
+<h2 id="Oracle关于连接数的问题"><a href="#Oracle关于连接数的问题" class="headerlink" title="Oracle关于连接数的问题"></a>Oracle关于连接数的问题</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> v$process <span class="comment">--当前的数据库连接数</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> <span class="keyword">value</span> <span class="keyword">from</span> v$parameter <span class="keyword">where</span> <span class="keyword">name</span> =<span class="string">'processes'</span><span class="comment">--数据库允许的最大连接数</span></div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">system</span> <span class="keyword">set</span> processes = <span class="number">300</span> <span class="keyword">scope</span> = <span class="keyword">spfile</span>;<span class="comment">--修改最大连接数:</span></div></pre></td></tr></table></figure>
+<h2 id="高速泵导入导出"><a href="#高速泵导入导出" class="headerlink" title="高速泵导入导出"></a>高速泵导入导出</h2><hr>
+<ul>
+<li>高速导入导出(<code>E:\Database\XZCF</code>目录是DMP文件存放位置/导出位置)</li>
+</ul>
+<p><code>create or replace directory exp_dir as &#39;E:\Database\XZCF&#39;;--PL/SQL中执行</code></p>
+<ul>
+<li>授权目录相关用户</li>
+</ul>
+<p><code>grant read,write on directory exp_dir to public;--PL/SQL中执行</code></p>
+<ul>
+<li>查询地址</li>
+</ul>
+<p><code>select * from dba_directories;</code></p>
+<ul>
+<li>执行导出(在CMD中执行)</li>
+</ul>
+<p><code>expdp U_WSYS/U_WSYS@TEST directory=exp_dir dumpfile=WRJPGZ20140703.DMP logfile=WRJPGZ_20140703.log;</code></p>
+<ul>
+<li>执行导入(在CMD中执行)</li>
+</ul>
+<p><code>impdp U_WSYS/U_WSYS@ORCL directory=exp_dir dumpfile=U_WSYSS.DMP logfile=U_WSYSS.log;</code></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>生活不止眼前的苟且，还有远方的诗和田野</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixin.jpg" alt="何机 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="何机 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag">#oracle</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/17/使用Hexo搭建自己的博客/" rel="next" title="使用Hexo搭建博客">
+                <i class="fa fa-chevron-left"></i> 使用Hexo搭建博客
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/19/Oracle知识点/"
+           data-title="Oracle常用知识点" data-url="http://xiachengwei5.coding.me/2016/08/19/Oracle知识点/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/1.jpg"
+               alt="何机" />
+          <p class="site-author-name" itemprop="name">何机</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用sqlplus连接远程数据库"><span class="nav-number">1.</span> <span class="nav-text">使用sqlplus连接远程数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用PL-SQL-Developer连接数据库"><span class="nav-number">2.</span> <span class="nav-text">使用PL/SQL Developer连接数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为字段添加注释"><span class="nav-number">3.</span> <span class="nav-text">为字段添加注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从dmp导入数据库"><span class="nav-number">4.</span> <span class="nav-text">从dmp导入数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出数据库到dmp文件"><span class="nav-number">5.</span> <span class="nav-text">导出数据库到dmp文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#union和union-all"><span class="nav-number">6.</span> <span class="nav-text">union和union all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle创建视图"><span class="nav-number">7.</span> <span class="nav-text">oracle创建视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加、删除、修改字段"><span class="nav-number">8.</span> <span class="nav-text">添加、删除、修改字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从Excel导入数据到oracle"><span class="nav-number">9.</span> <span class="nav-text">从Excel导入数据到oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSV格式文件导入"><span class="nav-number">9.0.1.</span> <span class="nav-text">CSV格式文件导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Excel格式导入"><span class="nav-number">9.0.2.</span> <span class="nav-text">Excel格式导入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle函数"><span class="nav-number">10.</span> <span class="nav-text">oracle函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进行查询并更新操作"><span class="nav-number">11.</span> <span class="nav-text">进行查询并更新操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询用户表空间"><span class="nav-number">12.</span> <span class="nav-text">查询用户表空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向一张表导入另一张表的部分数据"><span class="nav-number">13.</span> <span class="nav-text">向一张表导入另一张表的部分数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据表中重复的数据-以DMNR字段判断是否重复"><span class="nav-number">14.</span> <span class="nav-text">查询数据表中重复的数据(以DMNR字段判断是否重复)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段"><span class="nav-number">15.</span> <span class="nav-text">oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果使用sqlplus连接oracle数据库-那么执行sql语句之后需要执行commit命令才能提交事务。"><span class="nav-number">16.</span> <span class="nav-text">如果使用sqlplus连接oracle数据库,那么执行sql语句之后需要执行commit命令才能提交事务。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORACLE导出空表需要先执行的语句"><span class="nav-number">17.</span> <span class="nav-text">ORACLE导出空表需要先执行的语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle关于连接数的问题"><span class="nav-number">18.</span> <span class="nav-text">Oracle关于连接数的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高速泵导入导出"><span class="nav-number">19.</span> <span class="nav-text">高速泵导入导出</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何机</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"heji"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
