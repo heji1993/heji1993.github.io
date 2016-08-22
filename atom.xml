@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiachengwei5.coding.me/"/>
-  <updated>2016-08-19T10:40:11.523Z</updated>
+  <updated>2016-08-22T02:37:26.615Z</updated>
   <id>http://xiachengwei5.coding.me/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS hack��������������������</title>
+    <link href="http://xiachengwei5.coding.me/2016/08/22/css%20hack%E5%A4%A7%E5%85%A8/"/>
+    <id>http://xiachengwei5.coding.me/2016/08/22/css hack大全/</id>
+    <published>2016-08-22T02:37:15.849Z</published>
+    <updated>2016-08-22T02:37:26.615Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ʲo��CSS-hack"><a href="#ʲo��CSS-hack" class="headerlink" title="ʲô��CSS hack"></a>ʲô��CSS hack</h2><hr>
+<p>���ڲ�ͬ��������������ͬһ�������Ĳ�ͬ�汾��CSS�Ľ�����ʶ��һ�����������ɵ�ҳ��Ч����һ�£�д�����Բ�ͬ������CSS code�ͳ�ΪCSS hack��</p>
+<a id="more"></a>
+<h2 id="CSS�ڲ�hack"><a href="#CSS�ڲ�hack" class="headerlink" title="CSS�ڲ�hack"></a>CSS�ڲ�hack</h2><hr>
+<p>��CSS3�г���һЩ������д��<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*Mozilla�ں���������firefox3.5+*/</div><div class="line"> -moz-transform: rotate | scale | skew | translate ;</div><div class="line">/*Webkit�ں���������Safari and Chrome*/</div><div class="line"> -webkit-transform: rotate | scale | skew | translate ;</div><div class="line">/*Opera*/</div><div class="line"> -o-transform: rotate | scale | skew | translate ;</div><div class="line">/*IE9*/</div><div class="line"> -ms-transform: rotate | scale | skew | translate ;</div><div class="line">/*W3C��׼*/</div><div class="line"> transform: rotate | scale | skew | translate ;</div></pre></td></tr></table></figure></p>
+<p>��ΪCSS3Ŀǰ��׼��û��ͳһ�����������������Լ��ı��ַ�ʽ�������е�ʵ�֣��е�δʵ�֣���ǰ����һЩǰ׺�Ա�ʾ֧��ĳ���ض�����������Ҳ��CSS �ڲ�hack�Ļ���ԭ������������Щ�����׶�������������CSS hack ԶԶ��ֹ�ڴˣ���Ϊ�в�����IE6���������������ֵܰ汾��<br>CSS �ڲ�hack �﷨�������ģ�<code>selector{&lt;hack&gt;?property:value&lt;hack&gt;?;}</code> ������������ʾ��������������֮ǰ��hack��</p>
+<ul>
+<li><p>��1������ǰ���Ӹ���*��������д��ֻ����IE6��7��Ч�������汾IE���ִ�����������������ָ�û������˵������������hack����ָ��������DOCTYPE���ĵ���Ч����</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*<span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>; <span class="comment">/*��IE6��7����Ч*/</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>��2��������ֵ��������<code>\9</code>����IE�¶�֧�֣�������ֵ��������<code>\0</code>��IE8��9��10֧�֣�������ֵ������<code>\9\0</code>��IE9��10֧��</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>\9;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>CSS �ڲ�hackһ��<br><img src="index_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
+<h2 id="ѡ����hack"><a href="#ѡ����hack" class="headerlink" title="ѡ����hack"></a>ѡ����hack</h2><hr>
+<p>ѡ����hanck��Ҫ������IE����������ʵ������ô���ã��﷨�������ģ�<code>&lt;hack&gt; selector{ sRules }</code><br><img src="index_files/645de664-4e6b-47a8-9250-e22fb60f8214.png" alt=""><br>����IE9��hack������ôд<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.test</span> &#123; <span class="attribute">background-color</span>:green;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="CSS����ע��-����"><a href="#CSS����ע��-����" class="headerlink" title="CSS����ע��(����)"></a>CSS����ע��(����)</h2><hr>
+<p>HTMLͷ�����þͱȽ������ˣ������ڳ������䣬ֻ��ʹ����HTML�ļ����������CSS�ļ���ʹ�ã�����ֻ����IE�������²���ִ�У����������ڷ�IE�����·ǵ�����ִ�и������µĶ��壬���ǵ���ע���Ӷ�������<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!�C Ĭ���ȵ���css.css��ʽ�� �C&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="css.css" /&gt;</div><div class="line">&lt;!�C[if IE 7]&gt;</div><div class="line">&lt;!�C ����IE����������7,����ie7.css��ʽ�� �C&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie7.css" /&gt;</div><div class="line">&lt;![endif]�C&gt;</div><div class="line">&lt;!�C[if lte IE 6]&gt;</div><div class="line">&lt;!�C ����IE�������汾С�ڵ���6,����ie.css��ʽ�� �C&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie.css" /&gt;</div><div class="line">&lt;![endif]�C&gt;</div></pre></td></tr></table></figure></p>
+<p>lte������Less than or equal to�ļ�д��Ҳ����С�ڻ����ڵ���˼��<br>lt ������Less than�ļ�д��Ҳ����С�ڵ���˼��<br>gte������Greater than or equal to�ļ�д��Ҳ���Ǵ��ڻ����ڵ���˼��<br>gt ������Greater than�ļ�д��Ҳ���Ǵ��ڵ���˼��<br>! �����ǲ����ڵ���˼����<a href="http://js8.in/category/front-end/javascript-front-end-2" target="_blank" rel="external">javascript</a>���Ĳ������жϷ���ͬ��</p>
+<h2 id="��д˳��"><a href="#��д˳��" class="headerlink" title="��д˳��"></a>��д˳��</h2><hr>
+<p>�������ӣ�<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_<span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>;</div></pre></td></tr></table></figure></p>
+<p>����ϣ��DIV��IE6���Ǻ�ɫ����������ɫ��������д���ɲ������أ���һ�·��������������϶�����ɫ����Ϊ��IE6������ʱ�򣬵�һ���ܹ�ʶ�𣬱�����Ϊ��ɫ�����ǵڶ���������������ʶ����IE6Ҳ�����⣬������ɫ�ֱ���Ϊ��ɫ�����Ե÷�����д<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>;</div><div class="line">_<span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</div></pre></td></tr></table></figure></p>
+<p>�ܽ����Ĺ��ɾ��ǣ���һ�㣬�����⡣����Ȥ��ͬѧ����������������CSS��������������Ч���Ƿ�һ����<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:blue</span>; <span class="comment">/*����������*/</span></div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>\9;<span class="comment">/*���е�ie*/</span> </div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>\0; <span class="comment">/* ie8+*/</span> </div><div class="line">+<span class="selector-tag">background-color</span><span class="selector-pseudo">:pink</span>; <span class="comment">/*+ ie7*/</span></div></pre></td></tr></table></figure></p>
+<p><strong>Ps:CSS hack��д�����Ȳ����ѵ������²ſ���ʹ��</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;ʲo��CSS-hack&quot;&gt;&lt;a href=&quot;#ʲo��CSS-hack&quot; class=&quot;headerlink&quot; title=&quot;ʲô��CSS hack&quot;&gt;&lt;/a&gt;ʲô��CSS hack&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;���ڲ�ͬ��������������ͬһ�������Ĳ�ͬ�汾��CSS�Ľ�����ʶ��һ�����������ɵ�ҳ��Ч����һ�£�д�����Բ�ͬ������CSS code�ͳ�ΪCSS hack��&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://xiachengwei5.coding.me/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://xiachengwei5.coding.me/tags/CSS/"/>
+    
+      <category term="hack" scheme="http://xiachengwei5.coding.me/tags/hack/"/>
+    
+      <category term="������������" scheme="http://xiachengwei5.coding.me/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>Oracle常用知识点</title>
