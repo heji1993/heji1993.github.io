@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiachengwei5.coding.me/"/>
-  <updated>2016-08-22T02:53:08.477Z</updated>
+  <updated>2016-08-22T02:57:10.159Z</updated>
   <id>http://xiachengwei5.coding.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://xiachengwei5.coding.me/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
     <id>http://xiachengwei5.coding.me/2016/08/22/常用CSS hack/</id>
     <published>2016-08-22T02:41:14.806Z</published>
-    <updated>2016-08-22T02:53:08.477Z</updated>
+    <updated>2016-08-22T02:57:10.159Z</updated>
     
     <content type="html"><![CDATA[<h2 id="什么是CSS-hack"><a href="#什么是CSS-hack" class="headerlink" title="什么是CSS hack"></a>什么是CSS hack</h2><hr>
 <p>由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。</p>
@@ -36,9 +36,9 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>\9;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>CSS 内部hack一览<br><img src="../be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
+<p>CSS 内部hack一览<br><img src="../../../../be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
 <h2 id="选择器hack"><a href="#选择器hack" class="headerlink" title="选择器hack"></a>选择器hack</h2><hr>
-<p>选择器hanck主要是针对IE浏览器，其实并不怎么常用，语法是这样的：<code>&lt;hack&gt; selector{ sRules }</code><br><img src="../be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/645de664-4e6b-47a8-9250-e22fb60f8214.png" alt=""><br>针对IE9的hack可以这么写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.test</span> &#123; <span class="attribute">background-color</span>:green;&#125;</div></pre></td></tr></table></figure></p>
+<p>选择器hanck主要是针对IE浏览器，其实并不怎么常用，语法是这样的：<code>&lt;hack&gt; selector{ sRules }</code><br><img src="../../../../be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/645de664-4e6b-47a8-9250-e22fb60f8214.png" alt=""><br>针对IE9的hack可以这么写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.test</span> &#123; <span class="attribute">background-color</span>:green;&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="CSS条件注释-常用"><a href="#CSS条件注释-常用" class="headerlink" title="CSS条件注释(常用)"></a>CSS条件注释(常用)</h2><hr>
 <p>HTML头部引用就比较特殊了，类似于程序语句，只能使用在HTML文件里，而不能在CSS文件中使用，并且只有在IE浏览器下才能执行，这个代码在非IE浏览下非单不是执行该条件下的定义，而是当做注释视而不见。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!– 默认先调用css.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="css.css" /&gt;</div><div class="line">&lt;!–[if IE 7]&gt;</div><div class="line">&lt;!– 如果IE浏览器版是7,调用ie7.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie7.css" /&gt;</div><div class="line">&lt;![endif]–&gt;</div><div class="line">&lt;!–[if lte IE 6]&gt;</div><div class="line">&lt;!– 如果IE浏览器版本小于等于6,调用ie.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie.css" /&gt;</div><div class="line">&lt;![endif]–&gt;</div></pre></td></tr></table></figure></p>
 <p>lte：就是Less than or equal to的简写，也就是小于或等于的意思。<br>lt ：就是Less than的简写，也就是小于的意思。<br>gte：就是Greater than or equal to的简写，也就是大于或等于的意思。<br>gt ：就是Greater than的简写，也就是大于的意思。<br>! ：就是不等于的意思，跟<a href="http://js8.in/category/front-end/javascript-front-end-2" target="_blank" rel="external">javascript</a>里的不等于判断符相同。</p>
