@@ -1,28 +1,347 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>何机的博客</title>
-  <subtitle>No pains,no gains</subtitle>
-  <link href="/atom.xml" rel="self"/>
+<!doctype html>
+
+
+
   
-  <link href="http://xiachengwei5.coding.me/"/>
-  <updated>2016-09-14T03:07:46.572Z</updated>
-  <id>http://xiachengwei5.coding.me/</id>
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
   
-  <author>
-    <name>何机</name>
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://xiachengwei5.coding.me/2016/09/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://xiachengwei5.coding.me/2016/09/14/Javascript学习笔记/</id>
-    <published>2016-09-14T03:08:22.125Z</published>
-    <updated>2016-09-14T03:07:46.572Z</updated>
     
-    <content type="html"><![CDATA[<hr>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="何机的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="title: JS学习笔记categories: Web前端
+tags: [Javascript,前端,JS]Javascript入门教程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="何机的博客">
+<meta property="og:url" content="http://xiachengwei5.coding.me/2016/09/14/Javascript学习笔记/index.html">
+<meta property="og:site_name" content="何机的博客">
+<meta property="og:description" content="title: JS学习笔记categories: Web前端
+tags: [Javascript,前端,JS]Javascript入门教程。">
+<meta property="og:updated_time" content="2016-09-14T03:07:46.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="何机的博客">
+<meta name="twitter:description" content="title: JS学习笔记categories: Web前端
+tags: [Javascript,前端,JS]Javascript入门教程。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://xiachengwei5.coding.me/2016/09/14/Javascript学习笔记/"/>
+
+  <title>  | 何机的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c4f0bc63a26f34d7c499517ed1ba1ee7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">何机的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">No pains,no gains</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T11:08:22+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/14/Javascript学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/Javascript学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
 <p>title: JS学习笔记<br>categories: Web前端</p>
 <h2 id="tags-Javascript-前端-JS"><a href="#tags-Javascript-前端-JS" class="headerlink" title="tags: [Javascript,前端,JS]"></a>tags: [Javascript,前端,JS]</h2><p>Javascript入门教程。</p>
 <a id="more"></a>
@@ -684,431 +1003,462 @@
 </li>
 </ul>
 <p>然后页面就会把返回的字符串作为JS代码执行。<br><strong>注意：ajax和jsonp其实本质上是不同的东西。ajax的核心是通过XmlHttpRequest获取非本页内容，而jsonp的核心则是动态添加<code>&lt;script&gt;</code>标签来调用服务器提供的js脚本。</strong></p>
-]]></content>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>生活不止眼前的苟且，还有远方的诗和田野</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/weixin.jpg" alt="何机 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="何机 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/22/常用CSS hack/" rel="next" title="CSS hack解决浏览器兼容性问题">
+                <i class="fa fa-chevron-left"></i> CSS hack解决浏览器兼容性问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
     
-    <summary type="html">
+      <div class="ds-thread" data-thread-key="2016/09/14/Javascript学习笔记/"
+           data-title="" data-url="http://xiachengwei5.coding.me/2016/09/14/Javascript学习笔记/">
+      </div>
     
-      &lt;hr&gt;
-&lt;p&gt;title: JS学习笔记&lt;br&gt;categories: Web前端&lt;/p&gt;
-&lt;h2 id=&quot;tags-Javascript-前端-JS&quot;&gt;&lt;a href=&quot;#tags-Javascript-前端-JS&quot; class=&quot;headerlink&quot; title=&quot;tags: [Javascript,前端,JS]&quot;&gt;&lt;/a&gt;tags: [Javascript,前端,JS]&lt;/h2&gt;&lt;p&gt;Javascript入门教程。&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
+  </div>
+
+
+        </div>
+        
+          
   
-  <entry>
-    <title>CSS hack解决浏览器兼容性问题</title>
-    <link href="http://xiachengwei5.coding.me/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
-    <id>http://xiachengwei5.coding.me/2016/08/22/常用CSS hack/</id>
-    <published>2016-08-22T02:41:14.806Z</published>
-    <updated>2016-08-22T02:59:33.847Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是CSS-hack"><a href="#什么是CSS-hack" class="headerlink" title="什么是CSS hack"></a>什么是CSS hack</h2><hr>
-<p>由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。</p>
-<a id="more"></a>
-<h2 id="CSS内部hack"><a href="#CSS内部hack" class="headerlink" title="CSS内部hack"></a>CSS内部hack</h2><hr>
-<p>在CSS3中常见一些这样的写法<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*Mozilla内核浏览器：firefox3.5+*/</div><div class="line"> -moz-transform: rotate | scale | skew | translate ;</div><div class="line">/*Webkit内核浏览器：Safari and Chrome*/</div><div class="line"> -webkit-transform: rotate | scale | skew | translate ;</div><div class="line">/*Opera*/</div><div class="line"> -o-transform: rotate | scale | skew | translate ;</div><div class="line">/*IE9*/</div><div class="line"> -ms-transform: rotate | scale | skew | translate ;</div><div class="line">/*W3C标准*/</div><div class="line"> transform: rotate | scale | skew | translate ;</div></pre></td></tr></table></figure></p>
-<p>因为CSS3目前标准还没有统一，各个浏览器都有自己的表现方式，甚至有的实现，有的未实现，在前面加一些前缀以表示支持某个特定浏览器，这也是CSS 内部hack的基本原理，向上面这些简单易懂，但是真正的CSS hack 远远不止于此，因为有不死的IE6及其各种奇葩的兄弟版本。<br>CSS 内部hack 语法是这样的：<code>selector{&lt;hack&gt;?property:value&lt;hack&gt;?;}</code> ，上面代码所示的是在属性名称之前的hack。</p>
-<ul>
-<li><p>例1：属性前面加个“*”这样的写法只会对IE6、7生效，其它版本IE及现代浏览器会忽略这条指令（没有特殊说明，本文所有hack都是指在声明了DOCTYPE的文档的效果）</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*<span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>; <span class="comment">/*仅IE6、7下有效*/</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>例2：在属性值后面加上<code>\9</code>，在IE下都支持；在属性值后面加上<code>\0</code>，IE8、9、10支持；在属性值后加上<code>\9\0</code>，IE9、10支持</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>\9;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>CSS 内部hack一览<br><img src="../../../../images/be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
-<h2 id="选择器hack"><a href="#选择器hack" class="headerlink" title="选择器hack"></a>选择器hack</h2><hr>
-<p>选择器hanck主要是针对IE浏览器，其实并不怎么常用，语法是这样的：<code>&lt;hack&gt; selector{ sRules }</code><br><img src="../../../../images/be448449-ae6e-4206-9b40-60dbe926ed5e_128_files/645de664-4e6b-47a8-9250-e22fb60f8214.png" alt=""><br>针对IE9的hack可以这么写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.test</span> &#123; <span class="attribute">background-color</span>:green;&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="CSS条件注释-常用"><a href="#CSS条件注释-常用" class="headerlink" title="CSS条件注释(常用)"></a>CSS条件注释(常用)</h2><hr>
-<p>HTML头部引用就比较特殊了，类似于程序语句，只能使用在HTML文件里，而不能在CSS文件中使用，并且只有在IE浏览器下才能执行，这个代码在非IE浏览下非单不是执行该条件下的定义，而是当做注释视而不见。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!– 默认先调用css.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="css.css" /&gt;</div><div class="line">&lt;!–[if IE 7]&gt;</div><div class="line">&lt;!– 如果IE浏览器版是7,调用ie7.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie7.css" /&gt;</div><div class="line">&lt;![endif]–&gt;</div><div class="line">&lt;!–[if lte IE 6]&gt;</div><div class="line">&lt;!– 如果IE浏览器版本小于等于6,调用ie.css样式表 –&gt;</div><div class="line">&lt;link rel="stylesheet" type="text/css" href="ie.css" /&gt;</div><div class="line">&lt;![endif]–&gt;</div></pre></td></tr></table></figure></p>
-<p>lte：就是Less than or equal to的简写，也就是小于或等于的意思。<br>lt ：就是Less than的简写，也就是小于的意思。<br>gte：就是Greater than or equal to的简写，也就是大于或等于的意思。<br>gt ：就是Greater than的简写，也就是大于的意思。<br>! ：就是不等于的意思，跟<a href="http://js8.in/category/front-end/javascript-front-end-2" target="_blank" rel="external">javascript</a>里的不等于判断符相同。</p>
-<h2 id="书写顺序"><a href="#书写顺序" class="headerlink" title="书写顺序"></a>书写顺序</h2><hr>
-<p>看个例子：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">_<span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>;</div></pre></td></tr></table></figure></p>
-<p>如果希望DIV在IE6上是红色，其它是绿色，上面的写法可不可以呢？试一下发现所有浏览器上都是绿色，因为在IE6解析的时候，第一句能够识别，背景设为红色，但是第二句所有浏览器都识别，IE6也不例外，背景颜色又被设为绿色，所以得反过来写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>;</div><div class="line">_<span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>;</div></pre></td></tr></table></figure></p>
-<p>总结出的规律就是：先一般，再特殊。有兴趣的同学可以试试试试下面CSS，看看和你想的效果是否一样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:blue</span>; <span class="comment">/*所有浏览器*/</span></div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:red</span>\9;<span class="comment">/*所有的ie*/</span> </div><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:yellow</span>\0; <span class="comment">/* ie8+*/</span> </div><div class="line">+<span class="selector-tag">background-color</span><span class="selector-pseudo">:pink</span>; <span class="comment">/*+ ie7*/</span></div></pre></td></tr></table></figure></p>
-<p><strong>Ps:CSS hack的写法在迫不得已的情况下才考虑使用</strong></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是CSS-hack&quot;&gt;&lt;a href=&quot;#什么是CSS-hack&quot; class=&quot;headerlink&quot; title=&quot;什么是CSS hack&quot;&gt;&lt;/a&gt;什么是CSS hack&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CSS" scheme="http://xiachengwei5.coding.me/categories/CSS/"/>
-    
-    
-      <category term="CSS" scheme="http://xiachengwei5.coding.me/tags/CSS/"/>
-    
-      <category term="hack" scheme="http://xiachengwei5.coding.me/tags/hack/"/>
-    
-      <category term="浏览器兼容性" scheme="http://xiachengwei5.coding.me/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    
-  </entry>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/1.jpg"
+               alt="何机" />
+          <p class="site-author-name" itemprop="name">何机</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-Javascript-前端-JS"><span class="nav-number">1.</span> <span class="nav-text">tags: [Javascript,前端,JS]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用技巧-推荐学习工具：javascripting"><span class="nav-number"></span> <span class="nav-text">常用技巧(推荐学习工具：javascripting)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript简介"><span class="nav-number"></span> <span class="nav-text">JavaScript简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快速入门"><span class="nav-number"></span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型和变量"><span class="nav-number">2.</span> <span class="nav-text">数据类型和变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">5.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件判断"><span class="nav-number">6.</span> <span class="nav-text">条件判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">7.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map和Set（ES6规范引入）"><span class="nav-number">8.</span> <span class="nav-text">Map和Set（ES6规范引入）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iterable"><span class="nav-number">9.</span> <span class="nav-text">iterable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number"></span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数的定义和调用"><span class="nav-number">1.</span> <span class="nav-text">函数的定义和调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量作用域"><span class="nav-number">2.</span> <span class="nav-text">变量作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶函数"><span class="nav-number">4.</span> <span class="nav-text">高阶函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#map-reduce"><span class="nav-number">4.1.</span> <span class="nav-text">map/reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Filter"><span class="nav-number">4.2.</span> <span class="nav-text">Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-number">4.3.</span> <span class="nav-text">sort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">5.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数-ES6新增"><span class="nav-number">6.</span> <span class="nav-text">箭头函数(ES6新增)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标准对象"><span class="nav-number"></span> <span class="nav-text">标准对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#包装对象"><span class="nav-number">1.</span> <span class="nav-text">包装对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date对象"><span class="nav-number">2.</span> <span class="nav-text">Date对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp：正则表达式"><span class="nav-number">3.</span> <span class="nav-text">RegExp：正则表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON对象"><span class="nav-number">4.</span> <span class="nav-text">JSON对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象编程"><span class="nav-number"></span> <span class="nav-text">面向对象编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建对象"><span class="nav-number">1.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型继承"><span class="nav-number">2.</span> <span class="nav-text">原型继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class继承-ES6引入"><span class="nav-number">3.</span> <span class="nav-text">class继承(ES6引入)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器"><span class="nav-number"></span> <span class="nav-text">浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器对象"><span class="nav-number">1.</span> <span class="nav-text">浏览器对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作DOM"><span class="nav-number">2.</span> <span class="nav-text">操作DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建元素"><span class="nav-number">2.1.</span> <span class="nav-text">创建元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点关系"><span class="nav-number">2.2.</span> <span class="nav-text">节点关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点元素关系"><span class="nav-number">2.3.</span> <span class="nav-text">节点元素关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点操作"><span class="nav-number">2.4.</span> <span class="nav-text">节点操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素选择"><span class="nav-number">2.5.</span> <span class="nav-text">元素选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性操作"><span class="nav-number">2.6.</span> <span class="nav-text">属性操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作文件"><span class="nav-number">3.</span> <span class="nav-text">操作文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">4.</span> <span class="nav-text">Ajax</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
   
-  <entry>
-    <title>Oracle常用知识点</title>
-    <link href="http://xiachengwei5.coding.me/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://xiachengwei5.coding.me/2016/08/19/Oracle知识点/</id>
-    <published>2016-08-19T10:29:17.297Z</published>
-    <updated>2016-08-19T10:40:11.523Z</updated>
-    
-    <content type="html"><![CDATA[<p>oracle常用易忘知识点<br><a id="more"></a></p>
-<h2 id="使用sqlplus连接远程数据库"><a href="#使用sqlplus连接远程数据库" class="headerlink" title="使用sqlplus连接远程数据库"></a>使用sqlplus连接远程数据库</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlplus U_HJYJ_ZJ/U_HJYJ_ZJ@192.168.40.40:1521/hjyj</div></pre></td></tr></table></figure>
-<h2 id="使用PL-SQL-Developer连接数据库"><a href="#使用PL-SQL-Developer连接数据库" class="headerlink" title="使用PL/SQL Developer连接数据库"></a>使用PL/SQL Developer连接数据库</h2><hr>
-<p>1、安装Oracle<br>2、解压PL/SQL Developer中文绿化版<br>3、解压32位Oracle客户端(即instantclient_11_2)，覆盖PL/SQL Developer中的同名文件夹。然后在instantclient_11_2下创建NETWORK/ADMIN/。拷贝tnsnames.ora到该路径下<br>4、启动plsqlDev 。首选项–&gt;选择OCI库为PL/SQL Developer中客户端的OCI库–&gt;重启plsqlDev<br><strong> tnsnames.ora </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">LocalName =</div><div class="line">  (DESCRIPTION =</div><div class="line">    (ADDRESS_LIST =</div><div class="line">      (ADDRESS = (PROTOCOL = TCP)(HOST = 127.0.0.1)(PORT = 1521))</div><div class="line">    )</div><div class="line">    (CONNECT_DATA =</div><div class="line">      (SERVICE_NAME = orcl)</div><div class="line">    )</div><div class="line">  )</div><div class="line">#LOCALNAME: 本地名称</div><div class="line">#ADDRESS: 服务器地址</div><div class="line">#PROTOCOL: 使用协议</div><div class="line">#HOST: IP地址</div><div class="line">#PORT: 监听端口</div><div class="line">#SERVICE_NAME: 数据库服务名称</div></pre></td></tr></table></figure></p>
-<p><b style="color:red;"> PL/SQL Developer乱码问题：设置一个名为 NLS_LANG的系统环境变量， 设置其值为 “SIMPLIFIED CHINESE_CHINA.ZHS16GBK” ，然后重新启动  pl/sql developer </b></p>
-<h2 id="为字段添加注释"><a href="#为字段添加注释" class="headerlink" title="为字段添加注释"></a>为字段添加注释</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_HJYJ_YJCZ_JJXX  <span class="keyword">ADD</span> (SSZYRS <span class="built_in">NUMBER</span>(<span class="number">16</span>),JJSS <span class="built_in">NUMBER</span>(<span class="number">16</span>),STGN <span class="keyword">NVARCHAR2</span>(<span class="number">200</span>),GJZDBHWZ <span class="keyword">NVARCHAR2</span>(<span class="number">200</span>));</div><div class="line">//添加注释</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.SSZYRS IS  '疏散转移人数';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.JJSS IS  '经济损失';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.STGN IS  '生态功能';</div><div class="line">COMMENT ON COLUMN T_HJYJ_YJCZ_JJXX.GJZDBHWZ IS  '国家重点保护物种';</div></pre></td></tr></table></figure>
-<h2 id="从dmp导入数据库"><a href="#从dmp导入数据库" class="headerlink" title="从dmp导入数据库"></a>从dmp导入数据库</h2><hr>
-<p>1、删除原有用户及其下所有表</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">drop</span> <span class="keyword">user</span> user_name <span class="keyword">cascade</span>;</div></pre></td></tr></table></figure>
-<p>2、按照要导入的数据库创建用户及表空间<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLESPACE</span> TBS_HJYJ_ZJ <span class="keyword">DATAFILE</span> <span class="string">'U_HJYJ_ZJ'</span> <span class="keyword">SIZE</span> <span class="number">500</span>m <span class="keyword">AUTOEXTEND</span> <span class="keyword">ON</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> U_HJYJ_ZJ <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> U_HJYJ_ZJ <span class="keyword">DEFAULT</span> <span class="keyword">TABLESPACE</span> TBS_HJYJ_ZJ;</div><div class="line"><span class="keyword">GRANT</span> DBA <span class="keyword">TO</span> U_HJYJ_ZJ</div></pre></td></tr></table></figure></p>
-<p>3、在命令提示符输入<br>imp 用户名/密码@ip:端口号/orcl full=y file=F:\U_HJYJ_ZJ.dmp ignore=y</p>
-<h2 id="导出数据库到dmp文件"><a href="#导出数据库到dmp文件" class="headerlink" title="导出数据库到dmp文件"></a>导出数据库到dmp文件</h2><hr>
-<p>exp 用户名/密码@192.168.40.40:1521/hjyj<br>[owner=用户名]<br> file=f:\U_HJYJ_ZJ.dmp [full=y]</p>
-<p><strong>注意:如果想要连空表也导出,需要执行sql:<code>SELECT &#39;alter table &#39; || TABLE_NAME || &#39; allocate extent;&#39; FROM USER_TABLES WHERE NUM_ROWS = 0</code></strong></p>
-<h2 id="union和union-all"><a href="#union和union-all" class="headerlink" title="union和union all"></a>union和union all</h2><hr>
-<p>UNION 指令的目的是将两个 SQL 语句的结果合并起来,可以查看你要的查询结果<br>union和union all的区别：<br>union all效率更高，但是不会自动去除重复数据。union效率相对较低，但是能去除重复数据</p>
-<h2 id="oracle创建视图"><a href="#oracle创建视图" class="headerlink" title="oracle创建视图"></a>oracle创建视图</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">or</span> <span class="keyword">replace</span> <span class="keyword">view</span> dept_sum_vw <span class="keyword">as</span> <span class="keyword">select</span> d.dname <span class="keyword">name</span>,<span class="keyword">min</span>(e.sal) minsal,<span class="keyword">max</span>(e.sal) maxsal,<span class="keyword">avg</span>(e.sal) avgsal <span class="keyword">from</span> emp e,dept d <span class="keyword">where</span> e.deptno = d.deptno <span class="keyword">group</span> <span class="keyword">by</span> d.dname</div></pre></td></tr></table></figure>
-<h2 id="添加、删除、修改字段"><a href="#添加、删除、修改字段" class="headerlink" title="添加、删除、修改字段"></a>添加、删除、修改字段</h2><hr>
-<p>添加字段的语法：alter table tablename add (column datatype [default value][null/not null],….);<br>修改字段的语法：alter table tablename modify (column datatype [default value][null/not null],….);<br>删除字段的语法：alter table tablename drop (column);<br>添加、修改、删除多列的话，用逗号隔开。</p>
-<h2 id="从Excel导入数据到oracle"><a href="#从Excel导入数据到oracle" class="headerlink" title="从Excel导入数据到oracle"></a>从Excel导入数据到oracle</h2><hr>
-<h4 id="CSV格式文件导入"><a href="#CSV格式文件导入" class="headerlink" title="CSV格式文件导入"></a>CSV格式文件导入</h4><p>1、创建sql*loader控制文件**.ctl<br>2、在命令行输入命令<br>system/manager改为对应的用户名/密码</p>
-<h4 id="Excel格式导入"><a href="#Excel格式导入" class="headerlink" title="Excel格式导入"></a>Excel格式导入</h4><p>1、工具–&gt;ODBC导入器<br>2、选择Excel文件<br>3、选择要导入的表<br>4、导入</p>
-<h2 id="oracle函数"><a href="#oracle函数" class="headerlink" title="oracle函数"></a>oracle函数</h2><hr>
-<ul>
-<li><p>decode<br>(条件,值1,返回值1,值2,返回值2,…值n,返回值n,缺省值) 例如：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">decode</span>(SEX,<span class="string">'女'</span>,<span class="number">1</span>,<span class="string">'男'</span>,<span class="number">0</span>） sex  <span class="keyword">from</span> T_PERSON</div></pre></td></tr></table></figure>
-</li>
-<li><p>CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span>   grade, <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">1</span> <span class="keyword">THEN</span> <span class="number">1</span> </div><div class="line"><span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 男生数,  </div><div class="line"><span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">2</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 女生数   </div><div class="line"><span class="keyword">FROM</span> students GROUPBY grade;</div></pre></td></tr></table></figure>
-</li>
-<li><p>replace函数</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span>  T_ADMIN_RMS_CD t <span class="keyword">SET</span> BZ = <span class="keyword">REPLACE</span>((<span class="keyword">SELECT</span> BZ <span class="keyword">FROM</span> T_ADMIN_RMS_CD <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span>),<span class="string">'10.33.106.51:8010'</span>,<span class="string">'服务器ip:端口号'</span>) <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>substring函数:substring(string,pos,len)</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> T_HJYJ_FXY_JBXX a <span class="keyword">SET</span> a.SHENG = (<span class="keyword">SELECT</span> <span class="keyword">SUBSTR</span>(SHENG,<span class="number">0</span>,<span class="number">2</span>) <span class="keyword">FROM</span> T_HJYJ_FXY_JBXX b <span class="keyword">WHERE</span> b.XH = a.XH)</div></pre></td></tr></table></figure>
-</li>
-<li><p>截取字符串</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span> T_HJYJ_JC_WRYJBXX JBXX <span class="keyword">SET</span> JBXX.LATITUDE = (</div><div class="line"></div><div class="line">       <span class="keyword">SELECT</span> JDD+JDF/<span class="number">60</span>+JDM/<span class="number">3600</span> <span class="keyword">FROM</span> (</div><div class="line"></div><div class="line">              <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> (</div><div class="line"></div><div class="line">                <span class="keyword">SELECT</span> INNER_ENT_ID, </div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE, <span class="number">0</span>, <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) - <span class="number">1</span>) <span class="keyword">AS</span> JDD,</div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) + <span class="number">1</span>,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">2</span>) - <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">1</span>) - <span class="number">1</span>) <span class="keyword">AS</span> JDF,</div><div class="line"></div><div class="line">                       <span class="keyword">SUBSTR</span>(LATITUDE,</div><div class="line"></div><div class="line">                               <span class="keyword">INSTR</span>(LATITUDE, <span class="string">'.'</span>, <span class="number">1</span>, <span class="number">2</span>) + <span class="number">1</span>,</div><div class="line"></div><div class="line">                               <span class="keyword">LENGTH</span>(LATITUDE) - <span class="number">1</span>)  <span class="keyword">AS</span> JDM,</div><div class="line"></div><div class="line">                       LATITUDE</div><div class="line"></div><div class="line">                  <span class="keyword">FROM</span> T_HJYJ_JC_WRYJBXX </div><div class="line"></div><div class="line">                  ) TMP  <span class="keyword">WHERE</span> TMP.JDD <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">AND</span> TMP.JDF <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">AND</span> TMP.JDM <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line"></div><div class="line">       ) <span class="keyword">WHERE</span> INNER_ENT_ID = JBXX.INNER_ENT_ID</div><div class="line"></div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="进行查询并更新操作"><a href="#进行查询并更新操作" class="headerlink" title="进行查询并更新操作"></a>进行查询并更新操作</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> T_ADMIN_RMS_YH <span class="keyword">WHERE</span> YHID = <span class="string">'nbsshy'</span> <span class="keyword">FOR</span> <span class="keyword">UPDATE</span></div></pre></td></tr></table></figure>
-<h2 id="查询用户表空间"><a href="#查询用户表空间" class="headerlink" title="查询用户表空间"></a>查询用户表空间</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> username,default_tablespace <span class="keyword">from</span> user_users;</div></pre></td></tr></table></figure>
-<h2 id="向一张表导入另一张表的部分数据"><a href="#向一张表导入另一张表的部分数据" class="headerlink" title="向一张表导入另一张表的部分数据"></a>向一张表导入另一张表的部分数据</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> T_HJYJ_FXY_FXYML_BAK</div><div class="line">(XH,FXYXH,FXYMC,NF,CZBM,FLAG,SFYX,ITEM1,ITEM2,ITEM3,ITEM4,ITEM5,BZ,ORGID,CJR,CJSJ,XGR,XGSJ,JDJCSJ,SHENG,SHI,QX,CZR,CZSJ,CZ) </div><div class="line"><span class="keyword">select</span> t.*,<span class="string">'hj'</span> <span class="keyword">AS</span> CZR,<span class="keyword">SYSDATE</span> <span class="keyword">AS</span> CZSJ,<span class="string">'sz'</span> <span class="keyword">AS</span> CZ <span class="keyword">from</span> T_HJYJ_FXY_FXYML t <span class="keyword">WHERE</span> XH = <span class="string">'1'</span></div></pre></td></tr></table></figure>
-<h2 id="查询数据表中重复的数据-以DMNR字段判断是否重复"><a href="#查询数据表中重复的数据-以DMNR字段判断是否重复" class="headerlink" title="查询数据表中重复的数据(以DMNR字段判断是否重复)"></a>查询数据表中重复的数据(以DMNR字段判断是否重复)</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> GGDMZ.DMNR,<span class="keyword">COUNT</span>(<span class="number">1</span>) <span class="keyword">FROM</span> T_COMN_GGDMZ GGDMZ <span class="keyword">WHERE</span> GGDMZ.DMJBH = <span class="string">'HJKQHFQ'</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> GGDMZ.DMNR <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="number">1</span>)&gt;<span class="number">1</span></div></pre></td></tr></table></figure>
-<h2 id="oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段"><a href="#oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段" class="headerlink" title="oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段"></a>oracle中不能直接把其他类型直接转换为clob类型，需要先新增一个clob类型的字段，然后删除原有字段</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_COMN_VIEW <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> STNR;</div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> T_COMN_VIEW <span class="keyword">ADD</span>  STNR <span class="keyword">CLOB</span>;</div><div class="line">COMMENT ON COLUMN  T_COMN_VIEW.STNR IS '视图内容'</div></pre></td></tr></table></figure>
-<h2 id="如果使用sqlplus连接oracle数据库-那么执行sql语句之后需要执行commit命令才能提交事务。"><a href="#如果使用sqlplus连接oracle数据库-那么执行sql语句之后需要执行commit命令才能提交事务。" class="headerlink" title="如果使用sqlplus连接oracle数据库,那么执行sql语句之后需要执行commit命令才能提交事务。"></a>如果使用sqlplus连接oracle数据库,那么执行sql语句之后需要执行commit命令才能提交事务。</h2><hr>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">delete</span> <span class="keyword">from</span> T_COMN_XZQHDM;</div><div class="line"></div><div class="line"><span class="keyword">commit</span>;</div></pre></td></tr></table></figure>
-<h2 id="ORACLE导出空表需要先执行的语句"><a href="#ORACLE导出空表需要先执行的语句" class="headerlink" title="ORACLE导出空表需要先执行的语句"></a>ORACLE导出空表需要先执行的语句</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">SELECT</span> <span class="string">'alter table '</span> || TABLE_NAME || <span class="string">' allocate extent;'</span> <span class="keyword">FROM</span> USER_TABLES <span class="keyword">WHERE</span> NUM_ROWS = <span class="number">0</span></div></pre></td></tr></table></figure>
-<h2 id="Oracle关于连接数的问题"><a href="#Oracle关于连接数的问题" class="headerlink" title="Oracle关于连接数的问题"></a>Oracle关于连接数的问题</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> v$process <span class="comment">--当前的数据库连接数</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> <span class="keyword">value</span> <span class="keyword">from</span> v$parameter <span class="keyword">where</span> <span class="keyword">name</span> =<span class="string">'processes'</span><span class="comment">--数据库允许的最大连接数</span></div><div class="line"></div><div class="line"><span class="keyword">alter</span> <span class="keyword">system</span> <span class="keyword">set</span> processes = <span class="number">300</span> <span class="keyword">scope</span> = <span class="keyword">spfile</span>;<span class="comment">--修改最大连接数:</span></div></pre></td></tr></table></figure>
-<h2 id="高速泵导入导出"><a href="#高速泵导入导出" class="headerlink" title="高速泵导入导出"></a>高速泵导入导出</h2><hr>
-<ul>
-<li><p>高速导入导出(<code>E:\Database\XZCF</code>目录是DMP文件存放位置/导出位置)<br>  <code>create or replace directory exp_dir as &#39;E:\Database\XZCF&#39;;--PL/SQL中执行</code></p>
-</li>
-<li><p>授权目录相关用户<br>  <code>grant read,write on directory exp_dir to public;--PL/SQL中执行</code></p>
-</li>
-<li><p>查询地址<br>  <code>select * from dba_directories;</code></p>
-</li>
-<li><p>执行导出(在CMD中执行)<br>  <code>expdp U_WSYS/U_WSYS@TEST directory=exp_dir dumpfile=WRJPGZ20140703.DMP logfile=WRJPGZ_20140703.log;</code></p>
-</li>
-<li><p>执行导入(在CMD中执行)<br>  <code>impdp U_WSYS/U_WSYS@ORCL directory=exp_dir dumpfile=U_WSYSS.DMP logfile=U_WSYSS.log;</code></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;oracle常用易忘知识点&lt;br&gt;
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://xiachengwei5.coding.me/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="oracle" scheme="http://xiachengwei5.coding.me/tags/oracle/"/>
-    
-      <category term="数据库" scheme="http://xiachengwei5.coding.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="SQL" scheme="http://xiachengwei5.coding.me/tags/SQL/"/>
-    
-  </entry>
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何机</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
   
-  <entry>
-    <title>使用Hexo搭建博客</title>
-    <link href="http://xiachengwei5.coding.me/2016/08/17/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://xiachengwei5.coding.me/2016/08/17/使用Hexo搭建自己的博客/</id>
-    <published>2016-08-17T11:33:22.174Z</published>
-    <updated>2016-08-18T01:18:01.345Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<a id="more"></a>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
-<ul>
-<li>安装<a href="http://nodejs.org/" title="NodeJS" target="_blank" rel="external">NodeJS</a></li>
-<li>安装<a href="https://git-scm.com/" title="Git" target="_blank" rel="external">Git</a></li>
-<li>安装Hexo<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="新建博客"><a href="#新建博客" class="headerlink" title="新建博客"></a>新建博客</h2><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo init myB<span class="built_in">log</span></div><div class="line"><span class="built_in">cd</span>  myB<span class="built_in">log</span></div><div class="line">npm install</div><div class="line">hexo g <span class="comment"># 或者hexo generate</span></div><div class="line">hexo s <span class="comment"># 或者hexo server，可以在http://localhost:4000/ 查看</span></div></pre></td></tr></table></figure>
-<p>这里有必要提下Hexo常用的几个命令：<br><code>hexo generate (hexo g)</code> 生成静态文件，会在当前目录下生成一个新的叫做public的文件夹<br><code>hexo server (hexo s)</code> 启动本地web服务，用于博客的预览<br><code>hexo deploy (hexo d)</code>部署播客到远端（比如github, heroku等平台）<br><code>hexo new &quot;postName&quot;</code>#新建文章<br>现在我们打开<code>http://localhost:4000/</code> 已经可以看到一篇内置的blog了。</p>
-<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><hr>
-<p>这里以主题yilia为例进行说明(以下命令在博客目录执行)。</p>
-<ul>
-<li><p>安装主题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
-</li>
-<li><p>启用主题<br>修改Hexo目录下的_config.yml配置文件中的theme属性，将其设置为yilia。</p>
-</li>
-<li>更新主题<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ cd themes/yilia</div><div class="line">$ git pull</div><div class="line">$ hexo g # 生成</div><div class="line">$ hexo s # 启动本地web服务器</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>现在打开<code>http://localhost:4000/</code> ，会看到我们已经应用了一个新的主题。</p>
-<h2 id="部署博客到Github-Pages"><a href="#部署博客到Github-Pages" class="headerlink" title="部署博客到Github Pages"></a>部署博客到Github Pages</h2><hr>
-<p><a href="https://pages.github.com/" title="Github Pages" target="_blank" rel="external">Github Pages</a>本用于介绍托管在GitHub的项目，不过，由于他的空间免费稳定，用来做搭建一个博客再好不过了。<br>每个帐号只能有一个仓库来存放个人主页，而且仓库的名字必须是username/username.github.io，这是特殊的命名约定。你可以通过<code>http://username.github.io</code> 来访问你的个人主页。<br><strong>注意：个人主页的网站内容是在master分支下的。</strong></p>
-<h4 id="创建自己的Github-Pages"><a href="#创建自己的Github-Pages" class="headerlink" title="创建自己的Github Pages"></a>创建自己的Github Pages</h4><ul>
-<li>创建github仓库，注意命名</li>
-<li>在settings开启github pages</li>
-<li>现在可以通过<code>http://username.github.io</code>访问github主页</li>
-</ul>
-<h4 id="部署Hexo到Github-Pages"><a href="#部署Hexo到Github-Pages" class="headerlink" title="部署Hexo到Github Pages"></a>部署Hexo到Github Pages</h4><p>这一步恐怕是最关键的一步了，让我们把在本地web环境下预览到的博客部署到github上，然后就可以直接通过<code>http://heji1993.github.io/</code>访问了。不过很多教程文章对这个步骤语焉不详，这里着重说下。<br>首先需要明白所谓部署到github的原理。<br>1、之前步骤中在Github上创建的那个特别的repo（heji1993.github.io）一个最大的特点就是其master中的html静态文件，可以通过链接<code>http://heji1993.github.io</code>来直接访问。<br>2、Hexo -g 会生成一个静态网站（第一次会生成一个public目录），这个静态文件可以直接访问。<br>3、需要将hexo生成的静态网站，提交(git commit)到github上。<br><strong>注意：部署到github需要配置SSH key，请参考github学习笔记</strong></p>
-<ul>
-<li><p><strong>使用hexo deploy部署</strong><br>  hexo deploy可以部署到很多平台，具体可以参考<a href="https://hexo.io/docs/deployment.html" title="部署指南" target="_blank" rel="external"> 这个链接 </a>. 如果部署到github，需要在配置文件_config.xml中作如下修改：</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">   type: git</div><div class="line">   repo: git@github.com:heji1993/heji1993.github.io.git</div><div class="line">   branch: master</div></pre></td></tr></table></figure>
-<p>  然后在命令行中执行</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>  即可完成部署。<br>  注意需要提前安装一个扩展：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-</li>
-<li><p><strong>使用git命令行部署</strong><br>  克隆github仓库</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> e:/myB<span class="built_in">log</span></div><div class="line">$ git <span class="built_in">clone</span> https://github.com/heji1993/heji1993.github.io.git .deploy/heji1993.github.io</div></pre></td></tr></table></figure>
-<p>  创建一个deploy脚本文件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">cp -R public/* .deploy/heji1993.github.io</div><div class="line"><span class="built_in">cd</span> .deploy/heji1993.github.io</div><div class="line">git add .</div><div class="line">git commit -m “update”</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
-<p>  需要部署的时候，执行这段脚本就可以了（比如可以将其保存为deploy.sh）。执行过程中可能需要让你输入Github账户的用户名及密码，按照提示操作即可。</p>
-</li>
-</ul>
-<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><hr>
-<p>新建markdown文件，放在<code>source\_posts</code>目录下，当执行<code>hexo g</code>命令时，会生成public目录并把markdown文件转换为HTML文件放入其中用于发布站点。markdown文件头需要包含以下信息：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: Gulp</div><div class="line">categories: Web前端</div><div class="line">tags: [Gulp,自动化]</div><div class="line">---</div></pre></td></tr></table></figure></p>
-<h3 id="NexT主题的使用"><a href="#NexT主题的使用" class="headerlink" title="NexT主题的使用"></a>NexT主题的使用</h3><hr>
-<p><strong> 在 Hexo 中有两份主要的配置文件，其名称都是<code>_config.yml</code>。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。 为了描述方便，在以下说明中，将前者称为 站点配置文件， 后者称为 主题配置文件。 </strong></p>
-<ul>
-<li><p>下载主题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> $ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
-</li>
-<li><p>启用主题、验证主题<br>  与所有 Hexo 主题启用的模式一样。 当 克隆/下载 完成后，打开<code>_config.xml</code>， 找到 <code>theme</code> 字段，并将其值更改为 <code>next</code>。</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theme: next</div></pre></td></tr></table></figure>
-<p>  运行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean </div><div class="line">hexo g</div><div class="line">hexo d</div></pre></td></tr></table></figure>
-<p>  打开博客首页查看效果</p>
-</li>
-</ul>
-<h4 id="自定义设置-修改主题配置文件"><a href="#自定义设置-修改主题配置文件" class="headerlink" title="自定义设置(修改主题配置文件)"></a>自定义设置(修改主题配置文件)</h4><ul>
-<li>选择 Scheme（不同的外观）</li>
-<li><p>设置语言<br>编辑 站点配置文件， 将 <code>language</code> 设置成你所需要的语言。建议明确设置你所需要的语言，例如选用简体中文，配置如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">language: zh-Hans</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置菜单<br>1、设置菜单内容</p>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">          home: /</div><div class="line">        archives: /archives</div><div class="line">        #about: /about</div><div class="line">         #categories: /categories</div><div class="line">         tags: /tags</div><div class="line">         #commonweal: /404.html</div></pre></td></tr></table></figure>
-<p>2、 以简体中文为例，若你需要添加一个菜单项，比如 something。那么就需要修改简体中文对应的翻译文件 <code>languages/zh-Hans.yml</code>，在 menu 字段下添加一项：</p>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">     home: 首页</div><div class="line">      archives: 归档</div><div class="line">      categories: 分类</div><div class="line">      tags: 标签</div><div class="line">     about: 关于</div><div class="line">     search: 搜索</div><div class="line">     commonweal: 公益404</div><div class="line">     something: 有料</div></pre></td></tr></table></figure>
-<p>3、 设定菜单项的图标，对应的字段是 menu_icons。 此设定格式是 item name: icon name，其中 item name 与上一步所配置的菜单名字对应，icon name 是 Font Awesome 图标的 名字。而 enable 可用于控制是否显示图标，你可以设置成 false 来去掉图标。</p>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">menu_icons:</div><div class="line">      enable: true</div><div class="line">       # Icon Mapping.</div><div class="line">      home: home</div><div class="line">      about: user</div><div class="line">       categories: th</div><div class="line">       tags: tags</div><div class="line">      archives: archive</div><div class="line">      commonweal: heartbeat</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>设置RSS<br>  NexT 中 RSS 有三个设置选项，满足特定的使用场景。 更改 <code>主题配置文件</code>，设定 rss 字段的值：<ul>
-<li><code>false</code>：禁用RSS，不在页面上显示RSS连接</li>
-<li>留空：使用hexo生成的Feed标签。你需要先安装<a href="https://github.com/hexojs/hexo-generator-feed" title="hexo-generator-feed " target="_blank" rel="external">hexo-generator-feed </a>插件</li>
-<li>具体的链接地址：适用于已经烧制过 Feed 的情形。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>添加<code>标签</code>页面<br>  1、在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 tags ：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page tags</div></pre></td></tr></table></figure>
-<p>  2、编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"tags"</span></div><div class="line">---</div></pre></td></tr></table></figure>
-<p>  3、在菜单中添加链接。编辑 <code>主题配置文件</code> ， 添加 tags 到 menu 中，如下:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   tags: /tags</div></pre></td></tr></table></figure>
-</li>
-<li><p>添加<code>分类</code>页面<br>  1、在终端窗口下，定位到 Hexo 站点目录下。使用 hexo new page 新建一个页面，命名为 categories ：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> your-hexo-site</div><div class="line">$ hexo new page categories</div></pre></td></tr></table></figure>
-<p>  2、编辑刚新建的页面，将页面的类型设置为 categories ，主题将自动为这个页面显示分类。页面内容如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: 标签</div><div class="line">date: 2014-12-22 12:39:04</div><div class="line"><span class="built_in">type</span>: <span class="string">"categories"</span></div><div class="line">---</div></pre></td></tr></table></figure>
-<p>  3、在菜单中添加链接。编辑 <code>主题配置文件</code> ， 添加 categories 到 menu 中，如下:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">   home: /</div><div class="line">   archives: /archives</div><div class="line">   categories : /categories</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置代码高亮</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># Code Highlight theme</div><div class="line"># Available value: normal | night | night eighties | night blue | night bright</div><div class="line"># https://github.com/chriskempson/tomorrow-theme</div><div class="line">highlight_theme: normal</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>设置侧栏<br>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 主题配置文件 中的 sidebar 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。<br>1、设置侧栏的位置，修改 <code>sidebar.position</code>的值，支持的选项有：<ul>
-<li>left：靠左放</li>
-<li>right：靠右放置<br>2、设置侧栏显示时机，修改 <code>sidebar.display</code>的值</li>
-</ul>
-</li>
-<li>设置头像<br>编辑 站点配置文件， 新增字段<code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</li>
-</ul>
-<h3 id="集成第三方服务"><a href="#集成第三方服务" class="headerlink" title="集成第三方服务"></a>集成第三方服务</h3><hr>
-<ul>
-<li><p>多说评论<br>  使用多说前需要先在 多说 创建一个站点。具体步骤如下：<br>  1、登录后在首页选择 “我要安装”。<br>  2、创建站点，填写站点相关信息。 多说域名 这一栏填写的即是你的 <code>duoshuo_shortname</code><br>  3、创建站点完成后在 站点配置文件 中新增 <code>duoshuo_shortname</code> 字段，值设置成上一步中的值。</p>
-</li>
-<li><p>百度统计<br>  1、登录 <a href="http://tongji.baidu.com/  百度统计" target="_blank" rel="external">百度统计</a>， 定位到站点的代码获取页面<br>  2、复制 <code>hm.js?</code> 后面那串统计脚本 id<br>  3、编辑 站点配置文件， 新增字段 <code>baidu_analytics</code> 字段，值设置成你的百度统计脚本 id</p>
-</li>
-<li><p>Local Search<br>  1、安装 <code>hexo-generator-search</code>，在站点的根目录下执行以下命令：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
-<p>  2、编辑 站点配置文件，新增以下内容到任意位置：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">   path: search.xml</div><div class="line">   field: post</div></pre></td></tr></table></figure>
-</li>
-<li><p>打赏功能<br>   Next主题最新版默认集成打赏功能，在站点配置文件开启即可</p>
-   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Donate 文章末尾显示打赏按钮</div><div class="line">reward_comment: 生活不止眼前的苟且，还有远方的诗和田野</div><div class="line">wechatpay: /images/weixin.png</div><div class="line">alipay: /images/zhifubao.jpg</div></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Web前端" scheme="http://xiachengwei5.coding.me/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="Hexo" scheme="http://xiachengwei5.coding.me/tags/Hexo/"/>
-    
-      <category term="next" scheme="http://xiachengwei5.coding.me/tags/next/"/>
-    
-      <category term="博客" scheme="http://xiachengwei5.coding.me/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
   
-  <entry>
-    <title>Gulp教程</title>
-    <link href="http://xiachengwei5.coding.me/2016/08/15/Gulp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
-    <id>http://xiachengwei5.coding.me/2016/08/15/Gulp入门教程/</id>
-    <published>2016-08-15T08:57:36.616Z</published>
-    <updated>2016-08-18T00:43:41.743Z</updated>
-    
-    <content type="html"><![CDATA[<p>基于文件流的构建系统。</p>
-<a id="more"></a>
-<h2 id="为什么使用Gulp"><a href="#为什么使用Gulp" class="headerlink" title="为什么使用Gulp"></a>为什么使用Gulp</h2><hr>
-<p>Gulp基于Node.js的前端构建工具，通过Gulp的插件可以实现前端代码的编译（sass、less）、压缩、测试；图片的压缩；浏览器自动刷新，还有许多强大的插件可以在这里查找。比起Grunt不仅配置简单而且更容易阅读和维护</p>
-<h2 id="建立Web项目"><a href="#建立Web项目" class="headerlink" title="建立Web项目"></a>建立Web项目</h2><hr>
-<p>使用一下命令建立项目，会自动生成一个package.json文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$mkdir</span> projectName</div><div class="line"><span class="variable">$cd</span> projectName</div><div class="line"><span class="variable">$npm</span> init</div></pre></td></tr></table></figure></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
-<ul>
-<li><p>首先我们要全局安装一遍：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp -g</div></pre></td></tr></table></figure>
-</li>
-<li><p>接着我们要进去到项目的根目录再安装一遍（确保你根目录存在package.json文件）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp --save-dev</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>—save-dev这个属性会将条目保存到你package.json的devDependencies里面</p>
-<h2 id="安装gulp插件"><a href="#安装gulp插件" class="headerlink" title="安装gulp插件"></a>安装gulp插件</h2><hr>
-<p>我们将要使用Gulp插件来完成我们以下任务：</p>
-<ul>
-<li>sass的编译(<a href="https://github.com/sindresorhus/gulp-ruby-sass" target="_blank" rel="external">gulp-ruby-sass</a>)</li>
-<li>自动添加CSS前缀(<a href="http://github.com/Metrime/gulp-autoprefixer" target="_blank" rel="external">gulp-autoprefixer</a>)</li>
-<li>压缩CSS(<a href="http://github.com/jonathanepollack/gulp-minify-css" target="_blank" rel="external">gulp-minify-css</a>)</li>
-<li>js代码校验(<a href="http://github.com/spenceralger/gulp-jshint" target="_blank" rel="external">gulp-jshint</a>)</li>
-<li>合并js文件(<a href="http://github.com/wearefractal/gulp-concat" target="_blank" rel="external">gulp-concat</a>)</li>
-<li>压缩js代码(<a href="http://github.com/terinjokes/gulp-uglify" target="_blank" rel="external">gulp-uglify</a>)</li>
-<li>压缩图片(<a href="http://github.com/sindresorhus/gulp-imagemin" target="_blank" rel="external">gulp-imagemin</a>)</li>
-<li>自动刷新页面(<a href="http://github.com/vohof/gulp-livereload" target="_blank" rel="external">gulp-livereload</a>)</li>
-<li>图片缓存，只有图片替换了才压缩(<a href="http://github.com/jgable/gulp-cache" target="_blank" rel="external">gulp-cache</a>)</li>
-<li>更改提醒(<a href="http://github.com/mikaelbr/gulp-notify" target="_blank" rel="external">gulp-notify</a>)</li>
-<li>清除文件(<a href="http://www.npmjs.org/package/del" target="_blank" rel="external">del</a>)</li>
-</ul>
-<p>安装这些插件需要运行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev</div></pre></td></tr></table></figure></p>
-<h2 id="加载插件"><a href="#加载插件" class="headerlink" title="加载插件"></a>加载插件</h2><hr>
-<p>我们要在项目的根目录创建一个gulpfile.js文件，然后再里面加载插件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="建立任务"><a href="#建立任务" class="headerlink" title="建立任务"></a>建立任务</h2><hr>
-<ul>
-<li><p>编译sass、自动添加css前缀和压缩<br>   首先我们编译sass，添加前缀，保存到我们指定的目录下面，还没结束，我们还要压缩，给文件添加<code>.min</code>后缀再输出压缩文件到指定目录，最后提醒任务完成了：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">     .pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div><div class="line">     .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(minifycss())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
-<p>   代码详解：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...&#125;);</div></pre></td></tr></table></figure>
-<p>   <code>gulp.task</code>这个api用来创建任务，在命令行下可以输入<code>gulp styles</code>来执行上面的任务</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div></pre></td></tr></table></figure>
-</code></pre><p>   <code>gulp.src</code>这个API设置需要处理的文件的路径，可以是多个文件以数组的形式<code>[main.scss, vender.scss]</code>，也可以是正则表达<code>/**/*.scss</code>。</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div></pre></td></tr></table></figure>
-</code></pre><p>   我们使用<code>.pipe()</code>这个API将需要处理的文件导向sass插件</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(gulp.dest(<span class="string">'dist/assets/css'</span>));</div></pre></td></tr></table></figure>
-</code></pre><p>   <code>gulp.dest()</code>API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，另一个可以输出压缩后的版本。</p>
-</li>
-</ul>
-<ul>
-<li>js代码校验、合并和压缩   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">     .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">     .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">     .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(uglify())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>需要提醒的是我们要设置JSHint的reporter方式，上面使用的是default默认的</p>
-<ul>
-<li><p>压缩图片</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">           .pipe(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;))</div><div class="line">           .pipe(gulp.dest(<span class="string">'dist/assets/img'</span>))</div><div class="line">.pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
-<p>   这个任务使用<code>imagemin</code>插件把所有在<code>src/images/</code>目录以及其子目录下的所有图片（文件）进行压缩，我们可以进一步优化，利用缓存保存已经压缩过的图片，使用之前装过的<code>gulp-cache</code>插件，不过要修改一下上面的代码：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.pipe(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;))</div></pre></td></tr></table></figure>
-<p>   修改成：</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.pipe(cache(imagemin(&#123; optimizationLevel: <span class="number">5</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;)))</div></pre></td></tr></table></figure>
-</code></pre><p>   现在，只有新建或者修改过的图片才会被压缩了。</p>
-</li>
-</ul>
-<ul>
-<li><p>清除文件<br>   在任务执行前，最好先清除之前生成的文件：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">     del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   在这里没有必要使用Gulp插件了(没有gulp前缀)，可以使用NPM提供的插件。我们用一个回调函数（<code>cb</code>）确保在退出前完成任务。</p>
-</li>
-</ul>
-<ul>
-<li><p>设置默认任务<br>   我们在命令行下输入<code>$ gulp</code>执行的就是默认任务，现在我们为默认任务指定执行上面写好的三个任务：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   在这个例子里面，clean任务执行完成了才会去运行其他的任务，在<code>gulp.start()</code>里的任务执行的顺序是不确定的，所以将要在它们之前执行的任务写在数组里面。</p>
-</li>
-</ul>
-<ul>
-<li><p>监听文件<br>   为了监听文件的是否修改以便执行相应的任务，我们需要创建一个新的任务，然后利用<code>gulp.watch</code>API实现:</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// Watch .scss files</span></div><div class="line">   gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</div><div class="line">   <span class="comment">// Watch .js files</span></div><div class="line">   gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</div><div class="line">   <span class="comment">// Watch image files</span></div><div class="line">   gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   我们将不同类型的文件分开处理，执行对应的数组里的任务。现在我们可以在命令行输入<code>$ gulp watch</code>执行监听任务，当<code>.sass</code>、<code>.js</code>和图片修改时将执行对应的任务。</p>
-</li>
-</ul>
-<ul>
-<li><p>自动刷新页面<br>   Gulp也可以实现当文件修改时自动刷新页面，我们要修改<code>watch</code>任务，配置LiveReload：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// Create LiveReload server</span></div><div class="line">   livereload.listen();</div><div class="line">   <span class="comment">// Watch any files in dist/, reload on change</span></div><div class="line">   gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   要使这个能够工作，还需要在浏览器上安装LiveReload插件</p>
-</li>
-</ul>
-<ul>
-<li>所有任务放在一起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*!</span></div><div class="line">*gulp</div><div class="line">*$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify         gulp-rename gulp-livereload gulp-cache del --save-dev</div><div class="line">*/</div><div class="line"><span class="comment">// Load plugins</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div><div class="line"><span class="comment">// Styles</span></div><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">    .pipe(sass(&#123; style: <span class="string">'expanded'</span>, &#125;))</div><div class="line">    .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(minifycss())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Scripts</span></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">    .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">    .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">    .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(uglify())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Images</span></div><div class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">    .pipe(cache(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;)))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/images'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Clean</span></div><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">    del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb())</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Default task</span></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Watch</span></div><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Watch .scss files</span></div><div class="line">  gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</div><div class="line">  <span class="comment">// Watch .js files</span></div><div class="line">  gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</div><div class="line">  <span class="comment">// Watch image files</span></div><div class="line">  gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</div><div class="line">  <span class="comment">// Create LiveReload server</span></div><div class="line">  livereload.listen();</div><div class="line">  <span class="comment">// Watch any files in dist/, reload on change</span></div><div class="line">  gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;基于文件流的构建系统。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Web前端" scheme="http://xiachengwei5.coding.me/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="Gulp" scheme="http://xiachengwei5.coding.me/tags/Gulp/"/>
-    
-      <category term="自动化" scheme="http://xiachengwei5.coding.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
-    
-  </entry>
+
+
+
   
-</feed>
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"heji"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
