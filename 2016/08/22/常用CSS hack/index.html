@@ -145,7 +145,7 @@
             发表: <time datetime="2016-08-22T02:41:14.806Z"
                        itemprop="datePublished">2016-08-22</time>
             
-            更新: <time datetime="2016-12-12T06:59:23.189Z"
+            更新: <time datetime="2016-12-12T10:59:25.506Z"
                        itemprop="dateModified">2016-12-12</time>
             
         </div>
@@ -165,13 +165,13 @@
 <p>因为CSS3目前标准还没有统一，各个浏览器都有自己的表现方式，甚至有的实现，有的未实现，在前面加一些前缀以表示支持某个特定浏览器，这也是CSS 内部hack的基本原理，向上面这些简单易懂，但是真正的CSS hack 远远不止于此，因为有不死的IE6及其各种奇葩的兄弟版本。<br>CSS 内部hack 语法是这样的：<code>selector{&lt;hack&gt;?property:value&lt;hack&gt;?;}</code> ，上面代码所示的是在属性名称之前的hack。</p>
 <ul>
 <li><p>例1：属性前面加个“*”这样的写法只会对IE6、7生效，其它版本IE及现代浏览器会忽略这条指令（没有特殊说明，本文所有hack都是指在声明了DOCTYPE的文档的效果）</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*<span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>; <span class="comment">/*仅IE6、7下有效*/</span></div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">*<span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>; <span class="comment">/*仅IE6、7下有效*/</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>例2：在属性值后面加上<code>\9</code>，在IE下都支持；在属性值后面加上<code>\0</code>，IE8、9、10支持；在属性值后加上<code>\9\0</code>，IE9、10支持</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>\9;</div></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background-color</span><span class="selector-pseudo">:green</span>\9;</div></pre></td></tr></table></figure>
+<p>  CSS 内部hack一览<br>  <img src="index_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
 </li>
 </ul>
-<p>CSS 内部hack一览<br><img src="index_files/a176bb84-e699-40a6-87fe-91ca5126a8d7.png" alt=""></p>
 <h2 id="选择器hack"><a href="#选择器hack" class="headerlink" title="选择器hack"></a>选择器hack</h2><hr>
 <p>选择器hanck主要是针对IE浏览器，其实并不怎么常用，语法是这样的：<code>&lt;hack&gt; selector{ sRules }</code><br><img src="index_files/645de664-4e6b-47a8-9250-e22fb60f8214.png" alt=""><br>针对IE9的hack可以这么写<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-pseudo">:root</span> <span class="selector-class">.test</span> &#123; <span class="attribute">background-color</span>:green;&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="CSS条件注释-常用"><a href="#CSS条件注释-常用" class="headerlink" title="CSS条件注释(常用)"></a>CSS条件注释(常用)</h2><hr>
