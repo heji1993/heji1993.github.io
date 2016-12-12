@@ -145,7 +145,7 @@
             发表: <time datetime="2016-08-19T10:29:17.297Z"
                        itemprop="datePublished">2016-08-19</time>
             
-            更新: <time datetime="2016-12-12T06:48:52.528Z"
+            更新: <time datetime="2016-12-12T06:53:01.500Z"
                        itemprop="dateModified">2016-12-12</time>
             
         </div>
@@ -188,9 +188,9 @@
 <li>工具–&gt;ODBC导入器</li>
 <li>选择Excel文件<br><img src="index_files/fcf88952-2961-4d28-bd4b-be1b20eb3a90.png" alt=""></li>
 <li>选择要导入的表<br><img src="index_files/bd92eca3-3c62-4acf-9836-93ddf1ebd08c.png" alt=""></li>
-<li>导入<h2 id="oracle函数"><a href="#oracle函数" class="headerlink" title="oracle函数"></a>oracle函数</h2></li>
+<li>导入</li>
 </ul>
-<hr>
+<h2 id="oracle函数"><a href="#oracle函数" class="headerlink" title="oracle函数"></a>oracle函数</h2><hr>
 <h3 id="decode函数"><a href="#decode函数" class="headerlink" title="decode函数"></a>decode函数</h3><p>语法：<code>decode(条件,值1,返回值1,值2,返回值2,...值n,返回值n,缺省值)</code> 例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">decode</span>(SEX,<span class="string">'女'</span>,<span class="number">1</span>,<span class="string">'男'</span>,<span class="number">0</span>） sex  <span class="keyword">from</span> T_PERSON</div></pre></td></tr></table></figure></p>
 <h3 id="case-when函数"><a href="#case-when函数" class="headerlink" title="case when函数"></a>case when函数</h3><p>语法：<code>CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</code>，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span>   grade, <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">1</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 男生数,</div><div class="line">                <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">2</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 女生数</div><div class="line">                <span class="keyword">FROM</span> students GROUPBY grade;</div></pre></td></tr></table></figure></p>
 <h3 id="replace函数"><a href="#replace函数" class="headerlink" title="replace函数"></a>replace函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">UPDATE</span>  T_ADMIN_RMS_CD t <span class="keyword">SET</span> BZ = <span class="keyword">REPLACE</span>((<span class="keyword">SELECT</span> BZ <span class="keyword">FROM</span> T_ADMIN_RMS_CD <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span>),<span class="string">'10.33.106.51:8010'</span>,<span class="string">'服务器ip:端口号'</span>) <span class="keyword">WHERE</span> SSXT = <span class="string">'2013101017042563d7662ffd17471eb2fdb8956d7bed48'</span></div></pre></td></tr></table></figure>
