@@ -144,7 +144,7 @@
             发表: <time datetime="2016-12-10T10:13:52.737Z"
                        itemprop="datePublished">2016-12-10</time>
             
-            更新: <time datetime="2016-12-12T02:19:00.315Z"
+            更新: <time datetime="2016-12-12T02:23:54.926Z"
                        itemprop="dateModified">2016-12-12</time>
             
         </div>
@@ -236,7 +236,33 @@
 </tr>
 </tbody>
 </table>
-<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p><code>flex-wrap</code>属性用于设置当所有的flex条目的尺寸之和超过flex容器的主轴尺寸时应该采取的行为。<br>下面让我们来看一下<code>flex-wrap</code>的具体用法，如下表：<br>| 可选值 | 含义 | 备注 |<br>| — | — | — |<br>| nowrap | 容器中的条目只占满容器在主轴方向上的一行，此时可能出现条目互相重叠或超出容器范围的现象 | 此为默认值 |<br>| wrap | 当容器中的条目超出主轴方向上的一行时，会把条目排列到下一行。而下一行的位置与交叉轴的方向一致 | 交叉轴的存在感就是在此 |<br>| wrap-reverse | 与<code>wrap</code>的含义类似，不同的是下一行的位置与交叉轴的方向相反。 | - |</p>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p><code>flex-wrap</code>属性用于设置当所有的flex条目的尺寸之和超过flex容器的主轴尺寸时应该采取的行为。<br>下面让我们来看一下<code>flex-wrap</code>的具体用法，如下表：</p>
+<table>
+<thead>
+<tr>
+<th>可选值</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nowrap</td>
+<td>容器中的条目只占满容器在主轴方向上的一行，此时可能出现条目互相重叠或超出容器范围的现象</td>
+<td>此为默认值</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>当容器中的条目超出主轴方向上的一行时，会把条目排列到下一行。而下一行的位置与交叉轴的方向一致</td>
+<td>交叉轴的存在感就是在此</td>
+</tr>
+<tr>
+<td>wrap-reverse</td>
+<td>与<code>wrap</code>的含义类似，不同的是下一行的位置与交叉轴的方向相反。</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 <h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p>之前说的两个属性<code>flex-direction</code>和<code>flex-wrap</code>，从某种意义上来说就是设置flex布局的主轴和交叉轴。一旦flex布局的主轴和交叉轴确定下来，基本上整个布局中flex条目的排列方式我们就可以自行脑补出来了。<br>而<code>flex-flow</code>属性其实就是<code>flex-direction</code>和<code>flex-wrap</code>的复合属性。所以下面两段代码的效果是一致的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-container1</span> &#123;</div><div class="line"> <span class="attribute">flex-direction</span>: row;</div><div class="line"> <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.flex-container2</span> &#123;</div><div class="line"> <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>前面说的几个属性其实都是针对flex容器的设置。而<code>order</code>属性是针对flex条目的。它的作用是自定义flex容器中条目的顺序。其用法示例如下:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-item</span><span class="selector-pseudo">:last-child</span> &#123;</div><div class="line"><span class="comment">/*作用是让最后一个flex条目排在最前,order越小越排在前,且可设置为负值*/</span></div><div class="line"> <span class="attribute">order</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="flex条目的弹性设置"><a href="#flex条目的弹性设置" class="headerlink" title="flex条目的弹性设置"></a>flex条目的弹性设置</h3><p>弹性盒模型的真正牛逼的地方在于flex容器中的<strong>flex条目的尺寸是弹性的</strong>。这是啥意思呢？个人觉得它包含下面的几层含义：</p>
@@ -257,7 +283,37 @@
 <h3 id="flex条目的对齐"><a href="#flex条目的对齐" class="headerlink" title="flex条目的对齐"></a>flex条目的对齐</h3><p>当flex容器中flex条目的尺寸和排列都确定下来之后，我们还可以设置这些flex条目在容器中的对齐方式。目前有三种对齐方式。</p>
 <h4 id="基于margin-auto对齐"><a href="#基于margin-auto对齐" class="headerlink" title="基于margin: auto对齐"></a>基于<code>margin: auto</code>对齐</h4><p>第一种对齐方式是<strong>使用空白边</strong>，即<code>margin: auto</code>。在使用自动空白边时，flex容器中额外的空白空间将会由被声明为<code>auto</code>的空白边占据。这种方式在W3C的官方文档被称之为<em>non-normative</em>，更加像是一种奇淫巧计。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/about</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/projects</span>&gt;</span>Projects<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/interact</span>&gt;</span>Interact<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"login"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/login</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">ul &#123;</div><div class="line"> list-style: none;</div><div class="line"> display: flex;</div><div class="line">&#125;</div><div class="line">li &#123;</div><div class="line"> min-width: min-content;</div><div class="line">&#125;</div><div class="line">#login &#123;</div><div class="line"> margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>示例中的<code>#login</code>元素通过简单的<code>margin-left</code>设置，占据所有的剩余空白。</p>
-<h4 id="基于主轴对齐"><a href="#基于主轴对齐" class="headerlink" title="基于主轴对齐"></a>基于主轴对齐</h4><p>第二种对齐方式是基于主轴方向上的对齐策略。可以通过<code>justify-content</code>属性来进行设置。借助此属性，我们可以调整flex条目在主轴方向上的对齐策略。<br>我们来看下<code>justify-content</code>属性的基本用法，（<strong>注意</strong>，<code>justify-content</code>用于设置flex容器）<br>| 可选值 | 含义 |<br>| — | — |<br>| flex-start | 条目集中于该行的起始位置。第一个条目与其所在行在主轴起始方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| flex-end | 条目集中于该行的结束方向。最后一个条目与其所在行在主轴结束方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| center | 条目集中于该行的中央。条目都往该行的中央排列，在主轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则条目会在两个方向上超出同样的空间。|<br>| space-between | 第一个条目与其所在行在主轴起始方向上的边界保持对齐，最后一个条目与其所在行在主轴结束方向上的边界保持对齐。空白空间在条目之间平均分配，使得相邻条目之间的空白尺寸相同。|<br>| space-around | 类似于<code>space-between</code>，不同的是第一个条目和最后一个条目与该行的边界之间同样存在空白空间，该空白空间的尺寸是条目之间的空白空间的尺寸的一半。|</p>
+<h4 id="基于主轴对齐"><a href="#基于主轴对齐" class="headerlink" title="基于主轴对齐"></a>基于主轴对齐</h4><p>第二种对齐方式是基于主轴方向上的对齐策略。可以通过<code>justify-content</code>属性来进行设置。借助此属性，我们可以调整flex条目在主轴方向上的对齐策略。<br>我们来看下<code>justify-content</code>属性的基本用法，（<strong>注意</strong>，<code>justify-content</code>用于设置flex容器）</p>
+<table>
+<thead>
+<tr>
+<th>可选值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-start</td>
+<td>条目集中于该行的起始位置。第一个条目与其所在行在主轴起始方向上的边界保持对齐，其余的条目按照顺序依次排列。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>条目集中于该行的结束方向。最后一个条目与其所在行在主轴结束方向上的边界保持对齐，其余的条目按照顺序依次排列。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>条目集中于该行的中央。条目都往该行的中央排列，在主轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则条目会在两个方向上超出同样的空间。</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>第一个条目与其所在行在主轴起始方向上的边界保持对齐，最后一个条目与其所在行在主轴结束方向上的边界保持对齐。空白空间在条目之间平均分配，使得相邻条目之间的空白尺寸相同。</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>类似于<code>space-between</code>，不同的是第一个条目和最后一个条目与该行的边界之间同样存在空白空间，该空白空间的尺寸是条目之间的空白空间的尺寸的一半。</td>
+</tr>
+</tbody>
+</table>
 <h4 id="基于交叉轴对齐"><a href="#基于交叉轴对齐" class="headerlink" title="基于交叉轴对齐"></a>基于交叉轴对齐</h4><p>第三种对齐方式是基于交叉轴方向上的对齐策略。此种方式中，我们有两个属性可以做相关设置，它们分别是<code>align-items</code>和<code>align-self</code>。其中前者是用来设置flex容器的，后者是用来设置flex条目的，这两个属性的作用对象是不同的。在某些场景下，我们可以对flex条目设置<code>align-self</code>来复写flex容器指定的对齐方式。<br>我们来看看<code>align-items</code>的基本用法</p>
 <table>
 <thead>
