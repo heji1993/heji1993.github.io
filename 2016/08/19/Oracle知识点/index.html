@@ -6,8 +6,7 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="title: Oracle常用知识点categories: 数据库
-tags: [oracle,数据库,SQL]oracle常用易忘知识点">
+    <meta name="description" content="oracle常用易忘知识点">
     
     
 
@@ -20,7 +19,7 @@ tags: [oracle,数据库,SQL]oracle常用易忘知识点">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>何机的博客 · No pains,no gains</title>
+    <title>Oracle常用知识点 | 何机的博客 · No pains,no gains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -124,11 +123,21 @@ tags: [oracle,数据库,SQL]oracle常用易忘知识点">
 
     <article class="post container">
     <div class="well post-body first-post last-post">
-        <h1></h1>
+        <h1>Oracle常用知识点</h1>
 
         <div class="time-info">
             
+<span class="article-tags">
+    
+    Tags: <a href="/tags/数据库/">数据库</a>&nbsp;<a href="/tags/oracle/">oracle</a>&nbsp;<a href="/tags/SQL/">SQL</a>&nbsp;
+</span>
 
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+</span>
 
 
         </div>
@@ -136,7 +145,7 @@ tags: [oracle,数据库,SQL]oracle常用易忘知识点">
             发表: <time datetime="2016-08-19T10:29:17.297Z"
                        itemprop="datePublished">2016-08-19</time>
             
-            更新: <time datetime="2016-12-12T05:38:35.667Z"
+            更新: <time datetime="2016-12-12T05:42:46.843Z"
                        itemprop="dateModified">2016-12-12</time>
             
         </div>
@@ -145,13 +154,11 @@ tags: [oracle,数据库,SQL]oracle常用易忘知识点">
             
                 <div id="toc" class="toc-article well">
                     <strong class="toc-title">大纲</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#tags-oracle-数据库-SQL"><span class="toc-number">1.</span> <span class="toc-text">tags: [oracle,数据库,SQL]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用sqlplus连接远程数据库"><span class="toc-number">2.</span> <span class="toc-text">使用sqlplus连接远程数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用PL-SQL-Developer连接数据库"><span class="toc-number">3.</span> <span class="toc-text">使用PL/SQL Developer连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为字段添加注释"><span class="toc-number">4.</span> <span class="toc-text">为字段添加注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从dmp导入数据库"><span class="toc-number">5.</span> <span class="toc-text">从dmp导入数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导出数据库到dmp文件"><span class="toc-number">6.</span> <span class="toc-text">导出数据库到dmp文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union和union-all"><span class="toc-number">7.</span> <span class="toc-text">union和union all</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle创建视图"><span class="toc-number">8.</span> <span class="toc-text">oracle创建视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加、删除、修改字段"><span class="toc-number">9.</span> <span class="toc-text">添加、删除、修改字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从Excel导入数据到oracle"><span class="toc-number">10.</span> <span class="toc-text">从Excel导入数据到oracle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSV格式文件导入"><span class="toc-number">10.0.1.</span> <span class="toc-text">CSV格式文件导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Excel格式导入"><span class="toc-number">10.0.2.</span> <span class="toc-text">Excel格式导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle函数"><span class="toc-number">11.</span> <span class="toc-text">oracle函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#decode-条件-值1-返回值1-值2-返回值2-…值n-返回值n-缺省值-例如："><span class="toc-number">11.1.</span> <span class="toc-text">decode(条件,值1,返回值1,值2,返回值2,…值n,返回值n,缺省值) 例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CASE-WHEN-条件-THEN-操作-WHEN-条件2-THEN-操作2-ELSE-操作3-END"><span class="toc-number">11.2.</span> <span class="toc-text">CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replace函数"><span class="toc-number">11.3.</span> <span class="toc-text">replace函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substring函数-substring-string-pos-len"><span class="toc-number">11.4.</span> <span class="toc-text">substring函数:substring(string,pos,len)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#截取字符串"><span class="toc-number">11.5.</span> <span class="toc-text">截取字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进行查询并更新操作"><span class="toc-number">12.</span> <span class="toc-text">进行查询并更新操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询用户表空间"><span class="toc-number">13.</span> <span class="toc-text">查询用户表空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向一张表导入另一张表的部分数据"><span class="toc-number">14.</span> <span class="toc-text">向一张表导入另一张表的部分数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询数据表中重复的数据-以DMNR字段判断是否重复"><span class="toc-number">15.</span> <span class="toc-text">查询数据表中重复的数据(以DMNR字段判断是否重复)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle中修改类型为clob"><span class="toc-number">16.</span> <span class="toc-text">oracle中修改类型为clob</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlplus需要执行commit命令才能提交事务。"><span class="toc-number">17.</span> <span class="toc-text">sqlplus需要执行commit命令才能提交事务。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORACLE导出空表需要先执行的语句"><span class="toc-number">18.</span> <span class="toc-text">ORACLE导出空表需要先执行的语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle关于连接数的问题"><span class="toc-number">19.</span> <span class="toc-text">Oracle关于连接数的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高速泵导入导出"><span class="toc-number">20.</span> <span class="toc-text">高速泵导入导出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle时间查询相关"><span class="toc-number">21.</span> <span class="toc-text">oracle时间查询相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle根据汉字返回拼音的包"><span class="toc-number">22.</span> <span class="toc-text">Oracle根据汉字返回拼音的包</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用sqlplus连接远程数据库"><span class="toc-number">1.</span> <span class="toc-text">使用sqlplus连接远程数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用PL-SQL-Developer连接数据库"><span class="toc-number">2.</span> <span class="toc-text">使用PL/SQL Developer连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为字段添加注释"><span class="toc-number">3.</span> <span class="toc-text">为字段添加注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从dmp导入数据库"><span class="toc-number">4.</span> <span class="toc-text">从dmp导入数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导出数据库到dmp文件"><span class="toc-number">5.</span> <span class="toc-text">导出数据库到dmp文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union和union-all"><span class="toc-number">6.</span> <span class="toc-text">union和union all</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle创建视图"><span class="toc-number">7.</span> <span class="toc-text">oracle创建视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加、删除、修改字段"><span class="toc-number">8.</span> <span class="toc-text">添加、删除、修改字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从Excel导入数据到oracle"><span class="toc-number">9.</span> <span class="toc-text">从Excel导入数据到oracle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CSV格式文件导入"><span class="toc-number">9.0.1.</span> <span class="toc-text">CSV格式文件导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Excel格式导入"><span class="toc-number">9.0.2.</span> <span class="toc-text">Excel格式导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle函数"><span class="toc-number">10.</span> <span class="toc-text">oracle函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#decode-条件-值1-返回值1-值2-返回值2-…值n-返回值n-缺省值-例如："><span class="toc-number">10.1.</span> <span class="toc-text">decode(条件,值1,返回值1,值2,返回值2,…值n,返回值n,缺省值) 例如：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CASE-WHEN-条件-THEN-操作-WHEN-条件2-THEN-操作2-ELSE-操作3-END"><span class="toc-number">10.2.</span> <span class="toc-text">CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#replace函数"><span class="toc-number">10.3.</span> <span class="toc-text">replace函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#substring函数-substring-string-pos-len"><span class="toc-number">10.4.</span> <span class="toc-text">substring函数:substring(string,pos,len)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#截取字符串"><span class="toc-number">10.5.</span> <span class="toc-text">截取字符串</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进行查询并更新操作"><span class="toc-number">11.</span> <span class="toc-text">进行查询并更新操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询用户表空间"><span class="toc-number">12.</span> <span class="toc-text">查询用户表空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向一张表导入另一张表的部分数据"><span class="toc-number">13.</span> <span class="toc-text">向一张表导入另一张表的部分数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询数据表中重复的数据-以DMNR字段判断是否重复"><span class="toc-number">14.</span> <span class="toc-text">查询数据表中重复的数据(以DMNR字段判断是否重复)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle中修改类型为clob"><span class="toc-number">15.</span> <span class="toc-text">oracle中修改类型为clob</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlplus需要执行commit命令才能提交事务。"><span class="toc-number">16.</span> <span class="toc-text">sqlplus需要执行commit命令才能提交事务。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORACLE导出空表需要先执行的语句"><span class="toc-number">17.</span> <span class="toc-text">ORACLE导出空表需要先执行的语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle关于连接数的问题"><span class="toc-number">18.</span> <span class="toc-text">Oracle关于连接数的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高速泵导入导出"><span class="toc-number">19.</span> <span class="toc-text">高速泵导入导出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle时间查询相关"><span class="toc-number">20.</span> <span class="toc-text">oracle时间查询相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle根据汉字返回拼音的包"><span class="toc-number">21.</span> <span class="toc-text">Oracle根据汉字返回拼音的包</span></a></li></ol>
                 </div>
             
 
-            <hr>
-<p>title: Oracle常用知识点<br>categories: 数据库</p>
-<h2 id="tags-oracle-数据库-SQL"><a href="#tags-oracle-数据库-SQL" class="headerlink" title="tags: [oracle,数据库,SQL]"></a>tags: [oracle,数据库,SQL]</h2><p>oracle常用易忘知识点<br><a id="more"></a></p>
+            <p>oracle常用易忘知识点<br><a id="more"></a></p>
 <h2 id="使用sqlplus连接远程数据库"><a href="#使用sqlplus连接远程数据库" class="headerlink" title="使用sqlplus连接远程数据库"></a>使用sqlplus连接远程数据库</h2><hr>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlplus U_HJYJ_ZJ/U_HJYJ_ZJ@192.168.40.40:1521/hjyj</div></pre></td></tr></table></figure>
 <h2 id="使用PL-SQL-Developer连接数据库"><a href="#使用PL-SQL-Developer连接数据库" class="headerlink" title="使用PL/SQL Developer连接数据库"></a>使用PL/SQL Developer连接数据库</h2><hr>
@@ -233,7 +240,7 @@ tags: [oracle,数据库,SQL]oracle常用易忘知识点">
 
             
     <section class="comment">
-    <div class="ds-thread" data-thread-key="undefined" data-title="" data-url="https://heji1993.github.io/2016/08/19/Oracle知识点/" data-author-key="何机"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="Oracle常用知识点" data-url="https://heji1993.github.io/2016/08/19/Oracle知识点/" data-author-key="何机"></div>
 </section>
 
 

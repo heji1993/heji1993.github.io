@@ -1017,11 +1017,9 @@
     </entry>
     
     <entry>
-      <title></title>
+      <title><![CDATA[Oracle常用知识点]]></title>
       <url>https://heji1993.github.io/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title: Oracle常用知识点<br>categories: 数据库</p>
-<h2 id="tags-oracle-数据库-SQL"><a href="#tags-oracle-数据库-SQL" class="headerlink" title="tags: [oracle,数据库,SQL]"></a>tags: [oracle,数据库,SQL]</h2><p>oracle常用易忘知识点<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>oracle常用易忘知识点<br><a id="more"></a></p>
 <h2 id="使用sqlplus连接远程数据库"><a href="#使用sqlplus连接远程数据库" class="headerlink" title="使用sqlplus连接远程数据库"></a>使用sqlplus连接远程数据库</h2><hr>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqlplus U_HJYJ_ZJ/U_HJYJ_ZJ@192.168.40.40:1521/hjyj</div></pre></td></tr></table></figure>
 <h2 id="使用PL-SQL-Developer连接数据库"><a href="#使用PL-SQL-Developer连接数据库" class="headerlink" title="使用PL/SQL Developer连接数据库"></a>使用PL/SQL Developer连接数据库</h2><hr>
