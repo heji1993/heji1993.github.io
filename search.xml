@@ -51,17 +51,51 @@
 <li>清除浮动（<code>clear</code>）</li>
 <li>css3多列布局（<code>columns-*</code>）</li>
 <li>垂直居中（<code>vertical-align</code>）</li>
-<li>首行/首字符选择伪类（<code>::first-line</code>和<code>::first-letter</code>）<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><code>flex-direction</code>属性的作用是设置<strong>主轴</strong>方向。我们之前有说过，一旦主轴方向确定，那么连带的交叉轴的方向也会确定下来。这样就确定了flex条目基本的排列方式。<br>下面我们来看一下<code>flex-direction</code>的具体用法，如下表:<br>| 可选值 | 含义 | 备注 |<br>|——-|——|—–|<br>| row | 横向从左到右排列 | 即左对齐。此为默认值 |<br>| row-reverse | 反转横向排列（从右到左排列） | 即右对齐 |<br>| column | 纵向排列（从上到下排列） | 即设置主轴方向为垂直方向 |<br>| column-reverse | 反转纵向排列（从下到上排列） | 主轴方向为垂直方向，但是越后面的flex条目反而在上方 |<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><code>flex-wrap</code>属性用于设置当所有的flex条目的尺寸之和超过flex容器的主轴尺寸时应该采取的行为。<br>下面让我们来看一下<code>flex-wrap</code>的具体用法，如下表：<br>| 可选值 | 含义 | 备注 |<br>|——-|——|——|<br>| nowrap | 容器中的条目只占满容器在主轴方向上的一行，此时可能出现条目互相重叠或超出容器范围的现象 | 此为默认值 |<br>| wrap | 当容器中的条目超出主轴方向上的一行时，会把条目排列到下一行。而下一行的位置与交叉轴的方向一致 | 交叉轴的存在感就是在此 |<br>| wrap-reverse | 与<code>wrap</code>的含义类似，不同的是下一行的位置与交叉轴的方向相反。 | - |<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3>之前说的两个属性<code>flex-direction</code>和<code>flex-wrap</code>，从某种意义上来说就是设置flex布局的主轴和交叉轴。一旦flex布局的主轴和交叉轴确定下来，基本上整个布局中flex条目的排列方式我们就可以自行脑补出来了。<br>而<code>flex-flow</code>属性其实就是<code>flex-direction</code>和<code>flex-wrap</code>的复合属性。所以下面两段代码的效果是一致的。<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-container1</span> &#123;</div><div class="line"> <span class="attribute">flex-direction</span>: row;</div><div class="line"> <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.flex-container2</span> &#123;</div><div class="line"> <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>首行/首字符选择伪类（<code>::first-line</code>和<code>::first-letter</code>）</li>
 </ol>
+<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p><code>flex-direction</code>属性的作用是设置<strong>主轴</strong>方向。我们之前有说过，一旦主轴方向确定，那么连带的交叉轴的方向也会确定下来。这样就确定了flex条目基本的排列方式。<br>下面我们来看一下<code>flex-direction</code>的具体用法，如下表:</p>
+<table>
+<thead>
+<tr>
+<th>可选值</th>
+<th>含义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row</td>
+<td>横向从左到右排列</td>
+<td>即左对齐。此为默认值</td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>反转横向排列（从右到左排列）</td>
+<td>即右对齐</td>
+</tr>
+<tr>
+<td>column</td>
+<td>纵向排列（从上到下排列）</td>
+<td>即设置主轴方向为垂直方向</td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>反转纵向排列（从下到上排列）</td>
+<td>主轴方向为垂直方向，但是越后面的flex条目反而在上方</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p><code>flex-wrap</code>属性用于设置当所有的flex条目的尺寸之和超过flex容器的主轴尺寸时应该采取的行为。<br>下面让我们来看一下<code>flex-wrap</code>的具体用法，如下表：<br>| 可选值 | 含义 | 备注 |<br>| — | — | — |<br>| nowrap | 容器中的条目只占满容器在主轴方向上的一行，此时可能出现条目互相重叠或超出容器范围的现象 | 此为默认值 |<br>| wrap | 当容器中的条目超出主轴方向上的一行时，会把条目排列到下一行。而下一行的位置与交叉轴的方向一致 | 交叉轴的存在感就是在此 |<br>| wrap-reverse | 与<code>wrap</code>的含义类似，不同的是下一行的位置与交叉轴的方向相反。 | - |</p>
+<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p>之前说的两个属性<code>flex-direction</code>和<code>flex-wrap</code>，从某种意义上来说就是设置flex布局的主轴和交叉轴。一旦flex布局的主轴和交叉轴确定下来，基本上整个布局中flex条目的排列方式我们就可以自行脑补出来了。<br>而<code>flex-flow</code>属性其实就是<code>flex-direction</code>和<code>flex-wrap</code>的复合属性。所以下面两段代码的效果是一致的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-container1</span> &#123;</div><div class="line"> <span class="attribute">flex-direction</span>: row;</div><div class="line"> <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.flex-container2</span> &#123;</div><div class="line"> <span class="attribute">flex-flow</span>: row wrap;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>前面说的几个属性其实都是针对flex容器的设置。而<code>order</code>属性是针对flex条目的。它的作用是自定义flex容器中条目的顺序。其用法示例如下:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-item</span><span class="selector-pseudo">:last-child</span> &#123;</div><div class="line"><span class="comment">/*作用是让最后一个flex条目排在最前,order越小越排在前,且可设置为负值*/</span></div><div class="line"> <span class="attribute">order</span>: -<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="flex条目的弹性设置"><a href="#flex条目的弹性设置" class="headerlink" title="flex条目的弹性设置"></a>flex条目的弹性设置</h3><p>弹性盒模型的真正牛逼的地方在于flex容器中的<strong>flex条目的尺寸是弹性的</strong>。这是啥意思呢？个人觉得它包含下面的几层含义：</p>
 <ul>
 <li>主轴尺寸不够大时，使用<code>flex-wrap</code>可以让flex条目自动换行。</li>
 <li>主轴尺寸不够大时，还可以缩小条目的尺寸防止溢出容器范围。</li>
-<li>主轴尺寸足够大时，可以适当扩展条目的尺寸来占用容器的额外空白空间。<br>flex条目尺寸的弹性由3个css属性来确定，分别是<code>flex-basis</code>、<code>flex-grow</code>和<code>flex-shrink</code>。他们的相关说明如下：<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><code>flex-basis</code>用于设置flex条目的初始尺寸（未进行任何调整之前）。当设置为<code>auto</code>时，则实际使用的值是主轴尺寸属性的值。若主轴尺寸也是<code>auto</code>，那么使用的值由条目内容的尺寸来确定。(默认值是auto)<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4>当主轴尺寸足够大时，flex条目在容器内一行就全部排列完了，此时容器的空间还有剩余，那么可用<code>flex-grow</code>扩展flex条目。举个例子，一个容器中有3个flex条目，其<code>flex-grow</code>属性分别如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.flex-item:nth-child(1) &#123;</div><div class="line"> flex-grow: 1;</div><div class="line">&#125;</div><div class="line">.flex-item:nth-child(2) &#123;</div><div class="line"> flex-grow: 2;</div><div class="line">&#125;</div><div class="line">.flex-item:nth-child(3) &#123;</div><div class="line"> flex-grow: 3;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>主轴尺寸足够大时，可以适当扩展条目的尺寸来占用容器的额外空白空间。<br>flex条目尺寸的弹性由3个css属性来确定，分别是<code>flex-basis</code>、<code>flex-grow</code>和<code>flex-shrink</code>。他们的相关说明如下：</li>
 </ul>
+<h4 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h4><p><code>flex-basis</code>用于设置flex条目的初始尺寸（未进行任何调整之前）。当设置为<code>auto</code>时，则实际使用的值是主轴尺寸属性的值。若主轴尺寸也是<code>auto</code>，那么使用的值由条目内容的尺寸来确定。(默认值是auto)</p>
+<h4 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h4><p>当主轴尺寸足够大时，flex条目在容器内一行就全部排列完了，此时容器的空间还有剩余，那么可用<code>flex-grow</code>扩展flex条目。举个例子，一个容器中有3个flex条目，其<code>flex-grow</code>属性分别如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.flex-item:nth-child(1) &#123;</div><div class="line"> flex-grow: 1;</div><div class="line">&#125;</div><div class="line">.flex-item:nth-child(2) &#123;</div><div class="line"> flex-grow: 2;</div><div class="line">&#125;</div><div class="line">.flex-item:nth-child(3) &#123;</div><div class="line"> flex-grow: 3;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>同时，flex容器的宽度是800px，每个条目的宽度为200px，所以容器还将剩余200px。由于条目都设置了<code>flex-grow</code>属性，那么此三个条目将按比例分配容器的剩余空间。第一个条目将得到200 <em> 1/6 = 33px左右，第二个条目将得到200 </em> 2/6 = 66px，第三个条目将得到200 * 3/6 = 99px左右。</p>
 <h4 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h4><p><code>flex-shrink</code>在使用上类似<code>flex-grow</code>，不过它使用于设置当主轴尺寸不够大时缩小flex条目。同样的，我们来举个例子，一个容器中有3个flex条目，每个felx条目的尺寸为200px，容器的尺寸为500px。很明显此时容器尺寸已经放不下其中三个flex条目了。我们对每个flex条目设置<code>flex-shrink</code>属性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.flex-item</span><span class="selector-pseudo">:nth-child(1)</span> &#123;</div><div class="line"> <span class="attribute">flex-shrink</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.flex-item</span><span class="selector-pseudo">:nth-child(2)</span> &#123;</div><div class="line"> <span class="attribute">flex-shrink</span>: <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.flex-item</span><span class="selector-pseudo">:nth-child(3)</span> &#123;</div><div class="line"> <span class="attribute">flex-shrink</span>: <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>如果我们希望flex容器能够刚刚好将三个flex条目放下，我们需要缩小的尺寸为600-500 = 100px。接下来三个条目将根据<code>flex-shrink</code>属性按比例的分摊需要缩小的尺寸，即分别为100 <em> 1/6 = 16.6px，100 </em> 2/6 = 33.3px，100 * 3/6 = 50px。所以三个flex条目最终的尺寸为200 - 16.6 = 183.4px，200 - 33.3 = 166.7px，200 - 50 = 150px。</p>
@@ -72,9 +106,74 @@
 <h3 id="flex条目的对齐"><a href="#flex条目的对齐" class="headerlink" title="flex条目的对齐"></a>flex条目的对齐</h3><p>当flex容器中flex条目的尺寸和排列都确定下来之后，我们还可以设置这些flex条目在容器中的对齐方式。目前有三种对齐方式。</p>
 <h4 id="基于margin-auto对齐"><a href="#基于margin-auto对齐" class="headerlink" title="基于margin: auto对齐"></a>基于<code>margin: auto</code>对齐</h4><p>第一种对齐方式是<strong>使用空白边</strong>，即<code>margin: auto</code>。在使用自动空白边时，flex容器中额外的空白空间将会由被声明为<code>auto</code>的空白边占据。这种方式在W3C的官方文档被称之为<em>non-normative</em>，更加像是一种奇淫巧计。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/about</span>&gt;</span>About<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/projects</span>&gt;</span>Projects<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/interact</span>&gt;</span>Interact<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"login"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">/login</span>&gt;</span>Login<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">ul &#123;</div><div class="line"> list-style: none;</div><div class="line"> display: flex;</div><div class="line">&#125;</div><div class="line">li &#123;</div><div class="line"> min-width: min-content;</div><div class="line">&#125;</div><div class="line">#login &#123;</div><div class="line"> margin-left: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>示例中的<code>#login</code>元素通过简单的<code>margin-left</code>设置，占据所有的剩余空白。</p>
-<h4 id="基于主轴对齐"><a href="#基于主轴对齐" class="headerlink" title="基于主轴对齐"></a>基于主轴对齐</h4><p>第二种对齐方式是基于主轴方向上的对齐策略。可以通过<code>justify-content</code>属性来进行设置。借助此属性，我们可以调整flex条目在主轴方向上的对齐策略。<br>我们来看下<code>justify-content</code>属性的基本用法，（<strong>注意</strong>，<code>justify-content</code>用于设置flex容器）<br>| 可选值 | 含义 |<br>| —— | —— |<br>| flex-start | 条目集中于该行的起始位置。第一个条目与其所在行在主轴起始方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| flex-end | 条目集中于该行的结束方向。最后一个条目与其所在行在主轴结束方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| center | 条目集中于该行的中央。条目都往该行的中央排列，在主轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则条目会在两个方向上超出同样的空间。|<br>| space-between | 第一个条目与其所在行在主轴起始方向上的边界保持对齐，最后一个条目与其所在行在主轴结束方向上的边界保持对齐。空白空间在条目之间平均分配，使得相邻条目之间的空白尺寸相同。|<br>| space-around | 类似于<code>space-between</code>，不同的是第一个条目和最后一个条目与该行的边界之间同样存在空白空间，该空白空间的尺寸是条目之间的空白空间的尺寸的一半。|</p>
-<h4 id="基于交叉轴对齐"><a href="#基于交叉轴对齐" class="headerlink" title="基于交叉轴对齐"></a>基于交叉轴对齐</h4><p>第三种对齐方式是基于交叉轴方向上的对齐策略。此种方式中，我们有两个属性可以做相关设置，它们分别是<code>align-items</code>和<code>align-self</code>。其中前者是用来设置flex容器的，后者是用来设置flex条目的，这两个属性的作用对象是不同的。在某些场景下，我们可以对flex条目设置<code>align-self</code>来复写flex容器指定的对齐方式。<br>我们来看看<code>align-items</code>的基本用法<br>| 可选值 | 含义 |<br>| ——– | —– |<br>| flex-start | 条目与其所在行在交叉轴起始方向上的边界保持对齐。 |<br>| flex-end | 条目与其所在行在交叉轴结束方向上的边界保持对齐。 |<br>| center | 条目的空白边盒子（margin box）在交叉轴上居中。如果交叉轴尺寸小于条目的尺寸，则条目会在两个方向上超出相同大小的空间。 |<br>| baseline | 条目在基准线上保持对齐。在所有条目中，基准线与交叉轴起始方向上的边界距离最大的条目，它与所在行在交叉轴方向上的边界保持对齐。|<br>| stretch | 如果条目的交叉轴尺寸的计算值是<code>auto</code>，则其实际使用的值会使得条目在交叉轴方向上尽可能地占满。 |<br><code>align-self</code>的属性基本与<code>align-items</code>一致（用法和含义基本都一样）。不过<code>align-self</code>除了<code>align-items</code>属性可选值之外，还可以设置为<code>auto</code>。当设置为<code>auto</code>时，其值是父节点的属性<code>align-items</code>的值,如果该节点没有父节点，则为<code>stretch</code>。</p>
-<h3 id="flex行的对齐"><a href="#flex行的对齐" class="headerlink" title="flex行的对齐"></a>flex行的对齐</h3><p>前面说完了flex容器中flex条目的对齐方式。这里我们再来说一下<strong>flex行</strong>的对齐。什么叫flex行？W3C官方文档中提到了一个名词，叫做<a href="http://www.w3.org/TR/css-flexbox/#flex-lines" target="_blank" rel="external"><strong>Flex Lines</strong></a>。<br>那么什么叫Flex Lines呢？说的直白点就是多行flex布局时，主轴方向上的每一行就是Flex Lines。<br><code>align-content</code>属性的作用和<code>justify-content</code>属性很相似，只不过<code>justify-content</code>是用于在主轴方向上对齐行内的flex条目，而<code>align-content</code>是用于设置行与行之间的对齐策略。<br><code>align-content</code>详细的用法如下表:<br>| 可选值 | 含义 |<br>| ——- | ——- |<br>| flex-start | 行集中于容器的交叉轴起始位置。第一行与容器在交叉轴起始方向上的边界保持对齐，其余行按照顺序依次排列。|<br>| flex-end | 行集中于容器的交叉轴结束位置。第一行与容器在交叉轴结束方向上的边界保持对齐，其余行按照顺序依次排列。|<br>| center | 行集中于容器的中央。行都往容器的中央排列，在交叉轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则行会在两个方向上超出同样的空间。|<br>| space-between | 行在容器中均匀分布。第一行与容器在交叉轴起始方向上的边界保持对齐，最后一行与容器在交叉轴结束方向上的边界保持对齐。空白空间在行之间平均分配，使得相邻行之间的空白尺寸相同。|<br>| space-around | 类似于<code>space-between</code>，不同的是第一行条目和最后一个行目与容器行的边界之间同样存在空白空间，而该空白空间的尺寸是行目之间的空白空间的尺寸的一半。|<br>| stretch | 伸展行来占满剩余的空间。多余的空间在行之间平均分配，使得每一行的交叉轴尺寸变大。 |</p>
+<h4 id="基于主轴对齐"><a href="#基于主轴对齐" class="headerlink" title="基于主轴对齐"></a>基于主轴对齐</h4><p>第二种对齐方式是基于主轴方向上的对齐策略。可以通过<code>justify-content</code>属性来进行设置。借助此属性，我们可以调整flex条目在主轴方向上的对齐策略。<br>我们来看下<code>justify-content</code>属性的基本用法，（<strong>注意</strong>，<code>justify-content</code>用于设置flex容器）<br>| 可选值 | 含义 |<br>| — | — |<br>| flex-start | 条目集中于该行的起始位置。第一个条目与其所在行在主轴起始方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| flex-end | 条目集中于该行的结束方向。最后一个条目与其所在行在主轴结束方向上的边界保持对齐，其余的条目按照顺序依次排列。|<br>| center | 条目集中于该行的中央。条目都往该行的中央排列，在主轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则条目会在两个方向上超出同样的空间。|<br>| space-between | 第一个条目与其所在行在主轴起始方向上的边界保持对齐，最后一个条目与其所在行在主轴结束方向上的边界保持对齐。空白空间在条目之间平均分配，使得相邻条目之间的空白尺寸相同。|<br>| space-around | 类似于<code>space-between</code>，不同的是第一个条目和最后一个条目与该行的边界之间同样存在空白空间，该空白空间的尺寸是条目之间的空白空间的尺寸的一半。|</p>
+<h4 id="基于交叉轴对齐"><a href="#基于交叉轴对齐" class="headerlink" title="基于交叉轴对齐"></a>基于交叉轴对齐</h4><p>第三种对齐方式是基于交叉轴方向上的对齐策略。此种方式中，我们有两个属性可以做相关设置，它们分别是<code>align-items</code>和<code>align-self</code>。其中前者是用来设置flex容器的，后者是用来设置flex条目的，这两个属性的作用对象是不同的。在某些场景下，我们可以对flex条目设置<code>align-self</code>来复写flex容器指定的对齐方式。<br>我们来看看<code>align-items</code>的基本用法</p>
+<table>
+<thead>
+<tr>
+<th>可选值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-start</td>
+<td>条目与其所在行在交叉轴起始方向上的边界保持对齐。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>条目与其所在行在交叉轴结束方向上的边界保持对齐。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>条目的空白边盒子（margin box）在交叉轴上居中。如果交叉轴尺寸小于条目的尺寸，则条目会在两个方向上超出相同大小的空间。</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>条目在基准线上保持对齐。在所有条目中，基准线与交叉轴起始方向上的边界距离最大的条目，它与所在行在交叉轴方向上的边界保持对齐。</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td>如果条目的交叉轴尺寸的计算值是<code>auto</code>，则其实际使用的值会使得条目在交叉轴方向上尽可能地占满。</td>
+</tr>
+</tbody>
+</table>
+<p><code>align-self</code>的属性基本与<code>align-items</code>一致（用法和含义基本都一样）。不过<code>align-self</code>除了<code>align-items</code>属性可选值之外，还可以设置为<code>auto</code>。当设置为<code>auto</code>时，其值是父节点的属性<code>align-items</code>的值,如果该节点没有父节点，则为<code>stretch</code>。</p>
+<h3 id="flex行的对齐"><a href="#flex行的对齐" class="headerlink" title="flex行的对齐"></a>flex行的对齐</h3><p>前面说完了flex容器中flex条目的对齐方式。这里我们再来说一下<strong>flex行</strong>的对齐。什么叫flex行？W3C官方文档中提到了一个名词，叫做<a href="http://www.w3.org/TR/css-flexbox/#flex-lines" target="_blank" rel="external"><strong>Flex Lines</strong></a>。<br>那么什么叫Flex Lines呢？说的直白点就是多行flex布局时，主轴方向上的每一行就是Flex Lines。<br><code>align-content</code>属性的作用和<code>justify-content</code>属性很相似，只不过<code>justify-content</code>是用于在主轴方向上对齐行内的flex条目，而<code>align-content</code>是用于设置行与行之间的对齐策略。<br><code>align-content</code>详细的用法如下表:</p>
+<table>
+<thead>
+<tr>
+<th>可选值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-start</td>
+<td>行集中于容器的交叉轴起始位置。第一行与容器在交叉轴起始方向上的边界保持对齐，其余行按照顺序依次排列。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>行集中于容器的交叉轴结束位置。第一行与容器在交叉轴结束方向上的边界保持对齐，其余行按照顺序依次排列。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>行集中于容器的中央。行都往容器的中央排列，在交叉轴起始方向和结束方向上留有同样大小的空白空间。如果空白空间不足，则行会在两个方向上超出同样的空间。</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>行在容器中均匀分布。第一行与容器在交叉轴起始方向上的边界保持对齐，最后一行与容器在交叉轴结束方向上的边界保持对齐。空白空间在行之间平均分配，使得相邻行之间的空白尺寸相同。</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>类似于<code>space-between</code>，不同的是第一行条目和最后一个行目与容器行的边界之间同样存在空白空间，而该空白空间的尺寸是行目之间的空白空间的尺寸的一半。</td>
+</tr>
+<tr>
+<td>stretch</td>
+<td>伸展行来占满剩余的空间。多余的空间在行之间平均分配，使得每一行的交叉轴尺寸变大。</td>
+</tr>
+</tbody>
+</table>
 <h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3><p>本文的<strong>新旧语法</strong>中曾经提到，弹性盒模型官方有好几个版本的语法，这是因为其规范本身有过多个不同版本，因为浏览器对于该规范的支持也存在一些不一致。大致来说总共有三个不同版本的语法。</p>
 <ul>
 <li>最新规范：最新版本规范的语法，即<code>display: flex</code>。</li>
