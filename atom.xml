@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heji1993.github.io/"/>
-  <updated>2016-12-12T02:23:54.926Z</updated>
+  <updated>2016-12-12T08:46:48.213Z</updated>
   <id>https://heji1993.github.io/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>块级元素和内联元素的区别</title>
+    <link href="https://heji1993.github.io/2016/12/12/%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%92%8C%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0/"/>
+    <id>https://heji1993.github.io/2016/12/12/块级元素和内联元素/</id>
+    <published>2016-12-12T08:44:42.167Z</published>
+    <updated>2016-12-12T08:46:48.213Z</updated>
+    
+    <content type="html"><![CDATA[<p>元素是文档结构的基础，在CSS中，每个元素生成了一个包含了元素内容的框（box，也译为“盒子”）。但是不同的元素显示的方式会有所不同，例如<code>&lt;div&gt;</code>和<code>&lt;span&gt;</code>就不同，而<code>&lt;strong&gt;</code>和<code>&lt;p&gt;</code>也不一样。在文档类型定义（DTD）中对不同的元素规定了不同的类型，这也是DTD对文档之所以重要的原因之一。</p>
+<a id="more"></a>
+<h2 id="替换和不可替换元素"><a href="#替换和不可替换元素" class="headerlink" title="替换和不可替换元素"></a>替换和不可替换元素</h2><p>从元素本身的特点来讲，可以分为替换和不可替换元素。</p>
+<h3 id="替换元素"><a href="#替换元素" class="headerlink" title="替换元素"></a>替换元素</h3><p>替换元素就是浏览器根据元素的标签和属性，来决定元素的具体显示内容。<br>例如浏览器会根据<code>&lt;img&gt;</code>标签的src属性的值来读取图片信息并显示出来，而如果查看(X)HTML代码，则看不到图片的实际内容；又例如根据<code>&lt;input&gt;</code>标签的type属性来决定是显示输入框，还是单选按钮等。<br>(X)HTML中的<code>&lt;img&gt;</code>、<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code>、<code>&lt;object&gt;</code>都是替换元素。</p>
+<h3 id="不可替换元素"><a href="#不可替换元素" class="headerlink" title="不可替换元素"></a>不可替换元素</h3><p>(X)HTML 的大多数元素是不可替换元素，即其内容直接表现给用户端（例如浏览器）。例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">段落内容</div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>段落<code>&lt;p&gt;</code>是一个不可替换元素，文字“段落的内容”全被显示。<br><strong>注意：<code>input</code>、<code>img</code>等替换元素虽然是内联元素，但替换元素一般有内在尺寸，所以可以设定宽高、内外边距。例如你不指定<code>img</code>的width和height时，就按其内在尺寸显示，也就是图片被保存的时候的宽度和高度。</strong></p>
+<h2 id="显示元素"><a href="#显示元素" class="headerlink" title="显示元素"></a>显示元素</h2><p>除了可替换元素和不可替换元素的分类方式外，CSS 2.1中元素还有另外的分类方式：块级元素（block-level）和行内元素（inline-level，也译作“内联”元素）。</p>
+<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><p>在视觉上被格式化为块的元素，最明显的特征就是它默认在横向充满其父元素的内容区域，而且在其左右两边没有其他元素，即块级元素默认是独占一行的。<br>典型的块级元素有：<code>&lt;div&gt;</code>、<code>&lt;p&gt;</code>、<code>&lt;h1&gt;</code>到<code>&lt;h6&gt;</code>，等等。<br>通过CSS设定了浮动（float属性，可向左浮动或向右浮动）以及设定显示（display）属性为“block”或“list-item”的元素都是块级元素。<br>但是浮动元素比较特殊，由于浮动，其旁边可能会有其他元素的存在。相当于显示为<code>inline-block</code><br><strong>注意：块级元素能设置宽高、行高、内外边距。</strong></p>
+<h3 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h3><p>行内元素不形成新内容块，即在其左右可以有其他元素，例如<code>&lt;a&gt;</code>、<code>&lt;span&gt;</code>、<code>&lt;strong&gt;</code>等，都是典型的行内级元素。<br>display属性等于“inline”的元素都是行内元素。几乎所有的可替换元素都是行内元素，例如<code>&lt;img&gt;</code>、<code>&lt;input&gt;</code>等等。<br>不过元素的类型也不是固定的，通过设定CSS 的display属性，可以使行内元素变为块级元素，也可以让块级元素变为行内元素。<br><strong>注意：由于内联非替换元素的宽高由内容决定，所以不能设置宽高，行高，因为行高不变，所以不能设置padding-top/bottom、margin-top/bottom，但可以设置padding-left/right,margin-left/right</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;元素是文档结构的基础，在CSS中，每个元素生成了一个包含了元素内容的框（box，也译为“盒子”）。但是不同的元素显示的方式会有所不同，例如&lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;span&amp;gt;&lt;/code&gt;就不同，而&lt;code&gt;&amp;lt;strong&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt;也不一样。在文档类型定义（DTD）中对不同的元素规定了不同的类型，这也是DTD对文档之所以重要的原因之一。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+    
+    
+      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+    
+      <category term="Web前端" scheme="https://heji1993.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS3弹性盒模型</title>
@@ -1059,7 +1092,7 @@
     <link href="https://heji1993.github.io/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
     <id>https://heji1993.github.io/2016/08/22/常用CSS hack/</id>
     <published>2016-08-22T02:41:14.806Z</published>
-    <updated>2016-12-12T06:39:44.466Z</updated>
+    <updated>2016-12-12T06:59:23.189Z</updated>
     
     <content type="html"><![CDATA[<p>由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。</p>
 <a id="more"></a>
@@ -1109,7 +1142,7 @@
     <link href="https://heji1993.github.io/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://heji1993.github.io/2016/08/19/Oracle知识点/</id>
     <published>2016-08-19T10:29:17.297Z</published>
-    <updated>2016-12-12T06:20:50.996Z</updated>
+    <updated>2016-12-12T06:53:01.500Z</updated>
     
     <content type="html"><![CDATA[<p>oracle常用易忘知识点<br><a id="more"></a></p>
 <h2 id="使用sqlplus连接远程数据库"><a href="#使用sqlplus连接远程数据库" class="headerlink" title="使用sqlplus连接远程数据库"></a>使用sqlplus连接远程数据库</h2><hr>
@@ -1135,8 +1168,14 @@
 <p>删除字段的语法：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">alter</span> <span class="keyword">table</span> tablename <span class="keyword">drop</span> (<span class="keyword">column</span>);</div></pre></td></tr></table></figure></p>
 <p>添加、修改、删除多列的话，用逗号隔开。</p>
 <h2 id="从Excel导入数据到oracle"><a href="#从Excel导入数据到oracle" class="headerlink" title="从Excel导入数据到oracle"></a>从Excel导入数据到oracle</h2><hr>
-<h4 id="CSV格式文件导入"><a href="#CSV格式文件导入" class="headerlink" title="CSV格式文件导入"></a>CSV格式文件导入</h4><p>1、创建sql*loader控制文件**.ctl<br><img src="index_files/clipboard.png" alt=""><br>2、在命令行输入命令<br><img src="index_files/2cb67420-47b9-4578-8d44-495c3fa45fb8.png" alt=""><br>system/manager改为对应的用户名/密码</p>
-<h4 id="Excel格式导入"><a href="#Excel格式导入" class="headerlink" title="Excel格式导入"></a>Excel格式导入</h4><p>1、工具–&gt;ODBC导入器<br>2、选择Excel文件<br><img src="index_files/fcf88952-2961-4d28-bd4b-be1b20eb3a90.png" alt=""><br>3、选择要导入的表<br><img src="index_files/bd92eca3-3c62-4acf-9836-93ddf1ebd08c.png" alt=""><br>4、导入</p>
+<h3 id="CSV格式文件导入"><a href="#CSV格式文件导入" class="headerlink" title="CSV格式文件导入"></a>CSV格式文件导入</h3><ul>
+<li>创建sql*loader控制文件**.ctl<br><img src="index_files/clipboard.png" alt=""></li>
+<li>在命令行输入命令<br><img src="index_files/2cb67420-47b9-4578-8d44-495c3fa45fb8.png" alt=""><br>system/manager改为对应的用户名/密码<h3 id="Excel格式导入"><a href="#Excel格式导入" class="headerlink" title="Excel格式导入"></a>Excel格式导入</h3></li>
+<li>工具–&gt;ODBC导入器</li>
+<li>选择Excel文件<br><img src="index_files/fcf88952-2961-4d28-bd4b-be1b20eb3a90.png" alt=""></li>
+<li>选择要导入的表<br><img src="index_files/bd92eca3-3c62-4acf-9836-93ddf1ebd08c.png" alt=""></li>
+<li>导入</li>
+</ul>
 <h2 id="oracle函数"><a href="#oracle函数" class="headerlink" title="oracle函数"></a>oracle函数</h2><hr>
 <h3 id="decode函数"><a href="#decode函数" class="headerlink" title="decode函数"></a>decode函数</h3><p>语法：<code>decode(条件,值1,返回值1,值2,返回值2,...值n,返回值n,缺省值)</code> 例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">decode</span>(SEX,<span class="string">'女'</span>,<span class="number">1</span>,<span class="string">'男'</span>,<span class="number">0</span>） sex  <span class="keyword">from</span> T_PERSON</div></pre></td></tr></table></figure></p>
 <h3 id="case-when函数"><a href="#case-when函数" class="headerlink" title="case when函数"></a>case when函数</h3><p>语法：<code>CASE WHEN 条件 THEN 操作 WHEN 条件2 THEN 操作2 ELSE 操作3 END</code>，例如：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span>   grade, <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">1</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 男生数,</div><div class="line">                <span class="keyword">COUNT</span> (<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sex =<span class="number">2</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="literal">NULL</span> <span class="keyword">END</span>) 女生数</div><div class="line">                <span class="keyword">FROM</span> students GROUPBY grade;</div></pre></td></tr></table></figure></p>
