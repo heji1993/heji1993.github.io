@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[块级元素和内联元素的区别]]></title>
       <url>https://heji1993.github.io/2016/12/12/%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%92%8C%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0/</url>
-      <content type="html"><![CDATA[<p>元素是文档结构的基础，在CSS中，每个元素生成了一个包含了元素内容的框（box，也译为“盒子”）。但是不同的元素显示的方式会有所不同，例如<code>&lt;div&gt;</code>和<code>&lt;span&gt;</code>就不同，而<code>&lt;strong&gt;</code>和<code>&lt;p&gt;</code>也不一样。在文档类型定义（DTD）中对不同的元素规定了不同的类型，这也是DTD对文档之所以重要的原因之一。</p>
+      <content type="html"><![CDATA[<p>元素是文档结构的基础，在CSS中，每个元素生成了一个包含了元素内容的框（box，也译为“盒子”）。但是不同的元素显示的方式会有所不同，在文档类型定义（DTD）中对不同的元素规定了不同的类型，这也是DTD对文档之所以重要的原因之一。</p>
 <a id="more"></a>
 <h2 id="替换和不可替换元素"><a href="#替换和不可替换元素" class="headerlink" title="替换和不可替换元素"></a>替换和不可替换元素</h2><p>从元素本身的特点来讲，可以分为替换和不可替换元素。</p>
 <h3 id="替换元素"><a href="#替换元素" class="headerlink" title="替换元素"></a>替换元素</h3><p>替换元素就是浏览器根据元素的标签和属性，来决定元素的具体显示内容。<br>例如浏览器会根据<code>&lt;img&gt;</code>标签的src属性的值来读取图片信息并显示出来，而如果查看(X)HTML代码，则看不到图片的实际内容；又例如根据<code>&lt;input&gt;</code>标签的type属性来决定是显示输入框，还是单选按钮等。<br>(X)HTML中的<code>&lt;img&gt;</code>、<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code>、<code>&lt;object&gt;</code>都是替换元素。</p>
