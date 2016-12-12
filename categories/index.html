@@ -17,7 +17,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>分类 | 何机的博客 · No pains,no gains</title>
+    <title>Category:   | 何机的博客 · No pains,no gains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -98,9 +98,9 @@
                     </li>
                     
 
-                    <li id="nav-github"><a href="https://github.com/gejiawen" target="_blank">GitHub</a></li>
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
                     <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
-                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                    <li id="nav-search"><input type="text" id="" placeholder="search" /></li>
                 </ul>
             </div>
         </div>
@@ -110,7 +110,7 @@
     var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
     var bgLength = "74";
     var bgRandom = false;
-    var bgImage = "http://7xkwt1.com1.z0.glb.clouddn.com/background-64.jpg";
+    var bgImage = "/images/bg.jpg";
 
     $(function() {
         // page-id...
@@ -122,72 +122,50 @@
     });
     </script>
 
-    <article class="post page container">
-    <div class="well post-body first-post last-post">
-        <h1>分类</h1>
+    
 
-        <div class="time-info">
-            
+<div class="container archive-body">
+    <div class="row">
+        <div class="col-xs-3 well">
+            <div class="category-title" >
+                <h2 class="category-icon">分类</h2>
+                <ul class="archive-list">
+                    
+                    <li><a data-src="/categories/CSS/" href="#CSS" title="CSS">CSS<sup class="sup-color">1</sup></a></li>
+                    
+                    <li><a data-src="/categories/Web前端/" href="#Web前端" title="Web前端">Web前端<sup class="sup-color">4</sup></a></li>
+                    
+                    <li><a data-src="/categories/数据库/" href="#数据库" title="数据库">数据库<sup class="sup-color">2</sup></a></li>
+                    
+                </ul>
 
-
-
-            &nbsp;&nbsp;
-            发表: <time datetime="2016-08-16T01:02:47.000Z"
-                       itemprop="datePublished">2016-08-16</time>
-            
-            更新: <time datetime="2016-08-16T01:03:09.866Z"
-                       itemprop="dateModified">2016-08-16</time>
-            
+            </div>
         </div>
 
-        <div class="post-body-inner">
-            
-
-            
-
-            <div class="post-info">
-    <p class="eof">- EOF -</p>
-    <p class="copyright">All rights reserved <a href="http://gejiawen.github.io/about">@gejiawen</a>.</p>
-    <p class="link">本文链接：<a href="https://heji1993.github.io/categories/index.html">https://heji1993.github.io/categories/index.html</a></p>
-
-    <div class="share">
-    分享本页：
-    
-        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
-    
-    
-</div>
-
-</div>
-
-
-            
-    <section class="comment">
-    <div class="ds-thread" data-thread-key="undefined" data-title="分类" data-url="https://heji1993.github.io/categories/index.html" data-author-key="何机"></div>
-</section>
-
-
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"gejiawen-blog"};
-    (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';
-        ds.async = true;
-        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-</script>
-
-
-
-
-
+        <div class="all-list-box">
         </div>
     </div>
-</article>
+</div>
+
+<script>
+$(function() {
+    var box = $('.all-list-box');
+    var first = $('.category-title a:first-of-type');
+    var list = $('.category-title a');
+
+    box.load(first.attr('data-src').toString() + ' #category-list-body');
+    first.addClass('currentTag');
+    list.each(function() {
+        $(this).click(function() {
+            var listSrc = $(this).attr('data-src').toString() + ' #category-list-body';
+            box.load(listSrc);
+            list.removeClass('currentTag');
+            $(this).addClass('currentTag');
+        });
+    });
+});
+</script>
+
 
     <footer id="footer">
         <div id="bottom-tip">
