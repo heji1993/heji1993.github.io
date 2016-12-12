@@ -1059,10 +1059,9 @@
     <link href="https://heji1993.github.io/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
     <id>https://heji1993.github.io/2016/08/22/常用CSS hack/</id>
     <published>2016-08-22T02:41:14.806Z</published>
-    <updated>2016-12-12T02:26:32.919Z</updated>
+    <updated>2016-12-12T05:38:15.515Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="什么是CSS-hack"><a href="#什么是CSS-hack" class="headerlink" title="什么是CSS hack"></a>什么是CSS hack</h2><hr>
-<p>由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。</p>
+    <content type="html"><![CDATA[<p>由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。</p>
 <a id="more"></a>
 <h2 id="CSS内部hack"><a href="#CSS内部hack" class="headerlink" title="CSS内部hack"></a>CSS内部hack</h2><hr>
 <p>在CSS3中常见一些这样的写法<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/*Mozilla内核浏览器：firefox3.5+*/</div><div class="line"> -moz-transform: rotate | scale | skew | translate ;</div><div class="line">/*Webkit内核浏览器：Safari and Chrome*/</div><div class="line"> -webkit-transform: rotate | scale | skew | translate ;</div><div class="line">/*Opera*/</div><div class="line"> -o-transform: rotate | scale | skew | translate ;</div><div class="line">/*IE9*/</div><div class="line"> -ms-transform: rotate | scale | skew | translate ;</div><div class="line">/*W3C标准*/</div><div class="line"> transform: rotate | scale | skew | translate ;</div></pre></td></tr></table></figure></p>
@@ -1090,8 +1089,7 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;什么是CSS-hack&quot;&gt;&lt;a href=&quot;#什么是CSS-hack&quot; class=&quot;headerlink&quot; title=&quot;什么是CSS hack&quot;&gt;&lt;/a&gt;什么是CSS hack&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。&lt;/p&gt;
+      &lt;p&gt;由于不同的浏览器，甚至同一浏览器的不同版本对CSS的解析认识不一样，导致生成的页面效果不一致，写出针对不同浏览器CSS code就称为CSS hack。&lt;/p&gt;
     
     </summary>
     
@@ -1111,7 +1109,7 @@
     <link href="https://heji1993.github.io/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     <id>https://heji1993.github.io/2016/08/19/Oracle知识点/</id>
     <published>2016-08-19T10:29:17.297Z</published>
-    <updated>2016-12-12T05:36:44.657Z</updated>
+    <updated>2016-12-12T05:38:35.667Z</updated>
     
     <content type="html"><![CDATA[<hr>
 <p>title: Oracle常用知识点<br>categories: 数据库</p>
