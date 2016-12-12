@@ -308,7 +308,7 @@
     <link href="https://heji1993.github.io/2016/09/21/%E4%BD%BF%E7%94%A8powerdesigner%E5%80%92%E8%BD%AC%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>https://heji1993.github.io/2016/09/21/使用powerdesigner倒转数据库/</id>
     <published>2016-09-21T09:48:34.334Z</published>
-    <updated>2016-09-21T09:56:05.847Z</updated>
+    <updated>2016-12-12T06:14:26.655Z</updated>
     
     <content type="html"><![CDATA[<p>如何使用powerdesigner根据数据库生成pdm。</p>
 <a id="more"></a>
@@ -316,10 +316,10 @@
 <ul>
 <li>配置系统变量<br>CLASSPATH = E:\Workspaces\my-jar\mysql-connector-java-5.1.7-bin.jar  （如果需要反转Oracle数据库，这里的值是Oracle驱动包的路径）<br>JAVA_HOME = D:\Java\jdk1.6.0_13\;<br>Path = %Path%;% JAVA_HOME %\bin;  </li>
 <li>PowerDesigner配置<br>PowerDesigner Tools –&gt; General Options –&gt; Variables：<br>JAR D:\Java\jdk1.6.0_13\bin\jar.exe<br>JAVA D:\Java\jdk1.6.0_13\bin\java.exe<br>JAVAC D:\Java\jdk1.6.0_13\bin\javac.exe<br>JAVADOC D:\Java\jdk1.6.0_13\bin\javadoc.exe</li>
-<li>打开Powerdesigner，文件–&gt;Reverse Engineer –&gt; Database…<br><img src="../../../../images/index_files/6736595f-4701-424b-9b3b-5bb534aa573c.png" alt=""></li>
-<li>使用数据源<br><img src="../../../../images/index_files/623e5892-970b-46dc-a8bd-2f7dcd52ed5f.png" alt=""></li>
-<li>配置数据库连接<br><img src="../../../../images/index_files/76e72467-d912-45cc-94c0-57a33a208c74.png" alt=""></li>
-<li>添加一个数据源并测试连接<br><img src="../../../../images/index_files/ad10bbc3-74da-4786-b156-138d693c7398.png" alt=""><br><img src="../../../../images/index_files/9739f9b8-5e3c-4796-bd6b-9e64f8634dc9.png" alt=""></li>
+<li>打开Powerdesigner，文件–&gt;Reverse Engineer –&gt; Database…<br><img src="index_files/6736595f-4701-424b-9b3b-5bb534aa573c.png" alt=""></li>
+<li>使用数据源<br><img src="index_files/623e5892-970b-46dc-a8bd-2f7dcd52ed5f.png" alt=""></li>
+<li>配置数据库连接<br><img src="index_files/76e72467-d912-45cc-94c0-57a33a208c74.png" alt=""></li>
+<li>添加一个数据源并测试连接<br><img src="index_files/ad10bbc3-74da-4786-b156-138d693c7398.png" alt=""><br><img src="index_files/9739f9b8-5e3c-4796-bd6b-9e64f8634dc9.png" alt=""></li>
 </ul>
 ]]></content>
     
