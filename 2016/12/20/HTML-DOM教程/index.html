@@ -146,7 +146,7 @@
             发表: <time datetime="2016-12-20T11:47:21.732Z"
                        itemprop="datePublished">2016-12-20</time>
             
-            更新: <time datetime="2016-12-20T12:26:27.304Z"
+            更新: <time datetime="2016-12-20T12:38:18.598Z"
                        itemprop="dateModified">2016-12-20</time>
             
         </div>
@@ -174,8 +174,9 @@
 <li>1级DOM<br>1级DOM在1998年10月份成为W3C的提议，由DOM核心与DOM HTML两个模块组成。DOM核心能映射以XML为基础的文档结构，允许获取和操作文档的任意部分。DOM HTML通过添加HTML专用的对象与函数对DOM核心进行了扩展。</li>
 <li>2级DOM<br>鉴于1级DOM仅以映射文档结构为目标，DOM 2级面向更为宽广。通过对原有DOM的扩展，2级DOM通过对象接口增加了对鼠标和用户界面事件（DHTML长期支持鼠标与用户界面事件）、范围、遍历（重复执行DOM文档）和层叠样式表（CSS）的支持。同时也对DOM 1的核心进行了扩展，从而可支持XML命名空间。</li>
 <li>3级DOM<br>3级DOM通过引入统一方式载入和保存文档和文档验证方法对DOM进行进一步扩展，DOM3包含一个名为“DOM载入与保存”的新模块，DOM核心扩展后可支持XML1.0的所有内容，包括XML Infoset、 XPath、和XML Base。</li>
-<li>“0级”DOM<br>当阅读与DOM有关的材料时，可能会遇到参考0级DOM的情况。需要注意的是并没有标准被称为0级DOM，它仅是DOM历史上一个参考点（0级DOM被认为是在Internet Explorer 4.0 与Netscape Navigator4.0支持的最早的DHTML）。<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4>每一个DOM Level都有描述它的标准和文档，但他们并没有被完整地实现，浏览器只是简单地挑选了其中的有用功能，而且，已经实现的功能之间还存在某种程度的不一致性。<br>有多种方式应对DOM功能的多变性：</li>
+<li>“0级”DOM<br>当阅读与DOM有关的材料时，可能会遇到参考0级DOM的情况。需要注意的是并没有标准被称为0级DOM，它仅是DOM历史上一个参考点（0级DOM被认为是在Internet Explorer 4.0 与Netscape Navigator4.0支持的最早的DHTML）。</li>
 </ul>
+<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>每一个DOM Level都有描述它的标准和文档，但他们并没有被完整地实现，浏览器只是简单地挑选了其中的有用功能，而且，已经实现的功能之间还存在某种程度的不一致性。<br>有多种方式应对DOM功能的多变性：</p>
 <ol>
 <li>使用JavaScript库<br>JavaScript库消除了浏览器之间实现方式的差别，优点是其一致性，缺点是只能使用库支持的那些功能。</li>
 <li>保守方式<br>只使用你所知的被广泛支持的那些功能。</li>
@@ -186,12 +187,12 @@
 </ol>
 <p><strong>在这篇文章，我们主要学习的是HTMLDOM，HTML DOM 定义了所有 HTML 元素的<em>对象</em>和<em>属性</em>，以及访问它们的<em>方法</em>。</strong></p>
 <h2 id="使用Document对象"><a href="#使用Document对象" class="headerlink" title="使用Document对象"></a>使用Document对象</h2><p>DOM的一个关键组成部分就是Document对象。Document对象是通往DOM功能的入口，它向你提供了当前文档的信息，以及一组可供探索、导航、搜索或操作结构与内容的功能。<br>我们通过变量document访问Document对象，它是浏览器为我们创建的关键对象之一。</p>
-<h3 id="使用Document元数据"><a href="#使用Document元数据" class="headerlink" title="使用Document元数据"></a>使用Document元数据</h3><p>Document对象的用途之一是向你提供关于文档的信息。下表介绍了你可以用来获取文档元数据的属性。<br><img src="index_files/2a3d6ac2-be28-4a8c-993d-53638e53871f.jpg" alt=""></p>
+<h3 id="使用Document元数据"><a href="#使用Document元数据" class="headerlink" title="使用Document元数据"></a>使用Document元数据</h3><p>Document对象的用途之一是向你提供关于文档的信息。下表介绍了你可以用来获取文档元数据的属性。</p>
+<p><img src="index_files/2a3d6ac2-be28-4a8c-993d-53638e53871f.jpg" alt=""></p>
 <ul>
 <li><p>获取文档信息</p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;pre&gt;"</span>);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"characterSet:"</span>+<span class="built_in">document</span>.characterSet); <span class="comment">//只读</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"charset:"</span>+<span class="built_in">document</span>.charset); <span class="comment">//读取</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"compatMode:"</span>+<span class="built_in">document</span>.compatMode); </div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"defaultCharset:"</span>+<span class="built_in">document</span>.defaultCharset);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"domain:"</span>+<span class="built_in">document</span>.domain);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"referrer:"</span>+<span class="built_in">document</span>.referrer);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"lastModified:"</span>+<span class="built_in">document</span>.lastModified);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"cookie:"</span>+<span class="built_in">document</span>.cookie);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;/pre&gt;"</span>);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  <strong>理解怪异模式</strong><br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。</p>
-<p>  | 值 | 说明 |<br>  | — | — |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
+<p>  <strong>理解怪异模式</strong><br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。<br>  | 值 | 说明 |<br>  | — | — |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
 </li>
 <li><p>使用Location对象<br>  document.location属性返回一个Location对象，这个对象给你提供了细粒度的文档地址信息，也允许你导航到其他文档上。</p>
 <p>  <img src="index_files/44115d5b-91d5-446a-a0b2-7a4f02d79d20.jpg" alt=""></p>
