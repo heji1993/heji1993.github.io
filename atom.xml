@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heji1993.github.io/"/>
-  <updated>2016-12-21T07:36:03.566Z</updated>
+  <updated>2016-12-21T07:49:17.207Z</updated>
   <id>https://heji1993.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://heji1993.github.io/2016/12/21/%E6%B5%8B%E8%AF%95%E6%A0%BC%E5%BC%8F/"/>
     <id>https://heji1993.github.io/2016/12/21/测试格式/</id>
     <published>2016-12-21T07:15:16.276Z</published>
-    <updated>2016-12-21T07:36:03.566Z</updated>
+    <updated>2016-12-21T07:49:17.207Z</updated>
     
     <content type="html"><![CDATA[<p>DOM是W3C的标准，是与语言无关的通用的用于操作文档的一种技术规范。</p>
 <a id="more"></a>
@@ -30,7 +30,8 @@
   <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;pre&gt;"</span>);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"characterSet:"</span>+<span class="built_in">document</span>.characterSet); <span class="comment">//只读</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"charset:"</span>+<span class="built_in">document</span>.charset); <span class="comment">//读取</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"compatMode:"</span>+<span class="built_in">document</span>.compatMode); </div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"defaultCharset:"</span>+<span class="built_in">document</span>.defaultCharset);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"domain:"</span>+<span class="built_in">document</span>.domain);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"referrer:"</span>+<span class="built_in">document</span>.referrer);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"lastModified:"</span>+<span class="built_in">document</span>.lastModified);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"cookie:"</span>+<span class="built_in">document</span>.cookie);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;/pre&gt;"</span>);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>  理解怪异模式<br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。</p>
 </li>
-<li><p>使用Location对象<br>  测试表格缩进<br>  | 值         | 说明 |<br>  | ———- | —- |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
+<li><p>使用Location对象<br>  测试表格缩进</p>
+<p>  | 值         | 说明 |<br>  | ———- | —- |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
 </li>
 </ul>
 ]]></content>
@@ -1061,11 +1062,11 @@
       <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
+      <category term="SQLServer" scheme="https://heji1993.github.io/tags/SQLServer/"/>
+    
       <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
-    
-      <category term="SQLServer" scheme="https://heji1993.github.io/tags/SQLServer/"/>
     
   </entry>
   
@@ -2279,11 +2280,11 @@
       <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="oracle" scheme="https://heji1993.github.io/tags/oracle/"/>
-    
       <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
+    
+      <category term="oracle" scheme="https://heji1993.github.io/tags/oracle/"/>
     
   </entry>
   
