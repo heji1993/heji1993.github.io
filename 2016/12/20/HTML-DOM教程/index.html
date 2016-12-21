@@ -146,7 +146,7 @@
             发表: <time datetime="2016-12-20T11:47:21.732Z"
                        itemprop="datePublished">2016-12-20</time>
             
-            更新: <time datetime="2016-12-21T05:37:38.306Z"
+            更新: <time datetime="2016-12-21T06:01:43.583Z"
                        itemprop="dateModified">2016-12-21</time>
             
         </div>
@@ -193,8 +193,27 @@
 <li><p>获取文档信息</p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;pre&gt;"</span>);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"characterSet:"</span>+<span class="built_in">document</span>.characterSet); <span class="comment">//只读</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"charset:"</span>+<span class="built_in">document</span>.charset); <span class="comment">//读取</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"compatMode:"</span>+<span class="built_in">document</span>.compatMode); </div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"defaultCharset:"</span>+<span class="built_in">document</span>.defaultCharset);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"domain:"</span>+<span class="built_in">document</span>.domain);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"referrer:"</span>+<span class="built_in">document</span>.referrer);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"lastModified:"</span>+<span class="built_in">document</span>.lastModified);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"cookie:"</span>+<span class="built_in">document</span>.cookie);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;/pre&gt;"</span>);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>  理解怪异模式<br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。</p>
-  <table><br>  <thead><br>  <tr><br>  <th>值</th><br>  <th>说明</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>CSS1Compat</td><br>  <td>此文档遵循某个有效的HTML规范（不必是HTML5规范）</td><br>  </tr><br>  <tr><br>  <td>BackCompat</td><br>  <td>此文档含有非标准功能，已触发怪异模式</td><br>  </tr><br>  </tbody><br>  </table>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSS1Compat</td>
+<td>此文档遵循某个有效的HTML规范（不必是HTML5规范）</td>
+</tr>
+<tr>
+<td>BackCompat</td>
+<td>此文档含有非标准功能，已触发怪异模式</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>使用Location对象<br>  document.location属性返回一个Location对象，这个对象给你提供了细粒度的文档地址信息，也允许你导航到其他文档上。</p>
 <p>  <img src="index_files/44115d5b-91d5-446a-a0b2-7a4f02d79d20.jpg" alt=""></p>
 <p>  使用Location对象导航到其他地方</p>
@@ -205,11 +224,34 @@
 <p>  虽然添加cookie的默认形式是name=value，但可以额外应用一些数据改变cookie的处理方式</p>
 <p>  <img src="index_files/ce20ba02-a003-4b34-b9ae-660cd08030e0.jpg" alt=""></p>
 </li>
-<li><p>理解就绪状态<br>  document.readyState属性向你提供了加载和解析HTML文档过程中当前处于哪个阶段的信息。了解浏览器加载和处理HTML到了哪个阶段可能会很有用。readyState属性会返回三个不同的值。<br>  <table><br>  <thead><br>  <tr><br>  <th>值</th><br>  <th>说明</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>loading</td><br>  <td>浏览器正在加载和处理此文档</td><br>  </tr><br>  <tr><br>  <td>interactive</td><br>  <td>文档已被解析，但浏览器还在加载其中链接的资源（图像媒体文件等）</td><br>  </tr><br>  <tr><br>  <td>complete</td><br>  <td>文档解析完，资源也加载完</td><br>  </tr><br>  </tbody><br>  </table><br>  这个属性和readystatechange事件结合使用时用处最大，该事件会在每次readyState属性的值发生变化时触发。</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    &lt;!DOCTYPE html&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="built_in">document</span>.readyState);</div><div class="line">                <span class="keyword">if</span>(<span class="built_in">document</span>.readyState==<span class="string">"interactive"</span>)&#123;</div><div class="line">                    <span class="built_in">document</span>.getElementById(<span class="string">"pressme"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                        <span class="built_in">document</span>.getElementById(<span class="string">"results"</span>).innerHTML = <span class="string">"Button Pressed"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"pressme"</span>&gt;</span>Press me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">pre</span> <span class="attr">id</span>=<span class="string">"results"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>获取DOM的实现情况<br>document.implementation属性提供了浏览器对DOM功能的实现信息，这个属性返回一个DOMImplementation对象，对象有一个hasFeature方法，这个方法可以用来判断哪些DOM功能已实现。</p>
-</li>
+<li>理解就绪状态<br>  document.readyState属性向你提供了加载和解析HTML文档过程中当前处于哪个阶段的信息。了解浏览器加载和处理HTML到了哪个阶段可能会很有用。readyState属性会返回三个不同的值。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loading</td>
+<td>浏览器正在加载和处理此文档</td>
+</tr>
+<tr>
+<td>interactive</td>
+<td>文档已被解析，但浏览器还在加载其中链接的资源（图像媒体文件等）</td>
+</tr>
+<tr>
+<td>complete</td>
+<td>文档解析完，资源也加载完</td>
+</tr>
+</tbody>
+</table>
+<pre><code>这个属性和readystatechange事件结合使用时用处最大，该事件会在每次readyState属性的值发生变化时触发。
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    &lt;!DOCTYPE html&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="built_in">console</span>.log(<span class="built_in">document</span>.readyState);</div><div class="line">                <span class="keyword">if</span>(<span class="built_in">document</span>.readyState==<span class="string">"interactive"</span>)&#123;</div><div class="line">                    <span class="built_in">document</span>.getElementById(<span class="string">"pressme"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                        <span class="built_in">document</span>.getElementById(<span class="string">"results"</span>).innerHTML = <span class="string">"Button Pressed"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"pressme"</span>&gt;</span>Press me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">pre</span> <span class="attr">id</span>=<span class="string">"results"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li>获取DOM的实现情况<br>document.implementation属性提供了浏览器对DOM功能的实现信息，这个属性返回一个DOMImplementation对象，对象有一个hasFeature方法，这个方法可以用来判断哪些DOM功能已实现。</li>
 </ul>
 <h3 id="获取HTML元素对象"><a href="#获取HTML元素对象" class="headerlink" title="获取HTML元素对象"></a>获取HTML元素对象</h3><ul>
 <li><p>使用属性获取元素对象<br>  Document对象提供了一组属性，它们会返回文档中特定元素或元素类型的对象。</p>
@@ -218,10 +260,51 @@
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//返回id或name属性值为apple的图片的src。优先返回匹配id属性的元素，如果没有匹配id的元素，则返回第一个匹配name属性的元素，如果还是没有，返回null</span></div><div class="line">    <span class="built_in">document</span>.images.namedItem(<span class="string">"apple"</span>).src;</div></pre></td></tr></table></figure>
 </li>
 <li><p>搜索元素<br>  Document对象定义了很多方法，可以用他们搜索文档里的元素。</p>
-  <table><br>  <thead><br>  <tr><br>  <th>属性</th><br>  <th>说明</th><br>  <th>返回</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>getElementById(id)</td><br>  <td>返回带有指定id值的元素</td><br>  <td>HTMLElement</td><br>  </tr><br>  <tr><br>  <td>getElementsByClassName(class)</td><br>  <td>返回带有指定class类的元素</td><br>  <td>数组</td><br>  </tr><br>  <tr><br>  <td>getElementsByName(name)</td><br>  <td>返回带有指定name值的元素</td><br>  <td>数组</td><br>  </tr><br>  <tr><br>  <td>getElementsByTagName(tag)</td><br>  <td>返回指定类型的元素</td><br>  <td>数组</td><br>  </tr><br>  <tr><br>  <td>querySelector(selector)</td><br>  <td>返回匹配指定CSS选择器的第一个元素</td><br>  <td>HTMLElement</td><br>  </tr><br>  <tr><br>  <td>querySelectorAll(selector)</td><br>  <td>返回匹配指定CSS选择器的所有元素</td><br>  <td>数组</td><br>  </tr><br>  </tbody><br>  </table>
 </li>
-<li><p>合并进行链式搜索<br>  DOM的一个使用功能是几乎所有的Document对象实现的搜索方法同时也能被HTMLElement对象实现（一个例外），这让你可以合并进行链式搜索。唯一的例外是getElementById方法，只有Document对象才能使用它。例如：</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).getElementsByTagName(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).querySelectorAll(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.querySelectorAll(<span class="string">"#tblock &gt; span"</span>);</div></pre></td></tr></table></figure>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getElementById(id)</td>
+<td>返回带有指定id值的元素</td>
+<td>HTMLElement</td>
+</tr>
+<tr>
+<td>getElementsByClassName(class)</td>
+<td>返回带有指定class类的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>getElementsByName(name)</td>
+<td>返回带有指定name值的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>getElementsByTagName(tag)</td>
+<td>返回指定类型的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>querySelector(selector)</td>
+<td>返回匹配指定CSS选择器的第一个元素</td>
+<td>HTMLElement</td>
+</tr>
+<tr>
+<td>querySelectorAll(selector)</td>
+<td>返回匹配指定CSS选择器的所有元素</td>
+<td>数组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>合并进行链式搜索<br>  DOM的一个使用功能是几乎所有的Document对象实现的搜索方法同时也能被HTMLElement对象实现（一个例外），这让你可以合并进行链式搜索。唯一的例外是getElementById方法，只有Document对象才能使用它。例如：  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).getElementsByTagName(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).querySelectorAll(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.querySelectorAll(<span class="string">"#tblock &gt; span"</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="在DOM树里导航"><a href="#在DOM树里导航" class="headerlink" title="在DOM树里导航"></a>在DOM树里导航</h3><p>另一种搜索元素的方法是将DOM视为一棵树，然后在它的层级结构里导航。所有的DOM对象都支持一组属性和方法来让我们做到这一点。</p>
@@ -500,15 +583,40 @@
 </li>
 <li><p>比较元素对象<br>  可以通过两种方式比较元素对象。第一种方式是比较他们是否是同一个元素，使用isSameNode方法。另一种方式是使用isEqualNode方法测试元素对象是否相同。如果多个元素具有相同的类型，带有相同的属性，其子元素也相同并且排列顺序一致，那么他们就是相同元素。</p>
 </li>
-<li><p>使用HTML片段<br>  innerHTML属性，outerHTML属性和insertAdjacentHTML方法都是便利的语法捷径，它们让你能够使用HTML片段，从而不再需要创建元素和文本对象的详细层级结构。</p>
-<ol>
+<li>使用HTML片段<br>  innerHTML属性，outerHTML属性和insertAdjacentHTML方法都是便利的语法捷径，它们让你能够使用HTML片段，从而不再需要创建元素和文本对象的详细层级结构。<ol>
 <li>innerHTML和outerHTML<br>outerHTML属性返回一个字符串，它包含定义这个元素及其所有子元素的HTML。innerHTML属性只返回子元素的HTML。也可以通过设置outerHTML和innerHTML属性改变文档结构。</li>
-<li>使用insertAdjacentHTML插入HTML片段（重要）<br>innerHTML和outerHTML属性对于替换现有的元素而言是很有用的，但是如果想要用HTML片段来插入新元素，就必须使用insertAdjacentHTML方法。方法接受两个参数，第一个参数是片段应该插入到相当当前元素哪个位置，第二个参数是要插入的片段。<br>第一个参数取值如下：<table><br><thead><br><tr><br><th>值</th><br><th>说明</th><br></tr><br></thead><br><tbody><br><tr><br><td>afterbegin</td><br><td>将片段作为当前元素的第一个子元素插入</td><br></tr><br><tr><br><td>afterend</td><br><td>将片段插入当前元素之后</td><br></tr><br><tr><br><td>beforebegin</td><br><td>将片段插入当前元素之前</td><br></tr><br><tr><br><td>beforeend</td><br><td>将片段作为当前元素最后一个子元素插入</td><br></tr><br></tbody><br></table>
-</li>
+<li>使用insertAdjacentHTML插入HTML片段（重要）<br>innerHTML和outerHTML属性对于替换现有的元素而言是很有用的，但是如果想要用HTML片段来插入新元素，就必须使用insertAdjacentHTML方法。方法接受两个参数，第一个参数是片段应该插入到相当当前元素哪个位置，第二个参数是要插入的片段。<br>第一个参数取值如下：</li>
 </ol>
 </li>
-<li><p>向文本块插入元素<br>  修改模型的另一种重要方式是向由Text对象代表的文本块添加元素。下面是一个复杂的例子：</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    &lt;!DOCTYPE html&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"textblock"</span>&gt;</span>There are lots of different kinds of fruits.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"insert"</span>&gt;</span>Insert Element<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="comment">//将一个元素插入文本块</span></div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"insert"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> textBlock = <span class="built_in">document</span>.getElementById(<span class="string">"textblock"</span>);</div><div class="line">                <span class="comment">//返回lots of different kinds of fruits.</span></div><div class="line">                textBlock.firstChild.splitText(<span class="number">10</span>);</div><div class="line">                <span class="comment">//textBlock.childNodes[1]即lots of different kinds of fruits.</span></div><div class="line">                <span class="comment">//textBlock.childNodes[1].splitText(4)返回 of different kinds of fruits.</span></div><div class="line">                <span class="comment">//newText即lots</span></div><div class="line">                <span class="keyword">var</span> newText=textBlock.childNodes[<span class="number">1</span>].splitText(<span class="number">4</span>).previousSibling;</div><div class="line">                <span class="built_in">console</span>.log(textBlock,newText);</div><div class="line">                <span class="comment">//下面这句相当于创建了一个b元素并插入到lots节点之前，然后把lots节点移动到b元素内。</span></div><div class="line">                textBlock.insertBefore(<span class="built_in">document</span>.createElement(<span class="string">"b"</span>),newText).appendChild(newText);</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>afterbegin</td>
+<td>将片段作为当前元素的第一个子元素插入</td>
+</tr>
+<tr>
+<td>afterend</td>
+<td>将片段插入当前元素之后</td>
+</tr>
+<tr>
+<td>beforebegin</td>
+<td>将片段插入当前元素之前</td>
+</tr>
+<tr>
+<td>beforeend</td>
+<td>将片段作为当前元素最后一个子元素插入</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>向文本块插入元素<br>  修改模型的另一种重要方式是向由Text对象代表的文本块添加元素。下面是一个复杂的例子：  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">    &lt;!DOCTYPE html&gt;</div><div class="line">    <span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"textblock"</span>&gt;</span>There are lots of different kinds of fruits.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"insert"</span>&gt;</span>Insert Element<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="comment">//将一个元素插入文本块</span></div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"insert"</span>).onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> textBlock = <span class="built_in">document</span>.getElementById(<span class="string">"textblock"</span>);</div><div class="line">                <span class="comment">//返回lots of different kinds of fruits.</span></div><div class="line">                textBlock.firstChild.splitText(<span class="number">10</span>);</div><div class="line">                <span class="comment">//textBlock.childNodes[1]即lots of different kinds of fruits.</span></div><div class="line">                <span class="comment">//textBlock.childNodes[1].splitText(4)返回 of different kinds of fruits.</span></div><div class="line">                <span class="comment">//newText即lots</span></div><div class="line">                <span class="keyword">var</span> newText=textBlock.childNodes[<span class="number">1</span>].splitText(<span class="number">4</span>).previousSibling;</div><div class="line">                <span class="built_in">console</span>.log(textBlock,newText);</div><div class="line">                <span class="comment">//下面这句相当于创建了一个b元素并插入到lots节点之前，然后把lots节点移动到b元素内。</span></div><div class="line">                textBlock.insertBefore(<span class="built_in">document</span>.createElement(<span class="string">"b"</span>),newText).appendChild(newText);</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="为DOM元素设置样式"><a href="#为DOM元素设置样式" class="headerlink" title="为DOM元素设置样式"></a>为DOM元素设置样式</h2><p>这一章，展示如何使用DOM操作文档中的CSS样式，包括显示定义的，也包括浏览器用来实际显示元素的计算样式（computed style)。但不少DOM处理样式规范没被实现，这里只把焦点放在浏览器实际使用的那些上，并非本章所有内容都能在各种主流浏览器上运行。</p>
@@ -556,17 +664,107 @@
 </table>
 <ul>
 <li>获得样式表的基本信息<br>  使用CSSStyleSheet对象即可获取相应样式表的基本信息</li>
-<li><p>使用媒介限制<br>  当定义样式表时，可以使用media属性来限制样式应用的场合。可以使用CSSStyleSheet.media属性访问这些限制，它会返回一个MediaList对象。下面是MediaList对象的方法和属性。</p>
-  <table><br>  <thead><br>  <tr><br>  <th>成员</th><br>  <th>说明</th><br>  <th>返回</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>appendMedium(medium)</td><br>  <td>添加一个新媒介到列表中</td><br>  <td>void</td><br>  </tr><br>  <tr><br>  <td>deleteMedium(medium)</td><br>  <td>从列表中移除一个媒介</td><br>  <td>void</td><br>  </tr><br>  <tr><br>  <td>item(pos)</td><br>  <td>返回指定索引的媒介</td><br>  <td>字符串</td><br>  </tr><br>  <tr><br>  <td>length</td><br>  <td>返回媒介的数量</td><br>  <td>数值</td><br>  </tr><br>  <tr><br>  <td>mediaText</td><br>  <td>返回media属性的文本值</td><br>  <td>字符串</td><br>  </tr><br>  </tbody><br>  </table>
-</li>
+<li>使用媒介限制<br>  当定义样式表时，可以使用media属性来限制样式应用的场合。可以使用CSSStyleSheet.media属性访问这些限制，它会返回一个MediaList对象。下面是MediaList对象的方法和属性。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appendMedium(medium)</td>
+<td>添加一个新媒介到列表中</td>
+<td>void</td>
+</tr>
+<tr>
+<td>deleteMedium(medium)</td>
+<td>从列表中移除一个媒介</td>
+<td>void</td>
+</tr>
+<tr>
+<td>item(pos)</td>
+<td>返回指定索引的媒介</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>length</td>
+<td>返回媒介的数量</td>
+<td>数值</td>
+</tr>
+<tr>
+<td>mediaText</td>
+<td>返回media属性的文本值</td>
+<td>字符串</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>禁用样式表<br>  CSSStyleSheet.disabled属性可用来一次性启用和禁用某个样式表里的所有样式。</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"pressme"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     <span class="built_in">document</span>.stylesheet[<span class="number">0</span>].disabled = !<span class="built_in">document</span>.stylesheet[<span class="number">0</span>].disabled;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>CSSRuleList对象的成员<br>  CSSStyleSheet.cssRules属性会返回一个CSSRuleList对象，它允许你访问样式表里的各种样式。下面是CSSRuleList对象的成员：<br>  <table><br>  <thead><br>  <tr><br>  <th>成员</th><br>  <th>说明</th><br>  <th>返回</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>item(pos)</td><br>  <td>返回指定索引的CSS样式（花括号包裹的即为一个CSSStyleRule）</td><br>  <td>CSSStyleRule</td><br>  </tr><br>  <tr><br>  <td>length</td><br>  <td>返回样式表里的样式数量</td><br>  <td>数值</td><br>  </tr><br>  </tbody><br>  </table><br>  样式表里每一种样式都由一个CSSStyleRule对象代表，下面是CSSStyleRule对象的成员。<br>  <table><br>  <thead><br>  <tr><br>  <th>成员</th><br>  <th>说明</th><br>  <th>返回</th><br>  </tr><br>  </thead><br>  <tbody><br>  <tr><br>  <td>cssText</td><br>  <td>获取或设置样式的文本</td><br>  <td>字符串</td><br>  </tr><br>  <tr><br>  <td>parentStyleSheet</td><br>  <td>获取此样式所属的样式表</td><br>  <td>CSSStyleSheet</td><br>  </tr><br>  <tr><br>  <td>selectorText</td><br>  <td>获取或设置样式的选择器文本</td><br>  <td>字符串</td><br>  </tr><br>  <tr><br>  <td>style</td><br>  <td>获取一个代表具体样式属性的对象</td><br>  <td>CSSStyleDeclaration</td><br>  </tr><br>  </tbody><br>  </table><br>  下面是综合例子：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">            #test&#123;</div><div class="line">                color: black;</div><div class="line">                background-color: #ccc;</div><div class="line">            &#125;</div><div class="line">            #test b&#123;</div><div class="line">                color: red;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">style</span>=<span class="string">"font-weight: 400;"</span>&gt;</span></div><div class="line">            哈哈哈哈<span class="tag">&lt;<span class="name">b</span>&gt;</span>嘿嘿<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> CSSRule1 = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].cssRules.item(<span class="number">0</span>);</div><div class="line">            <span class="keyword">var</span> CSSRule2 = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].cssRules.item(<span class="number">1</span>);</div><div class="line">            <span class="comment">//#test &#123; color: black; background-color: rgb(204, 204, 204); &#125;</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule1.cssText);</div><div class="line">            <span class="comment">//#test b &#123; color: red; &#125;</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule2.cssText);</div><div class="line">            <span class="comment">//CSSRule1.style返回一个CSSStyleDeclaration对象</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule1.style.backgroundColor);</div><div class="line">            <span class="keyword">var</span> pObj = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</div><div class="line">            <span class="comment">//HTMLElement.style返回一个CSSStyleDeclaration对象，表示的是用style属性声明的样式</span></div><div class="line">            <span class="built_in">console</span>.log(pObj.style.fontWeight);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<li><p>CSSRuleList对象的成员<br>  CSSStyleSheet.cssRules属性会返回一个CSSRuleList对象，它允许你访问样式表里的各种样式。下面是CSSRuleList对象的成员：</p>
 </li>
 </ul>
-<h3 id="使用元素样式"><a href="#使用元素样式" class="headerlink" title="使用元素样式"></a>使用元素样式</h3><p>元素的style属性返回一个CSSStyleDeclaration对象，它表示通过元素style属性定义的样式。我们可以通过读取或设置cssText属性来读取或设置元素的样式，但这并不是一个很好的方法，下一节将会学习更健壮的方法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"textblock"</span> <span class="attr">style</span>=<span class="string">"color:red;font-size:22px;"</span>&gt;</span>哈哈哈哈哈<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="comment">//表示通过元素style属性定义的样式</span></div><div class="line">            <span class="keyword">var</span> styleDeclaration = <span class="built_in">document</span>.getElementById(<span class="string">"textblock"</span>).style;</div><div class="line">            <span class="built_in">console</span>.log(styleDeclaration.cssText);</div><div class="line">            <span class="comment">//这样设置会覆盖原有所有样式</span></div><div class="line">            styleDeclaration.cssText = <span class="string">"color:green;border:1px solid #ccc;"</span>;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item(pos)</td>
+<td>返回指定索引的CSS样式（花括号包裹的即为一个CSSStyleRule）</td>
+<td>CSSStyleRule</td>
+</tr>
+<tr>
+<td>length</td>
+<td>返回样式表里的样式数量</td>
+<td>数值</td>
+</tr>
+</tbody>
+</table>
+<pre><code>样式表里每一种样式都由一个CSSStyleRule对象代表，下面是CSSStyleRule对象的成员。
+</code></pre><table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cssText</td>
+<td>获取或设置样式的文本</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>parentStyleSheet</td>
+<td>获取此样式所属的样式表</td>
+<td>CSSStyleSheet</td>
+</tr>
+<tr>
+<td>selectorText</td>
+<td>获取或设置样式的选择器文本</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>style</td>
+<td>获取一个代表具体样式属性的对象</td>
+<td>CSSStyleDeclaration</td>
+</tr>
+</tbody>
+</table>
+<pre><code>下面是综合例子：
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-id">#test</span>&#123;</div><div class="line">                <span class="attribute">color</span>: black;</div><div class="line">                <span class="attribute">background-color</span>: <span class="number">#ccc</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#test</span> <span class="selector-tag">b</span>&#123;</div><div class="line">                <span class="attribute">color</span>: red;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">style</span>=<span class="string">"font-weight: 400;"</span>&gt;</span></div><div class="line">            哈哈哈哈<span class="tag">&lt;<span class="name">b</span>&gt;</span>嘿嘿<span class="tag">&lt;/<span class="name">b</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> CSSRule1 = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].cssRules.item(<span class="number">0</span>);</div><div class="line">            <span class="keyword">var</span> CSSRule2 = <span class="built_in">document</span>.styleSheets[<span class="number">0</span>].cssRules.item(<span class="number">1</span>);</div><div class="line">            <span class="comment">//#test &#123; color: black; background-color: rgb(204, 204, 204); &#125;</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule1.cssText);</div><div class="line">            <span class="comment">//#test b &#123; color: red; &#125;</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule2.cssText);</div><div class="line">            <span class="comment">//CSSRule1.style返回一个CSSStyleDeclaration对象</span></div><div class="line">            <span class="built_in">console</span>.log(CSSRule1.style.backgroundColor);</div><div class="line">            <span class="keyword">var</span> pObj = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</div><div class="line">            <span class="comment">//HTMLElement.style返回一个CSSStyleDeclaration对象，表示的是用style属性声明的样式</span></div><div class="line">            <span class="built_in">console</span>.log(pObj.style.fontWeight);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</code></pre><h3 id="使用元素样式"><a href="#使用元素样式" class="headerlink" title="使用元素样式"></a>使用元素样式</h3><p>元素的style属性返回一个CSSStyleDeclaration对象，它表示通过元素style属性定义的样式。我们可以通过读取或设置cssText属性来读取或设置元素的样式，但这并不是一个很好的方法，下一节将会学习更健壮的方法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"textblock"</span> <span class="attr">style</span>=<span class="string">"color:red;font-size:22px;"</span>&gt;</span>哈哈哈哈哈<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="comment">//表示通过元素style属性定义的样式</span></div><div class="line">            <span class="keyword">var</span> styleDeclaration = <span class="built_in">document</span>.getElementById(<span class="string">"textblock"</span>).style;</div><div class="line">            <span class="built_in">console</span>.log(styleDeclaration.cssText);</div><div class="line">            <span class="comment">//这样设置会覆盖原有所有样式</span></div><div class="line">            styleDeclaration.cssText = <span class="string">"color:green;border:1px solid #ccc;"</span>;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="使用CSSStyleDeclaration对象"><a href="#使用CSSStyleDeclaration对象" class="headerlink" title="使用CSSStyleDeclaration对象"></a>使用CSSStyleDeclaration对象</h3><p>你处理的是样式表还是某个元素的style属性并不重要。要通过DOM完全控制CSS，必须使用CSSStyleDeclaration对象。下面是这个重要对象的成员：</p>
 <table>
 <thead>
@@ -635,7 +833,7 @@
 <li><p>使用细粒度的CSSDOM对象<br>  使用CSSStyleDeclaration.getPropertyCSSValue方法可以获取CSSPrimitiveValue对象，使用该对象能读取/设置更细粒度的属性，如属性值的单位、属性值的类型等。有兴趣可以自己找资料看。</p>
 </li>
 </ul>
-<h3 id="使用计算样式"><a href="#使用计算样式" class="headerlink" title="使用计算样式"></a>使用计算样式</h3><p>之前我们都把焦点放在样式表或style属性中指定的CSS属性值上，但浏览器会从多个来源汇聚样式以计算出该用哪个值来显示某一元素。浏览器用于显示某个元素的CSS属性值集合被称为计算样式。可以通过document.defaultView.getComputedStyle（targetElem）方法获取某一元素计算样式的 CSSStyleDeclaration对象，这个对象包含了浏览器用来显示元素的所有属性细节。<br><strong>注意：获取到的计算样式都是只读属性，不能修改计算样式</strong><br>下面是例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">            #test&#123;</div><div class="line">                color: red;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">style</span>=<span class="string">"margin: 2px;padding: 2px;"</span>&gt;</span>测试段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> pTag = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</div><div class="line">            <span class="keyword">var</span> styleDeclaration = <span class="built_in">document</span>.defaultView.getComputedStyle(pTag);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; styleDeclaration.length ; i++)&#123;</div><div class="line">                <span class="comment">//console.log(styleDeclaration[i],styleDeclaration.getPropertyValue(styleDeclaration[i]))</span></div><div class="line">            &#125;</div><div class="line">            <span class="built_in">console</span>.log(styleDeclaration.getPropertyValue(<span class="string">"padding-top"</span>));</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用计算样式"><a href="#使用计算样式" class="headerlink" title="使用计算样式"></a>使用计算样式</h3><p>之前我们都把焦点放在样式表或style属性中指定的CSS属性值上，但浏览器会从多个来源汇聚样式以计算出该用哪个值来显示某一元素。浏览器用于显示某个元素的CSS属性值集合被称为计算样式。可以通过document.defaultView.getComputedStyle（targetElem）方法获取某一元素计算样式的 CSSStyleDeclaration对象，这个对象包含了浏览器用来显示元素的所有属性细节。<br><strong>注意：获取到的计算样式都是只读属性，不能修改计算样式</strong><br>下面是例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-id">#test</span>&#123;</div><div class="line">                <span class="attribute">color</span>: red;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test"</span> <span class="attr">style</span>=<span class="string">"margin: 2px;padding: 2px;"</span>&gt;</span>测试段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> pTag = <span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);</div><div class="line">            <span class="keyword">var</span> styleDeclaration = <span class="built_in">document</span>.defaultView.getComputedStyle(pTag);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; styleDeclaration.length ; i++)&#123;</div><div class="line">                <span class="comment">//console.log(styleDeclaration[i],styleDeclaration.getPropertyValue(styleDeclaration[i]))</span></div><div class="line">            &#125;</div><div class="line">            <span class="built_in">console</span>.log(styleDeclaration.getPropertyValue(<span class="string">"padding-top"</span>));</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h2 id="使用事件"><a href="#使用事件" class="headerlink" title="使用事件"></a>使用事件</h2><h3 id="使用简单事件处理器"><a href="#使用简单事件处理器" class="headerlink" title="使用简单事件处理器"></a>使用简单事件处理器</h3><p>元素为它们支持的事件都定义了一个事件属性。例如onmouseover事件属性对应于全局事件mouseover，后者会在用户把光标移动到元素占据的浏览器屏幕区域上方时触发。（这是一种通用模式：大多数事件都有一个对应的事件属性，其名称定义为<code>on&lt;enentname&gt;</code>）<br><strong>注意：这种简单的事件处理器是DOM 1级规范的内容，这样绑定事件只能绑定一个事件，后面绑定的会把前面绑定的事件覆盖</strong></p>
 <ul>
 <li><p>实现简单的内联事件处理器</p>
