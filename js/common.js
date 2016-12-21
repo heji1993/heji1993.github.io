@@ -25,11 +25,12 @@ $(function() {
         }
     });
 
-    $(".post-body p").each(function() {
+	//包含图片的段落不设置居中
+    /*$(".post-body p").each(function() {
         if($(this).find("img").length) {
             $(this).css("text-align", "center");
         }
-    });
+    });*/
 
     $(".post-body img").addClass("img-thumbnail img-responsive");
 
