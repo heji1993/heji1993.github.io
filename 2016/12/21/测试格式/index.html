@@ -6,9 +6,9 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="如何使用powerdesigner根据数据库生成pdm。">
+    <meta name="description" content="DOM是W3C的标准，是与语言无关的通用的用于操作文档的一种技术规范。">
     
-    <meta name="keywords" content="powerdesigner,数据库,pdm,倒转数据库, 何机的博客,何机,博客,blog,IT,技术">
+    <meta name="keywords" content="DOM,web前端,HTML-DOM, 何机的博客,何机,博客,blog,IT,技术">
     
 
     
@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>数据库生成pdm | 何机的博客 · No pains,no gains</title>
+    <title>HTML-DOM教程 | 何机的博客 · No pains,no gains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -114,7 +114,7 @@
 
     $(function() {
         // page-id...
-        var pageId = "2016/09/21/使用powerdesigner倒转数据库/";
+        var pageId = "2016/12/21/测试格式/";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
 
@@ -124,53 +124,59 @@
 
     <article class="post container">
     <div class="well post-body first-post last-post">
-        <h1>数据库生成pdm</h1>
+        <h1>HTML-DOM教程</h1>
 
         <div class="time-info">
             
 <span class="article-tags">
     
-    Tags: <a href="/tags/数据库/">数据库</a>&nbsp;<a href="/tags/powerdesigner/">powerdesigner</a>&nbsp;<a href="/tags/pdm/">pdm</a>&nbsp;
+    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/DOM/">DOM</a>&nbsp;<a href="/tags/HTML-DOM/">HTML-DOM</a>&nbsp;
 </span>
 
 
 
 <span class="article-categories">
     Category:
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    <a class="article-category-link" href="/categories/DOM/">DOM</a>
 </span>
 
 
         </div>
         <div class="time-info">
-            发表: <time datetime="2016-09-21T09:48:34.334Z"
-                       itemprop="datePublished">2016-09-21</time>
+            发表: <time datetime="2016-12-21T07:15:16.276Z"
+                       itemprop="datePublished">2016-12-21</time>
             
-            更新: <time datetime="2016-12-13T10:00:49.084Z"
-                       itemprop="dateModified">2016-12-13</time>
+            更新: <time datetime="2016-12-21T07:16:43.923Z"
+                       itemprop="dateModified">2016-12-21</time>
             
         </div>
 
         <div class="post-body-inner">
             
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Document元数据"><span class="toc-number">1.1.</span> <span class="toc-text">使用Document元数据</span></a></li></ol></li></ol>
+                </div>
+            
 
-            <p>如何使用powerdesigner根据数据库生成pdm。</p>
+            <p>DOM是W3C的标准，是与语言无关的通用的用于操作文档的一种技术规范。</p>
 <a id="more"></a>
-<p>由于powerdesigner是32位的应用程序，所以需要下载32位的JDK。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="使用Document元数据"><a href="#使用Document元数据" class="headerlink" title="使用Document元数据"></a>使用Document元数据</h3><p>Document对象的用途之一是向你提供关于文档的信息。下表介绍了你可以用来获取文档元数据的属性。<br><img src="index_files/2a3d6ac2-be28-4a8c-993d-53638e53871f.jpg" alt=""></p>
 <ul>
-<li>配置系统变量<br>CLASSPATH = E:\Workspaces\my-jar\mysql-connector-java-5.1.7-bin.jar  （如果需要反转Oracle数据库，这里的值是Oracle驱动包的路径）<br>JAVA_HOME = D:\Java\jdk1.6.0_13\;<br>Path = %Path%;% JAVA_HOME %\bin;  </li>
-<li>PowerDesigner配置<br>PowerDesigner Tools –&gt; General Options –&gt; Variables：<br>JAR D:\Java\jdk1.6.0_13\bin\jar.exe<br>JAVA D:\Java\jdk1.6.0_13\bin\java.exe<br>JAVAC D:\Java\jdk1.6.0_13\bin\javac.exe<br>JAVADOC D:\Java\jdk1.6.0_13\bin\javadoc.exe</li>
-<li>打开Powerdesigner，文件–&gt;Reverse Engineer –&gt; Database…<br><img src="index_files/6736595f-4701-424b-9b3b-5bb534aa573c.png" alt=""></li>
-<li>使用数据源<br><img src="index_files/623e5892-970b-46dc-a8bd-2f7dcd52ed5f.png" alt=""></li>
-<li>配置数据库连接<br><img src="index_files/76e72467-d912-45cc-94c0-57a33a208c74.png" alt=""></li>
-<li>添加一个数据源并测试连接<br><img src="index_files/ad10bbc3-74da-4786-b156-138d693c7398.png" alt=""><br><img src="index_files/9739f9b8-5e3c-4796-bd6b-9e64f8634dc9.png" alt=""></li>
+<li><p>获取文档信息</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;pre&gt;"</span>);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"characterSet:"</span>+<span class="built_in">document</span>.characterSet); <span class="comment">//只读</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"charset:"</span>+<span class="built_in">document</span>.charset); <span class="comment">//读取</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"compatMode:"</span>+<span class="built_in">document</span>.compatMode); </div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"defaultCharset:"</span>+<span class="built_in">document</span>.defaultCharset);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"domain:"</span>+<span class="built_in">document</span>.domain);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"referrer:"</span>+<span class="built_in">document</span>.referrer);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"lastModified:"</span>+<span class="built_in">document</span>.lastModified);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"cookie:"</span>+<span class="built_in">document</span>.cookie);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;/pre&gt;"</span>);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  理解怪异模式<br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。</p>
+</li>
+<li><p>使用Location对象<br>  测试表格缩进</p>
+<p>  | 值 | 说明 |<br>  | — | — |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
+</li>
 </ul>
 
 
             <div class="post-info">
     <p class="eof">- EOF -</p>
     <p class="copyright">All rights reserved <a href="http://heji1993.github.io/about">@heji1993</a>.</p>
-    <p class="link">本文链接：<a href="https://heji1993.github.io/2016/09/21/使用powerdesigner倒转数据库/">https://heji1993.github.io/2016/09/21/使用powerdesigner倒转数据库/</a></p>
+    <p class="link">本文链接：<a href="https://heji1993.github.io/2016/12/21/测试格式/">https://heji1993.github.io/2016/12/21/测试格式/</a></p>
 
     <div class="share">
     分享本页：
@@ -187,7 +193,7 @@
 
             
     <section class="comment">
-    <div class="ds-thread" data-thread-key="undefined" data-title="数据库生成pdm" data-url="https://heji1993.github.io/2016/09/21/使用powerdesigner倒转数据库/" data-author-key="何机"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="HTML-DOM教程" data-url="https://heji1993.github.io/2016/12/21/测试格式/" data-author-key="何机"></div>
 </section>
 
 
