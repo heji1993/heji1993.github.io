@@ -460,8 +460,8 @@ body {
   border: 1px solid #333;
   padding: 5px 10px;
 }
-figure td,
-figure th {
+.post-body-inner figure td,
+.post-body-inner figure th {
   border: 0;
 }
 .synopsis-desc {
