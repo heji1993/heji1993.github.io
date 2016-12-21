@@ -451,12 +451,12 @@ body {
   background: #d6edff;
   text-shadow: none;
 }
-.post-body-inner > table {
+.post-body-inner table {
   margin: 20px 0;
   width: 100%;
 }
-.post-body-inner > table td,
-.post-body-inner > table th {
+.post-body-inner table td,
+.post-body-inner table th {
   border: 1px solid #333;
   padding: 5px 10px;
 }
