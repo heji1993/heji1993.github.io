@@ -460,9 +460,14 @@ body {
   border: 1px solid #333;
   padding: 5px 10px;
 }
-.post-body-inner figure td,
-.post-body-inner figure th {
+.post-body-inner figure table {
+  margin: 0;
+  width: auto;
+}
+.post-body-inner figure table td,
+.post-body-inner figure table th {
   border: 0;
+  margin: 0;
 }
 .synopsis-desc {
   display: none;
