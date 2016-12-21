@@ -146,7 +146,7 @@
             发表: <time datetime="2016-08-15T08:57:36.616Z"
                        itemprop="datePublished">2016-08-15</time>
             
-            更新: <time datetime="2016-12-21T09:48:18.730Z"
+            更新: <time datetime="2016-12-21T10:16:58.481Z"
                        itemprop="dateModified">2016-12-21</time>
             
         </div>
@@ -202,8 +202,8 @@
 <p>  <code>gulp.task</code>这个api用来创建任务，在命令行下可以输入<code>gulp styles</code>来执行上面的任务</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div></pre></td></tr></table></figure>
 <p>  <code>gulp.src</code>这个API设置需要处理的文件的路径，可以是多个文件以数组的形式<code>[main.scss, vender.scss]</code>，也可以是正则表达<code>/**/*.scss</code>。</p>
-<pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div></pre></td></tr></table></figure>
-</code></pre><p>  我们使用<code>.pipe()</code>这个API将需要处理的文件导向sass插件</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div></pre></td></tr></table></figure>
+<p>  我们使用<code>.pipe()</code>这个API将需要处理的文件导向sass插件</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(gulp.dest(<span class="string">'dist/assets/css'</span>));</div></pre></td></tr></table></figure>
 <p>  <code>gulp.dest()</code>API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，另一个可以输出压缩后的版本。</p>
 </li>
