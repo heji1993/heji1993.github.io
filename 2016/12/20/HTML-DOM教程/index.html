@@ -146,7 +146,7 @@
             发表: <time datetime="2016-12-20T11:47:21.732Z"
                        itemprop="datePublished">2016-12-20</time>
             
-            更新: <time datetime="2016-12-21T03:32:34.024Z"
+            更新: <time datetime="2016-12-21T04:12:40.006Z"
                        itemprop="dateModified">2016-12-21</time>
             
         </div>
@@ -193,8 +193,27 @@
 <li><p>获取文档信息</p>
   <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;pre&gt;"</span>);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"characterSet:"</span>+<span class="built_in">document</span>.characterSet); <span class="comment">//只读</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"charset:"</span>+<span class="built_in">document</span>.charset); <span class="comment">//读取</span></div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"compatMode:"</span>+<span class="built_in">document</span>.compatMode); </div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"defaultCharset:"</span>+<span class="built_in">document</span>.defaultCharset);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"domain:"</span>+<span class="built_in">document</span>.domain);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"referrer:"</span>+<span class="built_in">document</span>.referrer);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"lastModified:"</span>+<span class="built_in">document</span>.lastModified);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"cookie:"</span>+<span class="built_in">document</span>.cookie);</div><div class="line">            <span class="built_in">document</span>.writeln(<span class="string">"&lt;/pre&gt;"</span>);</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>  理解怪异模式<br>  compatMode属性告诉你浏览器是如何处理文档内容的。现如今存在着大量的非标准HTML，浏览器则试图显示这类网页，哪怕它们并不遵循HTML规范。一些这样的内容依赖于浏览器的特殊功能，而这些功能来源于浏览器依靠自身特点（而非遵循标准）进行竞争的年代。compatMode属性会返回两个值中的一个。</p>
-<p>  | 值 | 说明 |<br>  | — | — |<br>  | CSS1Compat | 此文档遵循某个有效的HTML规范（不必是HTML5规范） |<br>  | BackCompat | 此文档含有非标准功能，已触发怪异模式 |</p>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSS1Compat</td>
+<td>此文档遵循某个有效的HTML规范（不必是HTML5规范）</td>
+</tr>
+<tr>
+<td>BackCompat</td>
+<td>此文档含有非标准功能，已触发怪异模式</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p>使用Location对象<br>  document.location属性返回一个Location对象，这个对象给你提供了细粒度的文档地址信息，也允许你导航到其他文档上。</p>
 <p>  <img src="index_files/44115d5b-91d5-446a-a0b2-7a4f02d79d20.jpg" alt=""></p>
 <p>  使用Location对象导航到其他地方</p>
@@ -220,10 +239,51 @@
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    <span class="comment">//返回id或name属性值为apple的图片的src。优先返回匹配id属性的元素，如果没有匹配id的元素，则返回第一个匹配name属性的元素，如果还是没有，返回null</span></div><div class="line">    <span class="built_in">document</span>.images.namedItem(<span class="string">"apple"</span>).src;</div></pre></td></tr></table></figure>
 </li>
 <li><p>搜索元素<br>  Document对象定义了很多方法，可以用他们搜索文档里的元素。</p>
-<p>  | 属性 | 说明 | 返回 |<br>  | — | — | — |<br>  | getElementById(id) | 返回带有指定id值的元素 | HTMLElement |<br>  | getElementsByClassName(class) | 返回带有指定class类的元素 | 数组 |<br>  | getElementsByName(name) | 返回带有指定name值的元素 | 数组 |<br>  | getElementsByTagName(tag) | 返回指定类型的元素 | 数组 |<br>  | querySelector(selector) | 返回匹配指定CSS选择器的第一个元素 | HTMLElement |<br>  | querySelectorAll(selector) | 返回匹配指定CSS选择器的所有元素 | 数组 |</p>
 </li>
-<li><p>合并进行链式搜索<br>  DOM的一个使用功能是几乎所有的Document对象实现的搜索方法同时也能被HTMLElement对象实现（一个例外），这让你可以合并进行链式搜索。唯一的例外是getElementById方法，只有Document对象才能使用它。例如：</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).getElementsByTagName(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).querySelectorAll(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.querySelectorAll(<span class="string">"#tblock &gt; span"</span>);</div></pre></td></tr></table></figure>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getElementById(id)</td>
+<td>返回带有指定id值的元素</td>
+<td>HTMLElement</td>
+</tr>
+<tr>
+<td>getElementsByClassName(class)</td>
+<td>返回带有指定class类的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>getElementsByName(name)</td>
+<td>返回带有指定name值的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>getElementsByTagName(tag)</td>
+<td>返回指定类型的元素</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>querySelector(selector)</td>
+<td>返回匹配指定CSS选择器的第一个元素</td>
+<td>HTMLElement</td>
+</tr>
+<tr>
+<td>querySelectorAll(selector)</td>
+<td>返回匹配指定CSS选择器的所有元素</td>
+<td>数组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>合并进行链式搜索<br>  DOM的一个使用功能是几乎所有的Document对象实现的搜索方法同时也能被HTMLElement对象实现（一个例外），这让你可以合并进行链式搜索。唯一的例外是getElementById方法，只有Document对象才能使用它。例如：  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).getElementsByTagName(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"tblock"</span>).querySelectorAll(<span class="string">"span"</span>);</div><div class="line">    <span class="comment">//等价于</span></div><div class="line">    <span class="built_in">document</span>.querySelectorAll(<span class="string">"#tblock &gt; span"</span>);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="在DOM树里导航"><a href="#在DOM树里导航" class="headerlink" title="在DOM树里导航"></a>在DOM树里导航</h3><p>另一种搜索元素的方法是将DOM视为一棵树，然后在它的层级结构里导航。所有的DOM对象都支持一组属性和方法来让我们做到这一点。</p>
