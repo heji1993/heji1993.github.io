@@ -146,7 +146,7 @@
             发表: <time datetime="2016-08-15T08:57:36.616Z"
                        itemprop="datePublished">2016-08-15</time>
             
-            更新: <time datetime="2016-12-21T10:16:58.481Z"
+            更新: <time datetime="2016-12-21T10:20:30.634Z"
                        itemprop="dateModified">2016-12-21</time>
             
         </div>
@@ -209,10 +209,8 @@
 </li>
 <li><p>js代码校验、合并和压缩</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">     .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">     .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">     .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(uglify())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  需要提醒的是我们要设置JSHint的reporter方式，上面使用的是default默认的</p>
 </li>
-</ul>
-<p>需要提醒的是我们要设置JSHint的reporter方式，上面使用的是default默认的</p>
-<ul>
 <li><p>压缩图片</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">           .pipe(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;))</div><div class="line">           .pipe(gulp.dest(<span class="string">'dist/assets/img'</span>))</div><div class="line">.pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
 <p>   这个任务使用<code>imagemin</code>插件把所有在<code>src/images/</code>目录以及其子目录下的所有图片（文件）进行压缩，我们可以进一步优化，利用缓存保存已经压缩过的图片，使用之前装过的<code>gulp-cache</code>插件，不过要修改一下上面的代码：</p>
