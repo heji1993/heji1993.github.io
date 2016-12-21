@@ -146,8 +146,8 @@
             发表: <time datetime="2016-08-17T11:33:22.174Z"
                        itemprop="datePublished">2016-08-17</time>
             
-            更新: <time datetime="2016-12-14T12:57:58.171Z"
-                       itemprop="dateModified">2016-12-14</time>
+            更新: <time datetime="2016-12-21T09:45:30.334Z"
+                       itemprop="dateModified">2016-12-21</time>
             
         </div>
 
@@ -278,7 +278,9 @@
 </ul>
 <h2 id="Hexo-Seo优化之为你的首页添加关键字"><a href="#Hexo-Seo优化之为你的首页添加关键字" class="headerlink" title="Hexo Seo优化之为你的首页添加关键字"></a>Hexo Seo优化之为你的首页添加关键字</h2><h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><ul>
 <li>首页head标签中没有keywords关键字</li>
-<li>博客文章页面的关键字直有文章相关的关键字，没有网站的关键字<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3></li>
+<li>博客文章页面的关键字直有文章相关的关键字，没有网站的关键字</li>
+</ul>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><ul>
 <li><p>配置关键字<br>  为了引用和修改方便，在博客根目录下 _config.yml 添加 keywords，并添加网站的关键字 如下：</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    keywords:  何机的博客,何机,博客,blog,IT,技术</div></pre></td></tr></table></figure>
 </li>
@@ -287,9 +289,9 @@
 <p>  修改为</p>
   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    &lt;%  <span class="keyword">if</span>  (page.keywords)&#123; %&gt;&lt;meta name="keywords" content="&lt;%= page.keywords %&gt;, &lt;%= config.keywords %&gt;"&gt;&lt;%  &#125; %&gt;</div><div class="line">    &lt;%  if  (!page.keywords)&#123; %&gt;&lt;meta name="keywords" content="&lt;%= config.keywords %&gt;"&gt;&lt;%  &#125; %&gt;</div></pre></td></tr></table></figure>
 <p>  第一行代码是在文章页面也添加博客的关键字；第二行是在首页添加关键字。</p>
-<h3 id="重新部署验证"><a href="#重新部署验证" class="headerlink" title="重新部署验证"></a>重新部署验证</h3></li>
+</li>
 </ul>
-
+<h3 id="重新部署验证"><a href="#重新部署验证" class="headerlink" title="重新部署验证"></a>重新部署验证</h3>
 
             <div class="post-info">
     <p class="link">本文链接：<a href="https://heji1993.github.io/2016/08/17/使用Hexo搭建自己的博客/">https://heji1993.github.io/2016/08/17/使用Hexo搭建自己的博客/</a></p>
