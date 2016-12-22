@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="Emmet是一款编辑器插件，必须要基于某个编辑器使用，能快速完成代码的编写。">
+    
+    <meta name="keywords" content="Emmet,快速, 何机的博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emmet-让你的代码飞起来 | 何机的博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://heji1993.github.io" title="何机的博客">何机的博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2016/12/22/Emmet-让你的代码飞起来/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>Emmet-让你的代码飞起来</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/工具/">工具</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2016-12-22T04:22:27.751Z"
+                       itemprop="datePublished">2016-12-22</time>
+            
+            更新: <time datetime="2016-12-22T04:26:14.922Z"
+                       itemprop="dateModified">2016-12-22</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法-使用tab键补全"><span class="toc-number">1.</span> <span class="toc-text">语法(使用tab键补全)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-使用tab键补全"><span class="toc-number">2.</span> <span class="toc-text">HTML(使用tab键补全)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-使用tab键补全"><span class="toc-number">3.</span> <span class="toc-text">CSS(使用tab键补全)</span></a></li></ol>
+                </div>
+            
+
+            <p>Emmet是一款编辑器插件，必须要基于某个编辑器使用，能快速完成代码的编写。</p>
+<a id="more"></a>
+<h2 id="语法-使用tab键补全"><a href="#语法-使用tab键补全" class="headerlink" title="语法(使用tab键补全)"></a>语法(使用tab键补全)</h2><ul>
+<li><p>后代<code>nav&gt;ul&gt;li</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;nav&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    &lt;<span class="regexp">/nav&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>兄弟<code>div+p+bq</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    &lt;p&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">    &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>上级<code>div+div&gt;p&gt;span+em^bq</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    &lt;div&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">        &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></div><div class="line">    &lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>  例二<code>div+div&gt;p&gt;span+em^^bq</code>：</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;blockquote&gt;&lt;/blockquote&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>分组<code>div&gt;(header&gt;ul&gt;li*2&gt;a)+footer&gt;p</code></p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;</div><div class="line">    &lt;header&gt;</div><div class="line">        &lt;ul&gt;</div><div class="line">            &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">            &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;</div><div class="line">        &lt;/ul&gt;</div><div class="line">    &lt;/header&gt;</div><div class="line">    &lt;footer&gt;</div><div class="line">        &lt;p&gt;&lt;/p&gt;</div><div class="line">    &lt;/footer&gt;</div><div class="line">    &lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>  例二<code>(div&gt;dl&gt;(dt+dd)*3)+footer&gt;p</code>:</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;</div><div class="line">        &lt;dl&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">        &lt;/dl&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;footer&gt;</div><div class="line">        &lt;p&gt;&lt;/p&gt;</div><div class="line">    &lt;/footer&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>乘法<code>ul&gt;li*5</code>:</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>自增符号:<br>  例一<code>ul&gt;li.item$*5</code>:</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item1"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item2"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    ``` </div><div class="line">    例二 `h$[title=item$]&#123;Header $&#125;*3`:</div><div class="line">    ```javascript</div><div class="line">    &lt;h1 title="item1"&gt;Header 1&lt;/h1&gt;</div><div class="line">    &lt;h2 title="item2"&gt;Header 2&lt;/h2&gt;</div><div class="line">    &lt;h3 title="item3"&gt;Header 3&lt;/h3&gt;</div><div class="line">    ```    例三`ul&gt;li.item$@-*5`(负号表示反向):</div><div class="line">    ```javascript</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item2"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item1"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div></pre></td></tr></table></figure>
+<p>  例四<code>ul&gt;li.item$@3*5</code>:</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item6"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item7"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    ```* ID和类属性</div><div class="line">    缩写`div#header`</div><div class="line">    ```javascript</div><div class="line">    &lt;div id="header"&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>  缩写<code>div.title</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"title"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>  缩写<code>form#search.wide</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;form id=<span class="string">"search"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"wide"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>  缩写p.class1.class2.class3</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"class1 class2 class3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义属性<br>  缩写<code>p[title=&quot;Hello World&quot;]</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">        &lt;p title=<span class="string">"Hello World"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">    缩写<span class="string">`td[rowspan=2 colspan=3]`</span></div><div class="line">    <span class="string">``</span><span class="string">`javascript</span></div><div class="line">    &lt;td rowspan="2" colspan="3"&gt;&lt;/td&gt;</div></pre></td></tr></table></figure>
+<p>  缩写<code>div[a=&quot;value1&quot; b=&quot;value2&quot;]</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div a=<span class="string">"value1"</span> b=<span class="string">"value2"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
+</li>
+<li><p>文本<br>  缩写<code>a{click me}</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;a&gt;click me&lt;<span class="regexp">/a&gt;</span></div></pre></td></tr></table></figure>
+<p>  缩写<code>p&gt;{Click }+a{here}+{ to continue}</code></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;p&gt;Click &lt;a&gt;here&lt;<span class="regexp">/a&gt; to continue&lt;/</span>p&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HTML-使用tab键补全"><a href="#HTML-使用tab键补全" class="headerlink" title="HTML(使用tab键补全)"></a>HTML(使用tab键补全)</h2><p><strong>所有未知的缩写都会转换为标签，例如，foo—-&gt;<foo></foo></strong></p>
+<ul>
+<li>缩写<code>!</code></li>
+<li>缩写<code>a:link</code></li>
+<li>缩写<code>link:css</code></li>
+<li>缩写<code>meta:vp</code>（响应式标签）</li>
+<li>缩写<code>style</code></li>
+<li>缩写<code>script:src</code></li>
+<li>缩写<code>img</code></li>
+<li>缩写<code>iframe</code></li>
+<li>缩写<code>form:get</code></li>
+<li>缩写<code>form:post</code></li>
+<li>缩写<code>input:text</code></li>
+<li>缩写<code>input:hidden</code></li>
+<li>缩写<code>input:xxx</code></li>
+<li>缩写<code>btn</code></li>
+</ul>
+<h2 id="CSS-使用tab键补全"><a href="#CSS-使用tab键补全" class="headerlink" title="CSS(使用tab键补全)"></a>CSS(使用tab键补全)</h2><ul>
+<li><p>单位缩写及多值缩写</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">m10</span> → <span class="selector-tag">margin</span>: 10<span class="selector-tag">px</span>;</div><div class="line">    <span class="selector-tag">m10-20</span> → <span class="selector-tag">margin</span>: 10<span class="selector-tag">px</span> 20<span class="selector-tag">px</span>;</div><div class="line">    <span class="selector-tag">m-10--20</span> → <span class="selector-tag">margin</span>: <span class="selector-tag">-10px</span> <span class="selector-tag">-20px</span>;</div><div class="line">    <span class="selector-tag">m0-a</span> → <span class="selector-tag">margin</span>: 0 <span class="selector-tag">auto</span>;</div><div class="line">    <span class="selector-tag">m1</span><span class="selector-class">.5em</span> → <span class="selector-tag">margin</span>: 1<span class="selector-class">.5em</span>;</div><div class="line">    <span class="selector-tag">m1</span><span class="selector-class">.5ex</span> → <span class="selector-tag">margin</span>: 1<span class="selector-class">.5ex</span>;</div><div class="line">    <span class="selector-tag">m10</span>% → <span class="selector-tag">margin</span>: 10%;</div><div class="line">    <span class="selector-tag">m10p30e5x</span> → <span class="selector-tag">margin</span>: 10% 30<span class="selector-tag">em</span> 5<span class="selector-tag">ex</span></div></pre></td></tr></table></figure>
+<p>  Tips：</p>
+<ol>
+<li>一些单位的简便写法：（p → %，e → em，x → ex，r → rem）</li>
+<li>以下情况可以省略单位，Emmet会自动为其添加单位：若是整数，则添加px为单位，若是浮点数，则添加em为单位；</li>
+<li>类似margin这样属性值可以有多位数值的情况，在填写多位数值时，中间加个连字符“-”作为分隔符，如果附带了单位，则附带单位的那个值后面就不再加连字符，因为Emmet可以将单位识别为分隔符，此处若再添加连字符，则Emmet认为你是要将下一个值设置为负值，例如：m10p-30e-5x → margin: 10% -30em -5ex;</li>
+</ol>
+</li>
+<li><p>颜色值<br>  Emmet支持16进制的颜色值。</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">c</span><span class="selector-id">#3</span> → <span class="selector-tag">color</span>: <span class="selector-id">#333</span>;</div><div class="line">    <span class="selector-id">#1</span> → <span class="selector-id">#111111</span></div><div class="line">    <span class="selector-id">#e0</span> → <span class="selector-id">#e0e0e0</span></div><div class="line">    <span class="selector-id">#fc0</span> → <span class="selector-id">#ffcc00</span></div><div class="line">    <span class="selector-tag">bd5</span><span class="selector-id">#0s</span> → <span class="selector-tag">border</span>: 5<span class="selector-tag">px</span> <span class="selector-id">#000</span> <span class="selector-tag">solid</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>需要单位的属性值</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">lh2px</span>→ <span class="selector-tag">line-height</span><span class="selector-pseudo">:2px</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加!important<br>  只要在任何要添加“!important”的CSS缩写代码后面添加“!”后缀就可以啦！</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">p</span>!+<span class="selector-tag">m10e</span>!</div></pre></td></tr></table></figure>
+<p>  生成</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">padding</span>: !<span class="selector-tag">important</span>;</div><div class="line">    <span class="selector-tag">margin</span>: 10<span class="selector-tag">em</span> !<span class="selector-tag">important</span>;</div></pre></td></tr></table></figure>
+<p>  Tip：<br>  +不仅在HTML中有作用哦，在CSS中，如果要你连续写多个属性值对，也可以用+进行连接。</p>
+</li>
+<li><p>自动前缀</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">bdrs</span></div></pre></td></tr></table></figure>
+<p>  生成</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">-webkit-border-radius</span>: ;</div><div class="line">    <span class="selector-tag">-moz-border-radius</span>: ;</div><div class="line">    <span class="selector-tag">border-radius</span>: ;</div></pre></td></tr></table></figure>
+<p>  生成指定的某个前缀</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">-wm-trf</span></div></pre></td></tr></table></figure>
+<p>  生成</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">-webkit-transform</span>: ;</div><div class="line">    <span class="selector-tag">-moz-transform</span>: ;</div><div class="line">    <span class="selector-tag">transform</span>: ;</div></pre></td></tr></table></figure>
+<p>  各个前缀的缩写如下：</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    <span class="selector-tag">w</span>: <span class="selector-tag">webkit</span></div><div class="line">    <span class="selector-tag">m</span>: <span class="selector-tag">moz</span></div><div class="line">    <span class="selector-tag">s</span>: <span class="selector-tag">ms</span></div><div class="line">    <span class="selector-tag">o</span>: <span class="selector-tag">o</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="https://heji1993.github.io/2016/12/22/Emmet-让你的代码飞起来/">https://heji1993.github.io/2016/12/22/Emmet-让你的代码飞起来/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="Emmet-让你的代码飞起来" data-url="https://heji1993.github.io/2016/12/22/Emmet-让你的代码飞起来/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2016 <a href="https://heji1993.github.io" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
