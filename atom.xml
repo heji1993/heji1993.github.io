@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heji1993.github.io/"/>
-  <updated>2016-12-28T03:03:59.093Z</updated>
+  <updated>2016-12-28T13:32:46.847Z</updated>
   <id>https://heji1993.github.io/</id>
   
   <author>
@@ -14,6 +14,96 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML5多媒体</title>
+    <link href="https://heji1993.github.io/2016/12/28/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93/"/>
+    <id>https://heji1993.github.io/2016/12/28/HTML5多媒体/</id>
+    <published>2016-12-28T13:30:01.419Z</published>
+    <updated>2016-12-28T13:32:46.847Z</updated>
+    
+    <content type="html"><![CDATA[<p>插件是令浏览器崩溃的主要原因之一，特别是flash。幸运的是HTML5支持直接在浏览器中播放音频和视频文件。</p>
+<a id="more"></a>
+<h3 id="使用video元素"><a href="#使用video元素" class="headerlink" title="使用video元素"></a>使用video元素</h3><p>可以使用video元素在网页里嵌入视频内容。video元素有许多属性，下表列出了它们。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>如果存在，此属性会使浏览器尽可能立刻开始播放视频</td>
+</tr>
+<tr>
+<td>preload</td>
+<td>告诉浏览器是否要预先载入视频</td>
+</tr>
+<tr>
+<td>controls</td>
+<td>该属性告诉浏览器添加控制面板</td>
+</tr>
+<tr>
+<td>loop</td>
+<td>如果此属性存在，浏览器会反复播放视频</td>
+</tr>
+<tr>
+<td>poster</td>
+<td>指定在视频数据载入时显示的图片</td>
+</tr>
+<tr>
+<td>height</td>
+<td>视频的高度</td>
+</tr>
+<tr>
+<td>width</td>
+<td>视频的宽度</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>如果此属性存在，视频将静音播放</td>
+</tr>
+<tr>
+<td>src</td>
+<td>指定要显示的视频</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>预先加载视频（重要）<br>  preload属性告诉浏览器：当它加载完包含video元素的网页后，是否应该积极地去下载资源。预先加载视频减少了用户播放时的延迟，但如果用户不观看视频会造成网络带宽的浪费。下面是preload属性允许设置的值：<br>  <table><tr><td>none</td><td>用户开始播放之前不会载入视频</td></tr><tr><td>metadata（最有用）</td><td>载入视频的元数据（宽度、高度、第一帧等）</td></tr><tr><td>auto</td><td>让浏览器尽快下载整个视频。</td></tr></table><strong>metadata值向用户提供了漂亮的预览画面，但需要谨慎点，有些浏览器实际上会预先下载整个视频</strong></li>
+<li><p>指定视频来源<br>  指定视频来源的最简单的方式是使用src属性，并提供所需视频文件的URL。也可以使用source元素指定多个视频来源。例如：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span> <span class="attr">width</span>=<span class="string">"360"</span> <span class="attr">height</span>=<span class="string">"240"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">""</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">""</span>/&gt;</span></div><div class="line">	Video cannot be displayed</div><div class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  浏览器会沿着列表顺序寻找它能播放的视频文件。当都不支持时，显示video标签内的文本。</p>
+</li>
+</ul>
+<h3 id="使用audio元素"><a href="#使用audio元素" class="headerlink" title="使用audio元素"></a>使用audio元素</h3><p>audio元素允许你在HTML文档里嵌入音频内容。audio元素和video元素有许多共同点。下面以例子说明：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span> <span class="attr">autolpay</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">""</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">""</span>/&gt;</span></div><div class="line">		Audio cannot be displayed</div><div class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="通过DOM操作嵌入式媒体"><a href="#通过DOM操作嵌入式媒体" class="headerlink" title="通过DOM操作嵌入式媒体"></a>通过DOM操作嵌入式媒体</h3><p>audio和video元素有很大的相似性，所有HTMLMediaElement对象在DOM里为它们统一定义了核心功能。audio元素在DOM里面由HTMLMediaElement对象所代表，这个对象没有定义不同于<br>HTMLMediaElement对象的额外功能。video元素由HTMLVideoElement对象所代表，而它相对于HTMLMediaElement对象定义了一些额外的属性。</p>
+<ul>
+<li><p>获得媒体信息<br>  <img src="index_files/1a392a83-d4bf-4fca-9a46-2c95ce19b716.jpg" alt=""><br>  HTMLVideoElement对象定义了下表中展示的额外属性<br>  <img src="index_files/d49974d3-c2b2-4cd7-bb17-352743dc8d1e.jpg" alt=""><br>  获取媒体元素的基本信息示例：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"video"</span> <span class="attr">width</span>=<span class="string">"800"</span> <span class="attr">height</span>=<span class="string">"600"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"myvideo.mp4"</span> <span class="attr">type</span>=<span class="string">"video/mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"myvideo.ogv"</span> <span class="attr">type</span>=<span class="string">"video/ogg"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"myvideo.webm"</span> <span class="attr">type</span>=<span class="string">"video/webm"</span>&gt;</span><span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">object</span> <span class="attr">width</span>=<span class="string">""</span> <span class="attr">height</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">"application/x-shockwave-flash"</span> <span class="attr">data</span>=<span class="string">"myvideo.swf"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"movie"</span> <span class="attr">value</span>=<span class="string">"myvideo.swf"</span> /&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"flashvars"</span> <span class="attr">value</span>=<span class="string">"autostart=true&amp;amp;file=myvideo.swf"</span> /&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">object</span>&gt;</span></div><div class="line">		当前浏览器不支持 video直接播放，点击这里下载视频： <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"myvideo.webm"</span>&gt;</span>下载视频<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">id</span>=<span class="string">"info"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>属性<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>值<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">		<span class="keyword">var</span> video = <span class="built_in">document</span>.getElementById(<span class="string">"video"</span>);</div><div class="line">		<span class="keyword">var</span> propertyNames = [<span class="string">"autoplay"</span>,<span class="string">"currentSrc"</span>,<span class="string">"controls"</span>,<span class="string">"loop"</span>,<span class="string">"muted"</span>,<span class="string">"preload"</span>,<span class="string">"src"</span>,<span class="string">"volume"</span>];</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; propertyNames.length ; i++)&#123;</div><div class="line">			<span class="keyword">var</span> trObj = <span class="built_in">document</span>.createElement(<span class="string">"tr"</span>);</div><div class="line">			<span class="keyword">var</span> td1 = <span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line">			<span class="keyword">var</span> td2 = <span class="built_in">document</span>.createElement(<span class="string">"td"</span>);</div><div class="line">			<span class="keyword">var</span> propertyName = <span class="built_in">document</span>.createTextNode(propertyNames[i]);</div><div class="line">			<span class="keyword">var</span> propertyValue = <span class="built_in">document</span>.createTextNode(video[propertyNames[i]]);</div><div class="line">			td1.appendChild(propertyName);</div><div class="line">			td2.appendChild(propertyValue);</div><div class="line">			trObj.appendChild(td1);</div><div class="line">			trObj.appendChild(td2);</div><div class="line">			<span class="built_in">document</span>.getElementById(<span class="string">"info"</span>).appendChild(trObj);</div><div class="line">		&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>评估播放能力<br>  canPlayType方法可以用来了解浏览器是否能够播放特定的媒体格式。这个方法会返回空（不能播放）或maybe（或许能播放）或probably（相当有把握播放）。<br>  <img src="index_files/d738d28b-f513-4ea4-935e-e19d6d45c87e.jpg" alt=""><br>  使用这个方法需要注意的是不同浏览器评估自身格式播放能力的方法各不相同。</p>
+</li>
+<li>控制媒体回放<br>  HTMLMediaElement对象定义了许多成员，它们让你能够控制回放和获得回放信息，这些属性和方法如下：<br>  <img src="index_files/0a9f7559-774f-46d4-8605-b6ca7fdb77cc.jpg" alt=""><br>  脚本控制多媒体暂停/播放：<br>  <img src="index_files/1155e847-4069-4df0-9f64-747beed58072.jpg" alt=""></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;插件是令浏览器崩溃的主要原因之一，特别是flash。幸运的是HTML5支持直接在浏览器中播放音频和视频文件。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="HTML5" scheme="https://heji1993.github.io/categories/HTML5/"/>
+    
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="HTML5" scheme="https://heji1993.github.io/tags/HTML5/"/>
+    
+  </entry>
   
   <entry>
     <title>Ajax</title>
@@ -1147,11 +1237,11 @@
       <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="SQLServer" scheme="https://heji1993.github.io/tags/SQLServer/"/>
-    
       <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
+    
+      <category term="SQLServer" scheme="https://heji1993.github.io/tags/SQLServer/"/>
     
   </entry>
   
@@ -2368,11 +2458,11 @@
       <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
+      <category term="oracle" scheme="https://heji1993.github.io/tags/oracle/"/>
+    
       <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
       <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
-    
-      <category term="oracle" scheme="https://heji1993.github.io/tags/oracle/"/>
     
   </entry>
   
