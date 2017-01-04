@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>何机的博客</title>
+  <title>何机的技术博客</title>
   <subtitle>No pains,no gains</subtitle>
   <link href="/atom.xml" rel="self"/>
   
@@ -680,13 +680,13 @@
 <a id="more"></a>
 <h2 id="语法-使用tab键补全"><a href="#语法-使用tab键补全" class="headerlink" title="语法(使用tab键补全)"></a>语法(使用tab键补全)</h2><ul>
 <li><p>后代<code>nav&gt;ul&gt;li</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;nav&gt;</div><div class="line">        &lt;ul&gt;</div><div class="line">            &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;/ul&gt;</div><div class="line">    &lt;<span class="regexp">/nav&gt;</span></div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;nav&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    &lt;<span class="regexp">/nav&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>兄弟<code>div+p+bq</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;p&gt;&lt;/p&gt;</div><div class="line">    &lt;blockquote&gt;&lt;/blockquote&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    &lt;p&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">    &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p>上级<code>div+div&gt;p&gt;span+em^bq</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;</div><div class="line">        &lt;blockquote&gt;&lt;/blockquote&gt;</div><div class="line">    &lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">    &lt;div&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">        &lt;blockquote&gt;<span class="xml"><span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></div><div class="line">    &lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
 <p>  例二<code>div+div&gt;p&gt;span+em^^bq</code>：</p>
   <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;&lt;/div&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;em&gt;&lt;/em&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;blockquote&gt;&lt;/blockquote&gt;</div></pre></td></tr></table></figure>
 </li>
@@ -696,23 +696,23 @@
   <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    &lt;div&gt;</div><div class="line">        &lt;dl&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">            &lt;dt&gt;&lt;/dt&gt;</div><div class="line">            &lt;dd&gt;&lt;/dd&gt;</div><div class="line">        &lt;/dl&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;footer&gt;</div><div class="line">        &lt;p&gt;&lt;/p&gt;</div><div class="line">    &lt;/footer&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>乘法<code>ul&gt;li*5</code>:</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">        &lt;li&gt;&lt;/li&gt;</div><div class="line">    &lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">        &lt;li&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line">    &lt;<span class="regexp">/ul&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>自增符号:<br>  例一<code>ul&gt;li.item$*5</code>:</p>
   <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item1"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item2"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    ``` </div><div class="line">    例二 `h$[title=item$]&#123;Header $&#125;*3`:</div><div class="line">    ```javascript</div><div class="line">    &lt;h1 title="item1"&gt;Header 1&lt;/h1&gt;</div><div class="line">    &lt;h2 title="item2"&gt;Header 2&lt;/h2&gt;</div><div class="line">    &lt;h3 title="item3"&gt;Header 3&lt;/h3&gt;</div><div class="line">    ```    例三`ul&gt;li.item$@-*5`(负号表示反向):</div><div class="line">    ```javascript</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item2"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item1"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div></pre></td></tr></table></figure>
 <p>  例四<code>ul&gt;li.item$@3*5</code>:</p>
   <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li class="item3"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item4"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item5"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item6"&gt;&lt;/li&gt;</div><div class="line">        &lt;li class="item7"&gt;&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">    ```* ID和类属性</div><div class="line">    缩写`div#header`</div><div class="line">    ```javascript</div><div class="line">    &lt;div id="header"&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>  缩写<code>div.title</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"title"</span>&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"title"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p>  缩写<code>form#search.wide</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;form id=<span class="string">"search"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"wide"</span>&gt;&lt;/form&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;form id=<span class="string">"search"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"wide"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p>  缩写p.class1.class2.class3</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"class1 class2 class3"</span>&gt;&lt;/p&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;p <span class="class"><span class="keyword">class</span></span>=<span class="string">"class1 class2 class3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p>自定义属性<br>  缩写<code>p[title=&quot;Hello World&quot;]</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">        &lt;p title=<span class="string">"Hello World"</span>&gt;&lt;/p&gt;</div><div class="line">    缩写<span class="string">`td[rowspan=2 colspan=3]`</span></div><div class="line">    <span class="string">``</span><span class="string">`javascript</span></div><div class="line">    &lt;td rowspan="2" colspan="3"&gt;&lt;/td&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">        &lt;p title=<span class="string">"Hello World"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line">    缩写<span class="string">`td[rowspan=2 colspan=3]`</span></div><div class="line">    <span class="string">``</span><span class="string">`javascript</span></div><div class="line">    &lt;td rowspan="2" colspan="3"&gt;&lt;/td&gt;</div></pre></td></tr></table></figure>
 <p>  缩写<code>div[a=&quot;value1&quot; b=&quot;value2&quot;]</code></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div a=<span class="string">"value1"</span> b=<span class="string">"value2"</span>&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;div a=<span class="string">"value1"</span> b=<span class="string">"value2"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p>文本<br>  缩写<code>a{click me}</code></p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">    &lt;a&gt;click me&lt;<span class="regexp">/a&gt;</span></div></pre></td></tr></table></figure>
@@ -1366,9 +1366,9 @@
       <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1520,11 +1520,11 @@
       <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
     
       <category term="CSS3" scheme="https://heji1993.github.io/tags/CSS3/"/>
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1608,9 +1608,9 @@
       <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1896,11 +1896,11 @@
       <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
     
       <category term="CSS3" scheme="https://heji1993.github.io/tags/CSS3/"/>
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -2697,9 +2697,9 @@
       <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+    
+      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="hack" scheme="https://heji1993.github.io/tags/hack/"/>
     
