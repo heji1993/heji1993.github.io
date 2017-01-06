@@ -4,9 +4,9 @@
   <subtitle>No pains,no gains</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://heji1993.github.io/"/>
-  <updated>2017-01-03T10:30:14.658Z</updated>
-  <id>https://heji1993.github.io/</id>
+  <link href="http://heji.website/"/>
+  <updated>2017-01-06T06:21:55.667Z</updated>
+  <id>http://heji.website/</id>
   
   <author>
     <name>何机</name>
@@ -16,9 +16,262 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HTML5-Web存储</title>
+    <link href="http://heji.website/2017/01/06/HTML5-Web%E5%AD%98%E5%82%A8/"/>
+    <id>http://heji.website/2017/01/06/HTML5-Web存储/</id>
+    <published>2017-01-06T06:20:02.820Z</published>
+    <updated>2017-01-06T06:21:55.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>Web存储允许我们在浏览器里保存简单的键/值数据。Web存储与cookie很相似。</p>
+<a id="more"></a>
+<h3 id="使用本地存储"><a href="#使用本地存储" class="headerlink" title="使用本地存储"></a>使用本地存储</h3><p>我们可以通过全局属性localStorage访问本地存储功能。这个属性返回一个Storage对象。Storage对象被用来保存键/值形式的<strong>字符串对</strong><br><img src="index_files/507ff266-d24f-43fd-9691-000f50d1a5ae.jpg" alt=""><br>Storage对象可用来存储键/值对，其中键和值都是字符串。键必须是唯一的，这就意味着如果我们用Storage对象里已经存在的键调用setItem方法，就会更新它的值。</p>
+<ul>
+<li>监听存储事件<br>  某个文档对本地存储进行修改时会触发storage事件，我们可以监听其他同源文档上的这个事件来确保我们能跟上最新的变化。<br>  与storage事件同时指派的对象是一个StorageEvent对象。<br>  <img src="index_files/cbde7dfe-831d-4684-a2cb-f2841faed675.jpg" alt=""><br>  <img src="index_files/90269775-bbaa-4d19-9d46-0204761ea6cc.jpg" alt=""><br>  storage事件是通过window对象触发的</li>
+</ul>
+<h3 id="使用会话存储"><a href="#使用会话存储" class="headerlink" title="使用会话存储"></a>使用会话存储</h3><p>会话存储的工作方式和本地存储基本一致，不同之处在于数据是在各个浏览上下文私有的，会在文档被关闭时移除。我们可以使用全局变量sessionStorage访问会话存储，它返回一个Storage对象。</p>
+<h3 id="Cookie、localStorage和sessionStorage对比"><a href="#Cookie、localStorage和sessionStorage对比" class="headerlink" title="Cookie、localStorage和sessionStorage对比"></a>Cookie、localStorage和sessionStorage对比</h3><p><table><tr><td>特性</td><td>Cookie</td><td>localStorage</td><td>sessionStorage</td></tr><tr><td>数据的生命期</td><td>一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>存放数据大小</td><td>4K左右</td><td colspan="2">一般为5MB</td></tr><tr><td>与服务器端通信</td><td>每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题</td><td colspan="2">仅在客户端（即浏览器）中保存，不参与和服务器的通信</td></tr><tr><td>易用性</td><td>需要程序员自己封装，源生的Cookie接口不友好</td><td colspan="2">源生接口可以接受，亦可再次封装来对Object和Array有更好的支持</td></tr></table><br><strong>注意：像记住密码等功能，一般在服务器端把用户信息加密存储在cookie，因为cookie的主要用途就是与服务器端的通信</strong></p>
+<h3 id="本地存储的综合示例"><a href="#本地存储的综合示例" class="headerlink" title="本地存储的综合示例"></a>本地存储的综合示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">body</span> &gt; *&#123;</div><div class="line">                <span class="attribute">float</span>: left;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">4px</span> <span class="number">6px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">6px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">p</span>&#123;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">4px</span> <span class="number">0</span>;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"key"</span>&gt;</span>键：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"key"</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"value"</span>&gt;</span>值：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"value"</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"btns"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"add"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"clear"</span>&gt;</span>清除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span>There are <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> items!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            displayData();</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"btns"</span>).addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> id = e.target.getAttribute(<span class="string">"id"</span>);</div><div class="line">                <span class="keyword">switch</span>(id)&#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"add"</span>:</div><div class="line">                        <span class="keyword">var</span> key = <span class="built_in">document</span>.getElementById(<span class="string">"key"</span>).value;</div><div class="line">                        <span class="keyword">var</span> val = <span class="built_in">document</span>.getElementById(<span class="string">"value"</span>).value;</div><div class="line">                        localStorage.setItem(key,val);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"clear"</span>:</div><div class="line">                        localStorage.clear();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                displayData();</div><div class="line">            &#125;);</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">displayData</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> tableElem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"table"</span>)[<span class="number">0</span>];</div><div class="line">                tableElem.innerHTML = <span class="string">""</span>;</div><div class="line">                <span class="keyword">var</span> itemCount = localStorage.length;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"count"</span>).innerHTML = itemCount;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; itemCount ; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> key = localStorage.key(i);</div><div class="line">                    tableElem.innerHTML+=<span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+key+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+localStorage.getItem(key)+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Web存储允许我们在浏览器里保存简单的键/值数据。Web存储与cookie很相似。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
+    
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5-使用拖放</title>
+    <link href="http://heji.website/2017/01/06/HTML5-%E4%BD%BF%E7%94%A8%E6%8B%96%E6%94%BE/"/>
+    <id>http://heji.website/2017/01/06/HTML5-使用拖放/</id>
+    <published>2017-01-06T06:18:06.333Z</published>
+    <updated>2017-01-06T06:19:37.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>HTML5添加了对拖放的支持。</p>
+<a id="more"></a>
+<h3 id="实现简单拖放"><a href="#实现简单拖放" class="headerlink" title="实现简单拖放"></a>实现简单拖放</h3><ul>
+<li><p>设置拖放<br>  我们通过draggable属性告诉浏览器文档里的哪些元素可以被拖动。这个属性有三个允许的值：</p>
+  <table><tr><td>值</td><td>说明</td></tr><tr><td>true</td><td>此元素能被拖动</td></tr><tr><td>false</td><td>此元素不能被拖动</td></tr><tr><td>auto</td><td>浏览器自主决定某个元素是否能被拖动</td></tr></table>
+</li>
+<li><p>处理拖动事件<br>  我们通过一系列事件来利用拖放功能。这些事件有的针对被拖动元素，有的针对可能的释放区<br>  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragstart</td><td>在元素开始被拖动时触发</td></tr><tr><td>drag</td><td>在元素被拖动时触发</td></tr><tr><td>dragend</td><td>在拖动操作完成时触发</td></tr></table><br>  下面是简单例子：<br>  <img src="index_files/9a360800-e7bb-4017-8bee-d59d2aea4406.jpg" alt=""></p>
+</li>
+<li><p>创建释放区<br>  要让某个元素成为释放区，我们需要处理dragenter和dragover事件。它们是针对释放区的其中两个事件。</p>
+  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragenter</td><td>当被拖动元素进入释放区所占据的屏幕空间时触发</td></tr><tr><td>dragover</td><td>当被拖动元素在释放区移动时触发</td></tr><tr><td>dragleave</td><td>当被拖动元素没有放下就离开释放区时触发</td></tr><tr><td>drop</td><td>当被拖动元素在释放区放下时触发</td></tr></table>
+</li>
+<li><p>处理释放事件（简单拖放例子）</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>RunJS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">body</span> &gt; *&#123;</div><div class="line">                <span class="attribute">float</span>:left;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">body</span> &gt; <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">margin</span>:<span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span><span class="selector-class">.dragged</span>&#123;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid lightgrey;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">                <span class="attribute">line-height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>:center;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#ccc</span>;</div><div class="line">                <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/tomato.jpg"</span> <span class="attr">id</span>=<span class="string">"tomato"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/orange.jpg"</span> <span class="attr">id</span>=<span class="string">"orange"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/strawberry.jpg"</span> <span class="attr">id</span>=<span class="string">"strawberry"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span></div><div class="line">                Drop here!</div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> body = <span class="built_in">document</span>.body;</div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>);</div><div class="line">            <span class="comment">//接收被拖放元素的ID</span></div><div class="line">            <span class="keyword">var</span> draggedId;</div><div class="line">            <span class="comment">//处理拖放事件</span></div><div class="line">            target.ondragcenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            <span class="comment">//在进入释放区和在释放区移动、释放时要阻止事件的默认行为，否则会发生意料之外的结果</span></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> newElem = <span class="built_in">document</span>.getElementById(draggedId).cloneNode(<span class="literal">false</span>);</div><div class="line">                target.innerHTML = <span class="string">""</span>;</div><div class="line">                target.appendChild(newElem);</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            body.ondragstart = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                draggedId = e.target.id;</div><div class="line">                e.target.classList.add(<span class="string">"dragged"</span>);</div><div class="line">            &#125;</div><div class="line">            body.ondragend = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> elems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".dragged"</span>);</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; elems.length ; i++ )&#123;</div><div class="line">                    elems[i].classList.remove(<span class="string">"dragged"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  效果请查看：<a href="http://runjs.cn/detail/3oiwealn" target="_blank" rel="external">简单拖放</a></p>
+</li>
+</ul>
+<h3 id="使用DataTransfer对象"><a href="#使用DataTransfer对象" class="headerlink" title="使用DataTransfer对象"></a>使用DataTransfer对象</h3><p>与拖放操作所触发的事件同时派发的对象是DragEvent，它派生于MouseEvent，并增加了额外的属性：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataTransfer</td>
+<td>返回用于传输数据到释放区的对象</td>
+<td>DataTransfer</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以用DataTransfer对象从被拖动元素传输任意数据到释放区元素上。DataTransfer定义的属性和方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>types</td>
+<td>返回数据的格式</td>
+<td>字符串数组</td>
+</tr>
+<tr>
+<td>getData（format）</td>
+<td>返回指定格式的数据</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>setData(format，data)</td>
+<td>设置指定格式的数据</td>
+<td>void</td>
+</tr>
+<tr>
+<td>clearData(format)</td>
+<td>移除指定格式的数据</td>
+<td>void</td>
+</tr>
+<tr>
+<td>files</td>
+<td>返回已被拖动文件的列表</td>
+<td>FileList</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>使用DataTransfer对象从被拖动元素传输数据到释放区<br>  <img src="index_files/49ecc187-0389-4dba-8cd3-30e578ec8841.jpg" alt=""><br>  setData方法第一个参数和getData方法的参数指定数据的格式，它只支持两个值：Text和Url。setData方法第二个参数是我们要传输的数据。使用这种方式最大的好处是支持跨不同类型的浏览器，因为拖放功能是集成在操作系统里的。例如我们可以在Chrome浏览器的文档里拖动一个元素，然后再Firefox浏览器的文档里释放它。</p>
+</li>
+<li><p>拖放文件<br>  上一节介绍了DataTransfer对象有一个files属性返回拖放的File对象的集合。File API是HTML5新增的功能，File对象定义的属性如下<br>  <table><tr><td>名称</td><td>说明</td><td>返回</td></tr><tr><td>name</td><td>获取文件名</td><td>字符串</td></tr><tr><td>type</td><td>获取文件类型，以MIME类型表示</td><td>字符串</td></tr><tr><td>size</td><td>获取文件大小（以字节计算）</td><td>字符串</td></tr></table><br>  下面是拖放文件的例子：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>: center;</div><div class="line">                <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">p</span>&#123;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span> <span class="selector-tag">th</span>,<span class="selector-id">#fileDetail</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span>Drop here!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"fileDetail"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            target.ondragenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>).innerHTML = <span class="string">"File dropped"</span>;</div><div class="line">                <span class="comment">//文件</span></div><div class="line">                <span class="keyword">var</span> fileList = e.dataTransfer.files;</div><div class="line">                <span class="keyword">if</span>(fileList.length &gt; <span class="number">0</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> fileDetail = <span class="built_in">document</span>.getElementById(<span class="string">"fileDetail"</span>);</div><div class="line">                    fileDetail.innerHTML = <span class="string">"&lt;tr&gt;&lt;th&gt;文件名称&lt;/th&gt;&lt;th&gt;文件类型&lt;/th&gt;&lt;th&gt;文件大小&lt;/th&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; fileList.length ; i++)&#123;</div><div class="line">                        fileDetail.innerHTML += <span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+fileList[i].name+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].type+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].size+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  需要注意的是，我们借助DataTransfer对象以及HTML5的FormData对象就能实现拖拽上传文件了：<br>  <img src="index_files/0c8983c5-8f21-4fcd-938c-6bbbd7e7f2c0.jpg" alt=""></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;HTML5添加了对拖放的支持。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
+    
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML5-地理定位</title>
+    <link href="http://heji.website/2017/01/06/HTML5-%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/"/>
+    <id>http://heji.website/2017/01/06/HTML5-地理定位/</id>
+    <published>2017-01-06T06:16:28.828Z</published>
+    <updated>2017-01-06T06:17:43.828Z</updated>
+    
+    <content type="html"><![CDATA[<p>地理定位API不是HTML5规范的一部分，但经常被归组到HTML5相关的新功能中。</p>
+<a id="more"></a>
+<h3 id="地理定位"><a href="#地理定位" class="headerlink" title="地理定位"></a>地理定位</h3><ul>
+<li>使用地理定位<br>  我们通过全局属性navigator.geolocation访问地理定位功能，它返回一个Geolocation对象，下面是这个对象的方法：  <table><tr><td>getCurrentPosition(callback,errorCallback,options)</td><td>获取当前位置</td><td>void</td></tr><tr><td>watchPosition(callback,errorCallback,options)</td><td>开始监控当前位置</td><td>数值</td></tr><tr><td>clearWatch(id)</td><td>停止监控当前位置</td><td>void</td></tr></table></li>
+<li>获取当前位置的getCurrentPosition方法<br>  getCurrentPosition方法获取当前位置，方法接受三个参数，第一个是成功之后的回调函数，该函数获得一个表示当前位置的Position对象；第二个参数是定位错误的回调函数，此函数会获得一个PositionError对象；第三个参数是表示地理定位选项的对象。</li>
+<li>Position对象<br>  Position对象只有两个属性：coords属性返回一个Coordinates对象，包含当前位置的坐标；timestamp属性返回获取坐标信息的时间戳，下面是Coordinates对象的相关属性：  <table><tr><td>名称</td><td>说明</td><td>返回</td></tr><tr><td>latitude</td><td>返回由十进制表示的纬度</td><td>数值</td></tr><tr><td>longitude</td><td>返回由十进制表示的经度</td><td>数值</td></tr><tr><td>altitude</td><td>返回用米表示的海拔高度</td><td>数值</td></tr><tr><td>accuracy</td><td>返回用米表示的坐标精度</td><td>数值</td></tr><tr><td>altitudeAccuracy</td><td>返回用米表示的海拔精度</td><td>数值</td></tr><tr><td>heading</td><td>返回用度表示的前进方向</td><td>数值</td></tr><tr><td>speed</td><td>返回用米/秒表示的行进速度</td><td>数值</td></tr></table></li>
+<li>PositionError对象<br>  PositionError对象只有两个属性：code属性返回代表错误类型的代码；message返回描述错误的字符串。<br>  <img src="index_files/299dee61-9d17-4060-97eb-4c2f39a52ae1.jpg" alt=""></li>
+<li>指定地理定位选项<br>  <img src="index_files/2909d3e9-5724-4d45-a476-5329b8ba18a1.jpg" alt=""></li>
+<li><p>地理定位综合例子：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">table</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Longitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"longitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Latitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"latitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Altitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"altitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Accuracy<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"accuracy"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Altitude Accuracy<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"altitudeAccuracy"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Heading<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"heading"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Speed<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"speed"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Time Stamp<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"timestamp"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Error Code<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"errorcode"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Error Message<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"errormessage"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> options = &#123;</div><div class="line">                enableHighAccuracy:<span class="literal">false</span>,</div><div class="line">                timeout:<span class="number">2000</span>,</div><div class="line">                maximumAge:<span class="number">30000</span></div><div class="line">            &#125;</div><div class="line">            navigator.geolocation.getCurrentPosition(displayPosition,handleError,options);</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">displayPosition</span>(<span class="params">pos</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> properties = [<span class="string">"longitude"</span>,<span class="string">"latitude"</span>,<span class="string">"altitude"</span>,<span class="string">"accuracy"</span>,<span class="string">"altitudeAccuracy"</span>,<span class="string">"heading"</span>,<span class="string">"speed"</span>];</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; properties.length ; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> value = pos.coords[properties[i]];</div><div class="line">                    <span class="built_in">document</span>.getElementById(properties[i]).innerHTML = value;</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"timestamp"</span>).innerHTML = pos.timestamp;</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"errorcode"</span>).innerHTML = e.code;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>监控位置<br>  可以用<code>watchPosition</code>方法不断获得关于位置的更新。这个方法所需的参数和<code>getCurrentPosition</code>方法相同，工作方式也一样。它们的区别在于：随着位置发生改变，回调函数会被反复地调用。<br>  如果想要停止监控，可以把<code>navigator.geolocation.watchPosition</code>方法返回的ID值传给<code>clearWatch</code>方法。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;地理定位API不是HTML5规范的一部分，但经常被归组到HTML5相关的新功能中。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
+    
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>创建离线Web应用程序</title>
+    <link href="http://heji.website/2017/01/06/%E5%88%9B%E5%BB%BA%E7%A6%BB%E7%BA%BFWeb%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://heji.website/2017/01/06/创建离线Web应用程序/</id>
+    <published>2017-01-06T06:12:38.017Z</published>
+    <updated>2017-01-06T06:15:49.618Z</updated>
+    
+    <content type="html"><![CDATA[<p>离线应用程序缓存功能允许我们指定Web应用程序所需的全部资源，这样浏览器就能在加载HTML文档时把他们都下载下来。通过这种方式，用户即使无法访问网络也能继续使用我们的应用程序。</p>
+<a id="more"></a>
+<h3 id="离线Web应用程序"><a href="#离线Web应用程序" class="headerlink" title="离线Web应用程序"></a>离线Web应用程序</h3><h4 id="定义清单"><a href="#定义清单" class="headerlink" title="定义清单"></a>定义清单</h4><p>清单（manifest）允许我们列出离线工作所需的全部资源。<br>清单文件是一个简单的文本文件。第一行始终是CACHE MANIFEST，然后我们再列出应用程序所需的资源，每个文本行列一个。<br>清单文件没有固定的命名方案，但是.appcache是最常用的。我把清单文件保存为<code>demo.appcache</code><br>manifest的典型结构:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">CACHE MANIFEST</div><div class="line"># 注释：需要缓存的文件，无论在线与否，均从缓存里读取</div><div class="line">CACHE:</div><div class="line">img/orange.jpg</div><div class="line">img/tomato.jpg</div><div class="line">img/strawberry.jpg</div><div class="line"></div><div class="line"># 注释：不缓存的文件，无论缓存中存在与否，均重新获取</div><div class="line">NETWORK:</div><div class="line">uncached.js</div><div class="line">uncached.css</div><div class="line"></div><div class="line"># 注释：获取不到资源时的备选路径，如访问资源失败，则返回pages/offline.html页面</div><div class="line"># 我们不需要在清单里的CACHE区域添加备用资源，因为浏览器会自动下载备用资源</div><div class="line">FALLBACK:</div><div class="line">*.jpg img/404.jpg</div><div class="line">* pages/offline.html</div></pre></td></tr></table></figure></p>
+<h4 id="使用清单"><a href="#使用清单" class="headerlink" title="使用清单"></a>使用清单</h4><p>在文档中添加给html元素添加<code>manifest</code>属性即可使用清单，如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">manifest</span>=<span class="string">"demo.appcache"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="监测浏览器状态"><a href="#监测浏览器状态" class="headerlink" title="监测浏览器状态"></a>监测浏览器状态</h4><table>
+<thead>
+<tr>
+<th>用法</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window.navigator.onLine</td>
+<td>如果确定为离线返回false，如果不能确定是否离线，返回true</td>
+<td>布尔值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="使用离线缓存"><a href="#使用离线缓存" class="headerlink" title="使用离线缓存"></a>使用离线缓存</h4><p>可以通过<code>window.applicationCache</code>属性使用离线缓存。该属性返回一个<code>ApplicationCache</code>对象。<code>ApplicationCache</code>对象的属性或方法有：</p>
+<table>
+<thead>
+<tr>
+<th>成员</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>update()</td>
+<td>更新缓存文件确保清单里的文件都下载了最新版本</td>
+<td>void</td>
+</tr>
+<tr>
+<td>swapCache()</td>
+<td>交换当前缓存与较新的缓存</td>
+<td>void</td>
+</tr>
+<tr>
+<td>status</td>
+<td>返回缓存的状态</td>
+<td>数值</td>
+</tr>
+</tbody>
+</table>
+<p>status属性值如下：<br><img src="index_files/4b418b8d-7556-43d1-8a66-e4a6e6ab65b1.jpg" alt=""><br>除了这些方法和属性之外，ApplicationCache对象还定义了一组事件，它们在缓存状态改变时触发。<br><img src="index_files/c2711092-01a2-4f85-aade-643a9d394d92.jpg" alt=""><br>我们可以结合这些方法与status属性的值来显式控制离线缓存。</p>
+<ul>
+<li><p>制作更新<br>  替换缓存清单上指定的缓存文件（不要修改文件名），修改清单文件（清单文件必须改动浏览器才会下载更新，可以加个空格）</p>
+</li>
+<li><p>获取更新<br>  调用update()方法，获取更新，此时status属性变为UPDATEREADY。此时，浏览器已经下载了修改过的内容，但更新还未被应用到我们正在使用的缓存中。</p>
+</li>
+<li><p>应用更新<br>  调用swapCache()方法，更新的内容被应用到应用程序的离线缓存中。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;离线应用程序缓存功能允许我们指定Web应用程序所需的全部资源，这样浏览器就能在加载HTML文档时把他们都下载下来。通过这种方式，用户即使无法访问网络也能继续使用我们的应用程序。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
+    
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HTML5-Canvas入门</title>
-    <link href="https://heji1993.github.io/2017/01/03/HTML5-canvas/"/>
-    <id>https://heji1993.github.io/2017/01/03/HTML5-canvas/</id>
+    <link href="http://heji.website/2017/01/03/HTML5-canvas/"/>
+    <id>http://heji.website/2017/01/03/HTML5-canvas/</id>
     <published>2017-01-03T10:28:13.406Z</published>
     <updated>2017-01-03T10:30:14.658Z</updated>
     
@@ -340,21 +593,21 @@
     
     </summary>
     
-      <category term="HTML5" scheme="https://heji1993.github.io/categories/HTML5/"/>
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
-      <category term="JavaScript" scheme="https://heji1993.github.io/tags/JavaScript/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="canvas" scheme="https://heji1993.github.io/tags/canvas/"/>
+      <category term="canvas" scheme="http://heji.website/tags/canvas/"/>
     
   </entry>
   
   <entry>
     <title>HTML5多媒体</title>
-    <link href="https://heji1993.github.io/2016/12/28/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93/"/>
-    <id>https://heji1993.github.io/2016/12/28/HTML5多媒体/</id>
+    <link href="http://heji.website/2016/12/28/HTML5%E5%A4%9A%E5%AA%92%E4%BD%93/"/>
+    <id>http://heji.website/2016/12/28/HTML5多媒体/</id>
     <published>2016-12-28T13:30:01.419Z</published>
     <updated>2016-12-28T13:32:46.847Z</updated>
     
@@ -432,26 +685,26 @@
     
     </summary>
     
-      <category term="HTML5" scheme="https://heji1993.github.io/categories/HTML5/"/>
+      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="HTML5" scheme="https://heji1993.github.io/tags/HTML5/"/>
+      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
     
   </entry>
   
   <entry>
     <title>Ajax</title>
-    <link href="https://heji1993.github.io/2016/12/28/Ajax/"/>
-    <id>https://heji1993.github.io/2016/12/28/Ajax/</id>
+    <link href="http://heji.website/2016/12/28/Ajax/"/>
+    <id>http://heji.website/2016/12/28/Ajax/</id>
     <published>2016-12-28T03:02:11.415Z</published>
     <updated>2016-12-28T03:03:59.093Z</updated>
     
     <content type="html"><![CDATA[<p>Ajax是现代Web应用程序开发的一项关键工具。它让你能想服务器异步发送和接收数据，然后用JavaScript解析。</p>
 <a id="more"></a>
 <p>Ajax是异步JavaScript和XML的缩写，这个名称诞生于XML还是数据传输首选格式的时期，但现在基本不用XML传输数据了。<br>Ajax核心规范的名称继承于你用来建立和发起请求的JavaScript对象：XMLHttpRequest。这个规范有两个等级。所有浏览器都实现了第一级（Level1）。它代表了基础级别的功能。第二级别（Level2）扩展了最初的规范，纳入了额外的事件和一些功能来让它更容易与form元素协作，并且支持一些相关的规范（例如CORS）。</p>
-<h3 id="Ajax起步"><a href="#Ajax起步" class="headerlink" title="Ajax起步"></a>Ajax起步</h3><p>Ajax的关键在于XMLHttpRequest对象，而理解这个对象的最佳方式就是看个例子。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>apples<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>bananas<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>cherries<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span>Press a button<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> buttons = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>);</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; buttons.length ; i++)&#123;</div><div class="line">                buttons[i].addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                    <span class="comment">//创建XMLHttpRequest对象</span></div><div class="line">                    <span class="keyword">var</span> httpRequest = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">                    <span class="comment">//给readystatechange事件设置一个事件处理器，这个事件会在请求过程中被多次触发，向你提供事情的进展情况</span></div><div class="line">                    httpRequest.onreadystatechange = handleResponse;</div><div class="line">                    <span class="comment">//open指定HTTP方法和需要请求的URL，open(method,url,async,user,password);第三个参数指定是否异步,默认true，最后两个可选参数是应该给服务器的用户名和密码</span></div><div class="line">                    httpRequest.open(<span class="string">"GET"</span>,e.target.innerHTML+<span class="string">".html"</span>);</div><div class="line">                    <span class="comment">//发送请求。因没有向服务器发送任何数据，所有没有参数可用</span></div><div class="line">                    httpRequest.send();</div><div class="line">                &#125;,<span class="literal">false</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="comment">//e.target表示当前XMLHttpRequest对象</span></div><div class="line">                <span class="comment">//读取XMLHttpRequest对象的readyState属性来确定当前处理的阶段。</span></div><div class="line">                <span class="keyword">if</span>(e.target.readyState==XMLHttpRequest.LOADING &amp;&amp; e.target.status==<span class="number">200</span>)&#123;</div><div class="line">                    <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>).innerHTML = e.target.responseText;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="Ajax起步"><a href="#Ajax起步" class="headerlink" title="Ajax起步"></a>Ajax起步</h3><p>Ajax的关键在于XMLHttpRequest对象，而理解这个对象的最佳方式就是看个例子。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>apples<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>bananas<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>cherries<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span>Press a button<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"></span></div><div class="line">            var buttons = document.getElementsByTagName("button");</div><div class="line">            for(var i = 0 ; i <span class="tag">&lt; <span class="attr">buttons.length</span> ; <span class="attr">i</span>++)&#123;</span></div><div class="line">                <span class="attr">buttons</span>[<span class="attr">i</span>]<span class="attr">.addEventListener</span>('<span class="attr">click</span>',<span class="attr">function</span>(<span class="attr">e</span>)&#123;</div><div class="line">                    //创建<span class="attr">XMLHttpRequest</span>对象</div><div class="line">                    <span class="attr">var</span> <span class="attr">httpRequest</span> = <span class="string">new</span> <span class="attr">XMLHttpRequest</span>();</div><div class="line">                    //给<span class="attr">readystatechange</span>事件设置一个事件处理器，这个事件会在请求过程中被多次触发，向你提供事情的进展情况</div><div class="line">                    <span class="attr">httpRequest.onreadystatechange</span> = <span class="string">handleResponse;</span></div><div class="line">                    //<span class="attr">open</span>指定<span class="attr">HTTP</span>方法和需要请求的<span class="attr">URL</span>，<span class="attr">open</span>(<span class="attr">method</span>,<span class="attr">url</span>,<span class="attr">async</span>,<span class="attr">user</span>,<span class="attr">password</span>);第三个参数指定是否异步,默认<span class="attr">true</span>，最后两个可选参数是应该给服务器的用户名和密码</div><div class="line">                    <span class="attr">httpRequest.open</span>("<span class="attr">GET</span>",<span class="attr">e.target.innerHTML</span>+"<span class="attr">.html</span>");</div><div class="line">                    //发送请求。因没有向服务器发送任何数据，所有没有参数可用</div><div class="line">                    <span class="attr">httpRequest.send</span>();</div><div class="line">                &#125;,<span class="attr">false</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="attr">function</span> <span class="attr">handleResponse</span>(<span class="attr">e</span>)&#123;</div><div class="line">                //<span class="attr">e.target</span>表示当前<span class="attr">XMLHttpRequest</span>对象</div><div class="line">                //读取<span class="attr">XMLHttpRequest</span>对象的<span class="attr">readyState</span>属性来确定当前处理的阶段。</div><div class="line">                <span class="attr">if</span>(<span class="attr">e.target.readyState</span>==<span class="string">XMLHttpRequest.LOADING</span> &amp;&amp; <span class="attr">e.target.status</span>==<span class="string">200)&#123;</span></div><div class="line">                    <span class="attr">document.getElementById</span>("<span class="attr">target</span>")<span class="attr">.innerHTML</span> = <span class="string">e.target.responseText;</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <ul>
 <li>处理响应<br>  一旦脚本调用了send方法，浏览器会在后台发送请求到服务器。因为请求实在后台处理的，所有Ajax依靠readystatechange事件来通知你这个请求的进展情况。当readystatechange事件被触发后，浏览器会把一个Event对象传递给指定的处理函数。Event对象的target属性会被设定为与此事件关联的XMLHttpRequest。<br>  可以读取<strong>XMLHttpRequest.readyState</strong>属性的值确定当前请求到了哪个阶段。下面是这个属性的值<br>  <table><thead><tr><th>值</th><th>数值</th><th>说明</th></tr></thead><tbody><tr><td>UNSENT</td><td>0</td><td>已创建XMLHttpRequest对象</td></tr><tr><td>OPENED</td><td>1</td><td>已调用open方法</td></tr><tr><td>HEADERS_RECEIVED</td><td>2</td><td>已收到服务器响应的标头</td></tr><tr><td>LOADING</td><td>3</td><td>已收到服务器响应</td></tr><tr><td>DONE</td><td>4</td><td>响应完成或已失败</td></tr></tbody></table><br>  DONE状态并不意味着请求成功，它只代表请求已完成。可以通过status属性获得HTTP状态码，它会返回一个数值（比如200表示成功）。只有结合readyState和status属性的值才能够确定某个请求的结果。<br>  <strong>responseText</strong>属性会返回一个字符串，代表从服务器上取回的数据</li>
 <li>主流中的异类：应对Opera<br>  Opera浏览器的XMLHttpRequest标准实现得不太一样。<br>  第一个问题是readystatechange事件不会返回一个Event对象，这意味着要把XMLHttpRequest对象指派给一个全局变量。<br>  第二个问题是Opera没有在XMLHttpRequest对象上定义就绪状态的常量，这意味着<code>XMLHttpRequest.readyState==XMLHttpRequest.DONE</code>要修改为<code>XMLHttpRequest.readyState==4</code></li>
@@ -535,7 +788,7 @@
 </tr>
 </tbody>
 </table>
-<p>下面是使用这些事件的一个综合例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">href</span>=<span class="string">"images/favicon.ico"</span> <span class="attr">type</span>=<span class="string">"image/x-icon"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">table</span>&#123;</div><div class="line">            <span class="attribute">margin</span>:<span class="number">10px</span>;</div><div class="line">            <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            <span class="attribute">float</span>: left;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-tag">th</span>,<span class="selector-tag">td</span>&#123;</div><div class="line">            <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-tag">div</span>&#123;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">10px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>apples<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>cherries<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>bananas<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">        加载内容</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"events"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="comment">//使用XMLHttpRequest定义的一次性事件</span></div><div class="line">        <span class="keyword">var</span> buttons=<span class="built_in">document</span>.getElementsByTagName(<span class="string">"button"</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;buttons.length;i++)&#123;</div><div class="line">            buttons[i].onclick=handleButtonPress;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> httpRequest;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleButtonPress</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">            clearEventDetails();</div><div class="line">            httpRequest=<span class="keyword">new</span> XMLHttpRequest();</div><div class="line">            httpRequest.onreadystatechange=handleResponse;</div><div class="line">            httpRequest.onerror=handleError;</div><div class="line">            httpRequest.onload=handleLoad;</div><div class="line">            httpRequest.onloadend=handleLoadEnd;</div><div class="line">            httpRequest.onloadstart=handleLoadStart;</div><div class="line">            httpRequest.onprogress=handleProgress;</div><div class="line">            httpRequest.open(<span class="string">"GET"</span>, e.target.innerHTML+<span class="string">".html"</span>);</div><div class="line">            httpRequest.send();</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleResponse</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">            displayEventDetails(<span class="string">"readystate("</span>+ httpRequest.readyState +<span class="string">")"</span>);</div><div class="line">            <span class="comment">//处理响应</span></div><div class="line">            <span class="keyword">if</span>(httpRequest.readyState==<span class="number">4</span> &amp;&amp; httpRequest.status==<span class="number">200</span>)&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>).innerHTML= httpRequest.responseText;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">e</span>)</span>&#123;displayEventDetails(<span class="string">"error"</span>,e);&#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleLoad</span>(<span class="params">e</span>)</span>&#123;displayEventDetails(<span class="string">"load"</span>,e);&#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleLoadEnd</span>(<span class="params">e</span>)</span>&#123;displayEventDetails(<span class="string">"loadend"</span>,e);&#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleLoadStart</span>(<span class="params">e</span>)</span>&#123;displayEventDetails(<span class="string">"loadstart"</span>,e);&#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">handleProgress</span>(<span class="params">e</span>)</span>&#123;displayEventDetails(<span class="string">"progress"</span>,e);&#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">clearEventDetails</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"events"</span>).innerHTML=<span class="string">"&lt;tr&gt;&lt;th&gt;Event&lt;/th&gt;&lt;th&gt;lengthComputable&lt;/th&gt;&lt;th&gt;loaded&lt;/th&gt;&lt;th&gt;total&lt;/th&gt;&lt;/tr&gt;"</span></div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">displayEventDetails</span>(<span class="params">eventName,e</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(e)&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"events"</span>).innerHTML+=<span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+eventName+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+ e.lengthComputable+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+ e.loaded+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+ e.total+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"events"</span>).innerHTML+=<span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+eventName+<span class="string">"&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>下面是使用这些事件的一个综合例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">href</span>=<span class="string">"images/favicon.ico"</span> <span class="attr">type</span>=<span class="string">"image/x-icon"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">        table&#123;</div><div class="line">            margin:10px;</div><div class="line">            border-collapse: collapse;</div><div class="line">            float: left;</div><div class="line">        &#125;</div><div class="line">        th,td&#123;</div><div class="line">            padding: 4px;</div><div class="line">        &#125;</div><div class="line">        div&#123;</div><div class="line">            margin: 10px;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>apples<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>cherries<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span>&gt;</span>bananas<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">        加载内容</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"events"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">        //使用XMLHttpRequest定义的一次性事件</div><div class="line">        var buttons=document.getElementsByTagName("button");</div><div class="line">        for(var i=0;i&lt;buttons.length;i++)&#123;</div><div class="line">            buttons[i].onclick=handleButtonPress;</div><div class="line">        &#125;</div><div class="line">        var httpRequest;</div><div class="line">        function handleButtonPress(e)&#123;</div><div class="line">            clearEventDetails();</div><div class="line">            httpRequest=new XMLHttpRequest();</div><div class="line">            httpRequest.onreadystatechange=handleResponse;</div><div class="line">            httpRequest.onerror=handleError;</div><div class="line">            httpRequest.onload=handleLoad;</div><div class="line">            httpRequest.onloadend=handleLoadEnd;</div><div class="line">            httpRequest.onloadstart=handleLoadStart;</div><div class="line">            httpRequest.onprogress=handleProgress;</div><div class="line">            httpRequest.open("GET", e.target.innerHTML+".html");</div><div class="line">            httpRequest.send();</div><div class="line">        &#125;</div><div class="line">        function handleResponse(e)&#123;</div><div class="line">            displayEventDetails("readystate("+ httpRequest.readyState +")");</div><div class="line">            //处理响应</div><div class="line">            if(httpRequest.readyState==4 &amp;&amp; httpRequest.status==200)&#123;</div><div class="line">                document.getElementById("target").innerHTML= httpRequest.responseText;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        function handleError(e)&#123;displayEventDetails("error",e);&#125;</div><div class="line">        function handleLoad(e)&#123;displayEventDetails("load",e);&#125;</div><div class="line">        function handleLoadEnd(e)&#123;displayEventDetails("loadend",e);&#125;</div><div class="line">        function handleLoadStart(e)&#123;displayEventDetails("loadstart",e);&#125;</div><div class="line">        function handleProgress(e)&#123;displayEventDetails("progress",e);&#125;</div><div class="line">        function clearEventDetails()&#123;</div><div class="line">            document.getElementById("events").innerHTML="&lt;tr&gt;&lt;th&gt;Event&lt;/th&gt;&lt;th&gt;lengthComputable&lt;/th&gt;&lt;th&gt;loaded&lt;/th&gt;&lt;th&gt;total&lt;/th&gt;&lt;/tr&gt;"</div><div class="line">        &#125;</div><div class="line">        function displayEventDetails(eventName,e)&#123;</div><div class="line">            if(e)&#123;</div><div class="line">                document.getElementById("events").innerHTML+="&lt;tr&gt;&lt;td&gt;"+eventName+"&lt;/td&gt;&lt;td&gt;"+ e.lengthComputable+"&lt;/td&gt;&lt;td&gt;"+ e.loaded+"&lt;/td&gt;&lt;td&gt;"+ e.total+"&lt;/td&gt;&lt;/tr&gt;";</div><div class="line">            &#125;else&#123;</div><div class="line">                document.getElementById("events").innerHTML+="&lt;tr&gt;&lt;td&gt;"+eventName+"&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;td&gt;NA&lt;/td&gt;&lt;/tr&gt;";</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h3><p>使用Ajax时必须留心两类错误。它们之间的区别源于视角不同。<br>第一类错误是从XMLHttpRequest对象的角度看到的问题：某些因素阻止了请求发送到服务器，例如DNS无法解析主机名或者URL无效等。<br>第二类问题是从应用程序的角度看到的问题。它们发生于请求成功发送到服务器，服务器接收请求，进行处理并生成相应，但该响应不是你期望的内容。例如请求的URL不存在等。</p>
 <ul>
 <li>处理设置错误<br>  使用try…catch语句来围住请求的代码。在catch子句对错误进行处理</li>
@@ -658,21 +911,21 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="https://heji1993.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
-      <category term="JavaScript" scheme="https://heji1993.github.io/tags/JavaScript/"/>
+      <category term="Ajax" scheme="http://heji.website/tags/Ajax/"/>
     
-      <category term="Ajax" scheme="https://heji1993.github.io/tags/Ajax/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>Emmet-让你的代码飞起来</title>
-    <link href="https://heji1993.github.io/2016/12/22/Emmet-%E8%AE%A9%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E9%A3%9E%E8%B5%B7%E6%9D%A5/"/>
-    <id>https://heji1993.github.io/2016/12/22/Emmet-让你的代码飞起来/</id>
+    <link href="http://heji.website/2016/12/22/Emmet-%E8%AE%A9%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E9%A3%9E%E8%B5%B7%E6%9D%A5/"/>
+    <id>http://heji.website/2016/12/22/Emmet-让你的代码飞起来/</id>
     <published>2016-12-22T04:22:27.751Z</published>
     <updated>2016-12-22T04:26:14.922Z</updated>
     
@@ -779,19 +1032,19 @@
     
     </summary>
     
-      <category term="工具" scheme="https://heji1993.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://heji.website/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="工具" scheme="https://heji1993.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://heji.website/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>HTML-DOM教程</title>
-    <link href="https://heji1993.github.io/2016/12/20/HTML-DOM%E6%95%99%E7%A8%8B/"/>
-    <id>https://heji1993.github.io/2016/12/20/HTML-DOM教程/</id>
+    <link href="http://heji.website/2016/12/20/HTML-DOM%E6%95%99%E7%A8%8B/"/>
+    <id>http://heji.website/2016/12/20/HTML-DOM教程/</id>
     <published>2016-12-20T11:47:21.732Z</published>
     <updated>2016-12-21T08:53:30.804Z</updated>
     
@@ -1289,21 +1542,21 @@
     
     </summary>
     
-      <category term="DOM" scheme="https://heji1993.github.io/categories/DOM/"/>
+      <category term="DOM" scheme="http://heji.website/categories/DOM/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="DOM" scheme="https://heji1993.github.io/tags/DOM/"/>
+      <category term="DOM" scheme="http://heji.website/tags/DOM/"/>
     
-      <category term="HTML-DOM" scheme="https://heji1993.github.io/tags/HTML-DOM/"/>
+      <category term="HTML-DOM" scheme="http://heji.website/tags/HTML-DOM/"/>
     
   </entry>
   
   <entry>
     <title>windows平台Nginx的安装和配置</title>
-    <link href="https://heji1993.github.io/2016/12/20/window%E5%B9%B3%E5%8F%B0Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
-    <id>https://heji1993.github.io/2016/12/20/window平台Nginx的安装和配置/</id>
+    <link href="http://heji.website/2016/12/20/window%E5%B9%B3%E5%8F%B0Nginx%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
+    <id>http://heji.website/2016/12/20/window平台Nginx的安装和配置/</id>
     <published>2016-12-20T11:44:29.419Z</published>
     <updated>2016-12-20T11:47:03.578Z</updated>
     
@@ -1322,21 +1575,21 @@
     
     </summary>
     
-      <category term="Nginx" scheme="https://heji1993.github.io/categories/Nginx/"/>
+      <category term="Nginx" scheme="http://heji.website/categories/Nginx/"/>
     
     
-      <category term="工具" scheme="https://heji1993.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://heji.website/tags/%E5%B7%A5%E5%85%B7/"/>
     
-      <category term="Nginx" scheme="https://heji1993.github.io/tags/Nginx/"/>
+      <category term="Nginx" scheme="http://heji.website/tags/Nginx/"/>
     
-      <category term="web服务器" scheme="https://heji1993.github.io/tags/web%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <category term="web服务器" scheme="http://heji.website/tags/web%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
   </entry>
   
   <entry>
     <title>浮动元素如何撑开父元素</title>
-    <link href="https://heji1993.github.io/2016/12/14/%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%A6%82%E4%BD%95%E6%92%91%E5%BC%80%E7%88%B6%E5%85%83%E7%B4%A0/"/>
-    <id>https://heji1993.github.io/2016/12/14/浮动元素如何撑开父元素/</id>
+    <link href="http://heji.website/2016/12/14/%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0%E5%A6%82%E4%BD%95%E6%92%91%E5%BC%80%E7%88%B6%E5%85%83%E7%B4%A0/"/>
+    <id>http://heji.website/2016/12/14/浮动元素如何撑开父元素/</id>
     <published>2016-12-14T12:51:03.557Z</published>
     <updated>2016-12-14T12:55:17.123Z</updated>
     
@@ -1363,19 +1616,19 @@
     
     </summary>
     
-      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+      <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>CSS3过渡、动画和变换</title>
-    <link href="https://heji1993.github.io/2016/12/13/CSS3%E8%BF%87%E6%B8%A1%E3%80%81%E5%8A%A8%E7%94%BB%E5%92%8C%E5%8F%98%E6%8D%A2/"/>
-    <id>https://heji1993.github.io/2016/12/13/CSS3过渡、动画和变换/</id>
+    <link href="http://heji.website/2016/12/13/CSS3%E8%BF%87%E6%B8%A1%E3%80%81%E5%8A%A8%E7%94%BB%E5%92%8C%E5%8F%98%E6%8D%A2/"/>
+    <id>http://heji.website/2016/12/13/CSS3过渡、动画和变换/</id>
     <published>2016-12-13T08:52:48.769Z</published>
     <updated>2016-12-14T12:58:26.720Z</updated>
     
@@ -1517,21 +1770,21 @@
     
     </summary>
     
-      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+      <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="CSS3" scheme="https://heji1993.github.io/tags/CSS3/"/>
+      <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS3" scheme="http://heji.website/tags/CSS3/"/>
     
   </entry>
   
   <entry>
     <title>SQLServer常用知识点</title>
-    <link href="https://heji1993.github.io/2016/12/13/SQLServer%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>https://heji1993.github.io/2016/12/13/SQLServer知识点/</id>
+    <link href="http://heji.website/2016/12/13/SQLServer%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://heji.website/2016/12/13/SQLServer知识点/</id>
     <published>2016-12-13T08:51:01.207Z</published>
     <updated>2016-12-13T11:27:24.323Z</updated>
     
@@ -1570,21 +1823,21 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
+      <category term="SQL" scheme="http://heji.website/tags/SQL/"/>
     
-      <category term="SQLServer" scheme="https://heji1993.github.io/tags/SQLServer/"/>
+      <category term="SQLServer" scheme="http://heji.website/tags/SQLServer/"/>
     
   </entry>
   
   <entry>
     <title>块级元素和内联元素的区别</title>
-    <link href="https://heji1993.github.io/2016/12/12/%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%92%8C%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0/"/>
-    <id>https://heji1993.github.io/2016/12/12/块级元素和内联元素/</id>
+    <link href="http://heji.website/2016/12/12/%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%92%8C%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0/"/>
+    <id>http://heji.website/2016/12/12/块级元素和内联元素/</id>
     <published>2016-12-12T08:44:42.167Z</published>
     <updated>2016-12-14T12:57:34.014Z</updated>
     
@@ -1605,19 +1858,19 @@
     
     </summary>
     
-      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+      <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>CSS3弹性盒模型</title>
-    <link href="https://heji1993.github.io/2016/12/10/CSS3%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://heji1993.github.io/2016/12/10/CSS3弹性盒模型/</id>
+    <link href="http://heji.website/2016/12/10/CSS3%E5%BC%B9%E6%80%A7%E7%9B%92%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://heji.website/2016/12/10/CSS3弹性盒模型/</id>
     <published>2016-12-10T10:13:52.737Z</published>
     <updated>2016-12-14T12:58:19.719Z</updated>
     
@@ -1893,21 +2146,21 @@
     
     </summary>
     
-      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+      <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="CSS3" scheme="https://heji1993.github.io/tags/CSS3/"/>
+      <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS3" scheme="http://heji.website/tags/CSS3/"/>
     
   </entry>
   
   <entry>
     <title>数据库生成pdm</title>
-    <link href="https://heji1993.github.io/2016/09/21/%E4%BD%BF%E7%94%A8powerdesigner%E5%80%92%E8%BD%AC%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>https://heji1993.github.io/2016/09/21/使用powerdesigner倒转数据库/</id>
+    <link href="http://heji.website/2016/09/21/%E4%BD%BF%E7%94%A8powerdesigner%E5%80%92%E8%BD%AC%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://heji.website/2016/09/21/使用powerdesigner倒转数据库/</id>
     <published>2016-09-21T09:48:34.334Z</published>
     <updated>2016-12-13T10:00:49.084Z</updated>
     
@@ -1930,21 +2183,21 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="powerdesigner" scheme="https://heji1993.github.io/tags/powerdesigner/"/>
+      <category term="powerdesigner" scheme="http://heji.website/tags/powerdesigner/"/>
     
-      <category term="pdm" scheme="https://heji1993.github.io/tags/pdm/"/>
+      <category term="pdm" scheme="http://heji.website/tags/pdm/"/>
     
   </entry>
   
   <entry>
     <title>JS学习笔记</title>
-    <link href="https://heji1993.github.io/2016/09/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://heji1993.github.io/2016/09/14/Javascript学习笔记/</id>
+    <link href="http://heji.website/2016/09/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://heji.website/2016/09/14/Javascript学习笔记/</id>
     <published>2016-09-14T03:08:22.125Z</published>
     <updated>2016-12-14T12:58:45.939Z</updated>
     
@@ -2646,19 +2899,19 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="https://heji1993.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
-      <category term="JavaScript" scheme="https://heji1993.github.io/tags/JavaScript/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>CSS hack解决浏览器兼容性问题</title>
-    <link href="https://heji1993.github.io/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
-    <id>https://heji1993.github.io/2016/08/22/常用CSS hack/</id>
+    <link href="http://heji.website/2016/08/22/%E5%B8%B8%E7%94%A8CSS%20hack/"/>
+    <id>http://heji.website/2016/08/22/常用CSS hack/</id>
     <published>2016-08-22T02:41:14.806Z</published>
     <updated>2016-12-14T12:57:16.877Z</updated>
     
@@ -2694,23 +2947,23 @@
     
     </summary>
     
-      <category term="CSS" scheme="https://heji1993.github.io/categories/CSS/"/>
+      <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="CSS" scheme="https://heji1993.github.io/tags/CSS/"/>
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+      <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
-      <category term="hack" scheme="https://heji1993.github.io/tags/hack/"/>
+      <category term="hack" scheme="http://heji.website/tags/hack/"/>
     
-      <category term="浏览器兼容性" scheme="https://heji1993.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+      <category term="浏览器兼容性" scheme="http://heji.website/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>Oracle常用知识点</title>
-    <link href="https://heji1993.github.io/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>https://heji1993.github.io/2016/08/19/Oracle知识点/</id>
+    <link href="http://heji.website/2016/08/19/Oracle%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://heji.website/2016/08/19/Oracle知识点/</id>
     <published>2016-08-19T10:29:17.297Z</published>
     <updated>2016-12-21T10:20:50.987Z</updated>
     
@@ -2791,21 +3044,21 @@
     
     </summary>
     
-      <category term="数据库" scheme="https://heji1993.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="oracle" scheme="https://heji1993.github.io/tags/oracle/"/>
+      <category term="oracle" scheme="http://heji.website/tags/oracle/"/>
     
-      <category term="数据库" scheme="https://heji1993.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <category term="数据库" scheme="http://heji.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="SQL" scheme="https://heji1993.github.io/tags/SQL/"/>
+      <category term="SQL" scheme="http://heji.website/tags/SQL/"/>
     
   </entry>
   
   <entry>
     <title>使用Hexo搭建博客</title>
-    <link href="https://heji1993.github.io/2016/08/17/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://heji1993.github.io/2016/08/17/使用Hexo搭建自己的博客/</id>
+    <link href="http://heji.website/2016/08/17/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://heji.website/2016/08/17/使用Hexo搭建自己的博客/</id>
     <published>2016-08-17T11:33:22.174Z</published>
     <updated>2016-12-21T09:45:30.334Z</updated>
     
@@ -2949,122 +3202,12 @@
     
     </summary>
     
-      <category term="工具" scheme="https://heji1993.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="http://heji.website/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="Hexo" scheme="https://heji1993.github.io/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://heji.website/tags/Hexo/"/>
     
-      <category term="博客" scheme="https://heji1993.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gulp教程</title>
-    <link href="https://heji1993.github.io/2016/08/15/Gulp%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
-    <id>https://heji1993.github.io/2016/08/15/Gulp入门教程/</id>
-    <published>2016-08-15T08:57:36.616Z</published>
-    <updated>2016-12-21T10:20:30.634Z</updated>
-    
-    <content type="html"><![CDATA[<p>基于文件流的构建系统。</p>
-<a id="more"></a>
-<h2 id="为什么使用Gulp"><a href="#为什么使用Gulp" class="headerlink" title="为什么使用Gulp"></a>为什么使用Gulp</h2><hr>
-<p>Gulp基于Node.js的前端构建工具，通过Gulp的插件可以实现前端代码的编译（sass、less）、压缩、测试；图片的压缩；浏览器自动刷新，还有许多强大的插件可以在这里查找。比起Grunt不仅配置简单而且更容易阅读和维护</p>
-<h2 id="建立Web项目"><a href="#建立Web项目" class="headerlink" title="建立Web项目"></a>建立Web项目</h2><hr>
-<p>使用一下命令建立项目，会自动生成一个package.json文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$mkdir</span> projectName</div><div class="line"><span class="variable">$cd</span> projectName</div><div class="line"><span class="variable">$npm</span> init</div></pre></td></tr></table></figure></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><hr>
-<ul>
-<li><p>首先我们要全局安装一遍：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp -g</div></pre></td></tr></table></figure>
-</li>
-<li><p>接着我们要进去到项目的根目录再安装一遍（确保你根目录存在package.json文件）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp --save-dev</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>—save-dev这个属性会将条目保存到你package.json的devDependencies里面</p>
-<h2 id="安装gulp插件"><a href="#安装gulp插件" class="headerlink" title="安装gulp插件"></a>安装gulp插件</h2><hr>
-<p>我们将要使用Gulp插件来完成我们以下任务：</p>
-<ul>
-<li>sass的编译(<a href="https://github.com/sindresorhus/gulp-ruby-sass" target="_blank" rel="external">gulp-ruby-sass</a>)</li>
-<li>自动添加CSS前缀(<a href="http://github.com/Metrime/gulp-autoprefixer" target="_blank" rel="external">gulp-autoprefixer</a>)</li>
-<li>压缩CSS(<a href="http://github.com/jonathanepollack/gulp-minify-css" target="_blank" rel="external">gulp-minify-css</a>)</li>
-<li>js代码校验(<a href="http://github.com/spenceralger/gulp-jshint" target="_blank" rel="external">gulp-jshint</a>)</li>
-<li>合并js文件(<a href="http://github.com/wearefractal/gulp-concat" target="_blank" rel="external">gulp-concat</a>)</li>
-<li>压缩js代码(<a href="http://github.com/terinjokes/gulp-uglify" target="_blank" rel="external">gulp-uglify</a>)</li>
-<li>压缩图片(<a href="http://github.com/sindresorhus/gulp-imagemin" target="_blank" rel="external">gulp-imagemin</a>)</li>
-<li>自动刷新页面(<a href="http://github.com/vohof/gulp-livereload" target="_blank" rel="external">gulp-livereload</a>)</li>
-<li>图片缓存，只有图片替换了才压缩(<a href="http://github.com/jgable/gulp-cache" target="_blank" rel="external">gulp-cache</a>)</li>
-<li>更改提醒(<a href="http://github.com/mikaelbr/gulp-notify" target="_blank" rel="external">gulp-notify</a>)</li>
-<li>清除文件(<a href="http://www.npmjs.org/package/del" target="_blank" rel="external">del</a>)</li>
-</ul>
-<p>安装这些插件需要运行如下命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev</div></pre></td></tr></table></figure></p>
-<h2 id="加载插件"><a href="#加载插件" class="headerlink" title="加载插件"></a>加载插件</h2><hr>
-<p>我们要在项目的根目录创建一个gulpfile.js文件，然后再里面加载插件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div></pre></td></tr></table></figure></p>
-<h2 id="建立任务"><a href="#建立任务" class="headerlink" title="建立任务"></a>建立任务</h2><hr>
-<ul>
-<li><p>编译sass、自动添加css前缀和压缩<br>  首先我们编译sass，添加前缀，保存到我们指定的目录下面，还没结束，我们还要压缩，给文件添加<code>.min</code>后缀再输出压缩文件到指定目录，最后提醒任务完成了：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">     .pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div><div class="line">     .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(minifycss())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/css'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
-<p>  代码详解：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...&#125;);</div></pre></td></tr></table></figure>
-<p>  <code>gulp.task</code>这个api用来创建任务，在命令行下可以输入<code>gulp styles</code>来执行上面的任务</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div></pre></td></tr></table></figure>
-<p>  <code>gulp.src</code>这个API设置需要处理的文件的路径，可以是多个文件以数组的形式<code>[main.scss, vender.scss]</code>，也可以是正则表达<code>/**/*.scss</code>。</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(sass(&#123; style: <span class="string">'expanded'</span> &#125;))</div></pre></td></tr></table></figure>
-<p>  我们使用<code>.pipe()</code>这个API将需要处理的文件导向sass插件</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">. pipe(gulp.dest(<span class="string">'dist/assets/css'</span>));</div></pre></td></tr></table></figure>
-<p>  <code>gulp.dest()</code>API设置生成文件的路径，一个任务可以有多个生成路径，一个可以输出未压缩的版本，另一个可以输出压缩后的版本。</p>
-</li>
-<li><p>js代码校验、合并和压缩</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">     .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">     .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">     .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(rename(&#123;suffix: <span class="string">'.min'</span>&#125;))</div><div class="line">     .pipe(uglify())</div><div class="line">     .pipe(gulp.dest(<span class="string">'dist/assets/js'</span>))</div><div class="line">     .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>  需要提醒的是我们要设置JSHint的reporter方式，上面使用的是default默认的</p>
-</li>
-<li><p>压缩图片</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">      gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">           .pipe(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;))</div><div class="line">           .pipe(gulp.dest(<span class="string">'dist/assets/img'</span>))</div><div class="line">.pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">      &#125;);</div></pre></td></tr></table></figure>
-<p>   这个任务使用<code>imagemin</code>插件把所有在<code>src/images/</code>目录以及其子目录下的所有图片（文件）进行压缩，我们可以进一步优化，利用缓存保存已经压缩过的图片，使用之前装过的<code>gulp-cache</code>插件，不过要修改一下上面的代码：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.pipe(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;))</div></pre></td></tr></table></figure>
-<p>  修改成：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.pipe(cache(imagemin(&#123; optimizationLevel: <span class="number">5</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;)))</div></pre></td></tr></table></figure>
-<p>  现在，只有新建或者修改过的图片才会被压缩了。</p>
-</li>
-<li><p>清除文件<br>  在任务执行前，最好先清除之前生成的文件：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">     del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>  在这里没有必要使用Gulp插件了(没有gulp前缀)，可以使用NPM提供的插件。我们用一个回调函数（<code>cb</code>）确保在退出前完成任务。</p>
-</li>
-<li><p>设置默认任务<br>  我们在命令行下输入<code>$ gulp</code>执行的就是默认任务，现在我们为默认任务指定执行上面写好的三个任务：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>  在这个例子里面，clean任务执行完成了才会去运行其他的任务，在<code>gulp.start()</code>里的任务执行的顺序是不确定的，所以将要在它们之前执行的任务写在数组里面。</p>
-</li>
-</ul>
-<ul>
-<li><p>监听文件<br>   为了监听文件的是否修改以便执行相应的任务，我们需要创建一个新的任务，然后利用<code>gulp.watch</code>API实现:</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// Watch .scss files</span></div><div class="line">   gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</div><div class="line">   <span class="comment">// Watch .js files</span></div><div class="line">   gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</div><div class="line">   <span class="comment">// Watch image files</span></div><div class="line">   gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   我们将不同类型的文件分开处理，执行对应的数组里的任务。现在我们可以在命令行输入<code>$ gulp watch</code>执行监听任务，当<code>.sass</code>、<code>.js</code>和图片修改时将执行对应的任务。</p>
-</li>
-</ul>
-<ul>
-<li><p>自动刷新页面<br>   Gulp也可以实现当文件修改时自动刷新页面，我们要修改<code>watch</code>任务，配置LiveReload：</p>
-   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="comment">// Create LiveReload server</span></div><div class="line">   livereload.listen();</div><div class="line">   <span class="comment">// Watch any files in dist/, reload on change</span></div><div class="line">   gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>   要使这个能够工作，还需要在浏览器上安装LiveReload插件</p>
-</li>
-</ul>
-<ul>
-<li>所有任务放在一起<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*!</span></div><div class="line">*gulp</div><div class="line">*$ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify         gulp-rename gulp-livereload gulp-cache del --save-dev</div><div class="line">*/</div><div class="line"><span class="comment">// Load plugins</span></div><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    sass = <span class="built_in">require</span>(<span class="string">'gulp-ruby-sass'</span>),</div><div class="line">    autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>),</div><div class="line">    minifycss = <span class="built_in">require</span>(<span class="string">'gulp-minify-css'</span>),</div><div class="line">    jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>),</div><div class="line">    uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>),</div><div class="line">    imagemin = <span class="built_in">require</span>(<span class="string">'gulp-imagemin'</span>),</div><div class="line">    rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>),</div><div class="line">    concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>),</div><div class="line">    notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>),</div><div class="line">    cache = <span class="built_in">require</span>(<span class="string">'gulp-cache'</span>),</div><div class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>),</div><div class="line">    del = <span class="built_in">require</span>(<span class="string">'del'</span>);</div><div class="line"><span class="comment">// Styles</span></div><div class="line">gulp.task(<span class="string">'styles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/styles/main.scss'</span>)</div><div class="line">    .pipe(sass(&#123; style: <span class="string">'expanded'</span>, &#125;))</div><div class="line">    .pipe(autoprefixer(<span class="string">'last 2 version'</span>, <span class="string">'safari 5'</span>, <span class="string">'ie 8'</span>, <span class="string">'ie 9'</span>, <span class="string">'opera 12.1'</span>, <span class="string">'ios 6'</span>, <span class="string">'android 4'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(minifycss())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/styles'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Styles task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Scripts</span></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/scripts/**/*.js'</span>)</div><div class="line">    .pipe(jshint(<span class="string">'.jshintrc'</span>))</div><div class="line">    .pipe(jshint.reporter(<span class="string">'default'</span>))</div><div class="line">    .pipe(concat(<span class="string">'main.js'</span>))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(rename(&#123; suffix: <span class="string">'.min'</span> &#125;))</div><div class="line">    .pipe(uglify())</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/scripts'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Scripts task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Images</span></div><div class="line">gulp.task(<span class="string">'images'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'src/images/**/*'</span>)</div><div class="line">    .pipe(cache(imagemin(&#123; optimizationLevel: <span class="number">3</span>, progressive: <span class="literal">true</span>, interlaced: <span class="literal">true</span> &#125;)))</div><div class="line">    .pipe(gulp.dest(<span class="string">'dist/images'</span>))</div><div class="line">    .pipe(notify(&#123; message: <span class="string">'Images task complete'</span> &#125;));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Clean</span></div><div class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">    del([<span class="string">'dist/assets/css'</span>, <span class="string">'dist/assets/js'</span>, <span class="string">'dist/assets/img'</span>], cb())</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Default task</span></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'clean'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    gulp.start(<span class="string">'styles'</span>, <span class="string">'scripts'</span>, <span class="string">'images'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Watch</span></div><div class="line">gulp.task(<span class="string">'watch'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// Watch .scss files</span></div><div class="line">  gulp.watch(<span class="string">'src/styles/**/*.scss'</span>, [<span class="string">'styles'</span>]);</div><div class="line">  <span class="comment">// Watch .js files</span></div><div class="line">  gulp.watch(<span class="string">'src/scripts/**/*.js'</span>, [<span class="string">'scripts'</span>]);</div><div class="line">  <span class="comment">// Watch image files</span></div><div class="line">  gulp.watch(<span class="string">'src/images/**/*'</span>, [<span class="string">'images'</span>]);</div><div class="line">  <span class="comment">// Create LiveReload server</span></div><div class="line">  livereload.listen();</div><div class="line">  <span class="comment">// Watch any files in dist/, reload on change</span></div><div class="line">  gulp.watch([<span class="string">'dist/**'</span>]).on(<span class="string">'change'</span>, livereload.changed);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;基于文件流的构建系统。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="https://heji1993.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="web前端" scheme="https://heji1993.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="Gulp" scheme="https://heji1993.github.io/tags/Gulp/"/>
-    
-      <category term="自动化" scheme="https://heji1993.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+      <category term="博客" scheme="http://heji.website/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   

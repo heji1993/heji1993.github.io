@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="HTML5添加了对拖放的支持。">
+    
+    <meta name="keywords" content="HTML5,拖放, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML5-使用拖放 | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/01/06/HTML5-使用拖放/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>HTML5-使用拖放</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/HTML5/">HTML5</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-01-06T06:18:06.333Z"
+                       itemprop="datePublished">2017-01-06</time>
+            
+            更新: <time datetime="2017-01-06T06:19:37.931Z"
+                       itemprop="dateModified">2017-01-06</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现简单拖放"><span class="toc-number">1.</span> <span class="toc-text">实现简单拖放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用DataTransfer对象"><span class="toc-number">2.</span> <span class="toc-text">使用DataTransfer对象</span></a></li></ol>
+                </div>
+            
+
+            <p>HTML5添加了对拖放的支持。</p>
+<a id="more"></a>
+<h3 id="实现简单拖放"><a href="#实现简单拖放" class="headerlink" title="实现简单拖放"></a>实现简单拖放</h3><ul>
+<li><p>设置拖放<br>  我们通过draggable属性告诉浏览器文档里的哪些元素可以被拖动。这个属性有三个允许的值：</p>
+  <table><tr><td>值</td><td>说明</td></tr><tr><td>true</td><td>此元素能被拖动</td></tr><tr><td>false</td><td>此元素不能被拖动</td></tr><tr><td>auto</td><td>浏览器自主决定某个元素是否能被拖动</td></tr></table>
+</li>
+<li><p>处理拖动事件<br>  我们通过一系列事件来利用拖放功能。这些事件有的针对被拖动元素，有的针对可能的释放区<br>  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragstart</td><td>在元素开始被拖动时触发</td></tr><tr><td>drag</td><td>在元素被拖动时触发</td></tr><tr><td>dragend</td><td>在拖动操作完成时触发</td></tr></table><br>  下面是简单例子：<br>  <img src="index_files/9a360800-e7bb-4017-8bee-d59d2aea4406.jpg" alt=""></p>
+</li>
+<li><p>创建释放区<br>  要让某个元素成为释放区，我们需要处理dragenter和dragover事件。它们是针对释放区的其中两个事件。</p>
+  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragenter</td><td>当被拖动元素进入释放区所占据的屏幕空间时触发</td></tr><tr><td>dragover</td><td>当被拖动元素在释放区移动时触发</td></tr><tr><td>dragleave</td><td>当被拖动元素没有放下就离开释放区时触发</td></tr><tr><td>drop</td><td>当被拖动元素在释放区放下时触发</td></tr></table>
+</li>
+<li><p>处理释放事件（简单拖放例子）</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>RunJS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">body</span> &gt; *&#123;</div><div class="line">                <span class="attribute">float</span>:left;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">body</span> &gt; <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">margin</span>:<span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span><span class="selector-class">.dragged</span>&#123;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid lightgrey;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">                <span class="attribute">line-height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>:center;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#ccc</span>;</div><div class="line">                <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/tomato.jpg"</span> <span class="attr">id</span>=<span class="string">"tomato"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/orange.jpg"</span> <span class="attr">id</span>=<span class="string">"orange"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/strawberry.jpg"</span> <span class="attr">id</span>=<span class="string">"strawberry"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span></div><div class="line">                Drop here!</div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> body = <span class="built_in">document</span>.body;</div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>);</div><div class="line">            <span class="comment">//接收被拖放元素的ID</span></div><div class="line">            <span class="keyword">var</span> draggedId;</div><div class="line">            <span class="comment">//处理拖放事件</span></div><div class="line">            target.ondragcenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            <span class="comment">//在进入释放区和在释放区移动、释放时要阻止事件的默认行为，否则会发生意料之外的结果</span></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> newElem = <span class="built_in">document</span>.getElementById(draggedId).cloneNode(<span class="literal">false</span>);</div><div class="line">                target.innerHTML = <span class="string">""</span>;</div><div class="line">                target.appendChild(newElem);</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            body.ondragstart = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                draggedId = e.target.id;</div><div class="line">                e.target.classList.add(<span class="string">"dragged"</span>);</div><div class="line">            &#125;</div><div class="line">            body.ondragend = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> elems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".dragged"</span>);</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; elems.length ; i++ )&#123;</div><div class="line">                    elems[i].classList.remove(<span class="string">"dragged"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  效果请查看：<a href="http://runjs.cn/detail/3oiwealn" target="_blank" rel="external">简单拖放</a></p>
+</li>
+</ul>
+<h3 id="使用DataTransfer对象"><a href="#使用DataTransfer对象" class="headerlink" title="使用DataTransfer对象"></a>使用DataTransfer对象</h3><p>与拖放操作所触发的事件同时派发的对象是DragEvent，它派生于MouseEvent，并增加了额外的属性：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataTransfer</td>
+<td>返回用于传输数据到释放区的对象</td>
+<td>DataTransfer</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以用DataTransfer对象从被拖动元素传输任意数据到释放区元素上。DataTransfer定义的属性和方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>types</td>
+<td>返回数据的格式</td>
+<td>字符串数组</td>
+</tr>
+<tr>
+<td>getData（format）</td>
+<td>返回指定格式的数据</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>setData(format，data)</td>
+<td>设置指定格式的数据</td>
+<td>void</td>
+</tr>
+<tr>
+<td>clearData(format)</td>
+<td>移除指定格式的数据</td>
+<td>void</td>
+</tr>
+<tr>
+<td>files</td>
+<td>返回已被拖动文件的列表</td>
+<td>FileList</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>使用DataTransfer对象从被拖动元素传输数据到释放区<br>  <img src="index_files/49ecc187-0389-4dba-8cd3-30e578ec8841.jpg" alt=""><br>  setData方法第一个参数和getData方法的参数指定数据的格式，它只支持两个值：Text和Url。setData方法第二个参数是我们要传输的数据。使用这种方式最大的好处是支持跨不同类型的浏览器，因为拖放功能是集成在操作系统里的。例如我们可以在Chrome浏览器的文档里拖动一个元素，然后再Firefox浏览器的文档里释放它。</p>
+</li>
+<li><p>拖放文件<br>  上一节介绍了DataTransfer对象有一个files属性返回拖放的File对象的集合。File API是HTML5新增的功能，File对象定义的属性如下<br>  <table><tr><td>名称</td><td>说明</td><td>返回</td></tr><tr><td>name</td><td>获取文件名</td><td>字符串</td></tr><tr><td>type</td><td>获取文件类型，以MIME类型表示</td><td>字符串</td></tr><tr><td>size</td><td>获取文件大小（以字节计算）</td><td>字符串</td></tr></table><br>  下面是拖放文件的例子：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>: center;</div><div class="line">                <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">p</span>&#123;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span> <span class="selector-tag">th</span>,<span class="selector-id">#fileDetail</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span>Drop here!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"fileDetail"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            target.ondragenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>).innerHTML = <span class="string">"File dropped"</span>;</div><div class="line">                <span class="comment">//文件</span></div><div class="line">                <span class="keyword">var</span> fileList = e.dataTransfer.files;</div><div class="line">                <span class="keyword">if</span>(fileList.length &gt; <span class="number">0</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> fileDetail = <span class="built_in">document</span>.getElementById(<span class="string">"fileDetail"</span>);</div><div class="line">                    fileDetail.innerHTML = <span class="string">"&lt;tr&gt;&lt;th&gt;文件名称&lt;/th&gt;&lt;th&gt;文件类型&lt;/th&gt;&lt;th&gt;文件大小&lt;/th&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; fileList.length ; i++)&#123;</div><div class="line">                        fileDetail.innerHTML += <span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+fileList[i].name+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].type+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].size+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  需要注意的是，我们借助DataTransfer对象以及HTML5的FormData对象就能实现拖拽上传文件了：<br>  <img src="index_files/0c8983c5-8f21-4fcd-938c-6bbbd7e7f2c0.jpg" alt=""></p>
+</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/01/06/HTML5-使用拖放/">http://heji.website/2017/01/06/HTML5-使用拖放/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="HTML5-使用拖放" data-url="http://heji.website/2017/01/06/HTML5-使用拖放/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
