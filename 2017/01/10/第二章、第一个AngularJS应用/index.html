@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>第一章、搭建开发环境 | 何机的技术博客 · No pains,no gains</title>
+    <title>第二章、第一个AngularJS应用 | 何机的技术博客 · No pains,no gains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -124,7 +124,7 @@
 
     <article class="post container">
     <div class="well post-body first-post last-post">
-        <h1>第一章、搭建开发环境</h1>
+        <h1>第二章、第一个AngularJS应用</h1>
 
         <div class="time-info">
             
@@ -146,7 +146,7 @@
             发表: <time datetime="2017-01-10T08:37:58.418Z"
                        itemprop="datePublished">2017-01-10</time>
             
-            更新: <time datetime="2017-01-10T08:39:49.768Z"
+            更新: <time datetime="2017-01-10T08:45:52.089Z"
                        itemprop="dateModified">2017-01-10</time>
             
         </div>
@@ -164,15 +164,15 @@
 <h2 id="准备项目"><a href="#准备项目" class="headerlink" title="准备项目"></a>准备项目</h2><p><strong>注意：除非特殊说明,否则都是以angularjs目录作为项目根目录</strong><br>在assets目录下新建一个<code>todo.html</code>的HTML文件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>待办事项<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page-header"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>To DO List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> /&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>是否完成<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>买花<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>买鞋子<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>工作总结<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>是<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>打电话给家里<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>在浏览器上访问<code>http://localhost:3000/angularjs/assets/todo.html</code>查看效果，目前没有应用AngularJS。</p>
 <h2 id="使用AngularJS"><a href="#使用AngularJS" class="headerlink" title="使用AngularJS"></a>使用AngularJS</h2><ul>
-<li><p>将AngularJS应用到HTML文件</p>
-<ol>
+<li>将AngularJS应用到HTML文件<ol>
 <li>引入AngularJS文件</li>
 <li>创建一个AngularJS模块</li>
-<li><p>对元素应用模块</p>
-<p>AngularJS应用由一个或多个模块组成，模块是由调用angular.module方法而创建的，该方法接收两个参数，第一个参数是模块名称，第二个参数是依赖的其他模块，当没有依赖其他模块时，传一个空数组。完成模块的定义后，对html或其他元素使用<code>ng-app</code>指令来使用模块，该指令告诉浏览器，指令内的所有元素被AngularJS编译和处理，通常当只使用AngularJS时，在html元素添加<code>ng-app</code>指令，当需要与其他技术混合时，可以在文档的其他元素添加<code>ng-app</code>指令缩小AngularJS应用的边界。</p>
-</li>
+<li>对元素应用模块</li>
 </ol>
 </li>
+</ul>
+<p>AngularJS应用由一个或多个模块组成，模块是由调用angular.module方法而创建的，该方法接收两个参数，第一个参数是模块名称，第二个参数是依赖的其他模块，当没有依赖其他模块时，传一个空数组。完成模块的定义后，对html或其他元素使用<code>ng-app</code>指令来使用模块，该指令告诉浏览器，指令内的所有元素被AngularJS编译和处理，通常当只使用AngularJS时，在html元素添加<code>ng-app</code>指令，当需要与其他技术混合时，可以在文档的其他元素添加<code>ng-app</code>指令缩小AngularJS应用的边界。</p>
+<ul>
 <li>创建数据模型<br>  AngularJS支持MVC模式，推荐视图与数据模型、逻辑分离，在该例我们使用JavaScript创建数据模型。</li>
 <li>创建控制器<br>  控制器是由angular.module所返回的Module对象上的controller方法创建的。controller方法接收两个参数，第一个是控制器的名称第二个是将会被调用的函数，用于定义控制器功能。惯例一般是对控制器命名为<name>Ctrl，真正的应用程序一般会生成多个控制器，但是本例中仅需要一个，名字取为ToDoCtrl。<br>  控制器函数接收一个<code>$scope</code>的参数，<code>$</code>表示AngularJS提供的内置特性，<code>$scope</code>对象常用于对控制器范围的视图提供数据和功能。控制器定义好之后，在元素上使用<code>ng-controller</code>为元素指定控制器。</name></li>
 <li><p>创建视图</p>
@@ -234,7 +234,7 @@
 
             
     <section class="comment">
-    <div class="ds-thread" data-thread-key="undefined" data-title="第一章、搭建开发环境" data-url="http://heji.website/2017/01/10/第二章、第一个AngularJS应用/" data-author-key="何机"></div>
+    <div class="ds-thread" data-thread-key="undefined" data-title="第二章、第一个AngularJS应用" data-url="http://heji.website/2017/01/10/第二章、第一个AngularJS应用/" data-author-key="何机"></div>
 </section>
 
 
