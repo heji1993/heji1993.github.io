@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="本章主要是学习AngularJS的准备工作，介绍了如何搭建一个简单的AngularJS开发环境。">
+    
+    <meta name="keywords" content="AngularJS,MVVM,前端框架, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第一章、搭建开发环境 | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/01/10/第一章、搭建开发环境/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>第一章、搭建开发环境</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/AngularJS/">AngularJS</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-01-10T08:25:35.487Z"
+                       itemprop="datePublished">2017-01-10</time>
+            
+            更新: <time datetime="2017-01-10T08:28:39.640Z"
+                       itemprop="dateModified">2017-01-10</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+
+            <p>本章主要是学习AngularJS的准备工作，介绍了如何搭建一个简单的AngularJS开发环境。</p>
+<a id="more"></a>
+<ul>
+<li>选择web浏览器<br>  本教程使用Google Chrome浏览器。</li>
+<li>选择代码编辑器<br>  可以选择任意代码编辑器，本教程使用HBuilder</li>
+<li>安装Node.js<br>  安装之后使用<code>node --version</code>测试是否安装成功。</li>
+<li>创建项目目录<br>  在任意位置创建<code>angularjs</code>目录，作为项目运行的根目录。运行<code>npm init</code>填写基本信息初始化项目</li>
+<li><p>安装web服务器<br>  一个简单的Web服务器足以用于开发，我使用Node内置的<code>http</code>模块、<code>fs</code>模块以及安装的<code>url</code>模块、<code>path</code>模块建了一个静态文件服务器:<br>  1.安装必须模块</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev url path</div></pre></td></tr></table></figure>
+<p>  执行命令之后，<code>package.json</code>文件如下：</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"angularjs"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"learn angular"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"./server/server.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"startServer"</span>: <span class="string">"node server/server.js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"angular"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"heji"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"path"</span>: <span class="string">"^0.12.7"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"^0.11.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  2.在<code>angular</code>目录下建立一个server目录，作为定义服务器的目录，<code>server.js</code>是定义服务器的核心脚本，<code>mime.js</code>用于设置响应类型，<code>config.js</code>用于配置哪些文件使用缓存，缓存时间长短。<br>  <code>config.js</code>文件：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">exports.Expires = &#123;</div><div class="line">    fileMatch: <span class="regexp">/^(gif|png|jpg|js|css)$/ig</span>,</div><div class="line">    maxAge: <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">365</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>  <code>mime.js</code>文件：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">exports.types = &#123;</div><div class="line">    <span class="string">"css"</span>: <span class="string">"text/css"</span>,</div><div class="line">    <span class="string">"gif"</span>: <span class="string">"image/gif"</span>,</div><div class="line">    <span class="string">"html"</span>: <span class="string">"text/html"</span>,</div><div class="line">    <span class="string">"ico"</span>: <span class="string">"image/x-icon"</span>,</div><div class="line">    <span class="string">"jpeg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">    <span class="string">"jpg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">    <span class="string">"js"</span>: <span class="string">"text/javascript"</span>,</div><div class="line">    <span class="string">"json"</span>: <span class="string">"application/json"</span>,</div><div class="line">    <span class="string">"pdf"</span>: <span class="string">"application/pdf"</span>,</div><div class="line">    <span class="string">"png"</span>: <span class="string">"image/png"</span>,</div><div class="line">    <span class="string">"svg"</span>: <span class="string">"image/svg+xml"</span>,</div><div class="line">    <span class="string">"swf"</span>: <span class="string">"application/x-shockwave-flash"</span>,</div><div class="line">    <span class="string">"tiff"</span>: <span class="string">"image/tiff"</span>,</div><div class="line">    <span class="string">"txt"</span>: <span class="string">"text/plain"</span>,</div><div class="line">    <span class="string">"wav"</span>: <span class="string">"audio/x-wav"</span>,</div><div class="line">    <span class="string">"wma"</span>: <span class="string">"audio/x-ms-wma"</span>,</div><div class="line">    <span class="string">"wmv"</span>: <span class="string">"video/x-ms-wmv"</span>,</div><div class="line">    <span class="string">"xml"</span>: <span class="string">"text/xml"</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>  <code>server.js</code>文件：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"><span class="keyword">var</span> mime = <span class="built_in">require</span>(<span class="string">"./mime"</span>).types;</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">"./config"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> pathname = url.parse(request.url).pathname;</div><div class="line">    <span class="comment">//path.resolve('../')返回根目录的上级目录,因为URL已包含根目录</span></div><div class="line">    <span class="keyword">var</span> realPath = path.resolve(<span class="string">'../'</span>)+pathname;</div><div class="line">    fs.exists(realPath, <span class="function"><span class="keyword">function</span> (<span class="params">exists</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!exists) &#123;</div><div class="line">			<span class="comment">//如果路径不存在,返回404</span></div><div class="line">            response.writeHead(<span class="number">404</span>, &#123;</div><div class="line">                <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">            &#125;);</div><div class="line">            response.write(<span class="string">"This request URL "</span> + pathname + <span class="string">" was not found on this server."</span>);</div><div class="line">            response.end();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            fs.readFile(realPath, <span class="string">"binary"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">					<span class="comment">//如果读取文件失败统一返回500</span></div><div class="line">                    response.writeHead(<span class="number">500</span>, &#123;</div><div class="line">                        <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">                    &#125;);</div><div class="line">                    response.end(err);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">					<span class="comment">//设置最后修改时间</span></div><div class="line">					fs.stat(realPath, <span class="function"><span class="keyword">function</span> (<span class="params">err, stat</span>) </span>&#123;</div><div class="line">						<span class="keyword">var</span> lastModified = stat.mtime.toUTCString();</div><div class="line">						response.setHeader(<span class="string">"Last-Modified"</span>, lastModified);</div><div class="line">						<span class="keyword">if</span> (request.headers[<span class="string">"If-Modified-Since"</span>] &amp;&amp; lastModified == request.headers[<span class="string">"If-Modified-Since"</span>]) &#123;</div><div class="line">							<span class="comment">//没有修改直接返回</span></div><div class="line">							response.writeHead(<span class="number">304</span>, <span class="string">"Not Modified"</span>);</div><div class="line">							response.end();</div><div class="line">						&#125;<span class="keyword">else</span>&#123;</div><div class="line">							<span class="comment">//根据后缀名设置正确的MIME类型</span></div><div class="line">							<span class="keyword">var</span> ext = path.extname(realPath);</div><div class="line">							ext = ext ? ext.slice(<span class="number">1</span>) : <span class="string">'unknown'</span>;</div><div class="line">							<span class="comment">//判断请求的资源是否需要缓存(在config.js文件中配置)</span></div><div class="line">							<span class="keyword">if</span> (ext.match(config.Expires.fileMatch)) &#123;</div><div class="line">								<span class="keyword">var</span> expires = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">								expires.setTime(expires.getTime() + config.Expires.maxAge * <span class="number">1000</span>);</div><div class="line">								<span class="comment">//设置响应头</span></div><div class="line">								response.setHeader(<span class="string">"Expires"</span>, expires.toUTCString());</div><div class="line">								response.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"max-age="</span> + config.Expires.maxAge);</div><div class="line">							&#125;</div><div class="line">							<span class="keyword">var</span> contentType = mime[ext] || <span class="string">"text/plain"</span>;</div><div class="line">							response.writeHead(<span class="number">200</span>, &#123;</div><div class="line">								<span class="string">'Content-Type'</span>: contentType</div><div class="line">							&#125;);</div><div class="line">							<span class="comment">//向浏览器输入资源</span></div><div class="line">							response.write(file, <span class="string">"binary"</span>);</div><div class="line">							response.end();</div><div class="line">						&#125;</div><div class="line">					&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'server is running at 3000 port!'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  3.在<code>angularjs</code>目录下新建<code>assets</code>目录，作为资源目录</p>
+</li>
+<li><p>安装测试系统<br>  AngularJS最重要的特性之一是对单元测试的支持。在本教程，使用karma test runner 和Jasmine框架。任意目录运行<code>npm install -g karma</code>命令即完成karma的安装，后面将继续介绍如果使用。</p>
+</li>
+<li><p>获取AngularJS<br>  在<code>https://angularjs.org/</code>网站获取AngularJS，本教程使用的是1.2.5版本。另外，AngularJS还提供了一些附加文件，用于扩展AngularJS核心库的功能，后面章节将使用部分这些文件<br>  <img src="leanote://file/getImage?fileId=5874353e0948c415f0000000" alt=""></p>
+</li>
+<li><p>获取Bootstrap<br>  直接到bootstrap中文网下载Bootstrap。这里只是用bootstrap的样式，本教程不会使用bootstrap的Javascript文件的特性。</p>
+</li>
+<li><p>获取Deployd<br>  Deployd是一款出色的可跨平台的Web API引擎。它建立在Node.js和MongoDB的基础上，以JSON形式（类JSON）存储数据，并且支持使用JavaScript书写服务器端脚本。对于一些测试用的Web应用而言，Deployd可以非常快速的构建服务器端的REST API。使用以下命令安装Deployd：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g deployd</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行一个简单的测试<br>  在<code>assets</code>目录新建一个test.html文件：</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">ng-app</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>First Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>&#123;&#123;"Angular"&#125;&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span>&gt;</span>Bootstrap<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/angular-1.2.5/angular.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  启动服务器,访问<code>http://localhost:3000/angularjs/assets/test.html</code>即可查看效果</p>
+</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/01/10/第一章、搭建开发环境/">http://heji.website/2017/01/10/第一章、搭建开发环境/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="第一章、搭建开发环境" data-url="http://heji.website/2017/01/10/第一章、搭建开发环境/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
