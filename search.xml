@@ -54,7 +54,7 @@
 </li>
 <li><p>高亮选择的分类<br>  对被选分类按钮使用Bootstrap的btn-primary CSS类以实现高亮显示。下面是修改后的<code>productListController.js</code>文件</p>
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">"sportsStore"</span>)</div><div class="line"><span class="comment">//定义激活添加的类名</span></div><div class="line">.constant(<span class="string">"productListActiveClass"</span>,<span class="string">"btn-primary"</span>)</div><div class="line">.controller(<span class="string">"productListCtrl"</span>,[<span class="string">"$scope"</span>,<span class="string">"$filter"</span>,<span class="string">"productListActiveClass"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope,$filter,productListActiveClass</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> selectedCategory = <span class="literal">null</span>;</div><div class="line">	$scope.selectCategory = <span class="function"><span class="keyword">function</span>(<span class="params">newCategory</span>)</span>&#123;</div><div class="line">		selectedCategory = newCategory;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//当没有选中产品分类(显示全部)或者产品所在分类被选中时返回true(显示选择的分类)</span></div><div class="line">	$scope.categoryFilterFn = <span class="function"><span class="keyword">function</span>(<span class="params">product</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> selectedCategory == <span class="literal">null</span> || product.category == selectedCategory;</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//若当前类别被选中,添加样式</span></div><div class="line">	$scope.getCategoryClass = <span class="function"><span class="keyword">function</span>(<span class="params">category</span>)</span>&#123;</div><div class="line">		<span class="keyword">return</span> selectedCategory == category ? productListActiveClass : <span class="string">""</span>;</div><div class="line">	&#125;</div><div class="line">&#125;])</div></pre></td></tr></table></figure>
-<p>  下面是<code>app.html</code>修改的代码：<br>  <img src="(imgs/1486198602123_2.png" alt="">)</p>
+<p>  下面是<code>app.html</code>修改的代码：<br>  <img src="imgs/1486198602123_2.png" alt=""></p>
 </li>
 <li><p>添加分页</p>
 <ol>
@@ -69,6 +69,7 @@
 </ul>
 <pre><code>3. 更新视图
     实现分页的最后一步就是更新视图。下面是修改后的`app.html`页面：
+
     <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html ng-app="sportsStore"&gt;</div><div class="line">	&lt;head&gt;</div><div class="line">		&lt;meta charset="UTF-8"&gt;</div><div class="line">		&lt;title&gt;SportsStore&lt;/title&gt;</div><div class="line">		&lt;script src="angular.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</div><div class="line">		&lt;link rel="stylesheet" type="text/css" href="bootstrap.css"/&gt;</div><div class="line">		&lt;link rel="stylesheet" type="text/css" href="bootstrap-theme.css"/&gt;</div><div class="line">		&lt;script type="text/javascript"&gt;</div><div class="line">			//依赖customFilter模块</div><div class="line">			angular.module("sportsStore",["customFilter"]);</div><div class="line">		&lt;/script&gt;</div><div class="line">		&lt;!--引入顶级控制器--&gt;</div><div class="line">		&lt;script src="controllers/sportsStore.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</div><div class="line">		&lt;!--引入自定义过滤器--&gt;</div><div class="line">		&lt;script src="filters/customFilters.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</div><div class="line">		&lt;!--引入产品列表控制器--&gt;</div><div class="line">		&lt;script src="controllers/productListController.js" type="text/javascript" charset="utf-8"&gt;&lt;/script&gt;</div><div class="line">	&lt;/head&gt;</div><div class="line">	&lt;!--使用控制器--&gt;</div><div class="line">	&lt;body ng-controller="sportsStoreCtrl"&gt;</div><div class="line">		&lt;header class="navbar navbar-inverse"&gt;</div><div class="line">			&lt;a href="#" class="navbar-brand"&gt;运动商店&lt;/a&gt;</div><div class="line">		&lt;/header&gt;</div><div class="line">		&lt;section class="panel panel-default row" ng-controller="productListCtrl"&gt;</div><div class="line">			&lt;nav class="col-xs-3"&gt;</div><div class="line">				&lt;a ng-click="selectCategory()" class="btn btn-block btn-default" </div><div class="line">					ng-class="getCategoryClass()"&gt;Home&lt;/a&gt;</div><div class="line">				&lt;!--先对商品按目录进行排序,然后再返回去重后的目录--&gt;</div><div class="line">				&lt;a ng-repeat="item in data.products | orderBy:'category' | unique:'category'"</div><div class="line">					ng-click="selectCategory(item)" class="btn btn-block btn-default btn-lg" </div><div class="line">					ng-class="getCategoryClass(item)"&gt;&#123;&#123;item&#125;&#125;&lt;/a&gt;</div><div class="line">			&lt;/nav&gt;</div><div class="line">			&lt;div class="col-xs-8"&gt;</div><div class="line">				&lt;!--遍历添加商品--&gt;</div><div class="line">				&lt;div class="well" ng-repeat="item in data.products | filter:categoryFilterFn | range:selectedPage:pageSize"&gt;</div><div class="line">					&lt;h3&gt;</div><div class="line">						&lt;strong&gt;&#123;&#123;item.name&#125;&#125;&lt;/strong&gt;</div><div class="line">						&lt;!--使用金额过滤器，将数值转换为金额--&gt;</div><div class="line">						&lt;span class="pull-right label label-primary"&gt;</div><div class="line">							&#123;&#123;item.price | currency&#125;&#125;</div><div class="line">						&lt;/span&gt;</div><div class="line">					&lt;/h3&gt;</div><div class="line">					&lt;span class="lead"&gt;&#123;&#123;item.description &#125;&#125;&lt;/span&gt;</div><div class="line">				&lt;/div&gt;</div><div class="line">				&lt;div class="pull-right btn-group"&gt;</div><div class="line">					&lt;a ng-repeat="page in data.products | filter:categoryFilterFn | pageCount:pageSize"</div><div class="line">						ng-click="selectPage($index + 1)" class="btn btn-default" ng-class="getPageClass($index + 1)"&gt;</div><div class="line">						&#123;&#123;$index + 1&#125;&#125;</div><div class="line">					&lt;/a&gt;</div><div class="line">				&lt;/div&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">		&lt;/section&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 </code></pre>]]></content>
     </entry>
@@ -96,28 +97,22 @@
 </ul>
 </li>
 <li><p>理解控制器<br>  在一个AngularJS应用中，控制器就像结缔组织一样，作为数据模型和视图之间的渠道。控制器会向作用域中添加业务领域逻辑（称为行为），而作用域是模型的子集。<br>  控制器应该：</p>
-<ul>
-<li>包含初始化作用域所需的逻辑</li>
-<li>包含视图所需的用于表示作用域中的数据的逻辑行为。</li>
-<li><p>包含根据用户交互来更新作用域的逻辑行为</p>
-<p>控制器不应当：</p>
-</li>
-<li>包含操作DOM的逻辑（那是视图的职责）</li>
-<li>包含管理数据持久化的逻辑（那是模型的职责）</li>
-<li>在作用域之外操作数据</li>
-</ul>
-</li>
+<pre><code>* 包含初始化作用域所需的逻辑
+* 包含视图所需的用于表示作用域中的数据的逻辑行为。
+* 包含根据用户交互来更新作用域的逻辑行为
+</code></pre><p>  控制器不应当：</p>
+<pre><code>* 包含操作DOM的逻辑（那是视图的职责）
+* 包含管理数据持久化的逻辑（那是模型的职责）
+* 在作用域之外操作数据
+</code></pre></li>
 <li><p>理解视图数据<br>  领域模型并不是AngularJS应用程序中的唯一数据。控制器可以创建视图数据，以简化视图的定义。视图数据不会被持久化。而且要么是通过综合领域模型数据的几部分而成的，要么是存在于对用户交互的响应中。</p>
 </li>
 <li><p>理解视图<br>  AngularJS视图是通过HTML元素来定义的，而这些元素是通过数据或者指令来进行增强或者生成的。正是AngularJS指令使得视图变得如此灵活。<br>  视图应当：</p>
-<ul>
-<li><p>包含将数据呈现给用户所需的逻辑和标记。</p>
-<p>视图不应当：</p>
-</li>
-<li>包含复杂逻辑（这最好放到控制器中去）</li>
-<li>包含创建、存储或者操作领域模型的逻辑</li>
-</ul>
-</li>
+<pre><code>* 包含将数据呈现给用户所需的逻辑和标记。
+</code></pre><p>  视图不应当：</p>
+<pre><code>* 包含复杂逻辑（这最好放到控制器中去）
+* 包含创建、存储或者操作领域模型的逻辑
+</code></pre></li>
 </ul>
 <h2 id="理解RESTful服务"><a href="#理解RESTful服务" class="headerlink" title="理解RESTful服务"></a>理解RESTful服务</h2><p>一般情况下，我们并不希望客户端代码直接访问数据存储——这样会在客户端和数据存储之间产生紧耦合，使得单元测试复杂化，也使得在不修改客户端代码的情况下对数据存储的修改变得困难。<br>通过服务器端作为中介来访问数据存储，可以消除紧耦合。客户端的逻辑负责从服务器端存取数据，而无需知道数据在后台是如何存储或访问的细节。<br>有许多种在客户端和服务端之间传递数据的方法。最常见的一种是使用Ajax请求来调用服务器端代码，让服务器发送JSON并使用HTML表单来修改数据。这种方法可以很好地工作，也是RESTful Web服务的基础，利用了HTTP请求的天然特性对数据进行CRUD操作。<br>在一个RESTful服务中，被请求的操作通过HTTP方法和URL的组合进行表示。对于RESTful的Web服务没有标准的URL规范，但是一般想法是让URL是不言自明的，这样能够让URL引用的变得更加明显。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://myserver.mydomain.com/people/bob</div></pre></td></tr></table></figure></p>
 <p>在本例中，明显地看出有一个people的数据集合，引用的具体对象是bob。<br>URL可以识别出我想操作的数据对象，HTTP方法则指定了我想执行的操作。如下表所示：</p>
