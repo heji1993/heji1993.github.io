@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="并不是所有的应用程序都适合使用AngularJS开发，本章主要介绍AngularJS的适用场景。">
+    
+    <meta name="keywords" content="AngularJS,MVVM,前端框架, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第三章、结合背景理解AngularJS | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/02/06/第三章、结合背景理解AngularJS/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>第三章、结合背景理解AngularJS</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/AngularJS/">AngularJS</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-02-06T00:33:37.717Z"
+                       itemprop="datePublished">2017-02-06</time>
+            
+            更新: <time datetime="2017-02-06T00:38:39.095Z"
+                       itemprop="dateModified">2017-02-06</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#回合式和单页面应用程序"><span class="toc-number">1.</span> <span class="toc-text">回合式和单页面应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#回合式模型"><span class="toc-number">1.1.</span> <span class="toc-text">回合式模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单页面应用"><span class="toc-number">1.2.</span> <span class="toc-text">单页面应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解MVC模式"><span class="toc-number">2.</span> <span class="toc-text">理解MVC模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解RESTful服务"><span class="toc-number">3.</span> <span class="toc-text">理解RESTful服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Angular应用的几条规则"><span class="toc-number">4.</span> <span class="toc-text">Angular应用的几条规则</span></a></li></ol>
+                </div>
+            
+
+            <p>并不是所有的应用程序都适合使用AngularJS开发，本章主要介绍AngularJS的适用场景。</p>
+<a id="more"></a>
+<p>AngularJS不是能够解决任何问题的万能利器，所以了解何时应该使用AngularJS以及何时应该寻找替代品是非常重要的。AngularJS将那些曾经仅对服务器端开发者可用的功能完整地搬到了浏览器端。这意味着使用了AngularJS的HTML文档每次被加载时，AngularJS会有很多事要做——需要编译HTML元素，需要计算数据绑定，需要执行指令等。这些工作都需要时间去执行，所需时长取决于HTML文档及其相关联的JavaScript代码的复杂度，而且关键是浏览器的质量和设备的处理能力。<br>因此，Angular应用优化的目标应该是尽可能地降低这些设置的执行频率，并在其执行时尽可能多地向用户发送应用的更多内容。这意味着需要你仔细考虑所搭建的Web应用程序的类型。广义上讲，存在两种类型的Web应用程序：回合式和单页面。</p>
+<h2 id="回合式和单页面应用程序"><a href="#回合式和单页面应用程序" class="headerlink" title="回合式和单页面应用程序"></a>回合式和单页面应用程序</h2><h3 id="回合式模型"><a href="#回合式模型" class="headerlink" title="回合式模型"></a>回合式模型</h3><p>浏览器向服务器请求一个初始的HTML文档。用户交互（例如单击链接或者提交表单）会使得浏览器发送请求并接受一个全新的HTML文档。在这类程序中，浏览器本质上是一个HTML内容的解析引擎，所有的应用程序逻辑和数据都保留在服务器上。<br>回合式应用存在一些严重的不足之处：用户在下一个HTML文档被请求并加载之前必须等待，需要大型服务器端基础设施来处理所有请求，需要很多带宽。</p>
+<h3 id="单页面应用"><a href="#单页面应用" class="headerlink" title="单页面应用"></a>单页面应用</h3><p>单页面应用另辟蹊径，一个初始的HTML文档被发送给服务器，但是用户交互所产生的Ajax请求只会请求较小的HTML片段，初始的HTML文档不会被再次加载或者替换，在Ajax请求被异步执行时用户还可以继续与已有的HTML进行交互。(AngularJS的路由加载模块就是明显的例子，页面的切换只是部分HTML代码的变换，页面还是原来的页面)<br>AngularJS以单页面应用程序和复杂的回合式应用程序见长。对于较简单的项目，一般来说jQuery或者类似的替代者会是更好的选择，尽管没什么能阻止你在所有的项目中使用AngularJS。<br><img src="imgs/1484218583460_6.png" alt=""><br>AngularJS与jQuery在Web应用开发上走的是不同的路，jQuery完全是通过显式操作浏览器中的DOM来创建应用。AngularJS采用的方法则是将浏览器吸收为应用开发的基础。</p>
+<h2 id="理解MVC模式"><a href="#理解MVC模式" class="headerlink" title="理解MVC模式"></a>理解MVC模式</h2><p>使用MVC模式的关键前提是实现关注点分离，即应用程序中的数据模型与业务和展示逻辑解耦。主要的三个构件是模型、控制器和视图。<br><img src="imgs/1484218583460_8.png" alt="服务器端的MVC"><br>AngularJS是在浏览器中工作的，导致对MVC的形式产生一些影响。<br><img src="imgs/1484218583460_9.png" alt="浏览器端的MVC"></p>
+<ul>
+<li><p>理解模型<br>  模型（MVC中的M）包含了用户赖以工作的数据。有两种广义上的模型：视图模型，只表示从控制器传往视图的数据；领域模型：包含了业务领域的数据，以及用于创建、存储、和操纵这些数据的各种操作、转换和规则，统称逻辑模型。<br>  模型应该：</p>
+<ul>
+<li>包含领域数据</li>
+<li>包含创建、管理和修改领域数据的逻辑</li>
+<li><p>提供整洁的API，能够暴露模型数据及之上的操作。</p>
+<p>模型不应该：</p>
+</li>
+<li>暴露模型数据是如何获取或管理的细节</li>
+<li>包含根据用户交互对模型进行转换的逻辑（这是控制器的职责）</li>
+<li>包含将数据显示给用户的逻辑</li>
+</ul>
+</li>
+<li><p>理解控制器<br>  在一个AngularJS应用中，控制器就像结缔组织一样，作为数据模型和视图之间的渠道。控制器会向作用域中添加业务领域逻辑（称为行为），而作用域是模型的子集。<br>  控制器应该：</p>
+<ul>
+<li>包含初始化作用域所需的逻辑</li>
+<li>包含视图所需的用于表示作用域中的数据的逻辑行为。</li>
+<li><p>包含根据用户交互来更新作用域的逻辑行为</p>
+<p>控制器不应当：</p>
+</li>
+<li>包含操作DOM的逻辑（那是视图的职责）</li>
+<li>包含管理数据持久化的逻辑（那是模型的职责）</li>
+<li>在作用域之外操作数据</li>
+</ul>
+</li>
+<li><p>理解视图数据<br>  领域模型并不是AngularJS应用程序中的唯一数据。控制器可以创建视图数据，以简化视图的定义。视图数据不会被持久化。而且要么是通过综合领域模型数据的几部分而成的，要么是存在于对用户交互的响应中。</p>
+</li>
+<li><p>理解视图<br>  AngularJS视图是通过HTML元素来定义的，而这些元素是通过数据或者指令来进行增强或者生成的。正是AngularJS指令使得视图变得如此灵活。<br>  视图应当：</p>
+<ul>
+<li><p>包含将数据呈现给用户所需的逻辑和标记。</p>
+<p>视图不应当：</p>
+</li>
+<li>包含复杂逻辑（这最好放到控制器中去）</li>
+<li>包含创建、存储或者操作领域模型的逻辑</li>
+</ul>
+</li>
+</ul>
+<h2 id="理解RESTful服务"><a href="#理解RESTful服务" class="headerlink" title="理解RESTful服务"></a>理解RESTful服务</h2><p>一般情况下，我们并不希望客户端代码直接访问数据存储——这样会在客户端和数据存储之间产生紧耦合，使得单元测试复杂化，也使得在不修改客户端代码的情况下对数据存储的修改变得困难。<br>通过服务器端作为中介来访问数据存储，可以消除紧耦合。客户端的逻辑负责从服务器端存取数据，而无需知道数据在后台是如何存储或访问的细节。<br>有许多种在客户端和服务端之间传递数据的方法。最常见的一种是使用Ajax请求来调用服务器端代码，让服务器发送JSON并使用HTML表单来修改数据。这种方法可以很好地工作，也是RESTful Web服务的基础，利用了HTTP请求的天然特性对数据进行CRUD操作。<br>在一个RESTful服务中，被请求的操作通过HTTP方法和URL的组合进行表示。对于RESTful的Web服务没有标准的URL规范，但是一般想法是让URL是不言自明的，这样能够让URL引用的变得更加明显。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://myserver.mydomain.com/people/bob</div></pre></td></tr></table></figure></p>
+<p>在本例中，明显地看出有一个people的数据集合，引用的具体对象是bob。<br>URL可以识别出我想操作的数据对象，HTTP方法则指定了我想执行的操作。如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>获取URL指定的数据对象</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>更新URL指定的数据对象</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>创建一个新的对象，通常使用表单数据值作为数据域</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除URL所指定的数据对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Angular应用的几条规则"><a href="#Angular应用的几条规则" class="headerlink" title="Angular应用的几条规则"></a>Angular应用的几条规则</h2><ul>
+<li>视图逻辑应该仅为显示准备数据，并且永远不应该修改模型</li>
+<li>控制器永远不应该直接创建、更新或删除模型中的数据</li>
+<li>客户端永远都不应该直接访问数据存储。</li>
+<li>不要尝试在Angular应用使用jQuery操作DOM，技术的选型应该在最初的时候考虑清楚，否则后患无穷。如果实在需要使用jQuery，建议使用AngularJS封装的jqLite，后面会讲解。</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/02/06/第三章、结合背景理解AngularJS/">http://heji.website/2017/02/06/第三章、结合背景理解AngularJS/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="第三章、结合背景理解AngularJS" data-url="http://heji.website/2017/02/06/第三章、结合背景理解AngularJS/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
