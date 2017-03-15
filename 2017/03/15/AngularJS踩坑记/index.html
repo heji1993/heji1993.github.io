@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="第一次把AngularJS应用到生产开发，发现很多需要注意的问题。">
+    
+    <meta name="keywords" content="AngularJS,MVVM,前端框架, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AngularJS踩坑记(未完待续) | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/03/15/AngularJS踩坑记/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>AngularJS踩坑记(未完待续)</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/AngularJS/">AngularJS</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/AngularJS/">AngularJS</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-03-15T02:21:22.811Z"
+                       itemprop="datePublished">2017-03-15</time>
+            
+            更新: <time datetime="2017-03-15T03:56:09.112Z"
+                       itemprop="dateModified">2017-03-15</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+
+            <p>第一次把AngularJS应用到生产开发，发现很多需要注意的问题。</p>
+<a id="more"></a>
+<ul>
+<li><p>正确理解AngularJS擅长的SPA（单页面应用）的开发，因为AngularJS应用每次启动都需要重新编译HTML，所以AngularJS推荐的是初始页面不变，页面的跳转只是页面部分DOM的替换。从这一点看，那些频繁进行完整HTML的跳转，一次又一次初始化AngularJS应用的项目无疑是不恰当的。</p>
+</li>
+<li><p>关于服务注入的问题<br>  <strong>推断式注入：</strong></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> app.controller(<span class="string">"myCtrl1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope,hello1,hello2</span>)</span>&#123;</div><div class="line">    $scope.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        hello1.hello();</div><div class="line">        hello2.hello();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  这种注入方式，需要在保证参数名称与服务名称相同。如果代码要经过压缩等操作，就会导致注入失败。<br>  <strong>内联式注入：</strong></p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.controller(<span class="string">"myCtrl3"</span>,[<span class="string">'$scope'</span>,<span class="string">'hello1'</span>,<span class="string">'hello2'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope,hello1,hello2</span>)</span>&#123;</div><div class="line">    $scope.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        hello1.hello();</div><div class="line">        hello2.hello();</div><div class="line">    &#125;</div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
+</li>
+<li><p>AngularJS与第三方技术整合，如果需要在第三方框架准备完成之后再初始化AngularJS，此时推荐手动初始化：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//等待设备准备完成</span></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"plusready"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//设置APP只能竖屏显示</span></div><div class="line">	plus.screen.lockOrientation(<span class="string">"portrait-primary"</span>);</div><div class="line">	<span class="comment">//app依赖于框架的组件以及app自身的demo模块</span></div><div class="line">	angular.module(<span class="string">"standardApp"</span>,[<span class="string">"pd.src"</span>,<span class="string">"pd.action"</span>,<span class="string">"pd.view"</span>,<span class="string">"standardApp.login"</span>])</div><div class="line">	<span class="comment">//配置常量</span></div><div class="line">	.constant(<span class="string">"VIEWINSTYLE"</span>, <span class="string">"slide-in-right"</span>)</div><div class="line">	<span class="comment">//公司外网测试:http://202.104.140.36:8888/zwxxpt</span></div><div class="line">	.constant(<span class="string">"SERVICEURL"</span>, <span class="string">"http://202.104.140.36:8888/zwxxpt"</span>) </div><div class="line">	<span class="comment">//后端端服务请求path</span></div><div class="line">	.constant(<span class="string">"SERVICEPATH"</span>, <span class="string">"/invoke"</span>) </div><div class="line">	<span class="comment">//后端登陆请求path</span></div><div class="line">	.constant(<span class="string">"LGOINPATH"</span>, <span class="string">"/webLogin.do"</span>) </div><div class="line">	<span class="comment">//配置是否自动升级</span></div><div class="line">	.constant(<span class="string">"AUTOUPVERSION"</span>, <span class="literal">true</span>)</div><div class="line">	<span class="comment">//版本升级检测路径</span></div><div class="line">	.constant(<span class="string">"CHECKVERSIONURL"</span>, <span class="string">"/"</span>)</div><div class="line">	<span class="comment">//请求过期时间,15秒</span></div><div class="line">	.constant(<span class="string">"TIMEOUT"</span>, <span class="number">15000</span>)</div><div class="line">	<span class="comment">//默认下载的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEDOWNLOADURL"</span>, <span class="string">"/pages/platform/config/xtcs/downFileProcessor.jsp"</span>) </div><div class="line">	<span class="comment">//附件下载保存的路径,注意不要使用_downloads/temp/作为路径，会找不到文件。且要以_downloads为根目录</span></div><div class="line">	.constant(<span class="string">"DOWNLOADPATH"</span>, <span class="string">"_downloads/_temp/"</span>)</div><div class="line">	<span class="comment">//服务器端下载的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEDOWNLOADURL"</span>, <span class="string">"/pages/platform/config/xtcs/downFileProcessor.jsp"</span>)</div><div class="line">	<span class="comment">//服务器端上传的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEUPLOADURL"</span>, <span class="string">"/upload/uploadfile.do"</span>) </div><div class="line">	<span class="comment">//调试用常量</span></div><div class="line">	.constant(<span class="string">"IMEI"</span>, <span class="string">"3C:07:54:04:E2:E5"</span>)</div><div class="line">	.constant(<span class="string">"SIM"</span>, <span class="string">"131111111"</span>);</div><div class="line">	<span class="comment">//手动初始化Angular应用</span></div><div class="line">	angular.bootstrap(<span class="built_in">document</span>,[<span class="string">"standardApp"</span>]);</div><div class="line">&#125;,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>当一个元素使用了多个自定义指令时，指令不应该存在多个独立的作用域即应该都使用父作用域，设置为false（默认）或只能有一个独立的作用域（其中一个指令使用了独立的作用域），另一种解决方法是指令不要用在一个元素上。</p>
+</li>
+<li><p>为方便后续扩展和迁移，框架底层模块应该要尽量独立，也就是说，底层模块之间尽量减少依赖。</p>
+</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/03/15/AngularJS踩坑记/">http://heji.website/2017/03/15/AngularJS踩坑记/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="AngularJS踩坑记(未完待续)" data-url="http://heji.website/2017/03/15/AngularJS踩坑记/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
