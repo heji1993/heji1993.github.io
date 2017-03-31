@@ -6,10 +6,7 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="get方法和eq方法的区别：12.eq()  减少匹配元素的集合，根据index索引值，精确指定索引对象。.get() 通过检索匹配jQuery对象得到对应的DOM元素。
-
-
-上两节我们看过了get方法的源码，这次，我们来看看eq方法的源码：123456789101112131415eq: func">
+    <meta name="description" content="get方法获取的是元素的DOM元素，eq方法获取的是jQuery对象">
     
     <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
     
@@ -149,7 +146,7 @@
             发表: <time datetime="2017-03-31T06:15:21.801Z"
                        itemprop="datePublished">2017-03-31</time>
             
-            更新: <time datetime="2017-03-31T06:16:00.179Z"
+            更新: <time datetime="2017-03-31T06:27:00.937Z"
                        itemprop="dateModified">2017-03-31</time>
             
         </div>
@@ -157,10 +154,8 @@
         <div class="post-body-inner">
             
 
-            <ul>
-<li>get方法和eq方法的区别：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.eq()  减少匹配元素的集合，根据index索引值，精确指定索引对象。</div><div class="line">.get() 通过检索匹配jQuery对象得到对应的DOM元素。</div></pre></td></tr></table></figure>
-</li>
-</ul>
+            <p>get方法获取的是元素的DOM元素，eq方法获取的是jQuery对象<br><a id="more"></a></p>
+<p>get方法和eq方法的区别：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">.eq()  减少匹配元素的集合，根据index索引值，精确指定索引对象。</div><div class="line">.get() 通过检索匹配jQuery对象得到对应的DOM元素。</div></pre></td></tr></table></figure></p>
 <p>上两节我们看过了get方法的源码，这次，我们来看看eq方法的源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">eq: <span class="function"><span class="keyword">function</span>(<span class="params"> i </span>) </span>&#123;</div><div class="line">		<span class="keyword">var</span> len = <span class="keyword">this</span>.length,</div><div class="line">			j = +i + ( i &lt; <span class="number">0</span> ? len : <span class="number">0</span> );</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.pushStack( j &gt;= <span class="number">0</span> &amp;&amp; j &lt; len ? [ <span class="keyword">this</span>[j] ] : [] ); <span class="comment">//创建一个新的jQuery对象</span></div><div class="line">	&#125;</div><div class="line">...</div><div class="line">pushStack: <span class="function"><span class="keyword">function</span>(<span class="params"> elems </span>) </span>&#123;</div><div class="line">    <span class="comment">//新建一个jQuery对象然后用jQuery.merge语句把elems节点合并到新的jQuery对象上</span></div><div class="line">    <span class="keyword">var</span> ret = jQuery.merge( <span class="keyword">this</span>.constructor(), elems );</div><div class="line">    <span class="comment">//把执行find方法前的对象的引用赋给prevObject属性</span></div><div class="line">    ret.prevObject = <span class="keyword">this</span>;</div><div class="line">    ret.context = <span class="keyword">this</span>.context;</div><div class="line">    <span class="comment">// 放回新创建的jQuery对象</span></div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
 <p>jQuery的考虑很周到，通过eq方法只能产生一个新的对象，但是如果需要的是一个合集对象要怎么处理？因此jQuery便提供了一个slice方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slice: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.pushStack( slice.apply( <span class="keyword">this</span>, <span class="built_in">arguments</span> ) ); <span class="comment">//slice.apply( this, arguments )把this指向的jQuery集合分割，然后再调用pushStack方法返回分割后的新的jQuery集合</span></div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
 <p><strong>Ps:pushStack方法其实就是对jQuery集合进行包装，供jQuery回溯使用</strong></p>
