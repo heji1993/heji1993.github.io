@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="在jQuery里面，你既可以用$.isArray()调用jq的静态方法，也可以通过$().css()获取对象执行对象方法。在js中，要实现一个变量既能被new，又能调用它的方法，其实不难实现(使用原型实现)：123456var a = function () &amp;#123;&amp;#125;;a.func ">
+    
+    <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery2.1.1源码解析二、无new构建实例 | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/03/31/jQuery2.1.1源码解析二、无new构建实例/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>jQuery2.1.1源码解析二、无new构建实例</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/jQuery/">jQuery</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-03-31T04:31:13.285Z"
+                       itemprop="datePublished">2017-03-31</time>
+            
+            更新: <time datetime="2017-03-31T04:32:02.295Z"
+                       itemprop="dateModified">2017-03-31</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#无new构建"><span class="toc-number">1.</span> <span class="toc-text">无new构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                </div>
+            
+
+            <p>在jQuery里面，你既可以用<code>$.isArray()</code>调用<code>jq</code>的静态方法，也可以通过<code>$().css()</code>获取对象执行对象方法。<br>在js中，要实现一个变量既能被new，又能调用它的方法，其实不难实现(使用原型实现)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">a.func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;alert(<span class="string">"静态方法"</span>);&#125;;</div><div class="line">a.prototype.t = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;alert(<span class="string">"对象方法"</span>);&#125;;</div><div class="line"><span class="keyword">var</span> t = <span class="keyword">new</span> a();</div><div class="line">t.t();</div><div class="line">a.func();</div></pre></td></tr></table></figure></p>
+<h3 id="无new构建"><a href="#无new构建" class="headerlink" title="无new构建"></a>无new构建</h3><p>下面就是一个无new构建的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> aQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</div><div class="line">	<span class="comment">//调用时this表示window对象(函数是window对象的属性)</span></div><div class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>===<span class="built_in">window</span>); <span class="comment">//true,false</span></div><div class="line">    <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> aQuery)) &#123;</div><div class="line">    	<span class="comment">//如果this不是aQuery对象的实例,新建一个aQuery对象返回,此时this即为aQuery对象的一个实例</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> aQuery(selector);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.constructor===aQuery); <span class="comment">//true</span></div><div class="line">    <span class="comment">// /[^#].*/：匹配除#外的所有字符串,exec方法返回匹配结果组成的数组</span></div><div class="line">    <span class="keyword">var</span> elem = <span class="built_in">document</span>.getElementById(<span class="regexp">/[^#].*/</span>.exec(selector)[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">this</span>.length = <span class="number">1</span>;</div><div class="line">    <span class="keyword">this</span>[<span class="number">0</span>] = elem;</div><div class="line">    <span class="keyword">this</span>.context = <span class="built_in">document</span>;</div><div class="line">    <span class="keyword">this</span>.selector = selector;</div><div class="line">    <span class="keyword">this</span>.get = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>[num];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(aQuery(<span class="string">"#book"</span>).get(<span class="number">0</span>));</div></pre></td></tr></table></figure></p>
+<p>现在，我们看看jQuery是如何做的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector, context);</div><div class="line">&#125;;</div><div class="line">jQuery.fn = jQuery.prototype = &#123;&#125;;</div><div class="line"><span class="keyword">var</span> init = jQuery.fn.init = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>)</span>&#123;&#125;;</div><div class="line"><span class="comment">//让返回对象的原型指向jQuery的原型,这样,所有$()获取的对象的原型其实就都是jQuery对象的原型</span></div><div class="line">init.prototype = jQuery.fn;</div></pre></td></tr></table></figure></p>
+<p>通俗解释：</p>
+<ol>
+<li><code>$()</code>,<code>jQuery()</code>是执行一个函数，<code>$</code>和<code>jQuery</code>是函数名称，这个函数返回的是一个对象，所以里面是一个new表达式，但是名字不能是自己，否则无限循环。</li>
+<li>既然不是自己，其实可以理解为<code>jQuery()</code>返回的不是jQuery对象，而是<code>jQuery.fn.init</code>（一个名字而已）对象。</li>
+<li>但是为了原型链，jQuery这样处理，<code>jQuery.fn.init.prototype = jQuery.prototype</code>.</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>jQuery的无new构建原理中在<code>$()</code>内部中首先保证是通过<code>new</code>创建,使得我们在函数调用中可以使用this来代表该jq实例，通过原型的共享而实现了静态方法与实例方法的共存。手段惊艳，不得不赞叹作者的过人之处。</p>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/03/31/jQuery2.1.1源码解析二、无new构建实例/">http://heji.website/2017/03/31/jQuery2.1.1源码解析二、无new构建实例/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="jQuery2.1.1源码解析二、无new构建实例" data-url="http://heji.website/2017/03/31/jQuery2.1.1源码解析二、无new构建实例/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

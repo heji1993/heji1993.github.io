@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。函数调用模式：类似于bar(),函数单独出现，this指向window构">
+    
+    <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery2.1.1源码解析四、插件接口的设计 | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/03/31/jQuery2.1.1源码解析四、插件接口的设计/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>jQuery2.1.1源码解析四、插件接口的设计</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/jQuery/">jQuery</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-03-31T06:09:56.961Z"
+                       itemprop="datePublished">2017-03-31</time>
+            
+            更新: <time datetime="2017-03-31T06:10:37.135Z"
+                       itemprop="dateModified">2017-03-31</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+
+            <p>在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：<br>方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。<br>函数调用模式：类似于bar(),函数单独出现，this指向window<br>构造器调用模式：类似于 var foo = new bar()，this指向new bar()返回的对象。<br>apply调用：类似于bar.apply(object)，this指向object</p>
+<p><strong>关于apply方法的说明：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*定义一个人类*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  </div><div class="line">    <span class="keyword">this</span>.name=name;  </div><div class="line">    <span class="keyword">this</span>.age=age;  </div><div class="line">&#125;  </div><div class="line"><span class="comment">/*定义一个学生类*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,grade</span>)</span>&#123;  </div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);  </div><div class="line">    <span class="keyword">this</span>.grade=grade;  </div><div class="line">&#125;  </div><div class="line"><span class="comment">//创建一个学生类  </span></div><div class="line"><span class="keyword">var</span> student=<span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>,<span class="number">21</span>,<span class="string">"一年级"</span>);  </div><div class="line"><span class="comment">//测试  </span></div><div class="line">alert(<span class="string">"name:"</span>+student.name+<span class="string">"\n"</span>+<span class="string">"age:"</span>+student.age+<span class="string">"\n"</span>+<span class="string">"grade:"</span>+student.grade);  </div><div class="line"><span class="comment">//大家可以看到测试结果name:zhangsan age:21  grade:一年级  </span></div><div class="line"><span class="comment">//学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处.</span></div></pre></td></tr></table></figure></p>
+<p>分析: <code>Person.apply(this,arguments);</code><br>this:在创建对象在这个时候代表的是Student对象<br>arguments:是参数数组,也就是[“zhangsan”,”21”,”一年级”];<br>通俗一点讲就是:用student去执行Person这个类里面的内容,在Person这个类里面存在this.name等之类的语句,这样就将属性创建到了student对象里面。</p>
+<p>jQuery插件的开发分为两种：<br>  ☑  一种是挂在jQuery命名空间下的全局函数，也可称为静态方法；<br>  ☑  另一种是jQuery对象级别的方法，即挂在jQuery原型下的方法，这样通过选择器获取的jQuery对象实例也能共享该方法。</p>
+<p>提供的接口：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.extend(target, [object1], [objectN]);</div></pre></td></tr></table></figure></p>
+<p><strong>注意：该方法也可用来合并对象(其实扩展jQuery就是把内容合并到jQuery对象或者jQuery实例对象中去)</strong></p>
+<p>下面是拟jQuery源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $ = jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> jQuery.fn.init(selector);</div><div class="line">&#125;</div><div class="line">jQuery.fn = jQuery.prototype = &#123;</div><div class="line">    name: <span class="string">'heji'</span>,</div><div class="line">	init: <span class="function"><span class="keyword">function</span>(<span class="params">selector</span>) </span>&#123;</div><div class="line">		<span class="keyword">this</span>.selector = selector;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;,</div><div class="line">	<span class="keyword">constructor</span>: jQuery</div><div class="line">&#125;</div><div class="line">jQuery.fn.init.prototype = jQuery.fn</div><div class="line">jQuery.extend = jQuery.fn.extend = function() &#123;</div><div class="line">	<span class="keyword">var</span> options, src, copy,</div><div class="line">		target = <span class="built_in">arguments</span>[<span class="number">0</span>] || &#123;&#125;, <span class="comment">//target默认执行第一个对象或者空对象(合并对象)</span></div><div class="line">		i = <span class="number">1</span>,</div><div class="line">		length = <span class="built_in">arguments</span>.length;</div><div class="line">	<span class="comment">//只有一个参数，就是对jQuery自身的扩展处理，如果多个参数，表示合并对象</span></div><div class="line">	<span class="comment">//extend,fn.extend</span></div><div class="line">	<span class="keyword">if</span> (i === length) &#123;</div><div class="line">	    <span class="comment">//调用的上下文对象jQuery/或者实例,当使用jQuery.extend扩展时,this表示jQuery对象;当使用jQuery.fn.extend扩展时,实际上this表示jQuery对象原型</span></div><div class="line">		target = <span class="keyword">this</span>; </div><div class="line">		i--;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (; i &lt; length; i++) &#123;</div><div class="line">		<span class="comment">//从i开始取参数,不为空开始遍历</span></div><div class="line">		<span class="keyword">if</span> ((options = <span class="built_in">arguments</span>[i]) != <span class="literal">null</span>) &#123;</div><div class="line">			<span class="keyword">for</span> (name <span class="keyword">in</span> options) &#123;</div><div class="line">				copy = options[name];</div><div class="line">				<span class="comment">//拷贝属性到target.</span></div><div class="line">				target[name] = copy;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> target;</div><div class="line">&#125;</div><div class="line">jQuery.fn.extend(&#123;</div><div class="line">	setName: <span class="function"><span class="keyword">function</span>(<span class="params">myName</span>) </span>&#123;</div><div class="line">		<span class="keyword">this</span>.myName = myName</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;,</div><div class="line">	getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		$(<span class="string">"#name"</span>).html(<span class="keyword">this</span>.myName)</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line">$().setName(<span class="string">'何机'</span>).getName();</div></pre></td></tr></table></figure></p>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/03/31/jQuery2.1.1源码解析四、插件接口的设计/">http://heji.website/2017/03/31/jQuery2.1.1源码解析四、插件接口的设计/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="jQuery2.1.1源码解析四、插件接口的设计" data-url="http://heji.website/2017/03/31/jQuery2.1.1源码解析四、插件接口的设计/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+
