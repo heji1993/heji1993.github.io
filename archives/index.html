@@ -169,7 +169,7 @@
                     <h1><a href="/2017/03/31/jQuery2.1.1源码解析六、仿栈与队列的操作/" title="jQuery2.1.1源码解析六、仿栈与队列的操作">jQuery2.1.1源码解析六、仿栈与队列的操作</a></h1>
 
                     
-                        <p class="synopsis-desc">jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。jQuery提供了.get()、:index()、 :lt()、:gt()、:even()</p>
+                        <p class="synopsis-desc">jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。</p>
                     
 
                     <p class="say-title">
@@ -202,7 +202,7 @@
                     <h1><a href="/2017/03/31/jQuery2.1.1源码解析五、回溯处理的设计/" title="jQuery2.1.1源码解析五、回溯处理的设计">jQuery2.1.1源码解析五、回溯处理的设计</a></h1>
 
                     
-                        <p class="synopsis-desc">我们知道Query选择器最终都是通过DOM接口实现取值的, 但是通过jQuery处理后返回的不仅仅只有DOM对象，而是一个包装容器，下面是控制台打印的jQuery对象（使用了链式操作之后）。在jQuery对象中有个prevObject对象，这个是干嘛用的呢？如果你想知道prevO</p>
+                        <p class="synopsis-desc">有链式调用必然会有回溯设计，这一节介绍jQuery的回溯处理的设计。</p>
                     
 
                     <p class="say-title">
@@ -235,7 +235,7 @@
                     <h1><a href="/2017/03/31/jQuery2.1.1源码解析四、插件接口的设计/" title="jQuery2.1.1源码解析四、插件接口的设计">jQuery2.1.1源码解析四、插件接口的设计</a></h1>
 
                     
-                        <p class="synopsis-desc">在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。函数调用模式：类似于bar(),函数单独出现，thi</p>
+                        <p class="synopsis-desc">如果jQuery没有插件接口的设计，那么他就像个光杆司令没有兵，就是没有手下，只有自己一个封闭的城堡。因此jQuery城堡需要设计一个大门 - 插件接口，从而打开大门开始招兵买马。</p>
                     
 
                     <p class="say-title">
@@ -268,7 +268,7 @@
                     <h1><a href="/2017/03/31/jQuery2.1.1源码解析三、方法链式调用的实现/" title="jQuery2.1.1源码解析三、方法链式调用的实现">jQuery2.1.1源码解析三、方法链式调用的实现</a></h1>
 
                     
-                        <p class="synopsis-desc">我们先来看看使用jQuery的一段链式代码：123456789101112$(&#39;input[type=&quot;button&quot;]&#39;)    .eq(0).click(function() &amp;#123;        alert(&#39;点击我!&#39;);&amp;#125;).end().eq(1).cl</p>
+                        <p class="synopsis-desc">jQuery的链式操作极大地提高了代码的效率，现在我们研究一下jQuery如何实现链式操作。</p>
                     
 
                     <p class="say-title">
@@ -301,7 +301,7 @@
                     <h1><a href="/2017/03/31/jQuery2.1.1源码解析二、无new构建实例/" title="jQuery2.1.1源码解析二、无new构建实例">jQuery2.1.1源码解析二、无new构建实例</a></h1>
 
                     
-                        <p class="synopsis-desc">在jQuery里面，你既可以用$.isArray()调用jq的静态方法，也可以通过$().css()获取对象执行对象方法。在js中，要实现一个变量既能被new，又能调用它的方法，其实不难实现(使用原型实现)：123456var a = function () &amp;#123;&amp;#12</p>
+                        <p class="synopsis-desc">在jQuery里面，你既可以用$.isArray()调用jq的静态方法，也可以通过$().css()获取对象执行对象方法。</p>
                     
 
                     <p class="say-title">

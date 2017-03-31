@@ -6,7 +6,7 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。jQuery提供了.get()、:index()、 :lt()、:gt()、:even()及 :odd()这类">
+    <meta name="description" content="jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。">
     
     <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
     
@@ -130,7 +130,7 @@
             
 <span class="article-tags">
     
-    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
+    Tags: <a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
 </span>
 
 
@@ -146,7 +146,7 @@
             发表: <time datetime="2017-03-31T06:13:29.391Z"
                        itemprop="datePublished">2017-03-31</time>
             
-            更新: <time datetime="2017-03-31T06:15:10.997Z"
+            更新: <time datetime="2017-03-31T06:37:23.091Z"
                        itemprop="dateModified">2017-03-31</time>
             
         </div>
@@ -154,7 +154,8 @@
         <div class="post-body-inner">
             
 
-            <p>jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。<br>jQuery提供了.get()、:index()、 :lt()、:gt()、:even()及 :odd()这类索引值相关的选择器，他们的作用可以过滤他们前面的匹配表达式的集合元素:<br>我们看一下下面几个选择器的原理：<br>get方法–是通过检索匹配jQuery对象得到对应的DOM元素，如下代码实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line"><span class="keyword">var</span> slice = arr.slice;</div><div class="line">...</div><div class="line">get: <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num != <span class="literal">null</span> ?</div><div class="line">    <span class="comment">// Return just the one element from the set</span></div><div class="line">    (num &lt; <span class="number">0</span> ? <span class="keyword">this</span>[num + <span class="keyword">this</span>.length] : <span class="keyword">this</span>[num]) :</div><div class="line">    <span class="comment">// Return all the elements in a clean array</span></div><div class="line">    slice.call(<span class="keyword">this</span>); <span class="comment">//slice指向的是Array对象的slice属性。这行代码的详细理解请查看另一篇笔记`Array.prototype.slice.call(arguments)的理解`</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <p>jQuery既然是模仿的数组结构，那么肯定会实现一套类数组的处理方法，比如常见的栈与队列操作push、pop、shift、unshift、求和、遍历循环each、排序及筛选等一系的扩展方法。<br><a id="more"></a></p>
+<p>jQuery提供了.get()、:index()、 :lt()、:gt()、:even()及 :odd()这类索引值相关的选择器，他们的作用可以过滤他们前面的匹配表达式的集合元素:<br>我们看一下下面几个选择器的原理：<br>get方法–是通过检索匹配jQuery对象得到对应的DOM元素，如下代码实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [];</div><div class="line"><span class="keyword">var</span> slice = arr.slice;</div><div class="line">...</div><div class="line">get: <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num != <span class="literal">null</span> ?</div><div class="line">    <span class="comment">// Return just the one element from the set</span></div><div class="line">    (num &lt; <span class="number">0</span> ? <span class="keyword">this</span>[num + <span class="keyword">this</span>.length] : <span class="keyword">this</span>[num]) :</div><div class="line">    <span class="comment">// Return all the elements in a clean array</span></div><div class="line">    slice.call(<span class="keyword">this</span>); <span class="comment">//slice指向的是Array对象的slice属性。这行代码的详细理解请查看另一篇笔记`Array.prototype.slice.call(arguments)的理解`</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>原理很简单，因为jQuery查询出来的是一个数组的DOM集合，所以就可以按照数组的方法通过下标的索引取值，当然如果num的值超出范围，比如小于元素数量的负数或等于或大于元素的数量的数，那么它将返回undefined。当没有穿参数时，返回jQuery对象数组。<br>由于是数组的关系，所以我们有几个快速方法，比如头跟尾的取值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">first: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.eq( <span class="number">0</span> );</div><div class="line">&#125;,</div><div class="line">last: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.eq(<span class="number">-1</span>);</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 
 

@@ -6,7 +6,7 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="我们先来看看使用jQuery的一段链式代码：123456789101112$(&#39;input[type=&quot;button&quot;]&#39;)    .eq(0).click(function() &amp;#123;        alert(&#39;点击我!&#39;);&amp;#125;).end().eq(1).click(functi">
+    <meta name="description" content="jQuery的链式操作极大地提高了代码的效率，现在我们研究一下jQuery如何实现链式操作。">
     
     <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
     
@@ -130,7 +130,7 @@
             
 <span class="article-tags">
     
-    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
+    Tags: <a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
 </span>
 
 
@@ -146,7 +146,7 @@
             发表: <time datetime="2017-03-31T06:08:56.029Z"
                        itemprop="datePublished">2017-03-31</time>
             
-            更新: <time datetime="2017-03-31T06:09:32.395Z"
+            更新: <time datetime="2017-03-31T06:38:32.660Z"
                        itemprop="dateModified">2017-03-31</time>
             
         </div>
@@ -154,7 +154,8 @@
         <div class="post-body-inner">
             
 
-            <p>我们先来看看使用jQuery的一段链式代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'input[type="button"]'</span>)</div><div class="line">    .eq(<span class="number">0</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'点击我!'</span>);</div><div class="line">&#125;).end().eq(<span class="number">1</span>)</div><div class="line">.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'input[type="button"]:eq(0)'</span>).trigger(<span class="string">'click'</span>);</div><div class="line">&#125;).end().eq(<span class="number">2</span>)</div><div class="line">.toggle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'.aa'</span>).hide(<span class="string">'slow'</span>);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'.aa'</span>).show(<span class="string">'slow'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+            <p>jQuery的链式操作极大地提高了代码的效率，现在我们研究一下jQuery如何实现链式操作。<br><a id="more"></a></p>
+<p>我们先来看看使用jQuery的一段链式代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'input[type="button"]'</span>)</div><div class="line">    .eq(<span class="number">0</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'点击我!'</span>);</div><div class="line">&#125;).end().eq(<span class="number">1</span>)</div><div class="line">.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'input[type="button"]:eq(0)'</span>).trigger(<span class="string">'click'</span>);</div><div class="line">&#125;).end().eq(<span class="number">2</span>)</div><div class="line">.toggle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'.aa'</span>).hide(<span class="string">'slow'</span>);</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    $(<span class="string">'.aa'</span>).show(<span class="string">'slow'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>看这个代码的结构，我们或多或少都能猜到其含义：<br>  ☑  找出type类型为button的input元素<br>  ☑  找到第一个按钮，并绑定click事件处理函数<br>  ☑  返回所有按钮，再找到第二个<br>  ☑  为第二个按钮绑定click事件处理函数<br>  ☑  为第三个按钮绑定toggle事件处理函数</p>
 <p>jQuery的这种管道风格的链式代码，总的来说：</p>
 <ul>

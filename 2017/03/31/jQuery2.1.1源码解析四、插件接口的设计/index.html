@@ -6,7 +6,7 @@
     
     <meta name="author" content="何机">
     
-    <meta name="description" content="在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。函数调用模式：类似于bar(),函数单独出现，this指向window构">
+    <meta name="description" content="如果jQuery没有插件接口的设计，那么他就像个光杆司令没有兵，就是没有手下，只有自己一个封闭的城堡。因此jQuery城堡需要设计一个大门 - 插件接口，从而打开大门开始招兵买马。">
     
     <meta name="keywords" content="源码,JavaScript,jQuery, 何机的技术博客,何机,博客,blog,IT,技术">
     
@@ -130,7 +130,7 @@
             
 <span class="article-tags">
     
-    Tags: <a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
+    Tags: <a href="/tags/JavaScript/">JavaScript</a>&nbsp;<a href="/tags/web前端/">web前端</a>&nbsp;<a href="/tags/jQuery/">jQuery</a>&nbsp;
 </span>
 
 
@@ -146,7 +146,7 @@
             发表: <time datetime="2017-03-31T06:09:56.961Z"
                        itemprop="datePublished">2017-03-31</time>
             
-            更新: <time datetime="2017-03-31T06:10:37.135Z"
+            更新: <time datetime="2017-03-31T06:39:57.775Z"
                        itemprop="dateModified">2017-03-31</time>
             
         </div>
@@ -154,7 +154,8 @@
         <div class="post-body-inner">
             
 
-            <p>在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：<br>方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。<br>函数调用模式：类似于bar(),函数单独出现，this指向window<br>构造器调用模式：类似于 var foo = new bar()，this指向new bar()返回的对象。<br>apply调用：类似于bar.apply(object)，this指向object</p>
+            <p>如果jQuery没有插件接口的设计，那么他就像个光杆司令没有兵，就是没有手下，只有自己一个封闭的城堡。因此jQuery城堡需要设计一个大门 - 插件接口，从而打开大门开始招兵买马。<br><a id="more"></a></p>
+<p>在javascript的世界中一共有四种上下文调用方式：方法调用模式、函数调用模式、构造器调用模式、apply调用模式。我要分别解释一下：<br>方法调用模式： 类似于foo.bar()，函数作为一个对象的方法出现，this指向foo。<br>函数调用模式：类似于bar(),函数单独出现，this指向window<br>构造器调用模式：类似于 var foo = new bar()，this指向new bar()返回的对象。<br>apply调用：类似于bar.apply(object)，this指向object</p>
 <p><strong>关于apply方法的说明：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*定义一个人类*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;  </div><div class="line">    <span class="keyword">this</span>.name=name;  </div><div class="line">    <span class="keyword">this</span>.age=age;  </div><div class="line">&#125;  </div><div class="line"><span class="comment">/*定义一个学生类*/</span>  </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age,grade</span>)</span>&#123;  </div><div class="line">    Person.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);  </div><div class="line">    <span class="keyword">this</span>.grade=grade;  </div><div class="line">&#125;  </div><div class="line"><span class="comment">//创建一个学生类  </span></div><div class="line"><span class="keyword">var</span> student=<span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>,<span class="number">21</span>,<span class="string">"一年级"</span>);  </div><div class="line"><span class="comment">//测试  </span></div><div class="line">alert(<span class="string">"name:"</span>+student.name+<span class="string">"\n"</span>+<span class="string">"age:"</span>+student.age+<span class="string">"\n"</span>+<span class="string">"grade:"</span>+student.grade);  </div><div class="line"><span class="comment">//大家可以看到测试结果name:zhangsan age:21  grade:一年级  </span></div><div class="line"><span class="comment">//学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处.</span></div></pre></td></tr></table></figure></p>
 <p>分析: <code>Person.apply(this,arguments);</code><br>this:在创建对象在这个时候代表的是Student对象<br>arguments:是参数数组,也就是[“zhangsan”,”21”,”一年级”];<br>通俗一点讲就是:用student去执行Person这个类里面的内容,在Person这个类里面存在this.name等之类的语句,这样就将属性创建到了student对象里面。</p>
 <p>jQuery插件的开发分为两种：<br>  ☑  一种是挂在jQuery命名空间下的全局函数，也可称为静态方法；<br>  ☑  另一种是jQuery对象级别的方法，即挂在jQuery原型下的方法，这样通过选择器获取的jQuery对象实例也能共享该方法。</p>
