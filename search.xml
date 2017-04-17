@@ -4,6 +4,49 @@
   
     
     <entry>
+      <title><![CDATA[正则表达式入门]]></title>
+      <url>http://heji.website/2017/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p>正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。</p>
+<a id="more"></a>
+<p>正则表达式的功能很强大，可以检索，替换文本。<br>比如javascript里面经常会使用正则表达式来做表单验证（判断手机号码，邮箱格式等）。</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p><code>.</code> - 匹配除了换行符之外的任意字符<br><code>*</code> - 指定前边的内容可以连续重复使用任意次<br><code>+</code> - 指定前边的内容可以连续重复一次或多次<br><code>?</code> - 指定前边的内容可以连续重复一次或0次<br><code>{n}</code> - 指定前边的内容可以连续重复n次<br><code>{n,}</code> - 指定前边的内容可以连续重复n次或更多<br><code>{n,m}</code> - 指定前边的内容可以连续重复n到m次<br><code>\d</code> - 匹配一个数字<br><code>\w</code> - 匹配字母或数字或下划线或汉字<br><code>\s</code> - 匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等<br><code>[XYZ]</code> - 匹配中括号里面的任何一个字符<br><code>[XYZ]</code>+ - 匹配中括号中的一个或多个字符<br><code>$</code> - 匹配字符串的结尾<br><code>^</code> - 匹配字符串的开头<br><code>[a-z]</code> - 匹配任意小写字母<br><code>[^a-z]</code> - 在中括号里面的^表示否，这个例子中任何非小写字母的字符都能匹配<br><code>( )</code> - 标记一个子表达式的开始和结束位置.<br><code>|</code> - 指明两项之间的一个选择</p>
+<h3 id="模式修饰符"><a href="#模式修饰符" class="headerlink" title="模式修饰符"></a>模式修饰符</h3><p><code>i</code> 不区分大小写搜索<br><code>m</code> 多行搜索<br><code>g</code> 全局搜索</p>
+<h3 id="在线工具"><a href="#在线工具" class="headerlink" title="在线工具"></a>在线工具</h3><p>安利一个正则表达式<a href="http://regexr.com/" target="_blank" rel="external">在线工具</a></p>
+<h3 id="JavaScript中的应用"><a href="#JavaScript中的应用" class="headerlink" title="JavaScript中的应用"></a>JavaScript中的应用</h3><ul>
+<li><p>Test()<br>  这个方法接受一个字符串参数，并且返回一个bool值标示目标字符串是否匹配成功。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'JohnSmith'</span>;</div><div class="line">alert(<span class="regexp">/[A-Za-z_-]+/</span>.test(username)); <span class="comment">// returns true</span></div></pre></td></tr></table></figure>
+<p>  <code>/[A-Za-z_-]+/</code> 这部分，它可以用来检测目标字符串是否满足全部由大小写字母以及下划线，减号组成。通常在验证注册表单的时候会用到。 <code>[A-Za-z_-]</code>匹配一个[]中的字符，+ 号指定前边的内容可以连续重复一次或多次。</p>
+</li>
+<li><p>Split()<br>  程序员对split这个方法肯定也很熟悉了，它用于把一个字符串分割成字符串数组。<br>  但是你可能不知道，它除了接受分割符参数以外，还接受正则表达式。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'this is my string'</span>;    </div><div class="line">alert(str.split(<span class="regexp">/\s/</span>)); </div><div class="line"><span class="comment">// alerts "this, is, my, string";</span></div></pre></td></tr></table></figure>
+<p>  <code>\s</code>匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等，于是就讲str分割成数组[this, is, my, string]</p>
+</li>
+<li><p>Replace()<br>  replace方法用于将匹配的内容替换成目标内容。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// JohnSmith;@%</span></div></pre></td></tr></table></figure>
+<p>  我们把除了大小写字母以及下划线，减号之外的字符全都替换成’’。注意[]里面的^表示取反。<br>  注意上面的栗子，我们只替换了第一个字符，因为默认一匹配就不再继续搜索。我们可以直接在正则后面添加g开启全局模式。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/g</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// alerts JohnSmith</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Match()<br>  跟test不太一样，match的调用对象是待测字符串。它的返回值是所有匹配的元素组成的数组。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string = <span class="string">'This is just a string with some 12345 and some !@#$ mixed in.'</span>;</div><div class="line">alert(string.match(<span class="regexp">/[a-z]+/gi</span>)); <span class="comment">// alerts "This,is,just,a,string,with,some,and,some,mixed,in"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><ul>
+<li><p>校验数字</p>
+  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>\$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}\$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}\$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}\$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)\$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?\$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}\$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d\$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*\$</td><td></td></tr></table>
+</li>
+<li><p>校验字符的表达式</p>
+  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+\$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}\$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+\$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+\$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+\$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+\$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+\$</td><td></td></tr></table>
+</li>
+<li><p>常用表单校验</p>
+  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+\$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}\$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}\$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}\$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}\$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}\$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}\$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}\$</td><td></td></tr></table>
+
+
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[jQuery2.1.1源码解析七、get和eq的区别]]></title>
       <url>http://heji.website/2017/03/31/jQuery2.1.1%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90%E4%B8%83%E3%80%81get%E5%92%8Ceq%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<p>get方法获取的是元素的DOM元素，eq方法获取的是jQuery对象<br><a id="more"></a></p>

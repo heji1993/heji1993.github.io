@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    
+    <meta name="author" content="何机">
+    
+    <meta name="description" content="正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。">
+    
+    <meta name="keywords" content="正则,正则表达式,JavaScript正则, 何机的技术博客,何机,博客,blog,IT,技术">
+    
+
+    
+    <link rel="alternative" href="atom.xml" title="何机的技术博客" type="application/atom+xml">
+    
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>正则表达式入门 | 何机的技术博客 · No pains,no gains</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery.backstretch.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/headroom.min.js"></script>
+    <script src="/js/jquery.headroom.min.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+    <meta name="baidu-site-verification" content="SzJ3MGdmeo" />
+
+
+    <meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />
+
+
+    <!--<meta name="baidu-site-verification" content="SzJ3MGdmeo" />-->
+    <!--<meta name="360-site-verification" content="afe5dc96bbb8d111b618f78493b95bb8" />-->
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://heji.website" title="何机的技术博客">何机的技术博客</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <!--<a class="max-width max-w300" title="No pains,no gains" href="/feelings">No pains,no gains</a>-->
+						<a class="max-width max-w300" title="No pains,no gains">No pains,no gains</a>
+                    </li>
+                </ul>
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index">
+                        <a href="/" target="">首页</a>
+                    </li>
+                    
+                    <li id="nav-archives">
+                        <a href="/archives" target="">归档</a>
+                    </li>
+                    
+                    <li id="nav-categories">
+                        <a href="/categories" target="">分类</a>
+                    </li>
+                    
+                    <li id="nav-tags">
+                        <a href="/tags" target="">标签</a>
+                    </li>
+                    
+                    <li id="nav-about">
+                        <a href="/about" target="">关于</a>
+                    </li>
+                    
+
+                    <li id="nav-github"><a href="https://github.com/heji1993" target="_blank">GitHub</a></li>
+                    <!--<li id="nav-rss"><a href="/atom.xml" target="_blank">Rss</a></li>-->
+                    <li id="nav-search"><input type="text" id="search" placeholder="search" /></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+    var bgRoot = "http://7xkwt1.com1.z0.glb.clouddn.com/background-";
+    var bgLength = "74";
+    var bgRandom = false;
+    var bgImage = "/images/bg.jpg";
+
+    $(function() {
+        // page-id...
+        var pageId = "2017/04/17/正则表达式/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>正则表达式入门</h1>
+
+        <div class="time-info">
+            
+<span class="article-tags">
+    
+    Tags: <a href="/tags/正则表达式/">正则表达式</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/正则表达式/">正则表达式</a>
+</span>
+
+
+        </div>
+        <div class="time-info">
+            发表: <time datetime="2017-04-17T04:13:42.503Z"
+                       itemprop="datePublished">2017-04-17</time>
+            
+            更新: <time datetime="2017-04-17T04:15:46.159Z"
+                       itemprop="dateModified">2017-04-17</time>
+            
+        </div>
+
+        <div class="post-body-inner">
+            
+                <div id="toc" class="toc-article well">
+                    <strong class="toc-title">大纲</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#元字符"><span class="toc-number">1.</span> <span class="toc-text">元字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模式修饰符"><span class="toc-number">2.</span> <span class="toc-text">模式修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在线工具"><span class="toc-number">3.</span> <span class="toc-text">在线工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript中的应用"><span class="toc-number">4.</span> <span class="toc-text">JavaScript中的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用正则表达式"><span class="toc-number">5.</span> <span class="toc-text">常用正则表达式</span></a></li></ol>
+                </div>
+            
+
+            <p>正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。</p>
+<a id="more"></a>
+<p>正则表达式的功能很强大，可以检索，替换文本。<br>比如javascript里面经常会使用正则表达式来做表单验证（判断手机号码，邮箱格式等）。</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p><code>.</code> - 匹配除了换行符之外的任意字符<br><code>*</code> - 指定前边的内容可以连续重复使用任意次<br><code>+</code> - 指定前边的内容可以连续重复一次或多次<br><code>?</code> - 指定前边的内容可以连续重复一次或0次<br><code>{n}</code> - 指定前边的内容可以连续重复n次<br><code>{n,}</code> - 指定前边的内容可以连续重复n次或更多<br><code>{n,m}</code> - 指定前边的内容可以连续重复n到m次<br><code>\d</code> - 匹配一个数字<br><code>\w</code> - 匹配字母或数字或下划线或汉字<br><code>\s</code> - 匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等<br><code>[XYZ]</code> - 匹配中括号里面的任何一个字符<br><code>[XYZ]</code>+ - 匹配中括号中的一个或多个字符<br><code>$</code> - 匹配字符串的结尾<br><code>^</code> - 匹配字符串的开头<br><code>[a-z]</code> - 匹配任意小写字母<br><code>[^a-z]</code> - 在中括号里面的^表示否，这个例子中任何非小写字母的字符都能匹配<br><code>( )</code> - 标记一个子表达式的开始和结束位置.<br><code>|</code> - 指明两项之间的一个选择</p>
+<h3 id="模式修饰符"><a href="#模式修饰符" class="headerlink" title="模式修饰符"></a>模式修饰符</h3><p><code>i</code> 不区分大小写搜索<br><code>m</code> 多行搜索<br><code>g</code> 全局搜索</p>
+<h3 id="在线工具"><a href="#在线工具" class="headerlink" title="在线工具"></a>在线工具</h3><p>安利一个正则表达式<a href="http://regexr.com/" target="_blank" rel="external">在线工具</a></p>
+<h3 id="JavaScript中的应用"><a href="#JavaScript中的应用" class="headerlink" title="JavaScript中的应用"></a>JavaScript中的应用</h3><ul>
+<li><p>Test()<br>  这个方法接受一个字符串参数，并且返回一个bool值标示目标字符串是否匹配成功。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'JohnSmith'</span>;</div><div class="line">alert(<span class="regexp">/[A-Za-z_-]+/</span>.test(username)); <span class="comment">// returns true</span></div></pre></td></tr></table></figure>
+<p>  <code>/[A-Za-z_-]+/</code> 这部分，它可以用来检测目标字符串是否满足全部由大小写字母以及下划线，减号组成。通常在验证注册表单的时候会用到。 <code>[A-Za-z_-]</code>匹配一个[]中的字符，+ 号指定前边的内容可以连续重复一次或多次。</p>
+</li>
+<li><p>Split()<br>  程序员对split这个方法肯定也很熟悉了，它用于把一个字符串分割成字符串数组。<br>  但是你可能不知道，它除了接受分割符参数以外，还接受正则表达式。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'this is my string'</span>;    </div><div class="line">alert(str.split(<span class="regexp">/\s/</span>)); </div><div class="line"><span class="comment">// alerts "this, is, my, string";</span></div></pre></td></tr></table></figure>
+<p>  <code>\s</code>匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等，于是就讲str分割成数组[this, is, my, string]</p>
+</li>
+<li><p>Replace()<br>  replace方法用于将匹配的内容替换成目标内容。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// JohnSmith;@%</span></div></pre></td></tr></table></figure>
+<p>  我们把除了大小写字母以及下划线，减号之外的字符全都替换成’’。注意[]里面的^表示取反。<br>  注意上面的栗子，我们只替换了第一个字符，因为默认一匹配就不再继续搜索。我们可以直接在正则后面添加g开启全局模式。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/g</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// alerts JohnSmith</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Match()<br>  跟test不太一样，match的调用对象是待测字符串。它的返回值是所有匹配的元素组成的数组。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string = <span class="string">'This is just a string with some 12345 and some !@#$ mixed in.'</span>;</div><div class="line">alert(string.match(<span class="regexp">/[a-z]+/gi</span>)); <span class="comment">// alerts "This,is,just,a,string,with,some,and,some,mixed,in"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><ul>
+<li><p>校验数字</p>
+  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>\$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}\$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}\$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}\$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)\$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?\$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}\$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d\$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*\$</td><td></td></tr></table>
+</li>
+<li><p>校验字符的表达式</p>
+  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+\$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}\$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+\$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+\$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+\$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+\$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+\$</td><td></td></tr></table>
+</li>
+<li><p>常用表单校验</p>
+  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+\$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}\$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}\$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}\$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}\$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}\$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}\$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}\$</td><td></td></tr></table>
+
+
+</li>
+</ul>
+
+
+            <div class="post-info">
+    <p class="link">本文链接：<a href="http://heji.website/2017/04/17/正则表达式/">http://heji.website/2017/04/17/正则表达式/</a></p>
+    <div class="share">
+    分享本页：
+    
+        <div class="bdsharebuttonbox"><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_more" data-cmd="more"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+    
+    
+</div>
+
+</div>
+
+
+            
+    <section class="comment">
+    <div class="ds-thread" data-thread-key="undefined" data-title="正则表达式入门" data-url="http://heji.website/2017/04/17/正则表达式/" data-author-key="何机"></div>
+</section>
+
+
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"heji"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+        <div id="bottom-tip">
+            何机的技术博客 —— <small>No pains,no gains</small>
+        </div>
+        <small>该博客由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动，搭载 <a href="https://github.com/gejiawen/hexadillax2" target="_blank">Hexadillax2</a> 主题</small><br />
+        <!--<small>如果你访问github速度过慢，可移步本站的备份站点<a href="http://gejiawen.gitcafe.io">gejiawen.gitcafe.io</a></small><br />-->
+        <small>&copy; 2017 <a href="http://heji.website" target="_blank">何机</a></small>
+    </footer>
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e4dd778a6204eb51e4f25460e37481ad";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58628762" charset="UTF-8"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-51347904-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
+

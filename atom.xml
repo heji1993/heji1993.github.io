@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2017-03-31T06:27:00.937Z</updated>
+  <updated>2017-04-17T04:15:46.159Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式入门</title>
+    <link href="http://heji.website/2017/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://heji.website/2017/04/17/正则表达式/</id>
+    <published>2017-04-17T04:13:42.503Z</published>
+    <updated>2017-04-17T04:15:46.159Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。</p>
+<a id="more"></a>
+<p>正则表达式的功能很强大，可以检索，替换文本。<br>比如javascript里面经常会使用正则表达式来做表单验证（判断手机号码，邮箱格式等）。</p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p><code>.</code> - 匹配除了换行符之外的任意字符<br><code>*</code> - 指定前边的内容可以连续重复使用任意次<br><code>+</code> - 指定前边的内容可以连续重复一次或多次<br><code>?</code> - 指定前边的内容可以连续重复一次或0次<br><code>{n}</code> - 指定前边的内容可以连续重复n次<br><code>{n,}</code> - 指定前边的内容可以连续重复n次或更多<br><code>{n,m}</code> - 指定前边的内容可以连续重复n到m次<br><code>\d</code> - 匹配一个数字<br><code>\w</code> - 匹配字母或数字或下划线或汉字<br><code>\s</code> - 匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等<br><code>[XYZ]</code> - 匹配中括号里面的任何一个字符<br><code>[XYZ]</code>+ - 匹配中括号中的一个或多个字符<br><code>$</code> - 匹配字符串的结尾<br><code>^</code> - 匹配字符串的开头<br><code>[a-z]</code> - 匹配任意小写字母<br><code>[^a-z]</code> - 在中括号里面的^表示否，这个例子中任何非小写字母的字符都能匹配<br><code>( )</code> - 标记一个子表达式的开始和结束位置.<br><code>|</code> - 指明两项之间的一个选择</p>
+<h3 id="模式修饰符"><a href="#模式修饰符" class="headerlink" title="模式修饰符"></a>模式修饰符</h3><p><code>i</code> 不区分大小写搜索<br><code>m</code> 多行搜索<br><code>g</code> 全局搜索</p>
+<h3 id="在线工具"><a href="#在线工具" class="headerlink" title="在线工具"></a>在线工具</h3><p>安利一个正则表达式<a href="http://regexr.com/" target="_blank" rel="external">在线工具</a></p>
+<h3 id="JavaScript中的应用"><a href="#JavaScript中的应用" class="headerlink" title="JavaScript中的应用"></a>JavaScript中的应用</h3><ul>
+<li><p>Test()<br>  这个方法接受一个字符串参数，并且返回一个bool值标示目标字符串是否匹配成功。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'JohnSmith'</span>;</div><div class="line">alert(<span class="regexp">/[A-Za-z_-]+/</span>.test(username)); <span class="comment">// returns true</span></div></pre></td></tr></table></figure>
+<p>  <code>/[A-Za-z_-]+/</code> 这部分，它可以用来检测目标字符串是否满足全部由大小写字母以及下划线，减号组成。通常在验证注册表单的时候会用到。 <code>[A-Za-z_-]</code>匹配一个[]中的字符，+ 号指定前边的内容可以连续重复一次或多次。</p>
+</li>
+<li><p>Split()<br>  程序员对split这个方法肯定也很熟悉了，它用于把一个字符串分割成字符串数组。<br>  但是你可能不知道，它除了接受分割符参数以外，还接受正则表达式。<br>  例如：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'this is my string'</span>;    </div><div class="line">alert(str.split(<span class="regexp">/\s/</span>)); </div><div class="line"><span class="comment">// alerts "this, is, my, string";</span></div></pre></td></tr></table></figure>
+<p>  <code>\s</code>匹配任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等，于是就讲str分割成数组[this, is, my, string]</p>
+</li>
+<li><p>Replace()<br>  replace方法用于将匹配的内容替换成目标内容。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// JohnSmith;@%</span></div></pre></td></tr></table></figure>
+<p>  我们把除了大小写字母以及下划线，减号之外的字符全都替换成’’。注意[]里面的^表示取反。<br>  注意上面的栗子，我们只替换了第一个字符，因为默认一匹配就不再继续搜索。我们可以直接在正则后面添加g开启全局模式。</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> username = <span class="string">'J;ohnSmith;@%'</span>;</div><div class="line">username = username.replace(<span class="regexp">/[^A-Za-z\d_-]+/g</span>, <span class="string">''</span>);</div><div class="line">alert(username); <span class="comment">// alerts JohnSmith</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>Match()<br>  跟test不太一样，match的调用对象是待测字符串。它的返回值是所有匹配的元素组成的数组。<br>  举个栗子：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> string = <span class="string">'This is just a string with some 12345 and some !@#$ mixed in.'</span>;</div><div class="line">alert(string.match(<span class="regexp">/[a-z]+/gi</span>)); <span class="comment">// alerts "This,is,just,a,string,with,some,and,some,mixed,in"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><ul>
+<li><p>校验数字</p>
+  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>\$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}\$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}\$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}\$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)\$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?\$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}\$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d\$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*\$</td><td></td></tr></table>
+</li>
+<li><p>校验字符的表达式</p>
+  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+\$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}\$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+\$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+\$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+\$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+\$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+\$</td><td></td></tr></table>
+</li>
+<li><p>常用表单校验</p>
+  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+\$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}\$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}\$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}\$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}\$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}\$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}\$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}\$</td><td></td></tr></table>
+
+
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="正则表达式" scheme="http://heji.website/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+    
+      <category term="正则表达式" scheme="http://heji.website/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery2.1.1源码解析七、get和eq的区别</title>
@@ -1057,44 +1116,6 @@
     <summary type="html">
     
       &lt;p&gt;HTML5添加了对拖放的支持。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
-    
-    
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5-地理定位</title>
-    <link href="http://heji.website/2017/01/06/HTML5-%E5%9C%B0%E7%90%86%E5%AE%9A%E4%BD%8D/"/>
-    <id>http://heji.website/2017/01/06/HTML5-地理定位/</id>
-    <published>2017-01-06T06:16:28.828Z</published>
-    <updated>2017-01-06T06:17:43.828Z</updated>
-    
-    <content type="html"><![CDATA[<p>地理定位API不是HTML5规范的一部分，但经常被归组到HTML5相关的新功能中。</p>
-<a id="more"></a>
-<h3 id="地理定位"><a href="#地理定位" class="headerlink" title="地理定位"></a>地理定位</h3><ul>
-<li>使用地理定位<br>  我们通过全局属性navigator.geolocation访问地理定位功能，它返回一个Geolocation对象，下面是这个对象的方法：  <table><tr><td>getCurrentPosition(callback,errorCallback,options)</td><td>获取当前位置</td><td>void</td></tr><tr><td>watchPosition(callback,errorCallback,options)</td><td>开始监控当前位置</td><td>数值</td></tr><tr><td>clearWatch(id)</td><td>停止监控当前位置</td><td>void</td></tr></table></li>
-<li>获取当前位置的getCurrentPosition方法<br>  getCurrentPosition方法获取当前位置，方法接受三个参数，第一个是成功之后的回调函数，该函数获得一个表示当前位置的Position对象；第二个参数是定位错误的回调函数，此函数会获得一个PositionError对象；第三个参数是表示地理定位选项的对象。</li>
-<li>Position对象<br>  Position对象只有两个属性：coords属性返回一个Coordinates对象，包含当前位置的坐标；timestamp属性返回获取坐标信息的时间戳，下面是Coordinates对象的相关属性：  <table><tr><td>名称</td><td>说明</td><td>返回</td></tr><tr><td>latitude</td><td>返回由十进制表示的纬度</td><td>数值</td></tr><tr><td>longitude</td><td>返回由十进制表示的经度</td><td>数值</td></tr><tr><td>altitude</td><td>返回用米表示的海拔高度</td><td>数值</td></tr><tr><td>accuracy</td><td>返回用米表示的坐标精度</td><td>数值</td></tr><tr><td>altitudeAccuracy</td><td>返回用米表示的海拔精度</td><td>数值</td></tr><tr><td>heading</td><td>返回用度表示的前进方向</td><td>数值</td></tr><tr><td>speed</td><td>返回用米/秒表示的行进速度</td><td>数值</td></tr></table></li>
-<li>PositionError对象<br>  PositionError对象只有两个属性：code属性返回代表错误类型的代码；message返回描述错误的字符串。<br>  <img src="index_files/299dee61-9d17-4060-97eb-4c2f39a52ae1.jpg" alt=""></li>
-<li>指定地理定位选项<br>  <img src="index_files/2909d3e9-5724-4d45-a476-5329b8ba18a1.jpg" alt=""></li>
-<li><p>地理定位综合例子：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">table</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Longitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"longitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Latitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"latitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Altitude<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"altitude"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Accuracy<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"accuracy"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Altitude Accuracy<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"altitudeAccuracy"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Heading<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"heading"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Speed<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"speed"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Time Stamp<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"timestamp"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Error Code<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"errorcode"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Error Message<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> <span class="attr">id</span>=<span class="string">"errormessage"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> options = &#123;</div><div class="line">                enableHighAccuracy:<span class="literal">false</span>,</div><div class="line">                timeout:<span class="number">2000</span>,</div><div class="line">                maximumAge:<span class="number">30000</span></div><div class="line">            &#125;</div><div class="line">            navigator.geolocation.getCurrentPosition(displayPosition,handleError,options);</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">displayPosition</span>(<span class="params">pos</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> properties = [<span class="string">"longitude"</span>,<span class="string">"latitude"</span>,<span class="string">"altitude"</span>,<span class="string">"accuracy"</span>,<span class="string">"altitudeAccuracy"</span>,<span class="string">"heading"</span>,<span class="string">"speed"</span>];</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; properties.length ; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> value = pos.coords[properties[i]];</div><div class="line">                    <span class="built_in">document</span>.getElementById(properties[i]).innerHTML = value;</div><div class="line">                &#125;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"timestamp"</span>).innerHTML = pos.timestamp;</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleError</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"errorcode"</span>).innerHTML = e.code;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>监控位置<br>  可以用<code>watchPosition</code>方法不断获得关于位置的更新。这个方法所需的参数和<code>getCurrentPosition</code>方法相同，工作方式也一样。它们的区别在于：随着位置发生改变，回调函数会被反复地调用。<br>  如果想要停止监控，可以把<code>navigator.geolocation.watchPosition</code>方法返回的ID值传给<code>clearWatch</code>方法。</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;地理定位API不是HTML5规范的一部分，但经常被归组到HTML5相关的新功能中。&lt;/p&gt;
     
     </summary>
     
