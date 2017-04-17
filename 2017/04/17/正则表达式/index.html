@@ -146,7 +146,7 @@
             发表: <time datetime="2017-04-17T04:13:42.503Z"
                        itemprop="datePublished">2017-04-17</time>
             
-            更新: <time datetime="2017-04-17T04:15:46.159Z"
+            更新: <time datetime="2017-04-17T04:23:22.970Z"
                        itemprop="dateModified">2017-04-17</time>
             
         </div>
@@ -185,13 +185,13 @@
 </ul>
 <h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><ul>
 <li><p>校验数字</p>
-  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>\$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}\$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}\$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}\$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)\$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?\$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}\$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d\$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*\$</td><td></td></tr></table>
+  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*$</td><td></td></tr></table>
 </li>
 <li><p>校验字符的表达式</p>
-  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+\$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}\$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+\$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+\$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+\$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+\$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+\$</td><td></td></tr></table>
+  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+$</td><td></td></tr></table>
 </li>
 <li><p>常用表单校验</p>
-  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+\$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}\$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}\$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}\$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}\$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}\$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}\$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}\$</td><td></td></tr></table>
+  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}$</td><td></td></tr></table>
 
 
 </li>
