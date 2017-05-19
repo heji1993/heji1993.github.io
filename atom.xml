@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2017-04-17T04:15:46.159Z</updated>
+  <updated>2017-05-19T09:37:35.416Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -16,11 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>angular自定义指令监听属性值的变化</title>
+    <link href="http://heji.website/2017/05/19/angular%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E7%9B%91%E5%90%AC%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E5%8F%98%E5%8C%96/"/>
+    <id>http://heji.website/2017/05/19/angular自定义指令监听属性值的变化/</id>
+    <published>2017-05-19T09:35:54.531Z</published>
+    <updated>2017-05-19T09:37:35.416Z</updated>
+    
+    <content type="html"><![CDATA[<p>在使用自定义指令时，若指令的值是动态变化的，自定义指令内部如何获取变化后的值呢？</p>
+<a id="more"></a>
+<ul>
+<li><p>方法一：</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//html代码</span></div><div class="line">&lt;pd-Ggdm dmjbh=<span class="string">"2055"</span> code=<span class="string">"bean.JBXX.splxdm"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">pd-Ggdm</span>&gt;</span></span></div><div class="line">//js代码</div><div class="line">angular.module("pd.ggdm" , ["pd.resource"])</div><div class="line">.directive("pdGgdm", function() &#123;</div><div class="line">	return &#123;</div><div class="line">		restrict : "E",</div><div class="line">		transclude : true, </div><div class="line">      	replace : true,  </div><div class="line">		scope : &#123;</div><div class="line">			code : "=" ,</div><div class="line">			dmjbh : "@"</div><div class="line">		&#125;,</div><div class="line">		template:"<span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>",</div><div class="line">		link: function(scope,element,attrs) &#123;</div><div class="line">		    scope.$watch('code', function(newVal)&#123;</div><div class="line">                    console.log(newVal);//每次你在controller里修改了userInfo，这里都会打印</div><div class="line">            &#125;, true);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  该方法使用了数据绑定，使自定义指令内的变量绑定父控制器的变量，然后监听变量的变化。</p>
+</li>
+<li><p>方法二</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//html代码</span></div><div class="line">&lt;pd-Ggdm dmjbh=<span class="string">"2055"</span> code=<span class="string">"&#123;&#123;bean.JBXX.splxdm&#125;&#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">pd-Ggdm</span>&gt;</span></span></div><div class="line">//js代码</div><div class="line">angular.module("pd.ggdm" , ["pd.resource"])</div><div class="line">.directive("pdGgdm", function() &#123;</div><div class="line">	return &#123;</div><div class="line">		restrict : "E",</div><div class="line">		transclude : true, </div><div class="line">      	replace : true,  </div><div class="line">		scope : &#123;</div><div class="line">			code : "@" ,</div><div class="line">			dmjbh : "@"</div><div class="line">		&#125;,</div><div class="line">		template:"<span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>",</div><div class="line">		link: function(scope,element,attrs) &#123;</div><div class="line">		    attrs.$observe('code', function(newVal)&#123;</div><div class="line">                //检测属性值的变化</div><div class="line">            &#125;);</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>  该方法则是监听属性值的变化</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在使用自定义指令时，若指令的值是动态变化的，自定义指令内部如何获取变化后的值呢？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="AngularJS" scheme="http://heji.website/categories/AngularJS/"/>
+    
+    
+      <category term="AngularJS" scheme="http://heji.website/tags/AngularJS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>正则表达式入门</title>
     <link href="http://heji.website/2017/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>http://heji.website/2017/04/17/正则表达式/</id>
     <published>2017-04-17T04:13:42.503Z</published>
-    <updated>2017-04-17T04:15:46.159Z</updated>
+    <updated>2017-04-17T04:31:14.978Z</updated>
     
     <content type="html"><![CDATA[<p>正则表达式晦涩难懂，学一次忘一次，每次需要用的时候都要上网查，所以记录下来是非常有必要的。</p>
 <a id="more"></a>
@@ -48,13 +82,13 @@
 </ul>
 <h3 id="常用正则表达式"><a href="#常用正则表达式" class="headerlink" title="常用正则表达式"></a>常用正则表达式</h3><ul>
 <li><p>校验数字</p>
-  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d<em>\$</em></td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}\$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}\$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}\$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]\)\$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d<em>)+(.\d{1,2})?\$</em></td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}\$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d\$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*\$</td><td></td></tr></table>
+  <table><tr><th style="width:20%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>数字</td><td>^\d*$</td><td></td></tr><tr><td>n位的数字</td><td>^\d{n}$</td><td></td></tr><tr><td>至少n位的数字</td><td>^\d{n,}$</td><td></td></tr><tr><td>m-n位的数字</td><td>^\d{m,n}$</td><td></td></tr><tr><td>零和非零开头的数字</td><td>^(0|[1-9][0-9]*)$</td><td>|表示或</td></tr><tr><td>非零开头的最多带两位小数的数字</td><td>^([1-9]\d*)+(.\d{1,2})?$</td><td>+表示匹配第一个子项的内容必须至少出现一次(数字不能少数点开头)，?表示小数点可有可无，但最多只能有一个</td></tr><tr><td>带1-2位小数的正数或负数</td><td>^(-)?\d+.\d{1,2}$</td><td>^(-)?表示以”-“开头或者开头不是”-“</td></tr><tr><td>非零的正整数</td><td>^[1-9]\d*$</td><td></td></tr><tr><td>非零的负整数</td><td>^-[1-9]\d*$</td><td></td></tr></table>
 </li>
 <li><p>校验字符的表达式</p>
-  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+\$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}\$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+\$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+\$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+\$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+\$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+\$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+\$</td><td></td></tr></table>
+  <table><tr><th style="width:40%;">匹配规则</th><th style="width:50%;">正则表达式</th><th>说明</th></tr><tr><td>汉字</td><td>^[\u4e00-\u9fa5]+$</td><td></td></tr><tr><td>英文和数字</td><td>^[A-Za-z0-9]+$</td><td></td></tr><tr><td>长度为3-20的所有字符</td><td>^.{3,20}$</td><td></td></tr><tr><td>由26个英文字母组成的字符串</td><td>^[A-Za-z]+$</td><td></td></tr><tr><td>由26个大写英文字母组成的字符串</td><td>^[A-Z]+$</td><td></td></tr><tr><td>由26个小写英文字母组成的字符串</td><td>^[a-z]+$</td><td></td></tr><tr><td>由数字和26个英文字母组成的字符串</td><td>^[A-Za-z0-9]+$</td><td></td></tr><tr><td>由数字、26个英文字母或者下划线组成的字符串</td><td>^\w+$</td><td></td></tr><tr><td>中文、英文、数字包括下划线</td><td>^[\u4E00-\u9FA5A-Za-z0-9_]+$</td><td></td></tr><tr><td>中文、英文、数字但不包括下划线等符号</td><td>^[\u4E00-\u9FA5A-Za-z0-9]+$</td><td></td></tr></table>
 </li>
 <li><p>常用表单校验</p>
-  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+\$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}\$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}\$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}\$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}\$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}\$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}\$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}\$</td><td></td></tr></table>
+  <table><tr><th style="width:30%;">匹配规则</th><th style="width:30%;">正则表达式</th><th>说明</th></tr><tr><td>去除字符串前后空格</td><td>(^\s+)|(\s+$)</td><td></td></tr><tr><td>邮箱(xxx@xxx.xxx)</td><td>^\w+@\w+.\w+$</td><td></td></tr><tr><td>国内手机号码</td><td>^1[34578]{1}\d{9}$</td><td>以1开头，接着跟3或4或5或7或8，接着9位数字</td></tr><tr><td>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</td><td>^[a-zA-Z]\w{4,15}$</td><td></td></tr><tr><td>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</td><td>^[a-zA-Z]\w{5,17}$</td><td></td></tr><tr><td>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</td><td>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</td><td>不懂</td></tr><tr><td>日期格式</td><td>^\d{4}-\d{1,2}-\d{1,2}$</td><td></td></tr><tr><td>腾讯QQ号</td><td>^[1-9][0-9]{4,}$</td><td></td></tr><tr><td>IP地址</td><td>^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])){3}$</td><td></td></tr></table>
 
 
 </li>
@@ -1014,108 +1048,6 @@
     <summary type="html">
     
       &lt;p&gt;Web存储允许我们在浏览器里保存简单的键/值数据。Web存储与cookie很相似。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
-    
-    
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5-使用拖放</title>
-    <link href="http://heji.website/2017/01/06/HTML5-%E4%BD%BF%E7%94%A8%E6%8B%96%E6%94%BE/"/>
-    <id>http://heji.website/2017/01/06/HTML5-使用拖放/</id>
-    <published>2017-01-06T06:18:06.333Z</published>
-    <updated>2017-01-06T06:19:37.931Z</updated>
-    
-    <content type="html"><![CDATA[<p>HTML5添加了对拖放的支持。</p>
-<a id="more"></a>
-<h3 id="实现简单拖放"><a href="#实现简单拖放" class="headerlink" title="实现简单拖放"></a>实现简单拖放</h3><ul>
-<li><p>设置拖放<br>  我们通过draggable属性告诉浏览器文档里的哪些元素可以被拖动。这个属性有三个允许的值：</p>
-  <table><tr><td>值</td><td>说明</td></tr><tr><td>true</td><td>此元素能被拖动</td></tr><tr><td>false</td><td>此元素不能被拖动</td></tr><tr><td>auto</td><td>浏览器自主决定某个元素是否能被拖动</td></tr></table>
-</li>
-<li><p>处理拖动事件<br>  我们通过一系列事件来利用拖放功能。这些事件有的针对被拖动元素，有的针对可能的释放区<br>  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragstart</td><td>在元素开始被拖动时触发</td></tr><tr><td>drag</td><td>在元素被拖动时触发</td></tr><tr><td>dragend</td><td>在拖动操作完成时触发</td></tr></table><br>  下面是简单例子：<br>  <img src="index_files/9a360800-e7bb-4017-8bee-d59d2aea4406.jpg" alt=""></p>
-</li>
-<li><p>创建释放区<br>  要让某个元素成为释放区，我们需要处理dragenter和dragover事件。它们是针对释放区的其中两个事件。</p>
-  <table><tr><td>事件名称</td><td>说明</td></tr><tr><td>dragenter</td><td>当被拖动元素进入释放区所占据的屏幕空间时触发</td></tr><tr><td>dragover</td><td>当被拖动元素在释放区移动时触发</td></tr><tr><td>dragleave</td><td>当被拖动元素没有放下就离开释放区时触发</td></tr><tr><td>drop</td><td>当被拖动元素在释放区放下时触发</td></tr></table>
-</li>
-<li><p>处理释放事件（简单拖放例子）</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>RunJS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">body</span> &gt; *&#123;</div><div class="line">                <span class="attribute">float</span>:left;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">body</span> &gt; <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">margin</span>:<span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">img</span><span class="selector-class">.dragged</span>&#123;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid lightgrey;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">width</span>:<span class="number">280px</span>;</div><div class="line">                <span class="attribute">line-height</span>:<span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>:center;</div><div class="line">                <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#ccc</span>;</div><div class="line">                <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/tomato.jpg"</span> <span class="attr">id</span>=<span class="string">"tomato"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/orange.jpg"</span> <span class="attr">id</span>=<span class="string">"orange"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">draggable</span>=<span class="string">"true"</span> <span class="attr">src</span>=<span class="string">"http://sandbox.runjs.cn/uploads/rs/241/haz4fri9/strawberry.jpg"</span> <span class="attr">id</span>=<span class="string">"strawberry"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span></div><div class="line">                Drop here!</div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> body = <span class="built_in">document</span>.body;</div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            <span class="keyword">var</span> msg = <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>);</div><div class="line">            <span class="comment">//接收被拖放元素的ID</span></div><div class="line">            <span class="keyword">var</span> draggedId;</div><div class="line">            <span class="comment">//处理拖放事件</span></div><div class="line">            target.ondragcenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            <span class="comment">//在进入释放区和在释放区移动、释放时要阻止事件的默认行为，否则会发生意料之外的结果</span></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> newElem = <span class="built_in">document</span>.getElementById(draggedId).cloneNode(<span class="literal">false</span>);</div><div class="line">                target.innerHTML = <span class="string">""</span>;</div><div class="line">                target.appendChild(newElem);</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            body.ondragstart = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                draggedId = e.target.id;</div><div class="line">                e.target.classList.add(<span class="string">"dragged"</span>);</div><div class="line">            &#125;</div><div class="line">            body.ondragend = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> elems = <span class="built_in">document</span>.querySelectorAll(<span class="string">".dragged"</span>);</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; elems.length ; i++ )&#123;</div><div class="line">                    elems[i].classList.remove(<span class="string">"dragged"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  效果请查看：<a href="http://runjs.cn/detail/3oiwealn" target="_blank" rel="external">简单拖放</a></p>
-</li>
-</ul>
-<h3 id="使用DataTransfer对象"><a href="#使用DataTransfer对象" class="headerlink" title="使用DataTransfer对象"></a>使用DataTransfer对象</h3><p>与拖放操作所触发的事件同时派发的对象是DragEvent，它派生于MouseEvent，并增加了额外的属性：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-<th>返回</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>dataTransfer</td>
-<td>返回用于传输数据到释放区的对象</td>
-<td>DataTransfer</td>
-</tr>
-</tbody>
-</table>
-<p>我们可以用DataTransfer对象从被拖动元素传输任意数据到释放区元素上。DataTransfer定义的属性和方法如下表：</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-<th>返回</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>types</td>
-<td>返回数据的格式</td>
-<td>字符串数组</td>
-</tr>
-<tr>
-<td>getData（format）</td>
-<td>返回指定格式的数据</td>
-<td>字符串</td>
-</tr>
-<tr>
-<td>setData(format，data)</td>
-<td>设置指定格式的数据</td>
-<td>void</td>
-</tr>
-<tr>
-<td>clearData(format)</td>
-<td>移除指定格式的数据</td>
-<td>void</td>
-</tr>
-<tr>
-<td>files</td>
-<td>返回已被拖动文件的列表</td>
-<td>FileList</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p>使用DataTransfer对象从被拖动元素传输数据到释放区<br>  <img src="index_files/49ecc187-0389-4dba-8cd3-30e578ec8841.jpg" alt=""><br>  setData方法第一个参数和getData方法的参数指定数据的格式，它只支持两个值：Text和Url。setData方法第二个参数是我们要传输的数据。使用这种方式最大的好处是支持跨不同类型的浏览器，因为拖放功能是集成在操作系统里的。例如我们可以在Chrome浏览器的文档里拖动一个元素，然后再Firefox浏览器的文档里释放它。</p>
-</li>
-<li><p>拖放文件<br>  上一节介绍了DataTransfer对象有一个files属性返回拖放的File对象的集合。File API是HTML5新增的功能，File对象定义的属性如下<br>  <table><tr><td>名称</td><td>说明</td><td>返回</td></tr><tr><td>name</td><td>获取文件名</td><td>字符串</td></tr><tr><td>type</td><td>获取文件类型，以MIME类型表示</td><td>字符串</td></tr><tr><td>size</td><td>获取文件大小（以字节计算）</td><td>字符串</td></tr></table><br>  下面是拖放文件的例子：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-id">#target</span>&#123;</div><div class="line">                <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">                <span class="attribute">text-align</span>: center;</div><div class="line">                <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">p</span>&#123;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-id">#fileDetail</span> <span class="selector-tag">th</span>,<span class="selector-id">#fileDetail</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">4px</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"target"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span>Drop here!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">"fileDetail"</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            <span class="keyword">var</span> target = <span class="built_in">document</span>.getElementById(<span class="string">"target"</span>);</div><div class="line">            target.ondragenter = handleDrag;</div><div class="line">            target.ondragover = handleDrag;</div><div class="line">            target.ondrop = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"msg"</span>).innerHTML = <span class="string">"File dropped"</span>;</div><div class="line">                <span class="comment">//文件</span></div><div class="line">                <span class="keyword">var</span> fileList = e.dataTransfer.files;</div><div class="line">                <span class="keyword">if</span>(fileList.length &gt; <span class="number">0</span>)&#123;</div><div class="line">                    <span class="keyword">var</span> fileDetail = <span class="built_in">document</span>.getElementById(<span class="string">"fileDetail"</span>);</div><div class="line">                    fileDetail.innerHTML = <span class="string">"&lt;tr&gt;&lt;th&gt;文件名称&lt;/th&gt;&lt;th&gt;文件类型&lt;/th&gt;&lt;th&gt;文件大小&lt;/th&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; fileList.length ; i++)&#123;</div><div class="line">                        fileDetail.innerHTML += <span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+fileList[i].name+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].type+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+fileList[i].size+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">handleDrag</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                e.preventDefault();</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  需要注意的是，我们借助DataTransfer对象以及HTML5的FormData对象就能实现拖拽上传文件了：<br>  <img src="index_files/0c8983c5-8f21-4fcd-938c-6bbbd7e7f2c0.jpg" alt=""></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;HTML5添加了对拖放的支持。&lt;/p&gt;
     
     </summary>
     
