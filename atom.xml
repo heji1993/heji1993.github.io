@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2017-05-19T09:37:35.416Z</updated>
+  <updated>2017-05-26T01:00:00.798Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -14,6 +14,172 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>移动端全适配解决方案——方案篇</title>
+    <link href="http://heji.website/2017/05/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%A8%E9%80%82%E9%85%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E2%80%94%E2%80%94%E6%96%B9%E6%A1%88%E7%AF%87/"/>
+    <id>http://heji.website/2017/05/26/移动端全适配解决方案——方案篇/</id>
+    <published>2017-05-26T00:58:32.271Z</published>
+    <updated>2017-05-26T01:00:00.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在来介绍下移动端全适配的具体实现方案，以网易新闻和手淘为例。</p>
+<a id="more"></a>
+<h3 id="面临的问题"><a href="#面临的问题" class="headerlink" title="面临的问题"></a>面临的问题</h3><p>在不同大小和高清的屏幕下：</p>
+<ul>
+<li>如何保证 界面布局 一致性：不错乱，不变形</li>
+<li>如何保证 字体大小 一致性：大屏显示更大，小屏显示更小或更多</li>
+<li>如何保证 1px边框 一致性：不同的高清屏也在正常显示1px的高度大小</li>
+<li>如何保证 图片清晰度 一致性：不同大小和高清屏下都能看到清晰的图片</li>
+</ul>
+<p>考虑优先级：<br>布局 &gt; 字体大小 &gt; 1px边框 &gt; 高清图</p>
+<h3 id="网易新闻的方案"><a href="#网易新闻的方案" class="headerlink" title="网易新闻的方案"></a>网易新闻的方案</h3><ul>
+<li><p>使用理想视口作为可视视口的尺寸</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>设置html元素的font-size</p>
+<p>  理论上来讲，html元素的字体大小是任意的。在设置了不缩放的情况下（此时可视视口等于理想视口），设备的屏幕越大html的字体大小应该设置得越大。为方便设计，取可视视口宽度乘以一个系数作为html元素的字体大小</p>
+<p>  网易新闻手机网易网选择的系数为 100 / 750，这个系数可以如下推出：</p>
+<p>  750px 是设计稿的宽度（以iphone6的物理像素数为标准），100是期望的换算比例。那么html元素的字体大小被设置为可视视口的宽度 * 100/750 即 可视视口宽度/7.5。也就是说1 rem = 可视视口宽 / 7.5</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.documentElement.style.fontSize = <span class="built_in">window</span>.innerWidth / <span class="number">7.5</span> + <span class="string">'px'</span>; <span class="comment">//注意:这里的7.5是设计稿宽度除以100获得，以实际设计稿宽度为基准计算</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>因为此时可视视口的宽度是7.5rem，布局时元素的宽度不应超过这个值，否则会出现横向滚动条。
+</code></pre><ul>
+<li><p>将样式中px单位转换为rem单位</p>
+<p>  上面一步中已经说明，100是期望的换算比例。也就是说1rem等价于设计稿中的100px。所以，把样式表中的px单位的数值就可以转换为以rem为单位的数值了。</p>
+</li>
+<li><p>在最新的网易新闻页面中字体的单位也使用了 rem</p>
+</li>
+</ul>
+<h3 id="手淘的解决方案"><a href="#手淘的解决方案" class="headerlink" title="手淘的解决方案"></a>手淘的解决方案</h3><p>手淘使用自家开发的开源库<a href="https://github.com/amfe/lib-flexible" title="flexible" target="_blank" rel="external">flexible</a>实现移动端全适配。</p>
+<ul>
+<li><p>设置合适的缩放比</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*如果设置了meta标签，dpr取meta标签设置的initial-scale，scale取其倒数*/</span></div><div class="line"><span class="keyword">if</span> (!dpr &amp;&amp; !scale) &#123;</div><div class="line">    <span class="keyword">var</span> isAndroid = win.navigator.appVersion.match(<span class="regexp">/android/gi</span>);</div><div class="line">    <span class="keyword">var</span> isIPhone = win.navigator.appVersion.match(<span class="regexp">/iphone/gi</span>);</div><div class="line">    <span class="keyword">var</span> devicePixelRatio = win.devicePixelRatio;</div><div class="line">    <span class="keyword">if</span> (isIPhone) &#123;</div><div class="line">        <span class="comment">// iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</span></div><div class="line">        <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">3</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">3</span>)) &#123;                </div><div class="line">            dpr = <span class="number">3</span>;</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (devicePixelRatio &gt;= <span class="number">2</span> &amp;&amp; (!dpr || dpr &gt;= <span class="number">2</span>))&#123;</div><div class="line">            dpr = <span class="number">2</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            dpr = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// 其他设备下，仍旧使用1倍的方案</span></div><div class="line">        dpr = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    scale = <span class="number">1</span> / dpr;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  对 iOS 设备 dpr = window.devicePixelRatio ，其他设备认为 dpr 为 1。比方说iphone5的dpr是2，那么在iphone5下计算的缩放比为0.5，如果没有设置缩放，那么正常情况下css中的1px对应iphone5 2px的物理像素，现在设置缩放比为0.5，这意味着css中的1px严格等于一个物理像素。这就是淘宝方案的巧妙之处了，对于 iOS 下高分辨率的设备，提供了更好的支持，解决了 1px border 问题和高清图片的问题。</p>
+</li>
+<li><p>设置html元素的font-size</p>
+<p>  在计算 html 的 font-size 时淘宝的方案直接将可视视口的宽度乘以一个系数 0.1，由此推导换算比例：</p>
+<blockquote>
+<p>可视视口的宽度为 10 rem， 对应设计稿的宽度，则 1 rem        对应设计稿宽度的 1 / 10，换算时将设计稿中的长度数值除以      (设计稿宽度/10) 就可以了。<br>  例如：设计稿的宽度为 750 则设计稿中的长度数值除以 75         得到的就是以 rem 为单位的 css 长度的数值</p>
+</blockquote>
+<p>  在 meta 标签中的缩放比例发生变化时，设置 html 元素的 font-size</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.documentElement.style.fontSize = <span class="built_in">window</span>.innerWidth / <span class="number">10</span> + <span class="string">'px'</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>由于可视视口的宽度就是 10 rem，对元素进行布局时只要不超过 10rem 即可，另外淘宝的方案将 body 的 width 设为 100% 并对 overflow 进行 hidden，这个 100% width 会计算为布局视口的宽，也是 10rem，那么 body 内布局超出 10rem 的元素不会导致布局视口出现滚动条</p>
+</li>
+<li><p>淘宝的方案中对字体使用了 px 单位，这就需要对不同的视口宽度（也就是不同dpr）的设备分别进行适配，淘宝的方案是将 dpr 数值设置为 html 的 data-dpr 属性，通过css选择器选择不同 dpr 设备下的元素</p>
+  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">div &#123;</div><div class="line">    width: 1rem; </div><div class="line">    height: 0.4rem;</div><div class="line">    font-size: 12px; // 默认写上dpr为1的fontSize</div><div class="line">&#125;</div><div class="line">[data-dpr="2"] div &#123;</div><div class="line">    font-size: 24px;</div><div class="line">&#125;</div><div class="line">[data-dpr="3"] div &#123;</div><div class="line">    font-size: 36px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在来介绍下移动端全适配的具体实现方案，以网易新闻和手淘为例。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="移动端" scheme="http://heji.website/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+    
+      <category term="移动端" scheme="http://heji.website/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+      <category term="webapp" scheme="http://heji.website/tags/webapp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>移动端全适配解决方案——概念篇</title>
+    <link href="http://heji.website/2017/05/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%A8%E9%80%82%E9%85%8D%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E2%80%94%E2%80%94%E6%A6%82%E5%BF%B5%E7%AF%87/"/>
+    <id>http://heji.website/2017/05/26/移动端全适配解决方案——概念篇/</id>
+    <published>2017-05-26T00:56:05.525Z</published>
+    <updated>2017-05-26T00:58:07.176Z</updated>
+    
+    <content type="html"><![CDATA[<p>要搞懂移动端的适配问题，就要先搞明白像素和视口。</p>
+<a id="more"></a>
+<h3 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h3><p>在移动端给一个元素设置 <code>width:200px</code> 时发生了什么？这里的px到底是多长呢？像素是网页布局的基础，但是我们一直在用直觉使用它。</p>
+<p>其实存在两种像素：</p>
+<ul>
+<li>设备像素<br>  屏幕的物理像素，任何设备屏幕的物理像素的数量都是固定不变的，单位是pt。</li>
+<li><p>CSS像素<br>  在CSS、JS中使用的一个抽象的概念，单位是 px。</p>
+<blockquote>
+<p>顺便说下，CSS像素也可以称为设备独立像素(device-independent pixels)，简称为dips，单位是dp。</p>
+</blockquote>
+<p>  那么，我们现在再来说说一个元素 width:200px 以后会怎么样。这个元素跨越了200个CSS元素，200个CSS元素相当于多少个设备像素取决于两个条件：1、页面是否缩放；2、屏幕是否为高密度</p>
+</li>
+</ul>
+<p>这两方面后面再解释，先梳理一下手机硬件之间的关系，注意这里使用的都是物理像素。<br>以 iPhone5 为例，我们已知的是：</p>
+<ol>
+<li>分辨率：1136pt x 640pt<br> 指屏幕上垂直有 1136 个物理像素，水平有 640 个物理像素</li>
+<li>屏幕尺寸： 4英寸<br> 注意英寸是长度单位，不是面积单位。4英寸指的是屏幕对角线的长度。</li>
+<li>屏幕像素密度：326dpi<br> 屏幕像素密度（Pibel Per Inch）简称 ppi ，单位是 dpi（dot per inch）。这里指屏幕水平或垂直每英寸有326个物理像素。原则上来说，ppi越高越好，因为图像会更加细腻清晰。<br> ppi 是可以通过 分辨率 和 屏幕尺寸 计算得到的：<br> <img src="http://note.youdao.com/yws/api/personal/file/416E980384A14720B41CB4686237F3E7?method=download&amp;shareKey=3b520718bf0ce85d8ac881a53d456093" alt=""></li>
+</ol>
+<h3 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h3><p>移动设备上有三个viewport</p>
+<ul>
+<li><p>layout viewport(布局视口)</p>
+<p>  如果把移动设备上浏览器的可视区域设为viewport的话，某些网站就会因为viewport太窄而显示错乱，所以这些浏览器就决定默认情况下把viewport设为一个较宽的值，比如980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。ppk把这个浏览器默认的viewport叫做 layout viewport。这个layout viewport的宽度可以通过 <code>document.documentElement.clientWidth</code> 来获取。</p>
+</li>
+<li><p>visual viewport(可视视口)</p>
+<p>  layout viewport的宽度是大于浏览器可视区域的宽度的，所以我们还需要一个viewport来代表 浏览器可视区域的大小，这个viewport称为visual viewport，其宽度值为横向可见CSS像素数。visual viewport的宽度可以通过<code>window.innerWidth</code> 来获取。CSS媒体查询的<code>max-width/min-width</code>取的就是可视视口的宽度</p>
+</li>
+<li><p>ideal viewport(理想视口)</p>
+<p>  ideal viewport是指能完美适配移动设备的viewport。通过<code>screen.width</code>能获取理想视口的宽度</p>
+<blockquote>
+<p>定义理想视口是浏览器的事情，并不能简单地认为是开发者定义的，开发者只能使用。</p>
+</blockquote>
+</li>
+</ul>
+<p>移动设备默认的viewport是layout viewport，也就是那个比屏幕要宽的viewport，但在进行移动设备网站的开发时，我们需要的是ideal viewport。那么怎么才能得到ideal viewport呢？这就该轮到meta标签出场了</p>
+<p>方法1、<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;</code><br>要得到ideal viewport可以把把默认的layout viewport的宽度设为移动设备的屏幕宽度。</p>
+<p>方法2、<code>&lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1&quot;&gt;</code><br>因为这里的缩放值是1，是相对于ideal viewport进行缩放的。所以设置了initial-scale=1其实就是获取ideal viewport</p>
+<p>但如果width 和 initial-scale=1同时出现，并且还出现了冲突呢？比如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=400, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>width=400表示把当前viewport的宽度设为400px，initial-scale=1则表示把当前viewport的宽度设为ideal viewport的宽度。当遇到这种情况时，浏览器会取它们两个中较大的那个值。例如，当width=400，ideal viewport的宽度为320时，取的是400；当width=400， ideal viewport的宽度为480时，取的是ideal viewport的宽度。</p>
+<h3 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h3><ul>
+<li>缩放与设备像素、CSS像素的关系<br>  缩放是在放大或缩小CSS像素，比如一个宽度为 200px 的元素无论放大，还是200个CSS像素。但是因为这些像素被放大了，所以CSS像素也就跨越了更多的设备像素。缩小则相反。</li>
+<li><p>缩放与视口</p>
+<ul>
+<li><p>缩放会影响视觉视口的尺寸<br>  页面被用户放大，视觉视口内CSS像素数量减少；被用户缩小，视觉视口内CSS像素数量增多就行了。这个道理应该是不难想的。</p>
+</li>
+<li><p>用户缩放不会影响布局视口</p>
+<blockquote>
+<p>注意，这是『用户缩放』，后面会说开发者设置缩放的情况</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>缩放比例<br>  我们在开发者工具中可以在这里查看缩放比例：<br>  <img src="http://note.youdao.com/yws/api/personal/file/74D94782CD5745FC9F42718796B69C3A?method=download&amp;shareKey=127dbbdeb05fe32cdd804bf15f68e80e" alt=""><br>  这里的 75% 是相对于理想视口的。<br>  在下载浏览器中，可以这么算（理想视口与可视视口的比）：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">zoom level = screen.width / <span class="built_in">window</span>.innerWidth</div></pre></td></tr></table></figure>
+</li>
+<li><p>禁止缩放</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"user-scalable=no"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置缩放</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=2"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>  使用initial-scale有一个副作用：同时也会将布局视口的尺寸设置为缩放后的尺寸。所以initial-scale=1与width=device-width的效果是一样的。</p>
+</li>
+</ul>
+<h3 id="完美视口"><a href="#完美视口" class="headerlink" title="完美视口"></a>完美视口</h3><p>解决各种浏览器兼容问题的理想视口设置<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="设备像素比"><a href="#设备像素比" class="headerlink" title="设备像素比"></a>设备像素比</h3><p>在谈到像素的时候，讲到除了缩放，屏幕是否为高密度也会影响设备像素和CSS像素的关系。<br>在缩放程度为100%（这个条件很重要，因为缩放也会影响他们）时，他们的比例叫做设备像素比(device pixel ratio)：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpr = 设备像素 / CSS像素</div></pre></td></tr></table></figure></p>
+<p>可以通过JS得到： <code>window.devicePixelRatio</code><br>设备像素比也和视口有关：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dpr = 屏幕横向设备像素 / 理想视口的宽</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这一篇介绍了移动端适配需要掌握的知识，先说明了移动端存在的两种像素，然后介绍了三种视口，由缩放对视口的影响引入理想视口，最后说明设备想告诉比。下一篇介绍现在市面上的适配方案。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;要搞懂移动端的适配问题，就要先搞明白像素和视口。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="移动端" scheme="http://heji.website/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+    
+      <category term="移动端" scheme="http://heji.website/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+      <category term="webapp" scheme="http://heji.website/tags/webapp/"/>
+    
+  </entry>
   
   <entry>
     <title>angular自定义指令监听属性值的变化</title>
@@ -131,9 +297,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -160,9 +326,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -192,9 +358,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -226,9 +392,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -261,9 +427,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -298,9 +464,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -347,9 +513,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -380,9 +546,9 @@
       <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
   </entry>
   
@@ -487,9 +653,9 @@
       <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
   </entry>
   
@@ -713,11 +879,11 @@
       <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
       <category term="CSS3" scheme="http://heji.website/tags/CSS3/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -969,94 +1135,6 @@
     
     
       <category term="AngularJS" scheme="http://heji.website/tags/AngularJS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一章、搭建开发环境</title>
-    <link href="http://heji.website/2017/01/10/%E7%AC%AC%E4%B8%80%E7%AB%A0%E3%80%81%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <id>http://heji.website/2017/01/10/第一章、搭建开发环境/</id>
-    <published>2017-01-10T08:25:35.487Z</published>
-    <updated>2017-01-10T08:49:16.466Z</updated>
-    
-    <content type="html"><![CDATA[<p>本章主要是学习AngularJS的准备工作，介绍了如何搭建一个简单的AngularJS开发环境。</p>
-<a id="more"></a>
-<ul>
-<li>选择web浏览器<br>  本教程使用Google Chrome浏览器。</li>
-<li>选择代码编辑器<br>  可以选择任意代码编辑器，本教程使用HBuilder</li>
-<li>安装Node.js<br>  安装之后使用<code>node --version</code>测试是否安装成功。</li>
-<li>创建项目目录<br>  在任意位置创建<code>angularjs</code>目录，作为项目运行的根目录。运行<code>npm init</code>填写基本信息初始化项目</li>
-<li><p>安装web服务器<br>  一个简单的Web服务器足以用于开发，我使用Node内置的<code>http</code>模块、<code>fs</code>模块以及安装的<code>url</code>模块、<code>path</code>模块建了一个静态文件服务器:<br>  1.安装必须模块</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev url path</div></pre></td></tr></table></figure>
-<p>  执行命令之后，<code>package.json</code>文件如下：</p>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"angularjs"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"learn angular"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"./server/server.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"startServer"</span>: <span class="string">"node server/server.js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"keywords"</span>: [</div><div class="line">    <span class="string">"angular"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"author"</span>: <span class="string">"heji"</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">    <span class="attr">"path"</span>: <span class="string">"^0.12.7"</span>,</div><div class="line">    <span class="attr">"url"</span>: <span class="string">"^0.11.0"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  2.在<code>angular</code>目录下建立一个server目录，作为定义服务器的目录，<code>server.js</code>是定义服务器的核心脚本，<code>mime.js</code>用于设置响应类型，<code>config.js</code>用于配置哪些文件使用缓存，缓存时间长短。<br>  <code>config.js</code>文件：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">exports.Expires = &#123;</div><div class="line">    fileMatch: <span class="regexp">/^(gif|png|jpg|js|css)$/ig</span>,</div><div class="line">    maxAge: <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">365</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>  <code>mime.js</code>文件：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">exports.types = &#123;</div><div class="line">    <span class="string">"css"</span>: <span class="string">"text/css"</span>,</div><div class="line">    <span class="string">"gif"</span>: <span class="string">"image/gif"</span>,</div><div class="line">    <span class="string">"html"</span>: <span class="string">"text/html"</span>,</div><div class="line">    <span class="string">"ico"</span>: <span class="string">"image/x-icon"</span>,</div><div class="line">    <span class="string">"jpeg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">    <span class="string">"jpg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">    <span class="string">"js"</span>: <span class="string">"text/javascript"</span>,</div><div class="line">    <span class="string">"json"</span>: <span class="string">"application/json"</span>,</div><div class="line">    <span class="string">"pdf"</span>: <span class="string">"application/pdf"</span>,</div><div class="line">    <span class="string">"png"</span>: <span class="string">"image/png"</span>,</div><div class="line">    <span class="string">"svg"</span>: <span class="string">"image/svg+xml"</span>,</div><div class="line">    <span class="string">"swf"</span>: <span class="string">"application/x-shockwave-flash"</span>,</div><div class="line">    <span class="string">"tiff"</span>: <span class="string">"image/tiff"</span>,</div><div class="line">    <span class="string">"txt"</span>: <span class="string">"text/plain"</span>,</div><div class="line">    <span class="string">"wav"</span>: <span class="string">"audio/x-wav"</span>,</div><div class="line">    <span class="string">"wma"</span>: <span class="string">"audio/x-ms-wma"</span>,</div><div class="line">    <span class="string">"wmv"</span>: <span class="string">"video/x-ms-wmv"</span>,</div><div class="line">    <span class="string">"xml"</span>: <span class="string">"text/xml"</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>  <code>server.js</code>文件：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">"url"</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"><span class="keyword">var</span> mime = <span class="built_in">require</span>(<span class="string">"./mime"</span>).types;</div><div class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">"./config"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> pathname = url.parse(request.url).pathname;</div><div class="line">    <span class="comment">//path.resolve('../')返回根目录的上级目录,因为URL已包含根目录</span></div><div class="line">    <span class="keyword">var</span> realPath = path.resolve(<span class="string">'../'</span>)+pathname;</div><div class="line">    fs.exists(realPath, <span class="function"><span class="keyword">function</span> (<span class="params">exists</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!exists) &#123;</div><div class="line">			<span class="comment">//如果路径不存在,返回404</span></div><div class="line">            response.writeHead(<span class="number">404</span>, &#123;</div><div class="line">                <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">            &#125;);</div><div class="line">            response.write(<span class="string">"This request URL "</span> + pathname + <span class="string">" was not found on this server."</span>);</div><div class="line">            response.end();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            fs.readFile(realPath, <span class="string">"binary"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, file</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">					<span class="comment">//如果读取文件失败统一返回500</span></div><div class="line">                    response.writeHead(<span class="number">500</span>, &#123;</div><div class="line">                        <span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span></div><div class="line">                    &#125;);</div><div class="line">                    response.end(err);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">					<span class="comment">//设置最后修改时间</span></div><div class="line">					fs.stat(realPath, <span class="function"><span class="keyword">function</span> (<span class="params">err, stat</span>) </span>&#123;</div><div class="line">						<span class="keyword">var</span> lastModified = stat.mtime.toUTCString();</div><div class="line">						response.setHeader(<span class="string">"Last-Modified"</span>, lastModified);</div><div class="line">						<span class="keyword">if</span> (request.headers[<span class="string">"If-Modified-Since"</span>] &amp;&amp; lastModified == request.headers[<span class="string">"If-Modified-Since"</span>]) &#123;</div><div class="line">							<span class="comment">//没有修改直接返回</span></div><div class="line">							response.writeHead(<span class="number">304</span>, <span class="string">"Not Modified"</span>);</div><div class="line">							response.end();</div><div class="line">						&#125;<span class="keyword">else</span>&#123;</div><div class="line">							<span class="comment">//根据后缀名设置正确的MIME类型</span></div><div class="line">							<span class="keyword">var</span> ext = path.extname(realPath);</div><div class="line">							ext = ext ? ext.slice(<span class="number">1</span>) : <span class="string">'unknown'</span>;</div><div class="line">							<span class="comment">//判断请求的资源是否需要缓存(在config.js文件中配置)</span></div><div class="line">							<span class="keyword">if</span> (ext.match(config.Expires.fileMatch)) &#123;</div><div class="line">								<span class="keyword">var</span> expires = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">								expires.setTime(expires.getTime() + config.Expires.maxAge * <span class="number">1000</span>);</div><div class="line">								<span class="comment">//设置响应头</span></div><div class="line">								response.setHeader(<span class="string">"Expires"</span>, expires.toUTCString());</div><div class="line">								response.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"max-age="</span> + config.Expires.maxAge);</div><div class="line">							&#125;</div><div class="line">							<span class="keyword">var</span> contentType = mime[ext] || <span class="string">"text/plain"</span>;</div><div class="line">							response.writeHead(<span class="number">200</span>, &#123;</div><div class="line">								<span class="string">'Content-Type'</span>: contentType</div><div class="line">							&#125;);</div><div class="line">							<span class="comment">//向浏览器输入资源</span></div><div class="line">							response.write(file, <span class="string">"binary"</span>);</div><div class="line">							response.end();</div><div class="line">						&#125;</div><div class="line">					&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'server is running at 3000 port!'</span>)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>  3.在<code>angularjs</code>目录下新建<code>assets</code>目录，作为资源目录</p>
-</li>
-<li><p>安装测试系统<br>  AngularJS最重要的特性之一是对单元测试的支持。在本教程，使用karma test runner 和Jasmine框架。任意目录运行<code>npm install -g karma</code>命令即完成karma的安装，后面将继续介绍如果使用。</p>
-</li>
-<li><p>获取AngularJS<br>  在<code>https://angularjs.org/</code>网站获取AngularJS，本教程使用的是1.2.5版本。另外，AngularJS还提供了一些附加文件，用于扩展AngularJS核心库的功能，后面章节将使用部分这些文件<br>  <img src="1484010814337_2.png" alt=""></p>
-</li>
-<li><p>获取Bootstrap<br>  直接到bootstrap中文网下载Bootstrap。这里只是用bootstrap的样式，本教程不会使用bootstrap的Javascript文件的特性。</p>
-</li>
-<li><p>获取Deployd<br>  Deployd是一款出色的可跨平台的Web API引擎。它建立在Node.js和MongoDB的基础上，以JSON形式（类JSON）存储数据，并且支持使用JavaScript书写服务器端脚本。对于一些测试用的Web应用而言，Deployd可以非常快速的构建服务器端的REST API。使用以下命令安装Deployd：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g deployd</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行一个简单的测试<br>  在<code>assets</code>目录新建一个test.html文件：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!doctype html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">ng-app</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>First Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>&#123;&#123;"Angular"&#125;&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span>&gt;</span>Bootstrap<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/angular-1.2.5/angular.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  启动服务器,访问<code>http://localhost:3000/angularjs/assets/test.html</code>即可查看效果</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本章主要是学习AngularJS的准备工作，介绍了如何搭建一个简单的AngularJS开发环境。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="AngularJS" scheme="http://heji.website/categories/AngularJS/"/>
-    
-    
-      <category term="AngularJS" scheme="http://heji.website/tags/AngularJS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML5-Web存储</title>
-    <link href="http://heji.website/2017/01/06/HTML5-Web%E5%AD%98%E5%82%A8/"/>
-    <id>http://heji.website/2017/01/06/HTML5-Web存储/</id>
-    <published>2017-01-06T06:20:02.820Z</published>
-    <updated>2017-01-06T06:21:55.667Z</updated>
-    
-    <content type="html"><![CDATA[<p>Web存储允许我们在浏览器里保存简单的键/值数据。Web存储与cookie很相似。</p>
-<a id="more"></a>
-<h3 id="使用本地存储"><a href="#使用本地存储" class="headerlink" title="使用本地存储"></a>使用本地存储</h3><p>我们可以通过全局属性localStorage访问本地存储功能。这个属性返回一个Storage对象。Storage对象被用来保存键/值形式的<strong>字符串对</strong><br><img src="index_files/507ff266-d24f-43fd-9691-000f50d1a5ae.jpg" alt=""><br>Storage对象可用来存储键/值对，其中键和值都是字符串。键必须是唯一的，这就意味着如果我们用Storage对象里已经存在的键调用setItem方法，就会更新它的值。</p>
-<ul>
-<li>监听存储事件<br>  某个文档对本地存储进行修改时会触发storage事件，我们可以监听其他同源文档上的这个事件来确保我们能跟上最新的变化。<br>  与storage事件同时指派的对象是一个StorageEvent对象。<br>  <img src="index_files/cbde7dfe-831d-4684-a2cb-f2841faed675.jpg" alt=""><br>  <img src="index_files/90269775-bbaa-4d19-9d46-0204761ea6cc.jpg" alt=""><br>  storage事件是通过window对象触发的</li>
-</ul>
-<h3 id="使用会话存储"><a href="#使用会话存储" class="headerlink" title="使用会话存储"></a>使用会话存储</h3><p>会话存储的工作方式和本地存储基本一致，不同之处在于数据是在各个浏览上下文私有的，会在文档被关闭时移除。我们可以使用全局变量sessionStorage访问会话存储，它返回一个Storage对象。</p>
-<h3 id="Cookie、localStorage和sessionStorage对比"><a href="#Cookie、localStorage和sessionStorage对比" class="headerlink" title="Cookie、localStorage和sessionStorage对比"></a>Cookie、localStorage和sessionStorage对比</h3><p><table><tr><td>特性</td><td>Cookie</td><td>localStorage</td><td>sessionStorage</td></tr><tr><td>数据的生命期</td><td>一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效</td><td>除非被清除，否则永久保存</td><td>仅在当前会话下有效，关闭页面或浏览器后被清除</td></tr><tr><td>存放数据大小</td><td>4K左右</td><td colspan="2">一般为5MB</td></tr><tr><td>与服务器端通信</td><td>每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题</td><td colspan="2">仅在客户端（即浏览器）中保存，不参与和服务器的通信</td></tr><tr><td>易用性</td><td>需要程序员自己封装，源生的Cookie接口不友好</td><td colspan="2">源生接口可以接受，亦可再次封装来对Object和Array有更好的支持</td></tr></table><br><strong>注意：像记住密码等功能，一般在服务器端把用户信息加密存储在cookie，因为cookie的主要用途就是与服务器端的通信</strong></p>
-<h3 id="本地存储的综合示例"><a href="#本地存储的综合示例" class="headerlink" title="本地存储的综合示例"></a>本地存储的综合示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="css"></span></div><div class="line">            <span class="selector-tag">body</span> &gt; *&#123;</div><div class="line">                <span class="attribute">float</span>: left;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">4px</span> <span class="number">6px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span>&#123;</div><div class="line">                <span class="attribute">border-collapse</span>: collapse;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">table</span> <span class="selector-tag">td</span>&#123;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">6px</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="selector-tag">p</span>&#123;</div><div class="line">                <span class="attribute">margin</span>: <span class="number">4px</span> <span class="number">0</span>;</div><div class="line">                <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"key"</span>&gt;</span>键：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"key"</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"value"</span>&gt;</span>值：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"value"</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"btns"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"add"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"clear"</span>&gt;</span>清除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"msg"</span>&gt;</span>There are <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"count"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> items!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">            displayData();</div><div class="line">            <span class="built_in">document</span>.getElementById(<span class="string">"btns"</span>).addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> id = e.target.getAttribute(<span class="string">"id"</span>);</div><div class="line">                <span class="keyword">switch</span>(id)&#123;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"add"</span>:</div><div class="line">                        <span class="keyword">var</span> key = <span class="built_in">document</span>.getElementById(<span class="string">"key"</span>).value;</div><div class="line">                        <span class="keyword">var</span> val = <span class="built_in">document</span>.getElementById(<span class="string">"value"</span>).value;</div><div class="line">                        localStorage.setItem(key,val);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    <span class="keyword">case</span> <span class="string">"clear"</span>:</div><div class="line">                        localStorage.clear();</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                displayData();</div><div class="line">            &#125;);</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">displayData</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="keyword">var</span> tableElem = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"table"</span>)[<span class="number">0</span>];</div><div class="line">                tableElem.innerHTML = <span class="string">""</span>;</div><div class="line">                <span class="keyword">var</span> itemCount = localStorage.length;</div><div class="line">                <span class="built_in">document</span>.getElementById(<span class="string">"count"</span>).innerHTML = itemCount;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; itemCount ; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> key = localStorage.key(i);</div><div class="line">                    tableElem.innerHTML+=<span class="string">"&lt;tr&gt;&lt;td&gt;"</span>+key+<span class="string">"&lt;/td&gt;&lt;td&gt;"</span>+localStorage.getItem(key)+<span class="string">"&lt;/td&gt;&lt;/tr&gt;"</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Web存储允许我们在浏览器里保存简单的键/值数据。Web存储与cookie很相似。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="HTML5" scheme="http://heji.website/categories/HTML5/"/>
-    
-    
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="HTML5" scheme="http://heji.website/tags/HTML5/"/>
     
   </entry>
   
