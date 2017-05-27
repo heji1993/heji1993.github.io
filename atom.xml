@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2017-05-26T01:00:00.798Z</updated>
+  <updated>2017-05-27T03:26:17.840Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -14,6 +14,170 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git和Github使用教程</title>
+    <link href="http://heji.website/2017/05/27/Git%E5%92%8CGithub%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <id>http://heji.website/2017/05/27/Git和Github使用教程/</id>
+    <published>2017-05-27T03:18:53.435Z</published>
+    <updated>2017-05-27T03:26:17.840Z</updated>
+    
+    <content type="html"><![CDATA[<p>有段时间没有使用git和github了，本着好记性不如烂笔头，重新梳理了下git和github的使用方法。</p>
+<a id="more"></a>
+<p>有段时间没有使用git和github了，本着好记性不如烂笔头，重新梳理了下git和github的使用方法。</p>
+<h3 id="Git和Github"><a href="#Git和Github" class="headerlink" title="Git和Github"></a>Git和Github</h3><p>简单来说Git就是一个版本管理工具，github是一个用git做版本控制的项目托管平台。</p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><h4 id="注册github账户及创建远程仓库"><a href="#注册github账户及创建远程仓库" class="headerlink" title="注册github账户及创建远程仓库"></a>注册github账户及创建远程仓库</h4><p>要想使用github第一步当然是在<a href="https://github.com/" title="github" target="_blank" rel="external">github官网</a> 上注册一个账户。 之后就可以创建仓库了（免费用户只能建公共仓库），Create a New Repository，填好名称后Create，之后会出现一些仓库的配置信息，这也是一个git的简单教程。</p>
+<h4 id="git的安装和配置"><a href="#git的安装和配置" class="headerlink" title="git的安装和配置"></a>git的安装和配置</h4><ul>
+<li>根据实际情况下载git客户端安装</li>
+<li><p>配置git(以下命令建议在git bash执行)</p>
+<ul>
+<li><p>首先在本地创建ssh key；</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></div></pre></td></tr></table></figure>
+<p>  后面的your_email@youremail.com改为你在github上注册的邮箱，之后会要求确认路径和输入密码，我们这使用默认的一路回车就行。成功的话会在~/下生成.ssh文件夹(windows下路径为<code>C:\Users\Administrator\.ssh</code>)，进去，打开id_rsa.pub，复制里面的key。</p>
+</li>
+<li><p>在github上配置ssh key<br>  回到github上，进入 Account Settings（账户配置），左边选择SSH Keys，Add SSH Key,title随便填，粘贴在你电脑上生成的key。<br>  <img src="http://note.youdao.com/yws/api/personal/file/A3DE34DC3BCB4EBBBA66C6250D77115C?method=download&amp;shareKey=863d9d9a53a52cad46a8aaa37deedbf4" alt="配置key" title="配置key"></p>
+</li>
+<li><p>验证是否配置成功<br>  在gitbash中输入命令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure>
+<p>  如果是第一次的会提示是否continue，输入yes就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github。</p>
+</li>
+<li><p>配置username和email<br>  在gitbash中输入命令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"your name"</span></div><div class="line">$ git config --global user.email <span class="string">"your_email@youremail.com"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h4><p>在介绍正式使用之前，先介绍下git的版本管理机制。<br>你的本地仓库由 git 维护的三棵”树”组成。第一个是你的 工作目录（workspace ），它持有实际文件；第二个是 暂存区（stage），它像个缓存区域，临时保存你的改动；最后是 HEAD（Local repository），它指向你最后一次提交的结果。<br>下面以一张图说明本地仓库和远程仓库的关系：<br><img src="http://note.youdao.com/yws/api/personal/file/78D5A4F8D8244F8FAD9DB7F4634212B6?method=download&amp;shareKey=2e337c1275b5ce45edd42928fd70301b" alt="关系图以及命令的影响"></p>
+<h4 id="本地git使用"><a href="#本地git使用" class="headerlink" title="本地git使用"></a>本地git使用</h4><ul>
+<li><p>创建本地仓库</p>
+<p>  新建项目文件夹，打开，执行命令初始化为git仓库</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>本地git常用命令</p>
+<ul>
+<li><p>查看变化<code>git status</code></p>
+<p>  我在上一步创建的文件夹新建一个文件，这时我使用<code>git status</code>命令可以查看发生了什么变化。</p>
+</li>
+<li><p>提交修改到缓存区<code>git add *</code></p>
+<p>  它告诉我有一个还未追踪的文件，并提示我可以使用 <code>git add &lt;file&gt;...</code>把它加进去。使用命令<code>git add *</code>，添加所有修改到缓存区，*表示所有。</p>
+</li>
+<li><p>提交修改到HEAD</p>
+<p>  接着，再执行<code>git commit -m &quot;提交注释&quot;</code>把缓存区的修改提交到HEAD</p>
+</li>
+<li><p>未被追踪和已追踪</p>
+<p>  然后我们继续修改文件的内容，然后使用<code>git status</code>查看变化，可以看到，这次的提示和新增时查看状态的提示不同，因为新增文件时文件尚未被追踪（untracked），而这次是更改已经追踪（tracked）的文件。</p>
+</li>
+<li><p>比较工作空间和HEAD的文件<code>git diff</code></p>
+<p>  我们可以通过<code>git diff</code>来比较工作空间的文件与HEAD最新一次commit文件。</p>
+</li>
+<li><p>撤销修改<code>git checkout -- .</code></p>
+<p>  假如我想撤销修改，执行<code>git checkout -- .</code>，小数点表示撤销所有。撤销之后执行<code>git status</code>会提示没有需要提交的内容。</p>
+</li>
+<li><p>查看提交日志<code>git log</code></p>
+<p>  再次修改文件，接着执行<code>git add *</code>和<code>git commit -m &quot;&quot;</code>添加并提交到HEAD，然后再执行<code>git log</code>命令可以看到有两个提交记录</p>
+</li>
+<li><p>版本回退<code>git reset --hard xxx</code>，xxx表示版本号</p>
+<p>  从刚才的 <code>git log</code>可以查看提交的版本<br>  <img src="http://note.youdao.com/yws/api/personal/file/AFB6CB8A14064D7580FB91F8EE80C0E3?method=download&amp;shareKey=7fd0a6c5b4019b1adfa133b115de1186" alt="提交的记录"></p>
+<p>  假如我们想要回到最初的版本，执行命令<code>git reset --hard 1df0573</code>即可，版本号取前七位。此时，再次执行<code>git log</code>可以看到只有一个提交记录了。</p>
+<p>  假如我们又想回到最新版，执行<code>git reflog</code>可以查看HEAD的变化情况</p>
+<p>  <img src="http://note.youdao.com/yws/api/personal/file/3EFFACC15A0841E4BE0737552FD915AE?method=download&amp;shareKey=0104c52a00365166b59a11074ba39a0d" alt="reflog"></p>
+<p>  此时，我再次使用reset，将HEAD指向 ad93b89，即可回到第一次reset前的状态了</p>
+</li>
+<li><p>清除未追踪的文件<code>git clean -xf</code></p>
+<p>  假如我新建了一个文件，此时文件处于未追踪状态，执行checkout命令是不能撤销的。需要使用<code>git clean -xf</code>命令来清除所有未追踪的文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="github与git的关联（上文已完成本地git与github的连接）"><a href="#github与git的关联（上文已完成本地git与github的连接）" class="headerlink" title="github与git的关联（上文已完成本地git与github的连接）"></a>github与git的关联（上文已完成本地git与github的连接）</h4><ul>
+<li><p>本地仓库与远程仓库的关联</p>
+<p>  在本地仓库执行命令：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:yourName/yourRepo.git</div></pre></td></tr></table></figure>
+<p>  后面的yourName和yourRepo表示你在github的用户名和刚才新建的仓库</p>
+</li>
+<li><p>获取远程仓库最新资源 <code>git pull origin master</code></p>
+<p>  如果你在创建 repository 的时候，加入了 README.md 或者 LICENSE ，那么 github 会拒绝你的 push 。你需要先执行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin master</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>将本地仓库推送到远程仓库 <code>git push</code><br>  执行命令<code>git push</code>可将本地仓库最新提交的版本（HEAD）推送至远程仓库</li>
+</ul>
+<h3 id="GitHub团队项目合作流程"><a href="#GitHub团队项目合作流程" class="headerlink" title="GitHub团队项目合作流程"></a>GitHub团队项目合作流程</h3><h4 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h4><p>首先把队友直接push的权限关掉，即设置成Read。这样可以防止队友误操作，未经审核就把代码push到团队项目上。<br>Teams用来分配issue的时候会用到，所以保留下来，并不是没有用。</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/DF360C4BB2774817BB419976AC5BC276?method=download&amp;shareKey=81ec1aa9e41e7fff40e61a91d468ffce" alt="前期准备" title="前期准备"></p>
+<h4 id="创建开发分支"><a href="#创建开发分支" class="headerlink" title="创建开发分支"></a>创建开发分支</h4><p>master分支一般用来发布稳定版本，dev分支（开发分支）用来发布开发版本。<br>输入分支名称后，下面会跳出Create branch，点击即可创建。</p>
+<blockquote>
+<p>下面图片写的是develop，是因为我们这个项目已经有dev分支了。如果你们没有dev分支，那么名字改成dev即可。这个影响不大。</p>
+</blockquote>
+<p><img src="http://note.youdao.com/yws/api/personal/file/B1AB493C7A064E90BC0722AC74D1EAFC?method=download&amp;shareKey=27f9abe03e6fb5c2c96574893910c0ee" alt="创建分支" title="创建分支"></p>
+<p>分支创建完毕后，会自动跳转到dev分支。由于dev分支是从master分支上创建的，因此内容与master分支一致。</p>
+<h4 id="Fork项目到个人的仓库"><a href="#Fork项目到个人的仓库" class="headerlink" title="Fork项目到个人的仓库"></a>Fork项目到个人的仓库</h4><p>点击右上角的Fork，并选择你的账号（一般在第一个）。就可以Fork团队项目到个人仓库啦。</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/84AB82E3ED404559B9C1321398015307?method=download&amp;shareKey=61845cecd2d27c868e23c55a04fec4f9" alt="fork仓库" title="fork仓库"></p>
+<p>Fork完成后</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/0FBEA79EAB9240C8BA763DF361BF04C0?method=download&amp;shareKey=5bbabc3d7ce01982469c27cf9487f233" alt="fork完成" title="fork完成"></p>
+<h4 id="Clone项目到本地"><a href="#Clone项目到本地" class="headerlink" title="Clone项目到本地"></a>Clone项目到本地</h4><p>打开git命令行，输入指令和fork到个人仓库的地址，回车即可克隆到本地<br><img src="http://note.youdao.com/yws/api/personal/file/0EF394F6DBC64230B99FE78A882E5153?method=download&amp;shareKey=6e62648bf41d5a9ba3eac865710ee6f8" alt="clone项目到本地" title="clone项目到本地"></p>
+<p>使用 <code>git branch</code> 命令查看本地分支，发现本地只有master分支。如下图的①</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/F176652A8A0B41EAB94AAE76716AB271?method=download&amp;shareKey=7c9f0f173827332e3bf661d63251a4a6" alt="创建分支" title="创建分支"></p>
+<p>如上图的②，使用 <code>git branch -a</code> 查看所有分支，就能看到远程分支。</p>
+<p>根据远程分支，我们可以创建一个新的本地分支dev，并把该项目的dev分支的内容放到本地dev分支。如上图③。</p>
+<blockquote>
+<p><code>git checkout -b dev origin/dev</code> 的意思是，创建一个dev分支（-b），并把远程dev分支（origin/dev）的内容放在该分支内。接着切换到该分支（checkout）</p>
+</blockquote>
+<p>现在使用 <code>git branch</code> 可以查看两个分支，并且用 <code>ls</code> 或者 <code>dir</code> 就能看到dev分支的内容了。想切换回master分支的时候，再用 <code>git checkout master</code> 即可。</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/B81EE261B7FF410F88CA93485DFD62B6?method=download&amp;shareKey=3da4ec96f409dbc9ab99ac3224e617e3" alt="查看分支" title="查看分支"></p>
+<p>上面的操作完成后，你就可以在本地进行开发了。但是如果要将你修改完的代码合并到团队项目上，还需要进行下面的操作。</p>
+<h4 id="和团队项目保持同步"><a href="#和团队项目保持同步" class="headerlink" title="和团队项目保持同步"></a>和团队项目保持同步</h4><p>首先查看有没有设置upstream，使用 <code>git remote -v</code> 命令来查看。如下图①</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/EC1A695DA79B489086DF6D97277F6AC1?method=download&amp;shareKey=642053c34763e637f53f9e7df89239ae" alt="设置upstream" title="设置upstream"></p>
+<p>如果没有显示upstream，则使用 <code>git remote add upstream</code> 团队项目地址 命令。如上图②<br>接着再次使用 <code>git remote -v</code> ，如果如上图③，显示出了upstream，那么就设置好了</p>
+<p>开始同步。首先执行 <code>git fetch upstream</code> 获取团队项目最新版本。如下图①</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/F7E5EEE2AA4A42F196682E689A82F660?method=download&amp;shareKey=5a567212bb15436251c8ce2349f91123" alt="同步代码合并分支" title="同步代码合并分支"></p>
+<p>此时并没有把最新版本合并到你本地的分支上，因此还需要一步。如上图②，当前分支是dev分支，执行 <code>git merge upstream/dev</code> 命令后，会将源分支（upstream/dev）合并到当前分支（dev）。</p>
+<blockquote>
+<p>如果你是在本地的master分支上开发，那么在使用该命令前，先切换到master分支。<br>merge的时候，有可能碰到冲突。需要解决冲突才能继续下面的操作。冲突的解决可以参考→ 冲突的解决</p>
+</blockquote>
+<h4 id="push修改到自己fork的项目上"><a href="#push修改到自己fork的项目上" class="headerlink" title="push修改到自己fork的项目上"></a>push修改到自己fork的项目上</h4><p>解决冲突后，就可以使用 git push 命令将本地的修改同步到自己的GitHub仓库上了。</p>
+<blockquote>
+<p>注意，在当前所在分支使用push，会push到与这个分支相关联的远程仓库分支。这里dev分支与origin/dev关联，因此push到GitHub上的dev分支。</p>
+</blockquote>
+<p><img src="http://note.youdao.com/yws/api/personal/file/C82F8928704A4EC6B825BC2444A91B34?method=download&amp;shareKey=9429f4ee7f6e786cba2415cc0c001701" alt="push修改" title="push修改"></p>
+<h4 id="请求合并到团队项目上"><a href="#请求合并到团队项目上" class="headerlink" title="请求合并到团队项目上"></a>请求合并到团队项目上</h4><p>首先到你的GitHub上，进入你Fork的仓库里。点击红框处的Pull request</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/3645DDFD28EB4ABD96FA38B000EC4CB8?method=download&amp;shareKey=4b5b1e03241c5c9e671068b689cd1b1a" alt="请求合并" title="请求合并"></p>
+<p>下图左边红框，表示要合并到fzu2015/CourseManagement项目的dev分支。<br>下图右边红框，表示要从自己仓库的dev分支发起合并请求。<br>点击红框处的 Create pull request就可以发送合并请求了。</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/E24798213BF64466AF41A9E874508412?method=download&amp;shareKey=d9f951395a7a8b5375e130acee2cbd0f" alt="请求合并" title="请求合并"></p>
+<p>当然，在发送请求之前，你可以检查一下你都改了哪些东西。在上面那个页面往下拉，就可以看到两者的对比。</p>
+<p>以上操作结束后，团队成员的流程就结束了。最后一步交给团队项目负责人来完成。</p>
+<h4 id="团队项目负责人审核及同意合并请求"><a href="#团队项目负责人审核及同意合并请求" class="headerlink" title="团队项目负责人审核及同意合并请求"></a>团队项目负责人审核及同意合并请求</h4><p>首先进入GitHub的团队项目仓库中。此时右边的Pull requests显示当前项目有几个Pull request。点击进入查看。</p>
+<p><img src="http://note.youdao.com/yws/api/personal/file/244B2BA92CC343E1AB825E9F6F443DA5?method=download&amp;shareKey=b2050436c2f3e8db46d81c5f6dc100c4" alt="同意合并" title="同意合并"></p>
+<p>选择一个Pull request</p>
+<p>项目负责人审核有两个要注意的地方</p>
+<ul>
+<li>一个是下图的①。一定要看清楚是合并到哪个分支。这里是从schaepher的dev分支合并到fzu2015的dev分支。</li>
+<li>另一个是下图的②。点击进去后，就可以查看该Pull request对项目做了哪些修改。这样如果有问题，可以及时发现，并关闭该Pull request。</li>
+</ul>
+<blockquote>
+<p>如果关闭了，一定要告诉队友，否则他可能会不知道。虽然也可以直接在下面发布Comment告诉他，但队友不一定看到。</p>
+</blockquote>
+<p><img src="http://note.youdao.com/yws/api/personal/file/AC10146C2964456CB91F43F7A4B5E6B8?method=download&amp;shareKey=53c9f57b39d02521e21f13859df07fb7" alt="审核合并" title="审核合并"></p>
+<p>如果没有问题，可以点击Merge pull request。这样就合并好了。</p>
+<p>以上文章部分出自<a href="http://www.cnblogs.com/schaepher/p/4933873.html" title="schaepher的博客" target="_blank" rel="external">schaepher的博客</a>，原文链接：<code>http://www.cnblogs.com/schaepher/p/4933873.html</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有段时间没有使用git和github了，本着好记性不如烂笔头，重新梳理了下git和github的使用方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="http://heji.website/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="工具" scheme="http://heji.website/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>移动端全适配解决方案——方案篇</title>
@@ -297,9 +461,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -326,9 +490,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -358,9 +522,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -392,9 +556,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -427,9 +591,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -464,9 +628,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -513,9 +677,9 @@
       <category term="jQuery" scheme="http://heji.website/categories/jQuery/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
     
@@ -546,9 +710,9 @@
       <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -653,9 +817,9 @@
       <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
     
     
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
+    
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -879,11 +1043,11 @@
       <category term="CSS" scheme="http://heji.website/categories/CSS/"/>
     
     
+      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
       <category term="CSS" scheme="http://heji.website/tags/CSS/"/>
     
       <category term="CSS3" scheme="http://heji.website/tags/CSS3/"/>
-    
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -1053,81 +1217,6 @@
     <summary type="html">
     
       &lt;p&gt;并不是所有的应用程序都适合使用AngularJS开发，本章主要介绍AngularJS的适用场景。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="AngularJS" scheme="http://heji.website/categories/AngularJS/"/>
-    
-    
-      <category term="AngularJS" scheme="http://heji.website/tags/AngularJS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第二章、第一个AngularJS应用</title>
-    <link href="http://heji.website/2017/01/10/%E7%AC%AC%E4%BA%8C%E7%AB%A0%E3%80%81%E7%AC%AC%E4%B8%80%E4%B8%AAAngularJS%E5%BA%94%E7%94%A8/"/>
-    <id>http://heji.website/2017/01/10/第二章、第一个AngularJS应用/</id>
-    <published>2017-01-10T08:37:58.418Z</published>
-    <updated>2017-01-10T09:00:07.249Z</updated>
-    
-    <content type="html"><![CDATA[<p>本章使用AngularJS特性打造出一个简单的Web应用程序。</p>
-<a id="more"></a>
-<h2 id="准备项目"><a href="#准备项目" class="headerlink" title="准备项目"></a>准备项目</h2><p><strong>注意：除非特殊说明,否则都是以angularjs目录作为项目根目录</strong><br>在assets目录下新建一个<code>todo.html</code>的HTML文件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>待办事项<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page-header"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>To DO List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> /&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>是否完成<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>买花<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>买鞋子<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>工作总结<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>是<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>打电话给家里<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>否<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>在浏览器上访问<code>http://localhost:3000/angularjs/assets/todo.html</code>查看效果，目前没有应用AngularJS。</p>
-<h2 id="使用AngularJS"><a href="#使用AngularJS" class="headerlink" title="使用AngularJS"></a>使用AngularJS</h2><h3 id="将AngularJS应用到HTML文件"><a href="#将AngularJS应用到HTML文件" class="headerlink" title="将AngularJS应用到HTML文件"></a>将AngularJS应用到HTML文件</h3><ol>
-<li>引入AngularJS文件</li>
-<li>创建一个AngularJS模块</li>
-<li>对元素应用模块</li>
-</ol>
-<p>AngularJS应用由一个或多个模块组成，模块是由调用angular.module方法而创建的，该方法接收两个参数，第一个参数是模块名称，第二个参数是依赖的其他模块，当没有依赖其他模块时，传一个空数组。完成模块的定义后，对html或其他元素使用<code>ng-app</code>指令来使用模块，该指令告诉浏览器，指令内的所有元素被AngularJS编译和处理，通常当只使用AngularJS时，在html元素添加<code>ng-app</code>指令，当需要与其他技术混合时，可以在文档的其他元素添加<code>ng-app</code>指令缩小AngularJS应用的边界。</p>
-<ul>
-<li>创建数据模型<br>  AngularJS支持MVC模式，推荐视图与数据模型、逻辑分离，在该例我们使用JavaScript创建数据模型。</li>
-<li>创建控制器<br>  控制器是由angular.module所返回的Module对象上的controller方法创建的。controller方法接收两个参数，第一个是控制器的名称第二个是将会被调用的函数，用于定义控制器功能。惯例一般是对控制器命名为<name>Ctrl，真正的应用程序一般会生成多个控制器，但是本例中仅需要一个，名字取为ToDoCtrl。<br>  控制器函数接收一个<code>$scope</code>的参数，<code>$</code>表示AngularJS提供的内置特性，<code>$scope</code>对象常用于对控制器范围的视图提供数据和功能。控制器定义好之后，在元素上使用<code>ng-controller</code>为元素指定控制器。</name></li>
-<li><p>创建视图</p>
-<ul>
-<li>插入模型值<br>  使用<code></code>绑定数据模型，在该例中，todo即表示model对象，Expression可以是任何有效的JavaScript语句。需要注意的是，你应该仅使用表达式来执行一些简单操作，而不要执行复杂逻辑或对模型进行操作，这应该是控制器该做的事。</li>
-<li>使用指令<br>  在清单中，使用了另一个AngularJS内置指令<code>ng-repeat</code>。该指令用于告诉AngularJS从一个集合中的各个对象生成所应用到的元素及其内容。该指令的格式为<code>&lt;name&gt; in &lt;collection&gt;</code></li>
-</ul>
-</li>
-<li><p>最终代码<br>  最终代码如下：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"todoApp"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>待办事项<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">"todoCtrl"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page-header"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;todo.user&#125;&#125;'s To DO List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-default"</span>&gt;</span>&#123;&#123;todo.items.length&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> /&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>是否完成<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"item in todo.items"</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.action&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.done ? "是" : "否"&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/angular-1.2.5/angular.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">			<span class="keyword">var</span> todoApp = angular.module(<span class="string">'todoApp'</span>,[]);</div><div class="line">			<span class="comment">//定义数据模型</span></div><div class="line">			<span class="keyword">var</span> model = &#123;</div><div class="line">				user:<span class="string">"HeJi"</span>,</div><div class="line">				items:[</div><div class="line">					&#123;action:<span class="string">"买花"</span>,done:<span class="literal">false</span>&#125;,</div><div class="line">					&#123;action:<span class="string">"买鞋子"</span>,done:<span class="literal">false</span>&#125;,</div><div class="line">					&#123;action:<span class="string">"工作总结"</span>,done:<span class="literal">true</span>&#125;,</div><div class="line">					&#123;action:<span class="string">"打电话给家里"</span>,done:<span class="literal">false</span>&#125;</div><div class="line">				]</div><div class="line">			&#125;</div><div class="line">			<span class="comment">//定义控制器</span></div><div class="line">			todoApp.controller(<span class="string">'todoCtrl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</div><div class="line">				$scope.todo = model;</div><div class="line">			&#125;)</div><div class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="基本功能之外"><a href="#基本功能之外" class="headerlink" title="基本功能之外"></a>基本功能之外</h2><ul>
-<li><p>使用双向数据绑定<br>  上一节使用的绑定被称为单向绑定，其值是从模型中取得的。另外，AngularJS还支持双向数据绑定，模型用于生成元素，元素的变化也能引起模型中的相应变化。为了演示双向数据绑定，我添加一个复选框以便修改数据的done属性。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   //...表示还有其他内容,后面都是这样标记</div><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"item in todo.items"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.action&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"item.done"</span> /&gt;</span></div><div class="line">		&#123;&#123;item.done ? "是" : "否"&#125;&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">   ...</div></pre></td></tr></table></figure>
-</li>
-<li><p>创建和使用控制器行为<br>  控制器在作用域上定义行为。行为是对模型中的数据进行操作的函数，用于实现应用程序中的业务逻辑。为了演示一个简单的行为，我们修改header以显示未完成的待办事项数目。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-default"</span> <span class="attr">ng-hide</span>=<span class="string">"incompleteCount()==0"</span>&gt;</span>&#123;&#123;incompleteCount()&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   ...</div><div class="line">   //定义控制器</div><div class="line">todoApp.controller('todoCtrl',function($scope)&#123;</div><div class="line">	$scope.todo = model;</div><div class="line">	//计算未完成待办事项数目</div><div class="line">	$scope.incompleteCount = function()&#123;</div><div class="line">		var count = 0;</div><div class="line">		angular.forEach($scope.todo.items,function(item)&#123;</div><div class="line">			if(!item.done)&#123;</div><div class="line">				count++;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">		return count;</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line">   ...</div></pre></td></tr></table></figure>
-<p>  行为是通过在<code>$scope</code>对象上添加函数而定义的。向<code>$scope</code>对象添加的函数所赋予的属性名称，被作为行为名，例如，本例中，<code>incompleteCount</code>就是行为名。另外，我使用了<code>ng-hide指令</code>，当赋值表达式的计算结果为true时，<code>ng-hide</code><br>  指令会隐藏元素及其子元素。</p>
-</li>
-<li><p>使用依赖于其他行为的行为<br>  因为行为是通过使用JavaScript函数而创建的，所以同一控制器中一个行为可以在其他行为的基础上创建。例如，我创建一个行为，可以根据待办事项列表中的未完成事项数来选择CSS类。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-default"</span> <span class="attr">ng-class</span>=<span class="string">"warningLevel()"</span> <span class="attr">ng-hide</span>=<span class="string">"incompleteCount()==0"</span>&gt;</span>&#123;&#123;incompleteCount()&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   ...</div><div class="line">   //根据未完成事项数选择提醒类</div><div class="line">$scope.warningLevel = function()&#123;</div><div class="line">	return $scope.incompleteCount() <span class="tag">&lt; <span class="attr">3</span> ? "<span class="attr">label-success</span>" <span class="attr">:</span> "<span class="attr">label-warning</span>";</span></div><div class="line">&#125;</div><div class="line">   <span class="attr">...</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>响应用户交互<br>  你已经见到了行为和指令是如何结合在一起创建应用特性的，最强大的组合之一便是将指令和行为用于响应用户交互。<br>例如，我修改todo.html的内容，让用户能够创建新的待办事项。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">ng-model</span>=<span class="string">"actionText"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span> <span class="attr">ng-click</span>=<span class="string">"addNewItem(actionText)"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   ...</div><div class="line">   //添加待办事项</div><div class="line">$scope.addNewItem = function(actionText)&#123;</div><div class="line">	$scope.todo.items.push(&#123;action:actionText,done:false&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>  这里需要说明的是，我给输入框绑定了一个没有挂靠在<code>$scope</code>对象的属性，AngularJS会动态地帮我们创建这个属性，然后在点击添加按钮的时候，再把这个属性传递到行为中。</p>
-</li>
-<li><p>对模型数据过滤和排序<br>  在todo.html文件中增加过滤器功能</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   <span class="comment">&lt;!--只遍历don属性为false的数据,根据action属性排序--&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"item in todo.items | filter:&#123;done:false&#125; | orderBy:'action'"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.action&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"item.done"</span> /&gt;</span></div><div class="line">		&#123;&#123;item.done ? "是" : "否"&#125;&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">   ...</div></pre></td></tr></table></figure>
-<p>  AngularJS还支持自定义过滤器：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">th</span>&gt;</span>是否完成<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"item in todo.items | checkedItems:showComplete | orderBy:'action'"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.action&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"item.done"</span> /&gt;</span></div><div class="line">				&#123;&#123;item.done ? "是" : "否"&#125;&#125;</div><div class="line">			<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"showComplete"</span> /&gt;</span>显示所有</div><div class="line">	<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   ...</div><div class="line">   //自定义过滤器</div><div class="line">todoApp.filter('checkedItems',function()&#123;</div><div class="line">	return function(items,showComplete)&#123;</div><div class="line">		var resultArr = [];</div><div class="line">		angular.forEach(items,function(item)&#123;</div><div class="line">			if(item.done == false || showComplete)&#123;</div><div class="line">				resultArr.push(item);</div><div class="line">			&#125;</div><div class="line">		&#125;)</div><div class="line">		return resultArr;</div><div class="line">	&#125;</div><div class="line">&#125;)</div><div class="line">   ...</div></pre></td></tr></table></figure>
-<p>  AngularJS模块对象的filter方法用于创建一个过滤器工厂，该工厂会返回一个函数用于过滤一组数据对象。目前暂时不要在意工厂这部分的细节，只需知道使用filter方法需要传入一个函数，该函数中需要一个能够返回过滤后数据的函数就够了。<br>  实际执行过滤功能的函数有两个参数，第一个参数items由AngularJS提供，表示过滤的集合，第二个参数自己传进来，过滤器参数之间使用<code>:</code>分隔。</p>
-</li>
-<li><p>通过Ajax获取数据<br>  我要做的最后一项修改是通过一个Ajax请求获取JSON形式的数据作为数据模型。<br>  AngularJS的模型对象有一个run方法，该方法仅在AngularJS执行完初始化设置后运行一次，常用于一次性的任务。故我们可以把Ajax请求放在run函数中，在run函数中可以依赖注入内置对象<code>$http</code>，该对象提供了对底层Ajax请求的访问功能。</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">   ...</div><div class="line">   //定义数据模型</div><div class="line">var model = &#123;</div><div class="line">	"user":"HeJi"</div><div class="line">&#125;;</div><div class="line">todoApp.run(function($http)&#123;</div><div class="line">       //get方法返回一个promise对象，该对象表示将在未来完成的工作</div><div class="line">    $http.get("todo.json").success(function(datas)&#123;</div><div class="line">		model.items = datas;</div><div class="line">	&#125;)</div><div class="line">&#125;);</div><div class="line">   ...</div></pre></td></tr></table></figure>
-</li>
-<li><p>最终代码如下：<br>  todo.html：</p>
-  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">ng-app</span>=<span class="string">"todoApp"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>待办事项<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap.css"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap-3.3.0/dist/css/bootstrap-theme.css"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-controller</span>=<span class="string">"todoCtrl"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"page-header"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123;todo.user&#125;&#125;'s To DO List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"label label-default"</span> <span class="attr">ng-class</span>=<span class="string">"warningLevel()"</span> <span class="attr">ng-hide</span>=<span class="string">"incompleteCount()==0"</span>&gt;</span>&#123;&#123;incompleteCount()&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">ng-model</span>=<span class="string">"actionText"</span>/&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-btn"</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span> <span class="attr">ng-click</span>=<span class="string">"addNewItem(actionText)"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>描述<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">th</span>&gt;</span>是否完成<span class="tag">&lt;/<span class="name">th</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">tr</span> <span class="attr">ng-repeat</span>=<span class="string">"item in todo.items | checkedItems:showComplete | orderBy:'action'"</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.action&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">td</span>&gt;</span></div><div class="line">							<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"item.done"</span> /&gt;</span></div><div class="line">							&#123;&#123;item.done ? "是" : "否"&#125;&#125;</div><div class="line">						<span class="tag">&lt;/<span class="name">td</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox-inline"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">ng-model</span>=<span class="string">"showComplete"</span> /&gt;</span>显示所有</div><div class="line">				<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/angular-1.2.5/angular.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">			<span class="keyword">var</span> todoApp = angular.module(<span class="string">'todoApp'</span>,[]);</div><div class="line">			<span class="comment">//定义数据模型</span></div><div class="line">			<span class="keyword">var</span> model = &#123;</div><div class="line">				<span class="string">"user"</span>:<span class="string">"HeJi"</span></div><div class="line">			&#125;;</div><div class="line">			todoApp.run(<span class="function"><span class="keyword">function</span>(<span class="params">$http</span>)</span>&#123;</div><div class="line">				$http.get(<span class="string">"todo.json"</span>).success(<span class="function"><span class="keyword">function</span>(<span class="params">datas</span>)</span>&#123;</div><div class="line">					model.items = datas;</div><div class="line">				&#125;)</div><div class="line">			&#125;)</div><div class="line">			<span class="comment">//定义控制器</span></div><div class="line">			todoApp.controller(<span class="string">'todoCtrl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>)</span>&#123;</div><div class="line">				$scope.todo = model;</div><div class="line">				<span class="comment">//计算未完成待办事项数目</span></div><div class="line">				$scope.incompleteCount = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">					<span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line">					angular.forEach($scope.todo.items,<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">						<span class="keyword">if</span>(!item.done)&#123;</div><div class="line">							count++;</div><div class="line">						&#125;</div><div class="line">					&#125;);</div><div class="line">					<span class="keyword">return</span> count;</div><div class="line">				&#125;</div><div class="line">				<span class="comment">//根据未完成事项数选择提醒类</span></div><div class="line">				$scope.warningLevel = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">					<span class="keyword">return</span> $scope.incompleteCount() &lt; <span class="number">3</span> ? <span class="string">"label-success"</span> : <span class="string">"label-warning"</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="comment">//添加待办事项</span></div><div class="line">				$scope.addNewItem = <span class="function"><span class="keyword">function</span>(<span class="params">actionText</span>)</span>&#123;</div><div class="line">					$scope.todo.items.push(&#123;action:actionText,done:<span class="literal">false</span>&#125;);</div><div class="line">				&#125;</div><div class="line">			&#125;);</div><div class="line">			<span class="comment">//自定义过滤器</span></div><div class="line">			todoApp.filter(<span class="string">'checkedItems'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">items,showComplete</span>)</span>&#123;</div><div class="line">					<span class="keyword">var</span> resultArr = [];</div><div class="line">					angular.forEach(items,<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">						<span class="keyword">if</span>(item.done == <span class="literal">false</span> || showComplete)&#123;</div><div class="line">							resultArr.push(item);</div><div class="line">						&#125;</div><div class="line">					&#125;)</div><div class="line">					<span class="keyword">return</span> resultArr;</div><div class="line">				&#125;</div><div class="line">			&#125;)</div><div class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>  todo.json：</p>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">	&#123;<span class="attr">"action"</span>:<span class="string">"买花"</span>,<span class="attr">"done"</span>:<span class="literal">false</span>&#125;,</div><div class="line">	&#123;<span class="attr">"action"</span>:<span class="string">"打电话给家里"</span>,<span class="attr">"done"</span>:<span class="literal">false</span>&#125;,</div><div class="line">	&#123;<span class="attr">"action"</span>:<span class="string">"买鞋子"</span>,<span class="attr">"done"</span>:<span class="literal">false</span>&#125;,</div><div class="line">	&#123;<span class="attr">"action"</span>:<span class="string">"工作总结"</span>,<span class="attr">"done"</span>:<span class="literal">true</span>&#125;</div><div class="line">]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本章使用AngularJS特性打造出一个简单的Web应用程序。&lt;/p&gt;
     
     </summary>
     
