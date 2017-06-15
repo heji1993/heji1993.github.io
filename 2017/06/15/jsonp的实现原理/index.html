@@ -146,7 +146,7 @@
             发表: <time datetime="2017-06-15T10:15:20.785Z"
                        itemprop="datePublished">2017-06-15</time>
             
-            更新: <time datetime="2017-06-15T10:19:41.076Z"
+            更新: <time datetime="2017-06-15T10:26:53.519Z"
                        itemprop="dateModified">2017-06-15</time>
             
         </div>
@@ -180,11 +180,11 @@
   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    url: <span class="string">'http://localhost:9090/test/testjsonp.do'</span>, <span class="comment">//不同的域</span></div><div class="line">    type: <span class="string">'GET'</span>, <span class="comment">// jsonp模式只有GET 是合法的</span></div><div class="line">    data: &#123;</div><div class="line">        <span class="string">'a'</span>: <span class="number">12</span>,</div><div class="line">        <span class="string">'b'</span>: <span class="number">3</span></div><div class="line">    &#125;,</div><div class="line">    dataType: <span class="string">'jsonp'</span>, <span class="comment">// 数据类型</span></div><div class="line">    jsonp: <span class="string">'cb'</span>, <span class="comment">// 指定回调函数名，与服务器端接收的一致，并回传回来</span></div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line"> 	alert(data);</div><div class="line"> &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>其实jquery 内部会转化成
-</code></pre><p><code>http://localhost:9090/test/testjsonp.do?cb=jQuery2030038573939353227615_1402643146875&amp;a=12&amp;b=3</code></p>
-<pre><code>然后动态加载
-</code></pre><p><code>&lt;script type=&quot;text/javascript&quot;src=&quot;http://localhost:9090/test/testjsonp.do?cb=jQuery2030038573939353227615_1402643146875&amp;a=12&amp;b=3&quot;&gt;&lt;/script&gt;</code></p>
-<pre><code>然后后端就会返回`jQuery2030038573939353227615_1402643146875(传递参数 )`。
+<pre><code>其实jquery 内部会转化成`http://localhost:9090/test/testjsonp.do?cb=jQuery2030038573939353227615_1402643146875&amp;a=12&amp;b=3`
+
+然后动态加载`&lt;script type=&quot;text/javascript&quot;src=&quot;http://localhost:9090/test/testjsonp.do?cb=jQuery2030038573939353227615_1402643146875&amp;a=12&amp;b=3&quot;&gt;&lt;/script&gt;`
+
+然后后端就会返回`jQuery2030038573939353227615_1402643146875(传递参数 )`。
 
 在这个过程，jQuery自动帮你生成jQuery2030038573939353227615_1402643146875回调函数并把数据取出来供success属性方法来调用。执行完毕后就 `&lt;script&gt;`会被移除
 </code></pre>
