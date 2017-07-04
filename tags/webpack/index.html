@@ -18,7 +18,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Category:   | 何机的技术博客 · No pains,no gains</title>
+    <title>Tag: webpack | 何机的技术博客 · No pains,no gains</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -112,7 +112,7 @@
 
     $(function() {
         // page-id...
-        var pageId = "categories/index.html";
+        var pageId = "tags/webpack/index.html";
         pageId = pageId.substr(0, pageId.indexOf("/"));
         if(pageId === "") pageId = "index";
 
@@ -121,69 +121,60 @@
     </script>
 
     
-
 <div class="container archive-body">
     <div class="row">
         <div class="col-xs-3 well">
-            <div class="category-title" >
-                <h2 class="category-icon">分类</h2>
-                <ul class="archive-list">
-                    
-                    <li><a data-src="/categories/AngularJS/" href="#AngularJS" title="AngularJS">AngularJS<sup class="sup-color">8</sup></a></li>
-                    
-                    <li><a data-src="/categories/CSS/" href="#CSS" title="CSS">CSS<sup class="sup-color">6</sup></a></li>
-                    
-                    <li><a data-src="/categories/DOM/" href="#DOM" title="DOM">DOM<sup class="sup-color">1</sup></a></li>
-                    
-                    <li><a data-src="/categories/HTML5/" href="#HTML5" title="HTML5">HTML5<sup class="sup-color">6</sup></a></li>
-                    
-                    <li><a data-src="/categories/JavaScript/" href="#JavaScript" title="JavaScript">JavaScript<sup class="sup-color">6</sup></a></li>
-                    
-                    <li><a data-src="/categories/Nginx/" href="#Nginx" title="Nginx">Nginx<sup class="sup-color">1</sup></a></li>
-                    
-                    <li><a data-src="/categories/Vue/" href="#Vue" title="Vue">Vue<sup class="sup-color">1</sup></a></li>
-                    
-                    <li><a data-src="/categories/jQuery/" href="#jQuery" title="jQuery">jQuery<sup class="sup-color">7</sup></a></li>
-                    
-                    <li><a data-src="/categories/工具/" href="#工具" title="工具">工具<sup class="sup-color">5</sup></a></li>
-                    
-                    <li><a data-src="/categories/微信公众号/" href="#微信公众号" title="微信公众号">微信公众号<sup class="sup-color">1</sup></a></li>
-                    
-                    <li><a data-src="/categories/数据库/" href="#数据库" title="数据库">数据库<sup class="sup-color">3</sup></a></li>
-                    
-                    <li><a data-src="/categories/正则表达式/" href="#正则表达式" title="正则表达式">正则表达式<sup class="sup-color">1</sup></a></li>
-                    
-                    <li><a data-src="/categories/移动端/" href="#移动端" title="移动端">移动端<sup class="sup-color">2</sup></a></li>
-                    
-                </ul>
-
+            <div class="archive-title" >
+                <h2 class="tag-icon">webpack</h2>
+                <div>
+                    <a href="/tags"><< 返回标签列表</a>
+                </div>
             </div>
         </div>
 
-        <div class="all-list-box">
+        <div class="col-xs-9" id="tag-list-body">
+            
+            <article class="post">
+                <div class="jumbotron">
+                    <h1><a href="/2017/07/04/webpack2常用配置/" title="webpack2常用配置">webpack2常用配置</a></h1>
+
+                    
+                        <p class="synopsis-desc">在使用webpack2之后，发现配置方式与webpack1相比变化挺大的。这里记录一下。</p>
+                    
+
+                    <p class="say-title">
+                        
+<span class="article-tags">
+    
+    Tags: <a href="/tags/webpack/">webpack</a>&nbsp;<a href="/tags/构建工具/">构建工具</a>&nbsp;
+</span>
+
+
+
+<span class="article-categories">
+    Category:
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+</span>
+
+
+                    </p>
+
+                    <p class="say-title">
+                        —— <img src="/images/1.jpg" class="img-circle index-post-avatar" />
+                        <a href="http://heji.website" target="_blank" title="何机">何机</a>
+                        于2017-07-04创作
+                    </p>
+                </div>
+            </article>
+            
+
+            
         </div>
     </div>
+
+    <div class="col-xs-19 all-list-box">
+    </div>
 </div>
-
-<script>
-$(function() {
-    var box = $('.all-list-box');
-    var first = $('.category-title a:first-of-type');
-    var list = $('.category-title a');
-
-    box.load(first.attr('data-src').toString() + ' #category-list-body');
-    first.addClass('currentTag');
-    list.each(function() {
-        $(this).click(function() {
-            var listSrc = $(this).attr('data-src').toString() + ' #category-list-body';
-            box.load(listSrc);
-            list.removeClass('currentTag');
-            $(this).addClass('currentTag');
-        });
-    });
-});
-</script>
-
 
     <footer id="footer">
         <div id="bottom-tip">
