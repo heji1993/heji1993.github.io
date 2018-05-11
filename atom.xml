@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2018-03-26T09:09:48.055Z</updated>
+  <updated>2018-05-11T08:41:57.386Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -14,6 +14,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java枚举类型</title>
+    <link href="http://heji.website/2018/05/11/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://heji.website/2018/05/11/Java枚举类型/</id>
+    <published>2018-05-11T08:34:19.903Z</published>
+    <updated>2018-05-11T08:41:57.386Z</updated>
+    
+    <content type="html"><![CDATA[<p>枚举类型（Enumerated Type） 很早就出现在编程语言中，它被用来将一组类似的值包含到一种类型当中。而这种枚举类型的名称则会被定义成独一无二的类型描述符，在这一点上和常量的定义相似。不过相比较常量类型，枚举类型可以为申明的变量提供更大的取值范围。</p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="枚举用法"><a href="#枚举用法" class="headerlink" title="枚举用法"></a>枚举用法</h1><h2 id="example1"><a href="#example1" class="headerlink" title="example1"></a>example1</h2><p><code>TypeEnum.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TypeEnum &#123;  </div><div class="line">    VIDEO, AUDIO, TEXT, IMAGE  <span class="comment">// 可以把每个元素看做是一个TypeEnum类型的实例</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>Entity.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entity</span> </span>&#123;  </div><div class="line">      </div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;  </div><div class="line">    <span class="keyword">private</span> TypeEnum type;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> id;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.id = id;  </div><div class="line">    &#125;  </div><div class="line">          </div><div class="line">    <span class="function"><span class="keyword">public</span> TypeEnum <span class="title">getType</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> type;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setType</span><span class="params">(TypeEnum type)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.type = type;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在为Entity对象赋值的时候，就可以这样：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Entity e = <span class="keyword">new</span> Entity();  </div><div class="line">e.setId(<span class="number">10</span>);  </div><div class="line">e.setType(TypeEnum.AUDIO);</div></pre></td></tr></table></figure></p>
+<h2 id="example2"><a href="#example2" class="headerlink" title="example2"></a>example2</h2><p>如果要为每个枚举值指定属性，则在枚举中必须声明一个参数为属性对应类型的构造方法（不能是public）。否则编译器将给出The constructor TypeEnum(int, String) is undefined的错误。<br><code>TypeEnum.java</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TypeEnum &#123;  </div><div class="line">    VIDEO(<span class="number">1</span>, <span class="string">"视频"</span>), AUDIO(<span class="number">2</span>, <span class="string">"音频"</span>), TEXT(<span class="number">3</span>, <span class="string">"文本"</span>), IMAGE(<span class="number">4</span>, <span class="string">"图像"</span>);  </div><div class="line">      </div><div class="line">    <span class="keyword">int</span> value;  </div><div class="line">    String name;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">TypeEnum</span><span class="params">(<span class="keyword">int</span> value, String name)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.value = value;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> value;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">TypeEnum type = TypeEnum.TEXT;//type的value属性值为3，name属性值为文本。  </div><div class="line">System.out.println(type.getValue());//屏幕输出3。</div><div class="line">System.out.println(type.getName());//屏幕输出文本。</div></pre></td></tr></table></figure>
+<h2 id="example3"><a href="#example3" class="headerlink" title="example3"></a>example3</h2><p>枚举类型有一个常用的方法<code>static T[] values()</code>，该方法返回该枚举的所有值。<br>现在，假设要为该枚举实现一个根据整数值生成枚举值的方法，可以这样做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> TypeEnum &#123;  </div><div class="line">    VIDEO(<span class="number">1</span>, <span class="string">"视频"</span>), AUDIO(<span class="number">2</span>, <span class="string">"音频"</span>), TEXT(<span class="number">3</span>, <span class="string">"文本"</span>), IMAGE(<span class="number">4</span>, <span class="string">"图像"</span>);  </div><div class="line">      </div><div class="line">    <span class="keyword">int</span> value;  </div><div class="line">    String name;  </div><div class="line">      </div><div class="line">    TypeEnum(<span class="keyword">int</span> value, String name) &#123;  </div><div class="line">        <span class="keyword">this</span>.value = value;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> value;  </div><div class="line">    &#125;  </div><div class="line">      </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TypeEnum <span class="title">getByValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;  </div><div class="line">        <span class="keyword">for</span>(TypeEnum typeEnum : TypeEnum.values()) &#123;  </div><div class="line">            <span class="keyword">if</span>(typeEnum.value == value) &#123;  </div><div class="line">                <span class="keyword">return</span> typeEnum;  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No element matches "</span> + value);  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="枚举类说明"><a href="#枚举类说明" class="headerlink" title="枚举类说明"></a>枚举类说明</h1><ul>
+<li>在某些情况下，一个类的对象时有限且固定的，如季节类，它只有春夏秋冬4个对象这种实例有限且固定的类，在 Java 中被称为枚举类；</li>
+<li>在 Java 中使用 enum 关键字来定义枚举类，其地位与 class、interface 相同；</li>
+<li><p>枚举类是一种特殊的类，它和普通的类一样，有自己的成员变量、成员方法、构造器 (只能使用 private 访问修饰符，所以无法从外部调用构造器，构造器只在构造枚举值时被调用)；</p>
+</li>
+<li><p>使用 enum 定义的枚举类默认继承了 java.lang.Enum 类，并实现了 java.lang.Seriablizable 和 java.lang.Comparable 两个接口;</p>
+</li>
+<li>所有的枚举值都是 public static final 的，且非抽象的枚举类不能再派生子类；</li>
+<li>枚举类的所有实例(枚举值)必须在枚举类的第一行显式地列出，否则这个枚举类将永远不能产生实例。列出这些实例(枚举值)时，系统会自动添加 public static final 修饰，无需程序员显式添加。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;枚举类型（Enumerated Type） 很早就出现在编程语言中，它被用来将一组类似的值包含到一种类型当中。而这种枚举类型的名称则会被定义成独一无二的类型描述符，在这一点上和常量的定义相似。不过相比较常量类型，枚举类型可以为申明的变量提供更大的取值范围。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://heji.website/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://heji.website/tags/Java/"/>
+    
+      <category term="枚举" scheme="http://heji.website/tags/%E6%9E%9A%E4%B8%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>RxJava2</title>
@@ -1144,46 +1187,6 @@
       <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
     
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AngularJS踩坑记(未完待续)</title>
-    <link href="http://heji.website/2017/03/15/AngularJS%E8%B8%A9%E5%9D%91%E8%AE%B0/"/>
-    <id>http://heji.website/2017/03/15/AngularJS踩坑记/</id>
-    <published>2017-03-15T02:21:22.811Z</published>
-    <updated>2017-03-15T03:56:09.112Z</updated>
-    
-    <content type="html"><![CDATA[<p>第一次把AngularJS应用到生产开发，发现很多需要注意的问题。</p>
-<a id="more"></a>
-<ul>
-<li><p>正确理解AngularJS擅长的SPA（单页面应用）的开发，因为AngularJS应用每次启动都需要重新编译HTML，所以AngularJS推荐的是初始页面不变，页面的跳转只是页面部分DOM的替换。从这一点看，那些频繁进行完整HTML的跳转，一次又一次初始化AngularJS应用的项目无疑是不恰当的。</p>
-</li>
-<li><p>关于服务注入的问题<br>  <strong>推断式注入：</strong></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> app.controller(<span class="string">"myCtrl1"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope,hello1,hello2</span>)</span>&#123;</div><div class="line">    $scope.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        hello1.hello();</div><div class="line">        hello2.hello();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>  这种注入方式，需要在保证参数名称与服务名称相同。如果代码要经过压缩等操作，就会导致注入失败。<br>  <strong>内联式注入：</strong></p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">app.controller(<span class="string">"myCtrl3"</span>,[<span class="string">'$scope'</span>,<span class="string">'hello1'</span>,<span class="string">'hello2'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope,hello1,hello2</span>)</span>&#123;</div><div class="line">    $scope.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        hello1.hello();</div><div class="line">        hello2.hello();</div><div class="line">    &#125;</div><div class="line">&#125;]);</div></pre></td></tr></table></figure>
-</li>
-<li><p>AngularJS与第三方技术整合，如果需要在第三方框架准备完成之后再初始化AngularJS，此时推荐手动初始化：</p>
-  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//等待设备准备完成</span></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"plusready"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//设置APP只能竖屏显示</span></div><div class="line">	plus.screen.lockOrientation(<span class="string">"portrait-primary"</span>);</div><div class="line">	<span class="comment">//app依赖于框架的组件以及app自身的demo模块</span></div><div class="line">	angular.module(<span class="string">"standardApp"</span>,[<span class="string">"pd.src"</span>,<span class="string">"pd.action"</span>,<span class="string">"pd.view"</span>,<span class="string">"standardApp.login"</span>])</div><div class="line">	<span class="comment">//配置常量</span></div><div class="line">	.constant(<span class="string">"VIEWINSTYLE"</span>, <span class="string">"slide-in-right"</span>)</div><div class="line">	<span class="comment">//公司外网测试:http://202.104.140.36:8888/zwxxpt</span></div><div class="line">	.constant(<span class="string">"SERVICEURL"</span>, <span class="string">"http://202.104.140.36:8888/zwxxpt"</span>) </div><div class="line">	<span class="comment">//后端端服务请求path</span></div><div class="line">	.constant(<span class="string">"SERVICEPATH"</span>, <span class="string">"/invoke"</span>) </div><div class="line">	<span class="comment">//后端登陆请求path</span></div><div class="line">	.constant(<span class="string">"LGOINPATH"</span>, <span class="string">"/webLogin.do"</span>) </div><div class="line">	<span class="comment">//配置是否自动升级</span></div><div class="line">	.constant(<span class="string">"AUTOUPVERSION"</span>, <span class="literal">true</span>)</div><div class="line">	<span class="comment">//版本升级检测路径</span></div><div class="line">	.constant(<span class="string">"CHECKVERSIONURL"</span>, <span class="string">"/"</span>)</div><div class="line">	<span class="comment">//请求过期时间,15秒</span></div><div class="line">	.constant(<span class="string">"TIMEOUT"</span>, <span class="number">15000</span>)</div><div class="line">	<span class="comment">//默认下载的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEDOWNLOADURL"</span>, <span class="string">"/pages/platform/config/xtcs/downFileProcessor.jsp"</span>) </div><div class="line">	<span class="comment">//附件下载保存的路径,注意不要使用_downloads/temp/作为路径，会找不到文件。且要以_downloads为根目录</span></div><div class="line">	.constant(<span class="string">"DOWNLOADPATH"</span>, <span class="string">"_downloads/_temp/"</span>)</div><div class="line">	<span class="comment">//服务器端下载的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEDOWNLOADURL"</span>, <span class="string">"/pages/platform/config/xtcs/downFileProcessor.jsp"</span>)</div><div class="line">	<span class="comment">//服务器端上传的路径</span></div><div class="line">	.constant(<span class="string">"SERVICEUPLOADURL"</span>, <span class="string">"/upload/uploadfile.do"</span>) </div><div class="line">	<span class="comment">//调试用常量</span></div><div class="line">	.constant(<span class="string">"IMEI"</span>, <span class="string">"3C:07:54:04:E2:E5"</span>)</div><div class="line">	.constant(<span class="string">"SIM"</span>, <span class="string">"131111111"</span>);</div><div class="line">	<span class="comment">//手动初始化Angular应用</span></div><div class="line">	angular.bootstrap(<span class="built_in">document</span>,[<span class="string">"standardApp"</span>]);</div><div class="line">&#125;,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
-</li>
-<li><p>当一个元素使用了多个自定义指令时，指令不应该存在多个独立的作用域即应该都使用父作用域，设置为false（默认）或只能有一个独立的作用域（其中一个指令使用了独立的作用域），另一种解决方法是指令不要用在一个元素上。</p>
-</li>
-<li><p>为方便后续扩展和迁移，框架底层模块应该要尽量独立，也就是说，底层模块之间尽量减少依赖。</p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;第一次把AngularJS应用到生产开发，发现很多需要注意的问题。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="AngularJS" scheme="http://heji.website/categories/AngularJS/"/>
-    
-    
-      <category term="AngularJS" scheme="http://heji.website/tags/AngularJS/"/>
     
   </entry>
   
