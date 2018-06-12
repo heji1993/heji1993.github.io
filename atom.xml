@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://heji.website/"/>
-  <updated>2018-05-11T08:41:57.386Z</updated>
+  <updated>2018-06-12T01:52:36.379Z</updated>
   <id>http://heji.website/</id>
   
   <author>
@@ -14,6 +14,179 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java注解</title>
+    <link href="http://heji.website/2018/06/12/Java%E6%B3%A8%E8%A7%A3/"/>
+    <id>http://heji.website/2018/06/12/Java注解/</id>
+    <published>2018-06-12T01:48:04.207Z</published>
+    <updated>2018-06-12T01:52:36.379Z</updated>
+    
+    <content type="html"><![CDATA[<p>Java1.5引入了注解，当前许多java框架中大量使用注解，如Hibernate、Jersey、Spring。注解作为程序的元数据嵌入到程序当中。注解可以被一些解析工具或者是编译工具进行解析。我们也可以声明注解在编译过程或执行时产生作用。  </p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h2><p>官方解释：</p>
+<blockquote>
+<p>Java 注解用于为 Java 代码提供元数据。作为元数据，注解不直接影响你的代码执行，但也有一些类型的注解实际上可以用于这一目的。Java 注解是从 Java5 开始添加到 Java 的。</p>
+</blockquote>
+<p>通俗解释：</p>
+<blockquote>
+<p>想像代码具有生命，注解就是对于代码中某些鲜活个体的贴上去的一张标签。简化来讲，注解如同一张标签。</p>
+</blockquote>
+<h2 id="定义和使用"><a href="#定义和使用" class="headerlink" title="定义和使用"></a>定义和使用</h2><p>注解通过 @interface 关键字进行定义。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestAnnotation &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>它的形式跟接口很类似，不过前面多了一个 <code>@</code> 符号。上面的代码就创建了一个名字为 <code>TestAnnotaion</code> 的注解。</p>
+<p>你可以简单理解为创建了一张名字为 <code>TestAnnotation</code> 的标签。  </p>
+<p>使用上一步定义的<code>TestAnnotation</code>注解：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@TestAnnotation</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以简单理解为将 TestAnnotation 这张标签贴到 Test 这个类上面。  </p>
+<p>不过，要想注解能够正常工作，还需要介绍一下一个新的概念那就是元注解。  </p>
+<h1 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h1><p>元注解是可以注解到注解上的注解，或者说元注解是一种基本注解，但是它能够应用到其它的注解上面。  </p>
+<p>可以这样理解。元注解也是一张标签，但是它是一张特殊的标签，它的作用和目的就是给其他普通的标签进行解释说明的。</p>
+<p>元标签有 <code>@Retention</code>、<code>@Documented</code>、<code>@Target</code>、<code>@Inherited</code>、<code>@Repeatable</code> 5 种。  </p>
+<h2 id="Retention"><a href="#Retention" class="headerlink" title="@Retention"></a>@Retention</h2><p>Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。  </p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RetentionPolicy.SOURCE</td>
+<td>注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。</td>
+</tr>
+<tr>
+<td>RetentionPolicy.CLASS</td>
+<td>注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。</td>
+</tr>
+<tr>
+<td>RetentionPolicy.RUNTIME</td>
+<td>注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们。</td>
+</tr>
+</tbody>
+</table>
+<p>我们可以这样的方式来加深理解，@Retention 去给一张标签解释的时候，它指定了这张标签张贴的时间。@Retention 相当于给一张标签上面盖了一张时间戳，时间戳指明了标签张贴的时间周期。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestAnnotation &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h2><p>顾名思义，这个元注解肯定是和文档有关。它的作用是能够将注解中的元素包含到 Javadoc 中去。  </p>
+<h2 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h2><p>Target 是目标的意思，@Target 指定了注解运用的地方。</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ElementType.ANNOTATION_TYPE</td>
+<td>可以给一个注解进行注解</td>
+</tr>
+<tr>
+<td>ElementType.CONSTRUCTOR</td>
+<td>可以给构造函数进行注解</td>
+</tr>
+<tr>
+<td>ElementType.FIELD</td>
+<td>可以给属性进行注解</td>
+</tr>
+<tr>
+<td>ElementType.LOCAL_VARIABLE</td>
+<td>可以给局部变量进行注解</td>
+</tr>
+<tr>
+<td>ElementType.METHOD</td>
+<td>可以给方法进行注解</td>
+</tr>
+<tr>
+<td>ElementType.PACKAGE</td>
+<td>可以给一个包进行注解</td>
+</tr>
+<tr>
+<td>ElementType.PARAMETER</td>
+<td>可以给一个方法内的参数进行注解</td>
+</tr>
+<tr>
+<td>ElementType.TYPE</td>
+<td>可以给一个类型进行注解，比如类、接口、枚举</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h2><p><code>Inherited</code>  是继承的意思，但是它并不是说注解本身可以继承，而是说如果一个超类被 <code>@Inherited</code> 注解过的注解进行注解的话，那么如果它的子类没有被任何注解应用的话，那么这个子类就继承了超类的注解。<br>说的比较抽象。代码来解释。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Inherited</span></div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@interface</span> Test &#123;&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Test</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>注解 Test 被 @Inherited 修饰，之后类 A 被 Test 注解，类 B 继承 A,类 B 也拥有 Test 这个注解。  </p>
+<h2 id="Repeatable"><a href="#Repeatable" class="headerlink" title="@Repeatable"></a>@Repeatable</h2><p>Repeatable 自然是可重复的意思。<code>@Repeatable</code> 是 Java 1.8 才加进来的，所以算是一个新的特性，表示允许在同一申明类型（类，属性，或方法）多次使用同一个注解。  </p>
+<p>什么样的注解会多次应用呢？通常是注解的值可以同时取多个。</p>
+<p>举个例子，一个人他既是程序员又是产品经理,同时他还是个画家。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@interface</span> Persons &#123;</div><div class="line">    Person[]  value();</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Repeatable</span>(value = Persons.class)</div><div class="line"><span class="meta">@interface</span> Person&#123;</div><div class="line">    <span class="function">String <span class="title">role</span><span class="params">()</span> <span class="keyword">default</span> ""</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">@Person</span>(role=<span class="string">"artist"</span>)</div><div class="line"><span class="meta">@Person</span>(role=<span class="string">"coder"</span>)</div><div class="line"><span class="meta">@Person</span>(role=<span class="string">"PM"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuperMan</span></span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由另一个注解<code>Persons</code>来存储重复注解。按照规定，它里面必须要有一个 value 的属性，属性类型是一个被 @Repeatable 注解过的注解数组，注意它是数组。  </p>
+<p>我们可能对于 <code>@Person(role=”PM”)</code> 括号里面的内容感兴趣，它其实就是给 Person 这个注解的 role 属性赋值为 PM，下面就讲解注解的属性这一块。  </p>
+<h1 id="注解的属性"><a href="#注解的属性" class="headerlink" title="注解的属性"></a>注解的属性</h1><p>注解的属性也叫做成员变量。注解只有成员变量，没有方法。注解的成员变量在注解的定义中以“无形参的方法”形式来声明，其方法名定义了该成员变量的名字，其返回值定义了该成员变量的类型。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestAnnotation &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">id</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">msg</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码定义了 TestAnnotation 这个注解中拥有 id 和 msg 两个属性。在使用的时候，我们应该给它们进行赋值。</p>
+<p>赋值的方式是在注解的括号内以 value=”” 形式，多个属性之前用 ，隔开。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@TestAnnotation</span>(id=<span class="number">3</span>,msg=<span class="string">"hello annotation"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注解中属性可以有默认值，默认值需要用 default 关键值指定。比如：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(ElementType.TYPE)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TestAnnotation &#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">id</span><span class="params">()</span> <span class="keyword">default</span> -1</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">msg</span><span class="params">()</span> <span class="keyword">default</span> "Hi"</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，还有一种情况。如果一个注解内仅仅只有一个名字为 value 的属性时，应用这个注解时可以直接接属性值填写到括号内。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Check &#123;</div><div class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面代码中，Check 这个注解只有 value 这个属性。所以可以这样应用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Check</span>(<span class="string">"hi"</span>)</div><div class="line"><span class="keyword">int</span> a;</div></pre></td></tr></table></figure></p>
+<p>这和下面的效果是一样的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Check</span>(value=<span class="string">"hi"</span>)</div><div class="line"><span class="keyword">int</span> a;</div></pre></td></tr></table></figure></p>
+<h1 id="Java预置的注解"><a href="#Java预置的注解" class="headerlink" title="Java预置的注解"></a>Java预置的注解</h1><h2 id="Deprecated"><a href="#Deprecated" class="headerlink" title="@Deprecated"></a>@Deprecated</h2><p>这个元素是用来标记过时的元素。当调用被这个注解标记的方法时，编译器会发出警告。</p>
+<h2 id="Override"><a href="#Override" class="headerlink" title="@Override"></a>@Override</h2><p>提示子类要复写父类中被 @Override 修饰的方法</p>
+<h2 id="SuppressWarnings"><a href="#SuppressWarnings" class="headerlink" title="@SuppressWarnings"></a>@SuppressWarnings</h2><p>阻止警告的意思。之前说过调用被 @Deprecated 注解的方法后，编译器会警告提醒，而有时候开发者会忽略这种警告，他们可以在调用的地方通过 @SuppressWarnings 达到目的。  </p>
+<h2 id="SafeVarargs"><a href="#SafeVarargs" class="headerlink" title="@SafeVarargs"></a>@SafeVarargs</h2><p>参数安全类型注解。  </p>
+<h2 id="FunctionalInterface（推荐另外学习）"><a href="#FunctionalInterface（推荐另外学习）" class="headerlink" title="@FunctionalInterface（推荐另外学习）"></a>@FunctionalInterface（推荐另外学习）</h2><p>函数式接口注解，这个是 Java 1.8 版本引入的新特性。函数式编程很火，所以 Java 8 也及时添加了这个特性。  </p>
+<h1 id="注解的提取"><a href="#注解的提取" class="headerlink" title="注解的提取"></a>注解的提取</h1><p>用标签来比作注解，前面的内容是讲怎么写注解，然后贴到哪个地方去，而现在我们要做的工作就是检阅这些标签内容。 形象的比喻就是你把这些注解标签在合适的时候撕下来，然后检阅上面的内容信息。  </p>
+<p>要想正确检阅注解，离不开一个手段，那就是反射。  </p>
+<h2 id="注解与反射"><a href="#注解与反射" class="headerlink" title="注解与反射"></a>注解与反射</h2><ul>
+<li><p>首先可以通过 Class 对象的 isAnnotationPresent() 方法判断它是否应用了某个注解  </p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnnotationPresent</span><span class="params">(Class&lt;? extends Annotation&gt; annotationClass)</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后通过 getAnnotation() 方法来获取 Annotation 对象。  </p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> &lt;A extends Annotation&gt; <span class="function">A <span class="title">getAnnotation</span><span class="params">(Class&lt;A&gt; annotationClass)</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>  或者是 getAnnotations() 方法。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Annotation[] getAnnotations() &#123;&#125;</div></pre></td></tr></table></figure>
+<p>  前一种方法返回指定类型的注解，后一种方法返回注解到这个元素上的所有注解。<br>  如果获取到的 Annotation 如果不为 null，则就可以调用它们的属性方法了。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@TestAnnotation</span>(msg=<span class="string">"hello"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Check</span>(value=<span class="string">"hi"</span>)</div><div class="line">    <span class="keyword">int</span> a;</div><div class="line"></div><div class="line">    <span class="meta">@Perform</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMethod</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"deprecation"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</div><div class="line">        Hero hero = <span class="keyword">new</span> Hero();</div><div class="line">        hero.say();</div><div class="line">        hero.speak();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">boolean</span> hasAnnotation = Test.class.isAnnotationPresent(TestAnnotation.class);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> ( hasAnnotation ) &#123;</div><div class="line">            TestAnnotation testAnnotation = Test.class.getAnnotation(TestAnnotation.class);</div><div class="line">            <span class="comment">//获取类的注解</span></div><div class="line">            System.out.println(<span class="string">"id:"</span>+testAnnotation.id());</div><div class="line">            System.out.println(<span class="string">"msg:"</span>+testAnnotation.msg());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            Field a = Test.class.getDeclaredField(<span class="string">"a"</span>);</div><div class="line">            a.setAccessible(<span class="keyword">true</span>);</div><div class="line">            <span class="comment">//获取一个成员变量上的注解</span></div><div class="line">            Check check = a.getAnnotation(Check.class);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> ( check != <span class="keyword">null</span> ) &#123;</div><div class="line">                System.out.println(<span class="string">"check value:"</span>+check.value());</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            Method testMethod = Test.class.getDeclaredMethod(<span class="string">"testMethod"</span>);</div><div class="line"></div><div class="line">            <span class="keyword">if</span> ( testMethod != <span class="keyword">null</span> ) &#123;</div><div class="line">                <span class="comment">// 获取方法中的注解</span></div><div class="line">                Annotation[] ans = testMethod.getAnnotations();</div><div class="line">                <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ans.length;i++) &#123;</div><div class="line">                    System.out.println(<span class="string">"method testMethod annotation:"</span>+ans[i].annotationType().getSimpleName());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</div><div class="line">            <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">            e.printStackTrace();</div><div class="line">            System.out.println(e.getMessage());</div><div class="line">        &#125; <span class="keyword">catch</span> (SecurityException e) &#123;</div><div class="line">            <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">            e.printStackTrace();</div><div class="line">            System.out.println(e.getMessage());</div><div class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</div><div class="line">            <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">            e.printStackTrace();</div><div class="line">            System.out.println(e.getMessage());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要注意的是，如果一个注解要在运行时被成功提取，那么 <code>@Retention(RetentionPolicy.RUNTIME)</code> 是必须的。</p>
+<h1 id="注解的使用场景"><a href="#注解的使用场景" class="headerlink" title="注解的使用场景"></a>注解的使用场景</h1><blockquote>
+<p>注解是一系列元数据，它提供数据用来解释程序代码，但是注解并非是所解释的代码本身的一部分。注解对于代码的运行效果没有直接影响。<br>注解有许多用处，主要如下： </p>
+<ul>
+<li>提供信息给编译器： 编译器可以利用注解来探测错误和警告信息 </li>
+<li>编译阶段时的处理： 软件工具可以用来利用注解信息来生成代码、Html文档或者做其它相应处理。 </li>
+<li>运行时的处理： 某些注解可以在程序运行的时候接受代码的提取</li>
+</ul>
+</blockquote>
+<p>当开发者使用了Annotation 修饰了类、方法、Field 等成员之后，这些 Annotation 不会自己生效，必须由开发者提供相应的代码来提取并处理 Annotation 信息。这些处理提取和处理 Annotation 的代码统称为 APT（Annotation Processing Tool)。  </p>
+<p>现在，我们可以给自己答案了，注解有什么用？给谁用？给 编译器或者 APT 用的。  </p>
+<h1 id="亲手自定义注解完成某个目的"><a href="#亲手自定义注解完成某个目的" class="headerlink" title="亲手自定义注解完成某个目的"></a>亲手自定义注解完成某个目的</h1><p>我要写一个测试框架，测试程序员的代码有无明显的异常。  </p>
+<p>—— 程序员 A : 我写了一个类，它的名字叫做 NoBug，因为它所有的方法都没有错误。<br>—— 我：自信是好事，不过为了防止意外，让我测试一下如何？<br>—— 程序员 A: 怎么测试？<br>—— 我：把你写的代码的方法都加上 @Jiecha 这个注解就好了。<br>—— 程序员 A: 好的。  </p>
+<p><strong>NoBug.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> ceshi;</div><div class="line"><span class="keyword">import</span> ceshi.Jiecha;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NoBug</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Jiecha</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">suanShu</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"1234567890"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Jiecha</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jiafa</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"1+1="</span>+<span class="number">1</span>+<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Jiecha</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jiefa</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"1-1="</span>+(<span class="number">1</span>-<span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Jiecha</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">chengfa</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"3 x 5="</span>+ <span class="number">3</span>*<span class="number">5</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Jiecha</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">chufa</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"6 / 0="</span>+ <span class="number">6</span> / <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ziwojieshao</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"我写的程序没有 bug!"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面的代码，有些方法上面运用了 @Jiecha 注解。  </p>
+<p>这个注解是我写的测试软件框架中定义的注解。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> ceshi;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</div><div class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</div><div class="line"></div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Jiecha &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">```  </div><div class="line"></div><div class="line">然后，我再编写一个测试类 TestTool 就可以测试 NoBug 相应的方法了。  </div><div class="line"></div><div class="line">```Java</div><div class="line"><span class="keyword">package</span> ceshi;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.Method;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestTool</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">        NoBug testobj = <span class="keyword">new</span> NoBug();</div><div class="line"></div><div class="line">        Class clazz = testobj.getClass();</div><div class="line"></div><div class="line">        Method[] method = clazz.getDeclaredMethods();</div><div class="line">        <span class="comment">//用来记录测试产生的 log 信息</span></div><div class="line">        StringBuilder log = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="comment">// 记录异常的次数</span></div><div class="line">        <span class="keyword">int</span> errornum = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> ( Method m: method ) &#123;</div><div class="line">            <span class="comment">// 只有被 @Jiecha 标注过的方法才进行测试</span></div><div class="line">            <span class="keyword">if</span> ( m.isAnnotationPresent( Jiecha.class )) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    m.setAccessible(<span class="keyword">true</span>);</div><div class="line">                    m.invoke(testobj, <span class="keyword">null</span>);</div><div class="line"></div><div class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                    <span class="comment">// TODO Auto-generated catch block</span></div><div class="line">                    <span class="comment">//e.printStackTrace();</span></div><div class="line">                    errornum++;</div><div class="line">                    log.append(m.getName());</div><div class="line">                    log.append(<span class="string">" "</span>);</div><div class="line">                    log.append(<span class="string">"has error:"</span>);</div><div class="line">                    log.append(<span class="string">"\n\r  caused by "</span>);</div><div class="line">                    <span class="comment">//记录测试过程中，发生的异常的名称</span></div><div class="line">                    log.append(e.getCause().getClass().getSimpleName());</div><div class="line">                    log.append(<span class="string">"\n\r"</span>);</div><div class="line">                    <span class="comment">//记录测试过程中，发生的异常的具体信息</span></div><div class="line">                    log.append(e.getCause().getMessage());</div><div class="line">                    log.append(<span class="string">"\n\r"</span>);</div><div class="line">                &#125; </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        log.append(clazz.getSimpleName());</div><div class="line">        log.append(<span class="string">" has  "</span>);</div><div class="line">        log.append(errornum);</div><div class="line">        log.append(<span class="string">" error."</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 生成测试报告</span></div><div class="line">        System.out.println(log.toString());</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试的结果是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="number">1234567890</span></div><div class="line"><span class="number">1</span>+<span class="number">1</span>=<span class="number">11</span></div><div class="line"><span class="number">1</span>-<span class="number">1</span>=<span class="number">0</span></div><div class="line"><span class="number">3</span> x <span class="number">5</span>=<span class="number">15</span></div><div class="line">chufa has error:</div><div class="line"></div><div class="line">  caused by ArithmeticException</div><div class="line"></div><div class="line">/ by zero</div><div class="line"></div><div class="line">NoBug has  <span class="number">1</span> error.</div></pre></td></tr></table></figure>
+<p>这样，通过注解我完成了我自己的目的，那就是对别人的代码进行测试。  </p>
+<p>所以，再问我注解什么时候用？我只能告诉你，这取决于你想利用它干什么用。  </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java1.5引入了注解，当前许多java框架中大量使用注解，如Hibernate、Jersey、Spring。注解作为程序的元数据嵌入到程序当中。注解可以被一些解析工具或者是编译工具进行解析。我们也可以声明注解在编译过程或执行时产生作用。  &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="http://heji.website/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://heji.website/tags/Java/"/>
+    
+      <category term="注解" scheme="http://heji.website/tags/%E6%B3%A8%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>Java枚举类型</title>
@@ -1156,37 +1329,6 @@
       <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
       <category term="jQuery" scheme="http://heji.website/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Array.prototype.slice.call(arguments)的理解</title>
-    <link href="http://heji.website/2017/03/31/Array.prototype.slice.call(arguments)%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://heji.website/2017/03/31/Array.prototype.slice.call(arguments)的理解/</id>
-    <published>2017-03-31T04:14:55.718Z</published>
-    <updated>2017-03-31T04:18:29.439Z</updated>
-    
-    <content type="html"><![CDATA[<p>JavaScript中call和apply方法在一些框架的源码中经常遇到，这里简单介绍一下这两个方法。以Array.prototype.slice.call(arguments)为例</p>
-<a id="more"></a>
-<p>Array.prototype.slice.call(arguments)能将具有length属性的对象转成数组，除了IE下的节点集合（因为ie下的dom对象是以com对象的形式实现的，js对象与com对象不能进行转换）<br>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=&#123;length:<span class="number">2</span>,<span class="number">0</span>:<span class="string">'first'</span>,<span class="number">1</span>:<span class="string">'second'</span>&#125;;</div><div class="line"><span class="built_in">Array</span>.prototype.slice.call(a);<span class="comment">//  ["first", "second"]</span></div><div class="line"><span class="keyword">var</span> a=&#123;length:<span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">Array</span>.prototype.slice.call(a);<span class="comment">//  [undefined, undefined]</span></div></pre></td></tr></table></figure></p>
-<p>在说明Array.prototype.slice.call(arguments)之前，先举一个call用法的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);    <span class="comment">//this表示'littledu'</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="keyword">this</span>);      <span class="comment">//  Object</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> <span class="keyword">instanceof</span> <span class="built_in">String</span>);    <span class="comment">// true</span></div><div class="line">&#125;</div><div class="line">a.call(<span class="string">'littledu'</span>);</div></pre></td></tr></table></figure></p>
-<p>调用call方法会把构造函数内部的this指向参数代表的对象<br>现在我们分析下Array.prototype.slice.call(arguments)。slice是Array原型对象的一个属性（以函数的形式存在）。当调用slice.call方法时，slice函数内部的this引用就指向arguments[0]<br>此时，我们再看看splice方法的实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.slice = <span class="function"><span class="keyword">function</span>(<span class="params">start,end</span>)</span>&#123;</div><div class="line">     <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line">     start = start || <span class="number">0</span>;</div><div class="line">     end = end || <span class="keyword">this</span>.length; <span class="comment">//this指向调用的对象，当用了call后，能够改变this的指向，也就是指向传进来的对象，这是关键</span></div><div class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> i = start; i &lt; end; i++)&#123;</div><div class="line">          result.push(<span class="keyword">this</span>[i]);</div><div class="line">     &#125;</div><div class="line">     <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>也就是说Array.prototype.slice.call(arguments)的参数对象必须要有length属性，并且其他属性的key必须是从0开始的索引才能把对象转成数组。<br>最后，附个转成数组的通用函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toArray = <span class="function"><span class="keyword">function</span>(<span class="params">s</span>)</span>&#123;</div><div class="line">     <span class="keyword">try</span>&#123;</div><div class="line">         <span class="keyword">return</span> <span class="built_in">Array</span>.prototype.slice.call(s);</div><div class="line">     &#125; <span class="keyword">catch</span>(e)&#123;</div><div class="line">           <span class="comment">//当没有length属性时</span></div><div class="line">             <span class="keyword">var</span> arr = [];</div><div class="line">             <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = s.length; i &lt; len; i++)&#123;</div><div class="line">                 <span class="comment">//arr.push(s[i]);</span></div><div class="line">                  arr[i] = s[i];  <span class="comment">//据说这样比push快</span></div><div class="line">             &#125;</div><div class="line">              <span class="keyword">return</span> arr;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>另外，call方法和apply方法很类似，区分它们看下面这句代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">foo.call(<span class="keyword">this</span>, arg1,arg2,arg3) == foo.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)==<span class="keyword">this</span>.foo(arg1, arg2, arg3)</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;JavaScript中call和apply方法在一些框架的源码中经常遇到，这里简单介绍一下这两个方法。以Array.prototype.slice.call(arguments)为例&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://heji.website/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://heji.website/tags/JavaScript/"/>
-    
-      <category term="web前端" scheme="http://heji.website/tags/web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
