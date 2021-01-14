@@ -9,6 +9,31 @@
       ]
     },
     "formConfig": {
+      "username": {
+        "type": "input",
+        "label": "姓名",
+        "value": "",
+        "placeholder": "请输入姓名"
+      },
+      "cardNo": {
+        "type": "input",
+        "label": "工号",
+        "value": "",
+        "placeholder": "请输入工号"
+      },
+      "address": {
+        "type": "input",
+        "label": "详细地址",
+        "value": "",
+        "placeholder": "请输入详细地址"
+      },
+      "area": {
+        "type": "input",
+        "valueType": "number",
+        "label": "房屋面积",
+        "value": "",
+        "placeholder": "请输入房屋面积(㎡)"
+      },
       "term": {
         "type": "picker",
         "label": "贷款期限",
