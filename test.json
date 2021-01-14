@@ -7,6 +7,30 @@
         "首套最高7成",
         "全线上申请"
       ]
+    },
+    "formConfig": {
+      "term": {
+        "type": "picker",
+        "label": "贷款期限",
+        "value": {},
+        "options": [
+          {
+            "value": "1",
+            "label": "1年(12期还款)"
+          },
+          {
+            "value": "2",
+            "label": "2年(24期还款)"
+          }
+        ],
+        "placeholder": "请选择贷款期限"
+      },
+      "loanAmt": {
+        "type": "input",
+        "label": "贷款金额",
+        "value": "",
+        "placeholder": "请输入贷款金额"
+      }
     }
   }
 }
