@@ -1,5 +1,30 @@
 {
   "pages/index/index": {
+    "process": {
+      "title": "产品流程",
+      "steps": [
+        {
+          "title": "新房认购",
+          "desc": "交定金",
+          "icon": "https://www.elimen.com.cn/wx-mini/image/subscription@3x.png"
+        },
+        {
+          "title": "申请",
+          "desc": "在线提交资料",
+          "icon": "https://www.elimen.com.cn/wx-mini/image/mortgage-register@3x.png"
+        },
+        {
+          "title": "审批通过",
+          "desc": "签约",
+          "icon": "https://www.elimen.com.cn/wx-mini/image/b-appro@3x.png"
+        },
+        {
+          "title": "抵押登记",
+          "desc": "发放款项",
+          "icon": "https://www.elimen.com.cn/wx-mini/image/b-loan@3x.png"
+        }
+      ]
+    },
     "header": {
       "headerTitle": "按揭买房新选择",
       "desc": [
